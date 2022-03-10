@@ -1,0 +1,24 @@
+/* get rid of default input outline on hover and click */
+.edit-task-name textarea:hover,
+.edit-task-name textarea:active {
+  outline: none;
+}
+
+.edit-task-name textarea {
+  resize: none; /* removes ability for user to click and drag to resize textarea */
+  overflow: hidden; /* hides textarea scrollbar */
+  background: #eae8e8;
+  color: #172528;
+  font-size: 12pt;
+  width: 70%;
+  font-family: "Open Sans", Calibri, sans-serif;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  border: none;
+  outline: none;
+  padding: 1em;
+  border-radius: 0.75em;
+  text-align: center;
+}

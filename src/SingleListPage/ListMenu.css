@@ -1,0 +1,85 @@
+/* first three styles are for sticky toolbar */
+.delete-toolbar-edit-list-menu {
+  bottom: 0;
+  position: fixed; /* use fixed instead of sticky so toolbar is at bottom even if we don't have that many lists */
+  width: 100%;
+  background: #feffff;
+  color: #172528;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 3em 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-left: 1em;
+}
+
+.delete-toolbar-edit-list-menu h2 {
+  font-size: 16px !important;
+  font-weight: normal;
+}
+
+.delete-toolbar-edit-list-menu i {
+  justify-self: center; /* center icons in menu */
+  font-size: 22px !important;
+  color: #172528;
+}
+
+.delete-toolbar-edit-list-menu i:active {
+  color: #2b7a78;
+}
+
+.delete-toolbar-edit-list-menu h2 {
+  font-size: 20px;
+  margin-left: 0.5em;
+}
+
+.customize-list-icon {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.customize-list-desc {
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.hide-icon {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.hide-desc {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.delete-completed-icon {
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.delete-completed-desc {
+  grid-row: 3 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.delete-all-icon {
+  grid-row: 4 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.delete-all-desc {
+  grid-row: 4 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.delete-list-icon {
+  grid-row: 5 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.delete-list-desc {
+  grid-row: 5 / span 1;
+  grid-column: 2 / span 1;
+}

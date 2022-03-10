@@ -1,0 +1,64 @@
+/* first two styles are for sticky search bar */
+.search-background {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  width: 100%;
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  margin-bottom: 0.2em;
+  background: #2b7a78;
+  display: flex;
+  align-items: space-between;
+  align-items: center;
+  z-index: 1; /* set z-index: 1 so checkboxes don't overlap with sticky search bar */
+}
+
+/* first two styles are for sticky searchbar */
+.search {
+  position: sticky;
+  top: 0;
+  border-radius: 20px;
+  background: #eae8e8;
+  color: #bab2b5;
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  margin-left: 5%;
+  width: 72%;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+.search i {
+  margin-left: 0.8em;
+  font-size: 19px !important;
+}
+
+/* get rid of default input outline on hover and click */
+.search input:hover,
+.search input:active {
+  outline: none;
+}
+
+/* first two styles are for sticky searchbar */
+.search input {
+  position: sticky;
+  width: 72%;
+  background: #eae8e8;
+  color: #172528;
+  line-height: 0.5em;
+  font-size: 15px;
+  font-family: "Open Sans", Calibri, sans-serif;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  margin-left: 1em;
+  border:none;
+  outline: none;
+}
+
+.search-label {
+  display: none;
+}

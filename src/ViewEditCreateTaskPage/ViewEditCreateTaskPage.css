@@ -1,0 +1,11 @@
+#task-page {
+  background: #feffff;
+  height: 100%; /* need this so #feffff background color extends entire screen */
+  min-height: 100vh; /* need this so #feffff background color extends entire screen, even if content doesn't extend entire screen  */
+}
+
+#task-page hr {
+  border: thin solid #91c6c3;
+  margin-top: 0;
+  margin-bottom: 0.7em;
+}

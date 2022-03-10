@@ -1,0 +1,7 @@
+.edit-list {
+  color: #ebc323;
+}
+
+.edit-list:active {
+  color: #2b7a78;
+}

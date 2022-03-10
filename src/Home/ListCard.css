@@ -1,0 +1,38 @@
+.list {
+  border-radius: 7px;
+  background: #feffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: #172528;
+  margin-bottom: 1em;
+  padding: 0.3em 2em 0.3em 1em;
+  display: grid;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 1em;
+}
+
+.list i {
+  font-size: 25px !important;
+}
+
+.list h2 {
+  font-weight: 600;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+i.list-icon {
+  color: #172528;
+  font-size: 25px !important;
+}
+
+.list-grid {
+  grid-template-columns: 1.9em 13em 3em;
+}
+
+.edit-list-grid {
+  grid-template-columns: 1.9em 9.6em 2em 3em;
+  box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
+}

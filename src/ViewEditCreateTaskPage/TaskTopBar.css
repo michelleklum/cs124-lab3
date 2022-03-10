@@ -1,0 +1,29 @@
+.task-header {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding-top: 0.9em;
+  padding-bottom: 0.9em;
+}
+
+.task-header i {
+  color: #91c6c3;
+  font-size: 30px !important;
+}
+
+.task-header i:active {
+  color: #2b7a78;
+  transform: scale(0.98);
+}
+
+#task-name-h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 1.4em;
+  margin-right: 1.4em;
+  inline-size: 225px;
+  overflow-wrap: break-word;
+}

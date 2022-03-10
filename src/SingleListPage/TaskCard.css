@@ -1,0 +1,40 @@
+.task {
+  border-radius: 8px;
+  background: #feffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  color: #17252a;
+  margin-bottom: 1em;
+  padding: 0.2em 1.5em 0.2em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-card-completed h2,
+.task-card-completed p {
+  text-decoration: line-through;
+}
+
+.task i {
+  margin-right: 16px;
+}
+
+.task-and-date {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  flex-grow: 1;
+}
+
+.task-and-date h2 {
+  font-size: 16px;
+  margin-bottom: 0; /* to make task and date flush next to each other vertically */
+  inline-size: 245px;
+  overflow-wrap: break-word;
+}
+
+.date {
+  margin-top: 0; /* to make task and date flush next to each other vertically */
+  font-size: 14px;
+  color: #2b7a78;
+}

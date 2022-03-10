@@ -1,0 +1,17 @@
+.date-edit-background {
+  background: #eae8e8;
+  border-radius: 0.75em;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 60%;
+  text-align: center;
+}
+
+.time-edit-background {
+  background: #eae8e8;
+  border-radius: 0.75em;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: 95%;
+  text-align: center;
+}

@@ -1,0 +1,96 @@
+#task-display i {
+  color: #91c6c3;
+}
+
+#task-display i:active {
+  transform: none;
+}
+
+#task-display {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 60px 2fr 1fr;
+  margin: 0 auto;
+  width: 91%;
+}
+
+.task-display-picker-open {
+  grid-template-rows: 70px 140px 1fr 70px; /* TODO: may have to change depending on whether we add more attributes a task could have! */
+}
+
+.task-display-picker-closed {
+  grid-template-rows: 70px 1fr 70px; /* TODO: may have to change depending on whether we add more attributes a task could have! */
+}
+
+.completed-icon-view-page {
+  font-size: 25pt !important;
+}
+
+.set-date-icon {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  justify-self: start;
+  font-size: 25pt !important;
+}
+
+.set-date {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  font-size: 12pt;
+}
+
+.set-time {
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 1;
+  font-size: 12pt;
+}
+
+.date-picker,
+.time-picker {
+  grid-column: 1 / span 3;
+  grid-row: 2 / span 1;
+  justify-self: center;
+  font-size: 12pt;
+}
+
+.set-note-icon {
+  grid-column: 1 / span 1;
+  justify-self: start;
+  margin-left: 1px; /* hacky way to get icons to align */
+  font-size: 25pt !important;
+}
+
+.set-note {
+  grid-column: 2 / span 2;
+  font-size: 12pt;
+}
+
+.set-note-icon-picker-closed,
+.set-note-picker-closed {
+  grid-row: 2 / span 1;
+}
+
+.set-note-icon-picker-open,
+.set-note-picker-open {
+  grid-row: 3 / span 1;
+}
+
+.set-completed-icon {
+  grid-column: 1 / span 1;
+  justify-self: start;
+}
+
+.set-completed {
+  grid-column: 2 / span 2;
+  font-size: 12pt;
+}
+
+.set-completed-icon-picker-closed,
+.set-completed-picker-closed {
+  grid-row: 3 / span 1;
+}
+
+.set-completed-icon-picker-open,
+.set-completed-picker-open {
+  grid-row: 4 / span 1;
+}

@@ -1,0 +1,8 @@
+#single-list-page i {
+  color: #feffff;
+}
+
+/* top bar icons change color to Azure X 11 Web Color when pressed */
+#single-list-page i:active {
+  color: #def2f1;
+}

@@ -1,0 +1,77 @@
+.time-picker {
+  display: grid;
+  justify-items: start; /* so that hours with single and double digits line up */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 40px 40px 40px;
+  align-items: center;
+  margin: 0 auto;
+  width: 40%;
+  text-align: center;
+}
+
+.time-picker p {
+  font-size: 12pt;
+}
+
+/* to enable highlighting selected-hour, selected-minute, selected-am-pm */
+.prev-hour,
+.prev-minute,
+.selected-hour,
+.selected-minute,
+.selected-am-pm,
+.next-hour,
+.next-minute,
+.not-selected-am-pm {
+  text-align: center;
+  width: 100%;
+}
+
+/* highlight selected-hour, selected-minute, selected-am-pm */
+.selected-hour,
+.selected-minute,
+.selected-am-pm {
+  background: #eae8e8;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 8px;
+}
+
+.prev-hour {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.prev-minute {
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.selected-hour {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.selected-minute {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.selected-am-pm {
+  grid-row: 2 / span 1;
+  grid-column: 3 / span 1;
+}
+
+.next-hour {
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.next-minute {
+  grid-row: 3 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.not-selected-am-pm {
+  grid-row: 3 / span 1;
+  grid-column: 3 / span 1;
+}

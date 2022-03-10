@@ -1,0 +1,15 @@
+#single-list-page h2 {
+  font-weight: normal;
+}
+
+/* Single List Page Menu Mode Styles */
+/* place overlay of black background with lightened opacity over rest of page */
+#single-list-menu-mode-overlay {
+  margin-top: 0;
+  padding-top: 0;
+  width: 100%;
+  position: fixed; /* make list unscrollable, and make black overlay extend at least to top bar */
+  background: black;
+  opacity: 12%;
+  height: 100%;
+}

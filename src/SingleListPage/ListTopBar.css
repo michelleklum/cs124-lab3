@@ -1,0 +1,29 @@
+/* first two styles are for sticky navbar */
+.top-bar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: #2b7a78;
+  z-index: 1; /* set z-index: 1 so checkboxes don't overlap with top bar */
+}
+
+/* margin: 0 auto; and width: 90%; are to center top bar content, leaving 5% width on each side */
+/* but to do that, we really just need margin-left: auto and margin-right: auto */
+.top-bar-content {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 90%;
+  height: 60px;
+}
+
+.top-bar h2 {
+  font-size: 21px;
+  color: #feffff;
+  margin: 0;
+  max-width: 210px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+

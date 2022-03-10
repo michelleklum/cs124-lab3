@@ -1,0 +1,26 @@
+/* Add Plus Icon Button */
+.add-button {
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    width: 65px;
+    height: 65px;
+    background: #33aaaa;
+    border-radius: 50%;
+    box-shadow: 2px 3px 2px #bab2b5;
+    display: flex; /* bottom three styles center the plus icon in the .add-button div */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .add-button i {
+    color: #feffff;
+    font-size: 27px !important;
+  }
+  
+  /* add-button should change color and decrease slightly in size when pressed */
+  .add-button:active {
+    background: #2b7a78;
+    transform: scale(0.98);
+  }
+  

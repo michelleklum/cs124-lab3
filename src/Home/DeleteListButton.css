@@ -1,0 +1,7 @@
+.delete-list {
+  color: #ed554a;
+}
+
+.delete-list:active {
+  color: #2b7a78;
+}

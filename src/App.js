@@ -8,6 +8,23 @@ import SingleListPage from "./SingleListPage/SingleListPage";
 import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskPage";
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
 
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAKewQsnli_uTJBwznWaTf3Xu9umZFfyIw",
+  authDomain: "cs124-lab3-9c4c8.firebaseapp.com",
+  projectId: "cs124-lab3-9c4c8",
+  storageBucket: "cs124-lab3-9c4c8.appspot.com",
+  messagingSenderId: "228399726961",
+  appId: "1:228399726961:web:8de7dc7c45ca93cbebf6d0",
+};
+
+// Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+
 function App(props) {
   const [data, setData] = useState(props.initialData);
 
@@ -175,9 +192,9 @@ function App(props) {
 
   // State and functions below handle alerts and warnings
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-  
+
   function handleToggleDeleteAlert() {
-    setShowDeleteAlert(!showDeleteAlert)
+    setShowDeleteAlert(!showDeleteAlert);
   }
 
   return (

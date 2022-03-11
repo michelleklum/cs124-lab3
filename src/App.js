@@ -24,6 +24,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
+console.log(db);
 
 function App(props) {
   const [data, setData] = useState(props.initialData);

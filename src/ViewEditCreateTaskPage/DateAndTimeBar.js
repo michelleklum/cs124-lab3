@@ -2,6 +2,9 @@ import React, { Fragment } from "react";
 import "./DateAndTimeBar.css";
 
 function convertMilitaryTimeToStandardTime(militaryTime) {
+  // TODO: handle no time properly in the future
+  militaryTime = militaryTime ? militaryTime : "12:00 AM";
+
   let amPm = "AM"; // assume AM for now
 
   let [hour, minute] = militaryTime.split(":");

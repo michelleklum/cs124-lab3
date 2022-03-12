@@ -9,7 +9,7 @@ const filterTasksBySearch = (tasks, query) => {
     return tasks;
   }
   return tasks.filter((task) => {
-    const taskName = task.taskName.toLowerCase();
+    const taskName = task.name.toLowerCase();
     return taskName.includes(query);
   });
 };
@@ -17,12 +17,12 @@ const filterTasksBySearch = (tasks, query) => {
 function ListSearchPage(props) {
   const list = props.data.find((list) => list.id === props.currentListId);
 
-  const tasksToShow = list.areCompletedTasksHidden
-    ? list.listTasks.filter((task) => !task.isTaskCompleted)
-    : list.listTasks;
+  const tasksToShow = list.hideCompletedTasks
+    ? list.tasks.filter((task) => !task.isCompleted)
+    : list.tasks;
 
-  const completedTasks = tasksToShow.filter((task) => task.isTaskCompleted);
-  const incompleteTasks = tasksToShow.filter((task) => !task.isTaskCompleted);
+  const completedTasks = tasksToShow.filter((task) => task.isCompleted);
+  const incompleteTasks = tasksToShow.filter((task) => !task.isCompleted);
 
   // Put incomplete tasks first, and then completed tasks.
   // Within each sublist (i.e., incomplete tasks), sort by date.

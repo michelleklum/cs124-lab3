@@ -9,10 +9,10 @@ function EditCreateListPage(props) {
   const currentList = props.data.find(
     (list) => list.id === props.currentListId
   );
-  const list = currentList ? currentList : { listName: "", listIcon: "" };
+  const list = currentList ? currentList : { name: "", icon: "" };
 
-  const [tempListName, setTempListName] = useState(list.listName);
-  const [tempSelectedIcon, setTempSelectedIcon] = useState(list.listIcon);
+  const [tempListName, setTempListName] = useState(list.name);
+  const [tempSelectedIcon, setTempSelectedIcon] = useState(list.icon);
 
   return (
     <div id="edit-list-page">
@@ -44,11 +44,13 @@ function EditCreateListPage(props) {
           onToggleDeleteAlert={props.onToggleDeleteAlert}
         />
       ) : null}
-      {props.showDeleteAlert && <DeleteAlert
-        type="this list" 
-        onToggleDeleteAlert={props.onToggleDeleteAlert}
-        onDelete={() => props.onDeleteList(props.currentListId)}
-      />}
+      {props.showDeleteAlert && (
+        <DeleteAlert
+          type="this list"
+          onToggleDeleteAlert={props.onToggleDeleteAlert}
+          onDelete={() => props.onDeleteList(props.currentListId)}
+        />
+      )}
     </div>
   );
 }

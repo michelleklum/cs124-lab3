@@ -10,7 +10,7 @@ function Checkbox(props) {
       props.onEditTask(
         props.currentListId,
         props.task.id,
-        "isTaskCompleted",
+        "isCompleted",
         !props.tempTaskStatus
       );
   }

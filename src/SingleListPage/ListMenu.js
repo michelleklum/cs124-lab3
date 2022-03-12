@@ -12,7 +12,7 @@ function ListMenu(props) {
     <div className="delete-toolbar-edit-list-menu">
       <EditListBar onChangePage={props.onChangePage} />
       <HideCompletedBar
-        areCompletedTasksHidden={taskList.areCompletedTasksHidden}
+        hideCompletedTasks={taskList.hideCompletedTasks}
         currentListId={props.currentListId}
         onEditList={props.onEditList}
       />

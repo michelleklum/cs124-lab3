@@ -5,6 +5,9 @@ import TaskDisplay from "./TaskDisplay";
 import DeleteTaskBar from "./DeleteTaskBar";
 import DeleteAlert from "../Global/DeleteAlert";
 
+import { doc, query } from "firebase/firestore";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+
 function getCurrentDate() {
   const today = new Date();
 
@@ -28,30 +31,29 @@ function getCurrentTimeRoundedToNearestFiveMin() {
 }
 
 function ViewEditCreateTaskPage(props) {
-  const list = props.data.find((list) => list.id === props.currentListId);
-  const currentTask = list.listTasks.find(
-    (task) => task.id === props.currentTaskId
-  );
-  const task = currentTask
-    ? currentTask
-    : {
-        taskName: "",
-        taskDate: getCurrentDate(),
-        taskTime: getCurrentTimeRoundedToNearestFiveMin(),
-        taskNotes: "",
-        isTaskCompleted: false,
-      };
+  const newTask = {
+    name: "",
+    taskDate: getCurrentDate(),
+    taskTime: getCurrentTimeRoundedToNearestFiveMin(),
+    notes: "",
+    isCompleted: false,
+  };
+  const task = props.dbTask ? props.dbTask : newTask;
 
+  console.log(task);
+  console.log("task name:     " + task.name);
   // When a user is editing a task, they may potentially edit more than one task field.
   // useState is asynchronous, which may cause problems.
   // As a workaround, we put all of users' tasks in these state variables,
   // and then only when the user clicks the SaveTaskButton do we call onEditAllTaskFields
   // or onCreateTask to actually update the data in the App component's state.
-  const [tempTaskName, setTempTaskName] = useState(task.taskName);
-  const [tempTaskDate, setTempTaskDate] = useState(task.taskDate);
-  const [tempTaskTime, setTempTaskTime] = useState(task.taskTime);
-  const [tempTaskNotes, setTempTaskNotes] = useState(task.taskNotes);
-  const [tempTaskStatus, setTempTaskStatus] = useState(task.isTaskCompleted);
+  const [tempTaskName, setTempTaskName] = useState(task.name);
+  // TODO: add deadline for task
+  // TODO: deal with no deadline
+  const [tempTaskDate, setTempTaskDate] = useState("");
+  const [tempTaskTime, setTempTaskTime] = useState("");
+  const [tempTaskNotes, setTempTaskNotes] = useState(task.notes);
+  const [tempTaskStatus, setTempTaskStatus] = useState(task.isCompleted);
 
   return (
     <div id="task-page">
@@ -92,15 +94,17 @@ function ViewEditCreateTaskPage(props) {
         onChangeTaskStatus={setTempTaskStatus}
       />
       {props.inEditTaskMode ? (
-        <DeleteTaskBar
-          onToggleDeleteAlert={props.onToggleDeleteAlert}
-        />
+        <DeleteTaskBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
       ) : null}
-      {props.showDeleteAlert && <DeleteAlert
-        type="this task" 
-        onToggleDeleteAlert={props.onToggleDeleteAlert}
-        onDelete={() => props.onDeleteTask(props.currentListId, props.currentTaskId)}
-      />}
+      {props.showDeleteAlert && (
+        <DeleteAlert
+          type="this task"
+          onToggleDeleteAlert={props.onToggleDeleteAlert}
+          onDelete={() =>
+            props.onDeleteTask(props.currentListId, props.currentTaskId)
+          }
+        />
+      )}
     </div>
   );
 }

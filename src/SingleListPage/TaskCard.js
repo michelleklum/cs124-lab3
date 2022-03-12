@@ -2,6 +2,9 @@ import "./TaskCard.css";
 import Checkbox from "../Global/Checkbox";
 
 function convertMilitaryTimeToStandardTime(militaryTime) {
+  // TODO: handle no time properly in the future
+  militaryTime = militaryTime ? militaryTime : "12:00 AM";
+
   let amPm = "AM"; // assume AM for now
 
   let [hour, minute] = militaryTime.split(":");
@@ -26,7 +29,7 @@ function TaskCard(props) {
     props.onChangeTask(props.task.id);
   }
 
-  const completedTaskClassName = props.task.isTaskCompleted
+  const completedTaskClassName = props.task.isCompleted
     ? "task-card-completed"
     : null;
 
@@ -37,7 +40,7 @@ function TaskCard(props) {
           className="checkbox"
           currentListId={props.currentListId}
           task={props.task}
-          tempTaskStatus={props.task.isTaskCompleted}
+          tempTaskStatus={props.task.isCompleted}
           disableCheckbox={props.inMenuMode ? true : false}
           onEditTask={props.onEditTask}
         />
@@ -49,9 +52,9 @@ function TaskCard(props) {
       >
         <label htmlFor={`task-${props.task.id}`}>
           <h2>
-            {props.task.taskName.length > numTaskCharsToShow
-              ? props.task.taskName.slice(0, numTaskCharsToShow) + "..."
-              : props.task.taskName}
+            {props.task.name.length > numTaskCharsToShow
+              ? props.task.name.slice(0, numTaskCharsToShow) + "..."
+              : props.task.name}
           </h2>
         </label>
         <p className="date">

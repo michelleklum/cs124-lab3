@@ -9,7 +9,17 @@ import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskP
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import {
+  getFirestore,
+  query,
+  collection,
+  doc,
+  setDoc,
+  updateDoc,
+  deleteDoc,
+  serverTimestamp,
+} from "firebase/firestore";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -24,24 +34,29 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
-console.log(db);
 
 function App(props) {
-  const [data, setData] = useState(props.initialData);
+  const listCollectionName = "lists";
+  const taskSubcollectionName = "tasks";
+
+  const listsQuery = query(collection(db, listCollectionName));
+  const [dbData, dataLoading, dataError] = useCollectionData(listsQuery);
+  const data = dbData ? dbData : [];
 
   function handleEditTask(listId, taskId, taskField, newValue) {
+    /*
     setData(
       data.map((list) =>
         list.id === listId
-          ? {
-              ...list,
-              listTasks: list.listTasks.map((task) =>
+          ? { dt,
+              tasks: list.tasks.map((task) =>
                 task.id === taskId ? { ...task, [taskField]: newValue } : task
               ),
             }
           : list
       )
     );
+    */
   }
 
   function handleEditTaskAllFields(
@@ -50,23 +65,24 @@ function App(props) {
     taskName,
     taskDate,
     taskTime,
-    taskNotes,
+    notes,
     taskStatus
   ) {
+    /*
     setData(
       data.map((list) =>
         list.id === listId
           ? {
               ...list,
-              listTasks: list.listTasks.map((task) =>
+              tasks: list.tasks.map((task) =>
                 task.id === taskId
                   ? {
                       ...task,
-                      taskName: taskName,
+                      name: taskName,
                       taskDate: taskDate,
                       taskTime: taskTime,
-                      taskNotes: taskNotes,
-                      isTaskCompleted: taskStatus,
+                      notes: notes,
+                      isCompleted: taskStatus,
                     }
                   : task
               ),
@@ -74,65 +90,69 @@ function App(props) {
           : list
       )
     );
+    */
   }
 
   function handleDeleteTask(listId, taskId) {
+    /*
     setData(
       data.map((list) =>
         list.id === listId
           ? {
               ...list,
-              listTasks: list.listTasks.filter((task) => task.id !== taskId),
+              tasks: list.tasks.filter((task) => task.id !== taskId),
             }
           : list
       )
     );
+    */
     setCurrentPage(
       "SingleListPage"
     ); /* after deleting task, redirect to Single List Page */
   }
 
+  // TODO: CONSOLIDATE EDIT LIST FUNCTIONS!!!!!!
+  // TODO: test showing / hiding completed items once we have tasks
   function handleEditList(listId, listField, newValue) {
-    setData(
-      data.map((list) =>
-        list.id === listId ? { ...list, [listField]: newValue } : list
-      )
-    );
+    const listDocRef = doc(db, listCollectionName, listId);
+    updateDoc(listDocRef, {
+      modifiedTime: serverTimestamp(),
+      [listField]: newValue,
+    });
   }
 
   function handleEditListAppearance(listId, newName, newIcon) {
-    setData(
-      data.map((list) =>
-        list.id === listId
-          ? { ...list, listName: newName, listIcon: newIcon }
-          : list
-      )
-    );
+    const listDocRef = doc(db, listCollectionName, listId);
+    updateDoc(listDocRef, {
+      modifiedTime: serverTimestamp(),
+      name: newName,
+      icon: newIcon,
+    });
   }
 
   function handleDeleteCompletedTasks(listId) {
-    setData(
-      data.map((list) =>
-        list.id === listId
-          ? {
-              ...list,
-              listTasks: list.listTasks.filter((task) => !task.isTaskCompleted),
-            }
-          : list
-      )
-    );
+    // setData(
+    //   data.map((list) =>
+    //     list.id === listId
+    //       ? {
+    //           ...list,
+    //           tasks: list.tasks.filter((task) => !task.isCompleted),
+    //         }
+    //       : list
+    //   )
+    // );
   }
 
   function handleDeleteAllTasks(listId) {
-    setData(
-      data.map((list) =>
-        list.id === listId ? { ...list, listTasks: [] } : list
-      )
-    );
+    // setData(
+    //   data.map((list) =>
+    //     list.id === listId ? { ...list, tasks: [] } : list
+    //   )
+    // );
   }
 
   function handleDeleteList(listId) {
-    setData(data.filter((list) => list.id !== listId));
+    deleteDoc(doc(db, listCollectionName, listId));
     setCurrentPage("Home"); /* after deleting list, redirect to Home Page */
   }
 
@@ -141,6 +161,12 @@ function App(props) {
   const [prevPage, setPrevPage] = useState("Home");
   const [currentListId, setCurrentListId] = useState();
   const [currentTaskId, setCurrentTaskId] = useState();
+
+  const taskDocRef = currentTaskId
+    ? doc(db, "lists", currentListId, "tasks", currentTaskId)
+    : null;
+  // const taskQuery = query(taskDocRef);
+  // const [dbTask, taskLoading, taskError] = useCollectionData(taskQuery);
 
   function handleChangePage(newPage) {
     setPrevPage(currentPage);
@@ -161,34 +187,39 @@ function App(props) {
   }
 
   // Functions below handle list and task creation
-  function handleCreateList(listName, listIcon) {
+  function handleCreateList(name, icon) {
+    const listId = generateUniqueID();
     const newList = {
-      id: generateUniqueID(),
-      listName: listName,
-      listIcon: listIcon,
-      areCompletedTasksHidden: false,
-      listTasks: [],
+      id: listId,
+      creationTime: serverTimestamp(),
+      modifiedTime: serverTimestamp(),
+      name: name,
+      icon: icon,
+      hideCompletedTasks: false,
     };
-    const newData = data.concat(newList);
-    setData(newData);
+    setDoc(doc(db, listCollectionName, listId), newList);
   }
 
   function handleCreateTask(listId, taskName, taskDate, taskTime, taskNotes) {
-    const list = data.find((list) => list.id === listId);
-    const id = generateUniqueID();
-    const newTasks = list.listTasks.concat({
-      id: id,
-      taskName: taskName,
-      taskDate: taskDate,
-      taskTime: taskTime,
-      taskNotes: taskNotes,
-      isTaskCompleted: false,
-    });
-    setData(
-      data.map((list) =>
-        list.id === listId ? { ...list, listTasks: newTasks } : list
-      )
+    const taskId = generateUniqueID();
+    const newTask = {
+      id: taskId,
+      creationTime: serverTimestamp(),
+      modifiedTime: serverTimestamp(),
+      name: taskName,
+      deadline: serverTimestamp(), // TODO: change to actual deadline
+      notes: taskNotes,
+      isCompleted: false,
+    };
+    const docRef = doc(
+      db,
+      listCollectionName,
+      listId,
+      taskSubcollectionName,
+      taskId
     );
+    console.log(docRef);
+    setDoc(docRef, newTask);
   }
 
   // State and functions below handle alerts and warnings
@@ -231,14 +262,15 @@ function App(props) {
       {currentPage === "SingleListPage" ? (
         <SingleListPage
           data={data}
+          db={db}
           prevPage={prevPage}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           currentPage={currentPage}
           onChangePage={handleChangePage}
           onChangeTask={handleChangeTask}
-          onEditList={handleEditList}
           onEditTask={handleEditTask}
+          onEditList={handleEditList}
           onDeleteCompleted={handleDeleteCompletedTasks}
           onDeleteAllTasks={handleDeleteAllTasks}
           onDeleteList={handleDeleteList}
@@ -258,6 +290,7 @@ function App(props) {
       ) : null}
       {currentPage === "ViewTaskPage" ? (
         <ViewEditCreateTaskPage
+          dbTask={dbTask}
           data={data}
           prevPage={prevPage}
           currentListId={currentListId}
@@ -269,6 +302,7 @@ function App(props) {
       ) : null}
       {currentPage === "EditTaskPage" ? (
         <ViewEditCreateTaskPage
+          db={db}
           data={data}
           prevPage={prevPage}
           currentListId={currentListId}
@@ -285,6 +319,7 @@ function App(props) {
       ) : null}
       {currentPage === "CreateTaskPage" ? (
         <ViewEditCreateTaskPage
+          db={db}
           data={data}
           prevPage={prevPage}
           currentListId={currentListId}

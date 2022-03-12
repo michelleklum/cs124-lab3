@@ -48,6 +48,7 @@ function SingleListPage(props) {
           onClick={inMenuMode ? toggleMenuMode : null}
         >
           <ListOfTasks
+            db={props.db}
             data={props.data}
             currentListId={props.currentListId}
             inMenuMode={inMenuMode}
@@ -69,24 +70,29 @@ function SingleListPage(props) {
           onToggleDeleteListAlert={toggleDeleteListAlert}
           onToggleDeleteTasksAlert={toggleDeleteTasksAlert}
           onToggleDeleteCompletedAlert={toggleDeleteCompletedAlert}
-
         />
       ) : null}
-      {deleteListAlert && <DeleteAlert
-        type="this list" 
-        onToggleDeleteAlert={toggleDeleteListAlert}
-        onDelete={() => props.onDeleteList(props.currentListId)}
-      />}
-      {deleteTasksAlert && <DeleteAlert
-        type="all tasks" 
-        onToggleDeleteAlert={toggleDeleteTasksAlert}
-        onDelete={() => props.onDeleteAllTasks(props.currentListId)}
-      />}
-      {deleteCompletedAlert && <DeleteAlert
-        type="all completed tasks" 
-        onToggleDeleteAlert={toggleDeleteCompletedAlert}
-        onDelete={() => props.onDeleteCompleted(props.currentListId)}
-      />}
+      {deleteListAlert && (
+        <DeleteAlert
+          type="this list"
+          onToggleDeleteAlert={toggleDeleteListAlert}
+          onDelete={() => props.onDeleteList(props.currentListId)}
+        />
+      )}
+      {deleteTasksAlert && (
+        <DeleteAlert
+          type="all tasks"
+          onToggleDeleteAlert={toggleDeleteTasksAlert}
+          onDelete={() => props.onDeleteAllTasks(props.currentListId)}
+        />
+      )}
+      {deleteCompletedAlert && (
+        <DeleteAlert
+          type="all completed tasks"
+          onToggleDeleteAlert={toggleDeleteCompletedAlert}
+          onDelete={() => props.onDeleteCompleted(props.currentListId)}
+        />
+      )}
     </Fragment>
   );
 }

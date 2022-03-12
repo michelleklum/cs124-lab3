@@ -1,15 +1,27 @@
 import "./ListOfTasks.css";
 import TaskCard from "./TaskCard";
+import { collection, query } from "firebase/firestore";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 function ListOfTasks(props) {
+  const tasksSubcollectionRef = collection(
+    props.db,
+    "lists",
+    props.currentListId,
+    "tasks"
+  );
+  const tasksQuery = query(tasksSubcollectionRef);
+  const [dbTasks, loading, error] = useCollectionData(tasksQuery);
+  const tasks = dbTasks ? dbTasks : [];
+
   const list = props.data.find((list) => list.id === props.currentListId);
+  const tasksToShow = list.hideCompletedTasks
+    ? tasks.filter((task) => !task.isCompleted)
+    : tasks;
+  console.log(tasksToShow);
 
-  const tasksToShow = list.areCompletedTasksHidden
-    ? list.listTasks.filter((task) => !task.isTaskCompleted)
-    : list.listTasks;
-
-  const completedTasks = tasksToShow.filter((task) => task.isTaskCompleted);
-  const incompleteTasks = tasksToShow.filter((task) => !task.isTaskCompleted);
+  const completedTasks = tasksToShow.filter((task) => task.isCompleted);
+  const incompleteTasks = tasksToShow.filter((task) => !task.isCompleted);
 
   // Put incomplete tasks first, and then completed tasks.
   // Within each sublist (i.e., incomplete tasks), sort by date.

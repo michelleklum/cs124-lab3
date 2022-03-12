@@ -10,7 +10,7 @@ const filterLists = (lists, query) => {
     return lists;
   }
   return lists.filter((list) => {
-    const listName = list.listName.toLowerCase();
+    const listName = list.name.toLowerCase();
     return listName.includes(query);
   });
 };
@@ -33,8 +33,8 @@ function HomeSearchPage(props) {
           <ListCard
             key={list.id}
             id={list.id}
-            listName={list.listName}
-            listIcon={list.listIcon}
+            listName={list.name}
+            listIcon={list.icon}
             onChangePage={props.onChangePage}
             onChangeList={props.onChangeList}
             onDeleteList={props.onDeleteList}

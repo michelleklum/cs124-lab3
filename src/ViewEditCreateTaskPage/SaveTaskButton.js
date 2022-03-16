@@ -9,7 +9,6 @@ function SaveTaskButton(props) {
       props.taskNotes,
       props.taskStatus
     );
-    props.onChangePage(props.prevPage);
   }
 
   function confirmCreateTask() {
@@ -20,7 +19,6 @@ function SaveTaskButton(props) {
       props.taskTime,
       props.taskNotes
     );
-    props.onChangePage(props.prevPage);
   }
 
   return (

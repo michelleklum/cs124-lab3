@@ -49,6 +49,7 @@ function SingleListPage(props) {
         >
           <ListOfTasks
             db={props.db}
+            tasks={props.tasks}
             data={props.data}
             currentListId={props.currentListId}
             inMenuMode={inMenuMode}

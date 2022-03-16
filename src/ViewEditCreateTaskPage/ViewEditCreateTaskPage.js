@@ -5,7 +5,7 @@ import TaskDisplay from "./TaskDisplay";
 import DeleteTaskBar from "./DeleteTaskBar";
 import DeleteAlert from "../Global/DeleteAlert";
 
-import { doc, query } from "firebase/firestore";
+import { collection, query } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
 function getCurrentDate() {
@@ -38,10 +38,12 @@ function ViewEditCreateTaskPage(props) {
     notes: "",
     isCompleted: false,
   };
-  const task = props.dbTask ? props.dbTask : newTask;
 
-  console.log(task);
-  console.log("task name:     " + task.name);
+  const currentTask = props.tasks.find(
+    (task) => task.id === props.currentTaskId
+  );
+
+  const task = props.inCreateTaskMode ? newTask : currentTask;
   // When a user is editing a task, they may potentially edit more than one task field.
   // useState is asynchronous, which may cause problems.
   // As a workaround, we put all of users' tasks in these state variables,
@@ -54,7 +56,6 @@ function ViewEditCreateTaskPage(props) {
   const [tempTaskTime, setTempTaskTime] = useState("");
   const [tempTaskNotes, setTempTaskNotes] = useState(task.notes);
   const [tempTaskStatus, setTempTaskStatus] = useState(task.isCompleted);
-
   return (
     <div id="task-page">
       <TaskTopBar

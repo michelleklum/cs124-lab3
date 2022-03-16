@@ -70,22 +70,12 @@ function App(props) {
     }).then(() => handleChangePage(prevPage));
   }
 
-  function handleDeleteTask(listId, taskId) {
-    /*
-    setData(
-      data.map((list) =>
-        list.id === listId
-          ? {
-              ...list,
-              tasks: list.tasks.filter((task) => task.id !== taskId),
-            }
-          : list
-      )
-    );
-    */
+  function handleDeleteTask(taskId) {
     setCurrentPage(
       "SingleListPage"
-    ); /* after deleting task, redirect to Single List Page */
+    ); /* before deleting task in db, redirect to Single List Page */
+    const taskDocRef = doc(db, listCollectionName, currentListId, taskSubcollectionName, taskId);
+    deleteDoc(taskDocRef);
   }
 
   // TODO: CONSOLIDATE EDIT LIST FUNCTIONS!!!!!!
@@ -104,33 +94,34 @@ function App(props) {
       modifiedTime: serverTimestamp(),
       name: newName,
       icon: newIcon,
-    });
+    }).then(() => handleChangePage(prevPage));
   }
 
-  function handleDeleteCompletedTasks(listId) {
-    // setData(
-    //   data.map((list) =>
-    //     list.id === listId
-    //       ? {
-    //           ...list,
-    //           tasks: list.tasks.filter((task) => !task.isCompleted),
-    //         }
-    //       : list
-    //   )
-    // );
+  function handleDeleteCompletedTasks() {
+    tasks.filter((task) => task.isCompleted).map(
+      task =>
+        deleteDoc(doc(
+          db,
+          listCollectionName,
+          currentListId,
+          taskSubcollectionName,
+          task.id)))
   }
 
-  function handleDeleteAllTasks(listId) {
-    // setData(
-    //   data.map((list) =>
-    //     list.id === listId ? { ...list, tasks: [] } : list
-    //   )
-    // );
+  function handleDeleteAllTasks() {
+    tasks.map(
+      task =>
+        deleteDoc(doc(
+          db,
+          listCollectionName,
+          currentListId,
+          taskSubcollectionName,
+          task.id)))
   }
 
-  function handleDeleteList(listId) {
-    deleteDoc(doc(db, listCollectionName, listId));
-    setCurrentPage("Home"); /* after deleting list, redirect to Home Page */
+  function handleDeleteList() {
+    setCurrentPage("Home"); // Change page first to avoid error where no tasks are found
+    deleteDoc(doc(db, listCollectionName, currentListId));
   }
 
   // Code below changes current/previous page, list, and task

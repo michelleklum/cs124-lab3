@@ -23,7 +23,7 @@ function Home(props) {
       {props.showDeleteAlert && <DeleteAlert
         type="this list" 
         onToggleDeleteAlert={props.onToggleDeleteAlert}
-        onDelete={() => props.onDeleteList(props.currentListId)}
+        onDelete={() => props.onDeleteList()}
       />}
     </div>
   );

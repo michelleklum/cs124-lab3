@@ -5,9 +5,6 @@ import TaskDisplay from "./TaskDisplay";
 import DeleteTaskBar from "./DeleteTaskBar";
 import DeleteAlert from "../Global/DeleteAlert";
 
-import { collection, query } from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-
 function getCurrentDate() {
   const today = new Date();
 
@@ -102,7 +99,7 @@ function ViewEditCreateTaskPage(props) {
           type="this task"
           onToggleDeleteAlert={props.onToggleDeleteAlert}
           onDelete={() =>
-            props.onDeleteTask(props.currentListId, props.currentTaskId)
+            props.onDeleteTask(props.currentTaskId)
           }
         />
       )}

@@ -77,21 +77,21 @@ function SingleListPage(props) {
         <DeleteAlert
           type="this list"
           onToggleDeleteAlert={toggleDeleteListAlert}
-          onDelete={() => props.onDeleteList(props.currentListId)}
+          onDelete={() => props.onDeleteList()}
         />
       )}
       {deleteTasksAlert && (
         <DeleteAlert
           type="all tasks"
           onToggleDeleteAlert={toggleDeleteTasksAlert}
-          onDelete={() => props.onDeleteAllTasks(props.currentListId)}
+          onDelete={() => props.onDeleteAllTasks()}
         />
       )}
       {deleteCompletedAlert && (
         <DeleteAlert
           type="all completed tasks"
           onToggleDeleteAlert={toggleDeleteCompletedAlert}
-          onDelete={() => props.onDeleteCompleted(props.currentListId)}
+          onDelete={() => props.onDeleteCompleted()}
         />
       )}
     </Fragment>

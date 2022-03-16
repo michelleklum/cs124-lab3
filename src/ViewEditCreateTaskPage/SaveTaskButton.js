@@ -1,5 +1,10 @@
+import React, { useState } from "react";
+
 function SaveTaskButton(props) {
+  const [confirmInProgress, setConfirmInProgress] = useState(false);
+
   function confirmEditTask() {
+    setConfirmInProgress(true);
     props.onEditAllTaskFields(
       props.currentListId,
       props.currentTaskId,
@@ -12,6 +17,7 @@ function SaveTaskButton(props) {
   }
 
   function confirmCreateTask() {
+    setConfirmInProgress(true);
     props.onCreateTask(
       props.currentListId,
       props.taskName,
@@ -23,19 +29,22 @@ function SaveTaskButton(props) {
 
   return (
     <div>
-      {props.inEditTaskMode && props.taskName !== "" && (
-        <i className="fas fa-check fa-4x" onClick={() => confirmEditTask()}></i>
-      )}
-      {props.inEditTaskMode && props.taskName === "" && (
+      {confirmInProgress && (
         <i className="fas fa-check fa-4x" id="no-info"></i>
       )}
-      {props.inCreateTaskMode && props.taskName !== "" && (
+      {!confirmInProgress && props.inEditTaskMode && props.taskName !== "" && (
+        <i className="fas fa-check fa-4x" onClick={() => confirmEditTask()}></i>
+      )}
+      {!confirmInProgress && props.inEditTaskMode && props.taskName === "" && (
+        <i className="fas fa-check fa-4x" id="no-info"></i>
+      )}
+      {!confirmInProgress && props.inCreateTaskMode && props.taskName !== "" && (
         <i
           className="fas fa-check fa-4x"
           onClick={() => confirmCreateTask()}
         ></i>
       )}
-      {props.inCreateTaskMode && props.taskName === "" && (
+      {!confirmInProgress && props.inCreateTaskMode && props.taskName === "" && (
         <i className="fas fa-check fa-4x" id="no-info"></i>
       )}
     </div>

@@ -1,7 +1,5 @@
 import "./ListOfTasks.css";
 import TaskCard from "./TaskCard";
-import { collection, query, doc } from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 
 function ListOfTasks(props) {
   const list = props.data.find((list) => list.id === props.currentListId);

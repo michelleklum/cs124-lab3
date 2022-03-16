@@ -139,7 +139,7 @@ function App(props) {
     "tasks"
   );
   const tasksQuery = query(tasksSubcollectionRef);
-  const [dbTasks, loading, error] = useCollectionData(tasksQuery);
+  const [dbTasks, tasksLoading, tasksError] = useCollectionData(tasksQuery);
   const tasks = dbTasks ? dbTasks : [];
 
   function handleChangePage(newPage) {
@@ -202,6 +202,12 @@ function App(props) {
     setShowDeleteAlert(!showDeleteAlert);
   }
 
+  if (dataLoading) {
+    return <>Loading!</>
+  }
+  if (dataError) {
+    return <>Error!</>
+  }
   return (
     <Fragment>
       {currentPage === "Home" ? (
@@ -236,6 +242,8 @@ function App(props) {
         <SingleListPage
           data={data}
           tasks={tasks}
+          loading={tasksLoading}
+          error={tasksError}
           prevPage={prevPage}
           currentListId={currentListId}
           currentTaskId={currentTaskId}

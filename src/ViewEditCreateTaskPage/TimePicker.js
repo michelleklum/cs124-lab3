@@ -3,27 +3,14 @@
 // 2. Scrolling through the TimePicker (by clicking and dragging).
 import React, { useState } from "react";
 import "./TimePicker.css";
-
-function getHourMinAmPm(militaryTime) {
-  let amPm = "AM"; // assume AM for now
-
-  let [hour, minute] = militaryTime.split(":");
-  hour = parseInt(hour);
-  if (hour > 12) {
-    // PM times
-    hour -= 12;
-    amPm = "PM";
-  }
-
-  return [hour, minute.padStart(2, "0"), amPm];
-}
+import { Timestamp } from "firebase/firestore";
 
 function getPrevHour(hour) {
   let prevHour = parseInt(hour) - 1;
   if (prevHour === 0) {
     prevHour = 12;
   }
-  return prevHour;
+  return String(prevHour).padStart(2, "0");
 }
 
 function getPrevMinute(minute) {
@@ -39,7 +26,7 @@ function getNextHour(hour) {
   if (nextHour === 13) {
     nextHour = 1;
   }
-  return nextHour;
+  return String(nextHour).padStart(2, "0");
 }
 
 function getNextMinute(minute) {
@@ -50,7 +37,7 @@ function getNextMinute(minute) {
   return String(nextMin).padStart(2, "0");
 }
 
-function convertStandardTimeToMilitaryTime(hour, minute, amPm) {
+function convertStandardTimeHourToMilitaryTimeHour(hour, amPm) {
   let militaryHour = hour;
   if (hour < 12 && amPm === "PM") {
     // PM times
@@ -67,16 +54,28 @@ function convertStandardTimeToMilitaryTime(hour, minute, amPm) {
     militaryHour = 12;
   }
 
-  return `${militaryHour}:${minute}`;
+  return militaryHour;
 }
 
 function TimePicker(props) {
-  const [initialHour, initialMinute, initialAmPm] = getHourMinAmPm(
-    props.tempTaskTime
-  );
-  const [selectedHour, setSelectedHour] = useState(initialHour);
-  const [selectedMinute, setSelectedMinute] = useState(initialMinute);
-  const [selectedAmPm, setSelectedAmPm] = useState(initialAmPm);
+  const [selectedHour, setSelectedHour] = useState(props.initialHour);
+  const [selectedMinute, setSelectedMinute] = useState(props.initialMinute);
+  const [selectedAmPm, setSelectedAmPm] = useState(props.initialAmPm);
+
+  function changeTaskTime(hour, minute, amPm) {
+    hour = convertStandardTimeHourToMilitaryTimeHour(hour, amPm);
+
+    // TODO: Fix bug where clicking task time changes date as well
+    // JavaScript Date object months are zero-indexed
+    const taskDeadlineJSDate = new Date(
+      props.initialYear,
+      props.initialMonth - 1,
+      props.initialDay,
+      hour,
+      minute
+    );
+    props.onChangeTaskDeadline(Timestamp.fromDate(taskDeadlineJSDate));
+  }
 
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -108,7 +107,7 @@ function TimePicker(props) {
   // Scrolls the hour/minute up by 1, also toggles amPm
   // used for onClick on next hour/minute or (onTouchStart and onTouchEnd) up
   function handleMoveToNext(e) {
-    // need to call onChangeTaskTime passing in nextHour before and separately from
+    // need to call onChangeTaskDeadline passing in nextHour before and separately from
     // call to setSelectedHour passing in nextHour because useState and setState
     // are asynchronous and won't update immediately
 
@@ -118,38 +117,20 @@ function TimePicker(props) {
       case "selected-hour":
       case "next-hour":
         const nextHour = getNextHour(selectedHour);
-        props.onChangeTaskTime(
-          convertStandardTimeToMilitaryTime(
-            nextHour,
-            selectedMinute,
-            selectedAmPm
-          )
-        );
+        changeTaskTime(nextHour, selectedMinute, selectedAmPm);
         setSelectedHour(nextHour);
         break;
       case "prev-minute":
       case "selected-minute":
       case "next-minute":
         const nextMinute = getNextMinute(selectedMinute);
-        props.onChangeTaskTime(
-          convertStandardTimeToMilitaryTime(
-            selectedHour,
-            nextMinute,
-            selectedAmPm
-          )
-        );
+        changeTaskTime(selectedHour, nextMinute, selectedAmPm);
         setSelectedMinute(nextMinute);
         break;
       case "selected-am-pm":
       case "not-selected-am-pm":
         const newAmPm = selectedAmPm === "AM" ? "PM" : "AM";
-        props.onChangeTaskTime(
-          convertStandardTimeToMilitaryTime(
-            selectedHour,
-            selectedMinute,
-            newAmPm
-          )
-        );
+        changeTaskTime(selectedHour, selectedMinute, newAmPm);
         setSelectedAmPm(newAmPm);
         break;
     }
@@ -158,7 +139,7 @@ function TimePicker(props) {
   // Scrolls the hour/minute down by 1
   // used for onClick on previous hour/minute or (onTouchStart and onTouchEnd) down
   function handleMoveToPrev(e) {
-    // need to call onChangeTaskTime passing in prevHour before and separately from
+    // need to call onChangeTaskDeadline passing in prevHour before and separately from
     // call to setSelectedHour passing in prevHour because useState and setState
     // are asynchronous and won't update immediately
 
@@ -168,38 +149,20 @@ function TimePicker(props) {
       case "selected-hour":
       case "next-hour":
         const prevHour = getPrevHour(selectedHour);
-        props.onChangeTaskTime(
-          convertStandardTimeToMilitaryTime(
-            prevHour,
-            selectedMinute,
-            selectedAmPm
-          )
-        );
+        changeTaskTime(prevHour, selectedMinute, selectedAmPm);
         setSelectedHour(prevHour);
         break;
       case "prev-minute":
       case "selected-minute":
       case "next-minute":
         const prevMinute = getPrevMinute(selectedMinute);
-        props.onChangeTaskTime(
-          convertStandardTimeToMilitaryTime(
-            selectedHour,
-            prevMinute,
-            selectedAmPm
-          )
-        );
+        changeTaskTime(selectedHour, prevMinute, selectedAmPm);
         setSelectedMinute(prevMinute);
         break;
       case "selected-am-pm":
       case "not-selected-am-pm":
         const newAmPm = selectedAmPm === "AM" ? "PM" : "AM";
-        props.onChangeTaskTime(
-          convertStandardTimeToMilitaryTime(
-            selectedHour,
-            selectedMinute,
-            newAmPm
-          )
-        );
+        changeTaskTime(selectedHour, selectedMinute, newAmPm);
         setSelectedAmPm(newAmPm);
         break;
     }
@@ -232,7 +195,7 @@ function TimePicker(props) {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {selectedHour}
+        {String(selectedHour).padStart(2, "0")}
       </p>
       <p
         className="selected-minute"
@@ -240,7 +203,7 @@ function TimePicker(props) {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {selectedMinute}
+        {String(selectedMinute).padStart(2, "0")}
       </p>
       <p
         className="selected-am-pm"

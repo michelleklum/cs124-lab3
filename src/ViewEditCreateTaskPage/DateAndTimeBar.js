@@ -1,27 +1,6 @@
 import React, { Fragment } from "react";
 import "./DateAndTimeBar.css";
 
-function convertMilitaryTimeToStandardTime(militaryTime) {
-  // TODO: handle no time properly in the future
-  militaryTime = militaryTime ? militaryTime : "12:00 AM";
-
-  let amPm = "AM"; // assume AM for now
-
-  let [hour, minute] = militaryTime.split(":");
-  hour = parseInt(hour);
-  if (hour > 12) {
-    // PM times
-    hour -= 12;
-    amPm = "PM";
-  } else if (hour === 0) {
-    // 12:__ AM
-    hour = 12;
-    amPm = "AM";
-  }
-
-  return `${hour}:${minute} ${amPm}`;
-}
-
 function DateAndTimeBar(props) {
   const dateEditCreateModeBackgroundClassName =
     props.inEditTaskMode || props.inCreateTaskMode
@@ -42,7 +21,9 @@ function DateAndTimeBar(props) {
         )}
         onClick={props.onDateClick}
       >
-        {props.tempTaskDate}
+        {`${String(props.initialMonth).padStart(2, "0")}/${String(
+          props.initialDay
+        ).padStart(2, "0")}/${props.initialYear}`}
       </p>
       <p
         className={["set-time", timeEditCreateModeBackgroundClassName].join(
@@ -50,7 +31,9 @@ function DateAndTimeBar(props) {
         )}
         onClick={props.onTimeClick}
       >
-        {convertMilitaryTimeToStandardTime(props.tempTaskTime)}
+        {`${String(props.initialHour).padStart(2, "0")}:${String(
+          props.initialMinute
+        ).padStart(2, "0")} ${props.initialAmPm}`}
       </p>
     </Fragment>
   );

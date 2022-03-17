@@ -1,28 +1,30 @@
 import "./TaskCard.css";
 import Checkbox from "../Global/Checkbox";
+function TaskCard(props) {
+  // Convert Firebase Timestamp to JavaScript Date object
+  const taskDeadlineJSDate = props.task.deadline.toDate();
 
-function convertMilitaryTimeToStandardTime(militaryTime) {
-  // TODO: handle no time properly in the future
-  militaryTime = militaryTime ? militaryTime : "12:00 AM";
+  // Parse JavaScript Date object
+  const initialMonth = taskDeadlineJSDate.getMonth() + 1; // JavaScript Date object months are zero-indexed
+  const initialDay = taskDeadlineJSDate.getDate();
+  const initialYear = taskDeadlineJSDate.getFullYear();
 
-  let amPm = "AM"; // assume AM for now
+  const initialMinute = taskDeadlineJSDate.getMinutes();
 
-  let [hour, minute] = militaryTime.split(":");
-  hour = parseInt(hour);
-  if (hour > 12) {
+  // Handle JavaScript Date object's use of military time
+  const initialMilitaryHour = taskDeadlineJSDate.getHours();
+  let initialHour = initialMilitaryHour;
+  let initialAmPm = "AM"; // assume AM for now
+  if (initialMilitaryHour > 12) {
     // PM times
-    hour -= 12;
-    amPm = "PM";
-  } else if (hour === 0) {
+    initialHour -= 12;
+    initialAmPm = "PM";
+  } else if (initialHour === 0) {
     // 12:__ AM
-    hour = 12;
-    amPm = "AM";
+    initialHour = 12;
+    initialAmPm = "AM";
   }
 
-  return `${hour}:${minute} ${amPm}`;
-}
-
-function TaskCard(props) {
   const numTaskCharsToShow = 30;
   function handleTaskCardClick() {
     props.onChangePage("ViewTaskPage");
@@ -58,10 +60,13 @@ function TaskCard(props) {
           </h2>
         </label>
         <p className="date">
-          {props.task.taskDate !== "" ? props.task.taskDate : ""},{" "}
-          {props.task.taskTime !== ""
-            ? convertMilitaryTimeToStandardTime(props.task.taskTime)
-            : ""}
+          {`${String(initialMonth).padStart(2, "0")}/${String(
+            initialDay
+          ).padStart(2, "0")}/${initialYear}`}
+          ,{" "}
+          {`${String(initialHour).padStart(2, "0")}:${String(
+            initialMinute
+          ).padStart(2, "0")} ${initialAmPm}`}
         </p>
       </div>
     </div>

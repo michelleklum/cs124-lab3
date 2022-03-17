@@ -35,7 +35,7 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
-function App(props) {
+function App() {
   const listCollectionName = "lists";
   const taskSubcollectionName = "tasks";
 
@@ -44,10 +44,16 @@ function App(props) {
   const data = dbData ? dbData : [];
 
   function handleEditTask(listId, taskId, taskField, newValue) {
-    const taskDocRef = doc(db, listCollectionName, listId, taskSubcollectionName, taskId);
+    const taskDocRef = doc(
+      db,
+      listCollectionName,
+      listId,
+      taskSubcollectionName,
+      taskId
+    );
     updateDoc(taskDocRef, {
       modifiedTime: serverTimestamp(),
-      [taskField]: newValue
+      [taskField]: newValue,
     });
   }
 
@@ -55,18 +61,23 @@ function App(props) {
     listId,
     taskId,
     taskName,
-    taskDate,
-    taskTime,
+    taskDeadline,
     taskNotes,
     taskStatus
   ) {
-    const taskDocRef = doc(db, listCollectionName, listId, taskSubcollectionName, taskId);
+    const taskDocRef = doc(
+      db,
+      listCollectionName,
+      listId,
+      taskSubcollectionName,
+      taskId
+    );
     updateDoc(taskDocRef, {
       modifiedTime: serverTimestamp(),
       name: taskName,
-      deadline: "",
+      deadline: taskDeadline,
       notes: taskNotes,
-      isCompleted: taskStatus
+      isCompleted: taskStatus,
     }).then(() => handleChangePage(prevPage));
   }
 
@@ -74,7 +85,13 @@ function App(props) {
     setCurrentPage(
       "SingleListPage"
     ); /* before deleting task in db, redirect to Single List Page */
-    const taskDocRef = doc(db, listCollectionName, currentListId, taskSubcollectionName, taskId);
+    const taskDocRef = doc(
+      db,
+      listCollectionName,
+      currentListId,
+      taskSubcollectionName,
+      taskId
+    );
     deleteDoc(taskDocRef);
   }
 
@@ -98,25 +115,33 @@ function App(props) {
   }
 
   function handleDeleteCompletedTasks() {
-    tasks.filter((task) => task.isCompleted).map(
-      task =>
-        deleteDoc(doc(
-          db,
-          listCollectionName,
-          currentListId,
-          taskSubcollectionName,
-          task.id)))
+    tasks
+      .filter((task) => task.isCompleted)
+      .map((task) =>
+        deleteDoc(
+          doc(
+            db,
+            listCollectionName,
+            currentListId,
+            taskSubcollectionName,
+            task.id
+          )
+        )
+      );
   }
 
   function handleDeleteAllTasks() {
-    tasks.map(
-      task =>
-        deleteDoc(doc(
+    tasks.map((task) =>
+      deleteDoc(
+        doc(
           db,
           listCollectionName,
           currentListId,
           taskSubcollectionName,
-          task.id)))
+          task.id
+        )
+      )
+    );
   }
 
   function handleDeleteList() {
@@ -171,17 +196,19 @@ function App(props) {
       icon: icon,
       hideCompletedTasks: false,
     };
-    setDoc(doc(db, listCollectionName, listId), newList).then(() => handleChangePage("Home"));
+    setDoc(doc(db, listCollectionName, listId), newList).then(() =>
+      handleChangePage("Home")
+    );
   }
 
-  function handleCreateTask(listId, taskName, taskDate, taskTime, taskNotes) {
+  function handleCreateTask(listId, taskName, taskDeadline, taskNotes) {
     const taskId = generateUniqueID();
     const newTask = {
       id: taskId,
       creationTime: serverTimestamp(),
       modifiedTime: serverTimestamp(),
       name: taskName,
-      deadline: serverTimestamp(), // TODO: change to actual deadline
+      deadline: taskDeadline,
       notes: taskNotes,
       isCompleted: false,
     };
@@ -203,10 +230,10 @@ function App(props) {
   }
 
   if (dataLoading) {
-    return <>Loading!</>
+    return <>Loading!</>;
   }
   if (dataError) {
-    return <>Error!</>
+    return <>Error!</>;
   }
   return (
     <Fragment>

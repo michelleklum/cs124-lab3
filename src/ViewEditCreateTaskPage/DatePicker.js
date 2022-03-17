@@ -3,6 +3,7 @@
 // 2. Scrolling through the DatePicker (by clicking and dragging).
 import React, { useState } from "react";
 import "./DatePicker.css";
+import { Timestamp } from "firebase/firestore";
 
 function getPrevMonth(month) {
   let prevMonth = parseInt(month) - 1;
@@ -91,10 +92,9 @@ function isLeapYear(year) {
 }
 
 function DatePicker(props) {
-  const [initialMonth, initialDay, initialYear] = props.tempTaskDate.split("/");
-  const [selectedMonth, setSelectedMonth] = useState(initialMonth);
-  const [selectedDay, setSelectedDay] = useState(initialDay);
-  const [selectedYear, setSelectedYear] = useState(initialYear);
+  const [selectedMonth, setSelectedMonth] = useState(props.initialMonth);
+  const [selectedDay, setSelectedDay] = useState(props.initialDay);
+  const [selectedYear, setSelectedYear] = useState(props.initialYear);
 
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -119,7 +119,16 @@ function DatePicker(props) {
     }
 
     const dayStr = String(day).padStart(2, "0");
-    props.onChangeTaskDate([month, dayStr, year].join("/"));
+
+    // JavaScript Date object months are zero-indexed
+    const taskDeadlineJSDate = new Date(
+      year,
+      month - 1,
+      day,
+      props.initialMilitaryHour,
+      props.initialMinute
+    );
+    props.onChangeTaskDeadline(Timestamp.fromDate(taskDeadlineJSDate));
     setSelectedDay(dayStr);
   }
 
@@ -150,7 +159,7 @@ function DatePicker(props) {
   // Scrolls the month/day/year up by 1
   // used for onClick on next month/day/year or (onTouchStart and onTouchEnd) up
   function handleMoveToNext(e) {
-    // need to call onChangeTaskDate passing in nextMonth before and separately from
+    // need to call onChangeTaskDeadline passing in nextMonth before and separately from
     // call to setSelectedMonth passing in nextMonth because useState and setState
     // are asynchronous and won't update immediately
 
@@ -194,7 +203,7 @@ function DatePicker(props) {
   // Scrolls the month/day/year down by 1
   // used for onClick on previous month/day/year or (onTouchStart and onTouchEnd) down
   function handleMoveToPrev(e) {
-    // need to call onChangeTaskDate passing in prevMonth before and separately from
+    // need to call onChangeTaskDeadline passing in prevMonth before and separately from
     // call to setSelectedMonth passing in prevMonth because useState and setState
     // are asynchronous and won't update immediately
 
@@ -271,7 +280,7 @@ function DatePicker(props) {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {selectedMonth}
+        {String(selectedMonth).padStart(2, "0")}
       </p>
       <p
         className="selected-day"
@@ -279,7 +288,7 @@ function DatePicker(props) {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {selectedDay}
+        {String(selectedDay).padStart(2, "0")}
       </p>
       <p
         className="selected-year"

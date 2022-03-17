@@ -38,6 +38,7 @@ function getNextMinute(minute) {
 }
 
 function convertStandardTimeHourToMilitaryTimeHour(hour, amPm) {
+  hour = parseInt(hour);
   let militaryHour = hour;
   if (hour < 12 && amPm === "PM") {
     // PM times
@@ -58,9 +59,34 @@ function convertStandardTimeHourToMilitaryTimeHour(hour, amPm) {
 }
 
 function TimePicker(props) {
-  const [selectedHour, setSelectedHour] = useState(props.initialHour);
-  const [selectedMinute, setSelectedMinute] = useState(props.initialMinute);
-  const [selectedAmPm, setSelectedAmPm] = useState(props.initialAmPm);
+  // Get month, day, and year from tempTaskDeadline (which is a Firebase Timestamp)
+  // Convert Firebase Timestamp to JavaScript Date object
+  const tempTaskDeadlineJSDate = props.tempTaskDeadline.toDate();
+
+  // Parse JavaScript Date object
+  const initialMonth = tempTaskDeadlineJSDate.getMonth() + 1; // JavaScript Date object months are zero-indexed
+  const initialDay = tempTaskDeadlineJSDate.getDate();
+  const initialYear = tempTaskDeadlineJSDate.getFullYear();
+
+  // Handle JavaScript Date object's use of military time
+  const initialMilitaryHour = tempTaskDeadlineJSDate.getHours();
+  let initialHour = initialMilitaryHour;
+  let initialAmPm = "AM"; // assume AM for now
+  if (initialMilitaryHour > 12) {
+    // PM times
+    initialHour -= 12;
+    initialAmPm = "PM";
+  } else if (initialHour === 0) {
+    // 12:__ AM
+    initialHour = 12;
+    initialAmPm = "AM";
+  }
+
+  const initialMinute = tempTaskDeadlineJSDate.getMinutes();
+
+  const [selectedHour, setSelectedHour] = useState(initialHour);
+  const [selectedMinute, setSelectedMinute] = useState(initialMinute);
+  const [selectedAmPm, setSelectedAmPm] = useState(initialAmPm);
 
   function changeTaskTime(hour, minute, amPm) {
     hour = convertStandardTimeHourToMilitaryTimeHour(hour, amPm);
@@ -68,9 +94,9 @@ function TimePicker(props) {
     // TODO: Fix bug where clicking task time changes date as well
     // JavaScript Date object months are zero-indexed
     const taskDeadlineJSDate = new Date(
-      props.initialYear,
-      props.initialMonth - 1,
-      props.initialDay,
+      initialYear,
+      initialMonth - 1,
+      initialDay,
       hour,
       minute
     );

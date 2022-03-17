@@ -2,6 +2,31 @@ import React, { Fragment } from "react";
 import "./DateAndTimeBar.css";
 
 function DateAndTimeBar(props) {
+  // Get date and time from tempTaskDeadline (which is a Firebase Timestamp)
+  // Convert Firebase Timestamp to JavaScript Date object
+  const tempTaskDeadlineJSDate = props.tempTaskDeadline.toDate();
+
+  // Parse JavaScript Date object
+  const initialMonth = tempTaskDeadlineJSDate.getMonth() + 1; // JavaScript Date object months are zero-indexed
+  const initialDay = tempTaskDeadlineJSDate.getDate();
+  const initialYear = tempTaskDeadlineJSDate.getFullYear();
+
+  // Handle JavaScript Date object's use of military time
+  const initialMilitaryHour = tempTaskDeadlineJSDate.getHours();
+  let initialHour = initialMilitaryHour;
+  let initialAmPm = "AM"; // assume AM for now
+  if (initialMilitaryHour > 12) {
+    // PM times
+    initialHour -= 12;
+    initialAmPm = "PM";
+  } else if (initialHour === 0) {
+    // 12:__ AM
+    initialHour = 12;
+    initialAmPm = "AM";
+  }
+
+  const initialMinute = tempTaskDeadlineJSDate.getMinutes();
+
   const dateEditCreateModeBackgroundClassName =
     props.inEditTaskMode || props.inCreateTaskMode
       ? "date-edit-background"
@@ -21,9 +46,9 @@ function DateAndTimeBar(props) {
         )}
         onClick={props.onDateClick}
       >
-        {`${String(props.initialMonth).padStart(2, "0")}/${String(
-          props.initialDay
-        ).padStart(2, "0")}/${props.initialYear}`}
+        {`${String(initialMonth).padStart(2, "0")}/${String(
+          initialDay
+        ).padStart(2, "0")}/${initialYear}`}
       </p>
       <p
         className={["set-time", timeEditCreateModeBackgroundClassName].join(
@@ -31,9 +56,9 @@ function DateAndTimeBar(props) {
         )}
         onClick={props.onTimeClick}
       >
-        {`${String(props.initialHour).padStart(2, "0")}:${String(
-          props.initialMinute
-        ).padStart(2, "0")} ${props.initialAmPm}`}
+        {`${String(initialHour).padStart(2, "0")}:${String(
+          initialMinute
+        ).padStart(2, "0")} ${initialAmPm}`}
       </p>
     </Fragment>
   );

@@ -92,9 +92,20 @@ function isLeapYear(year) {
 }
 
 function DatePicker(props) {
-  const [selectedMonth, setSelectedMonth] = useState(props.initialMonth);
-  const [selectedDay, setSelectedDay] = useState(props.initialDay);
-  const [selectedYear, setSelectedYear] = useState(props.initialYear);
+  // Get hour and minute from tempTaskDeadline (which is a Firebase Timestamp)
+  // Convert Firebase Timestamp to JavaScript Date object
+  const tempTaskDeadlineJSDate = props.tempTaskDeadline.toDate();
+
+  // Parse JavaScript Date object
+  const initialMonth = tempTaskDeadlineJSDate.getMonth() + 1; // JavaScript Date object months are zero-indexed
+  const initialDay = tempTaskDeadlineJSDate.getDate();
+  const initialYear = tempTaskDeadlineJSDate.getFullYear();
+  const initialMilitaryHour = tempTaskDeadlineJSDate.getHours();
+  const initialMinute = tempTaskDeadlineJSDate.getMinutes();
+
+  const [selectedMonth, setSelectedMonth] = useState(initialMonth);
+  const [selectedDay, setSelectedDay] = useState(initialDay);
+  const [selectedYear, setSelectedYear] = useState(initialYear);
 
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -118,17 +129,16 @@ function DatePicker(props) {
       day = 28;
     }
 
-    const dayStr = String(day).padStart(2, "0");
-
     // JavaScript Date object months are zero-indexed
     const taskDeadlineJSDate = new Date(
       year,
       month - 1,
       day,
-      props.initialMilitaryHour,
-      props.initialMinute
+      initialMilitaryHour,
+      initialMinute
     );
     props.onChangeTaskDeadline(Timestamp.fromDate(taskDeadlineJSDate));
+    const dayStr = String(day).padStart(2, "0");
     setSelectedDay(dayStr);
   }
 

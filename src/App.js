@@ -7,6 +7,7 @@ import ListSearchPage from "./ListSearchPage/ListSearchPage";
 import SingleListPage from "./SingleListPage/SingleListPage";
 import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskPage";
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
+import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -230,7 +231,7 @@ function App() {
   }
 
   if (dataLoading) {
-    return <>Loading!</>;
+    return <HomeLoadingPage/>;
   }
   if (dataError) {
     return <>Error!</>;

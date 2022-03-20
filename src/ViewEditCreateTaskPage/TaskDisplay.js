@@ -5,6 +5,7 @@ import DatePicker from "./DatePicker";
 import TimePicker from "./TimePicker";
 import AdditionalNotesBar from "./AdditionalNotesBar";
 import CompletionBar from "./CompletionBar";
+import PriorityBar from "./PriorityBar";
 
 function TaskDisplay(props) {
   const [openDatePicker, setOpenDatePicker] = useState(false);
@@ -52,6 +53,15 @@ function TaskDisplay(props) {
             ? toggleTimePicker
             : null
         }
+      />
+      <PriorityBar
+        currentListId={props.currentListId}
+        task={props.task}
+        inEditTaskMode={props.inEditTaskMode}
+        tempTaskPriority={props.tempTaskStatus}
+        onChangeTaskStatus={props.onChangeTaskStatus}
+        openDatePicker={openDatePicker}
+        openTimePicker={openTimePicker}
       />
       <AdditionalNotesBar
         currentListId={props.currentListId}

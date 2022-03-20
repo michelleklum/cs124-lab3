@@ -38,6 +38,7 @@ function ViewEditCreateTaskPage(props) {
     name: "",
     deadline: getCurrentDate(),
     notes: "",
+    priority: 0,
     isCompleted: false,
   };
 
@@ -53,6 +54,7 @@ function ViewEditCreateTaskPage(props) {
   // or onCreateTask to actually update the data in the App component's state.
   const [tempTaskName, setTempTaskName] = useState(task.name);
   const [tempTaskDeadline, setTempTaskDeadline] = useState(task.deadline);
+  const [tempTaskPriority, setTempTaskPriority] = useState(task.priority);
   // TODO: add deadline for task
   // TODO: deal with no deadline
   // TODO: remove tempTaskDate and tempTaskTime
@@ -79,6 +81,8 @@ function ViewEditCreateTaskPage(props) {
         onChangeTaskNotes={setTempTaskNotes}
         tempTaskStatus={tempTaskStatus}
         onEditAllTaskFields={props.onEditAllTaskFields}
+        tempTaskPriority={tempTaskPriority}
+        onChangeTaskPriority={setTempTaskPriority}
       />
       <hr />
       <TaskDisplay
@@ -93,7 +97,12 @@ function ViewEditCreateTaskPage(props) {
         onChangeTaskNotes={setTempTaskNotes}
         tempTaskStatus={tempTaskStatus}
         onChangeTaskStatus={setTempTaskStatus}
+        tempTaskPriority={tempTaskPriority}
+        onChangeTaskPriority={setTempTaskPriority}
       />
+      {props.inEditTaskMode ? (
+        <DeleteTaskBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
+      ) : null}
       {props.inEditTaskMode ? (
         <DeleteTaskBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
       ) : null}

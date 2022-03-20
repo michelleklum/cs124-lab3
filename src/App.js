@@ -18,6 +18,7 @@ import {
   setDoc,
   updateDoc,
   deleteDoc,
+  getDoc,
   serverTimestamp,
 } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -71,7 +72,7 @@ function App() {
   const [dbData, dataLoading, dataError] = useCollectionData(listsQuery);
   const data = dbData ? dbData : [];
 
-  // Get tasks from Firebase
+  // Get tasks (current list's tasks) from Firebase
   const currentListIdWithDefault = currentListId ? currentListId : "none";
   const tasksSubcollectionRef = collection(
     db,
@@ -79,7 +80,18 @@ function App() {
     currentListIdWithDefault,
     "tasks"
   );
-  const tasksQuery = query(tasksSubcollectionRef, orderBy("deadline")); // by default, sort tasks by deadline
+
+  // find out how current list's tasks are sorted
+  const listDocRef = doc(db, listCollectionName, currentListIdWithDefault);
+  let listTasksSortMethod = "deadline"; // assume current list's tasks are sorted by deadline for now
+  getDoc(listDocRef).then(function (listDoc) {
+    if (listDoc.data()) {
+      listTasksSortMethod = listDoc.data().sortMethod;
+      console.log(listTasksSortMethod);
+    }
+  });
+
+  const tasksQuery = query(tasksSubcollectionRef, orderBy(listTasksSortMethod));
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(tasksQuery);
   const tasks = dbTasks ? dbTasks : [];
 
@@ -201,6 +213,7 @@ function App() {
       name: name,
       icon: icon,
       hideCompletedTasks: false,
+      sortMethod: "deadline", // by default, sort list tasks by deadline
     };
     setDoc(doc(db, listCollectionName, listId), newList).then(() =>
       handleChangePage("Home")

@@ -84,14 +84,14 @@ function App() {
 
   // find out how current list's tasks are sorted
   const listDocRef = doc(db, listCollectionName, currentListIdWithDefault);
-  let listTasksSortMethod = "deadline"; // assume current list's tasks are sorted by deadline for now
+  let listTasksSortField = "deadline"; // assume current list's tasks are sorted by deadline for now
   getDoc(listDocRef).then(function (listDoc) {
     if (listDoc.data()) {
-      listTasksSortMethod = listDoc.data().sortMethod;
+      listTasksSortField = listDoc.data().sortBy;
     }
   });
 
-  const tasksQuery = query(tasksSubcollectionRef, orderBy(listTasksSortMethod));
+  const tasksQuery = query(tasksSubcollectionRef, orderBy(listTasksSortField));
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(tasksQuery);
   const tasks = dbTasks ? dbTasks : [];
 
@@ -213,7 +213,7 @@ function App() {
       name: name,
       icon: icon,
       hideCompletedTasks: false,
-      sortMethod: "deadline", // by default, sort list tasks by deadline
+      sortBy: "deadline", // by default, sort list tasks by deadline
     };
     setDoc(doc(db, listCollectionName, listId), newList).then(() =>
       handleChangePage("Home")
@@ -249,7 +249,7 @@ function App() {
   }
 
   if (dataLoading) {
-    return <HomeLoadingPage/>;
+    return <HomeLoadingPage />;
   }
   if (dataError) {
     return <>Error!</>;

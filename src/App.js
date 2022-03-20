@@ -142,7 +142,9 @@ function App() {
     updateDoc(listDocRef, {
       modifiedTime: serverTimestamp(),
       [listField]: newValue,
-    }).then(() => handleChangePage(prevPage));
+    });
+    // don't change page because handleEditList is used when SingleListPage is in Menu Mode
+    // which is not actually a different page from the SingleListPage not in Menu Mode
   }
 
   function handleEditListAppearance(listId, newName, newIcon) {

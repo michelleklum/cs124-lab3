@@ -26,13 +26,7 @@ function ListSearchPage(props) {
 
   // Put incomplete tasks first, and then completed tasks.
   // Within each sublist (i.e., incomplete tasks), sort by date.
-  const sortedTasksToShow = incompleteTasks
-    .sort(sortTasksByDateCompareFunction)
-    .concat(completedTasks.sort(sortTasksByDateCompareFunction));
-
-  function sortTasksByDateCompareFunction(a, b) {
-    return new Date(a.taskDate) < new Date(b.taskDate) ? -1 : 1;
-  }
+  const sortedTasksToShow = incompleteTasks.concat(completedTasks);
 
   const { search } = window.location;
   const query = new URLSearchParams(search).get("s");

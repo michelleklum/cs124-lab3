@@ -19,7 +19,11 @@ function DateAndTimeBar(props) {
     // PM times
     initialHour -= 12;
     initialAmPm = "PM";
-  } else if (initialHour === 0) {
+  } else if (initialMilitaryHour === 12) {
+    // 12:00 PM
+    initialHour = 12;
+    initialAmPm = "PM";
+  } else if (initialMilitaryHour === 0) {
     // 12:__ AM
     initialHour = 12;
     initialAmPm = "AM";

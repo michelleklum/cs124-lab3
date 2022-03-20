@@ -37,12 +37,51 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 function App() {
+  // Code below changes current/previous page, current list, and current task
+  const [currentPage, setCurrentPage] = useState("Home");
+  const [prevPage, setPrevPage] = useState("Home");
+  const [currentListId, setCurrentListId] = useState();
+  const [currentTaskId, setCurrentTaskId] = useState();
+
+  function handleChangePage(newPage) {
+    setPrevPage(currentPage);
+    setCurrentPage(newPage);
+    if (newPage === "Home") {
+      handleChangeList(null);
+    } else if (newPage === "SingleListPage") {
+      handleChangeTask(null);
+    }
+  }
+
+  function handleChangeList(newListId) {
+    setCurrentListId(newListId);
+  }
+
+  function handleChangeTask(newTaskId) {
+    setCurrentTaskId(newTaskId);
+  }
+
+  // Code below gets data (lists) and tasks from database using Firebase queries
   const listCollectionName = "lists";
   const taskSubcollectionName = "tasks";
 
-  const listsQuery = query(collection(db, listCollectionName), orderBy("name"));
+  // Get data (lists) from Firebase
+  const listsCollectionRef = collection(db, listCollectionName);
+  const listsQuery = query(listsCollectionRef, orderBy("name")); // by default, sort lists alphabetically by name
   const [dbData, dataLoading, dataError] = useCollectionData(listsQuery);
   const data = dbData ? dbData : [];
+
+  // Get tasks from Firebase
+  const currentListIdWithDefault = currentListId ? currentListId : "none";
+  const tasksSubcollectionRef = collection(
+    db,
+    "lists",
+    currentListIdWithDefault,
+    "tasks"
+  );
+  const tasksQuery = query(tasksSubcollectionRef, orderBy("deadline")); // by default, sort tasks by deadline
+  const [dbTasks, tasksLoading, tasksError] = useCollectionData(tasksQuery);
+  const tasks = dbTasks ? dbTasks : [];
 
   function handleEditTask(listId, taskId, taskField, newValue) {
     const taskDocRef = doc(
@@ -96,7 +135,7 @@ function App() {
     deleteDoc(taskDocRef);
   }
 
-  // TODO: CONSOLIDATE EDIT LIST FUNCTIONS!!!!!!
+  // TODO: CONSOLIDATE EDIT LIST FUNCTIONS!!!!!! (handleEditList and handleEditListAppearance)
   // TODO: test showing / hiding completed items once we have tasks
   function handleEditList(listId, listField, newValue) {
     const listDocRef = doc(db, listCollectionName, listId);
@@ -148,42 +187,6 @@ function App() {
   function handleDeleteList() {
     setCurrentPage("Home"); // Change page first to avoid error where no tasks are found
     deleteDoc(doc(db, listCollectionName, currentListId));
-  }
-
-  // Code below changes current/previous page, list, and task
-  const [currentPage, setCurrentPage] = useState("Home");
-  const [prevPage, setPrevPage] = useState("Home");
-  const [currentListId, setCurrentListId] = useState();
-  const [currentTaskId, setCurrentTaskId] = useState();
-
-  const currentListIdWithDefault = currentListId ? currentListId : "none";
-
-  const tasksSubcollectionRef = collection(
-    db,
-    "lists",
-    currentListIdWithDefault,
-    "tasks"
-  );
-  const tasksQuery = query(tasksSubcollectionRef);
-  const [dbTasks, tasksLoading, tasksError] = useCollectionData(tasksQuery);
-  const tasks = dbTasks ? dbTasks : [];
-
-  function handleChangePage(newPage) {
-    setPrevPage(currentPage);
-    setCurrentPage(newPage);
-    if (newPage === "Home") {
-      handleChangeList(null);
-    } else if (newPage === "SingleListPage") {
-      handleChangeTask(null);
-    }
-  }
-
-  function handleChangeList(newListId) {
-    setCurrentListId(newListId);
-  }
-
-  function handleChangeTask(newTaskId) {
-    setCurrentTaskId(newTaskId);
   }
 
   // Functions below handle list and task creation

@@ -9,13 +9,9 @@ function ListOfLists(props) {
     setListInEditMode(listId);
   }
 
-  function sortListsCompareFunction(a, b) {
-    return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1;
-  }
-
   return (
     <div id="list-of-lists">
-      {props.data.sort(sortListsCompareFunction).map((list) => (
+      {props.data.map((list) => (
         <ListCard
           key={list.id}
           id={list.id}

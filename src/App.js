@@ -13,6 +13,7 @@ import {
   getFirestore,
   query,
   collection,
+  orderBy,
   doc,
   setDoc,
   updateDoc,
@@ -39,7 +40,7 @@ function App() {
   const listCollectionName = "lists";
   const taskSubcollectionName = "tasks";
 
-  const listsQuery = query(collection(db, listCollectionName));
+  const listsQuery = query(collection(db, listCollectionName), orderBy("name"));
   const [dbData, dataLoading, dataError] = useCollectionData(listsQuery);
   const data = dbData ? dbData : [];
 

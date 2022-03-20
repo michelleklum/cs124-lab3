@@ -51,6 +51,9 @@ function convertStandardTimeHourToMilitaryTimeHour(hour, amPm) {
   }
 
   if (hour === 12 && amPm === "PM") {
+    console.log("hi");
+    console.log(militaryHour);
+    console.log(amPm);
     // 12:__ PM
     militaryHour = 12;
   }
@@ -76,7 +79,11 @@ function TimePicker(props) {
     // PM times
     initialHour -= 12;
     initialAmPm = "PM";
-  } else if (initialHour === 0) {
+  } else if (initialMilitaryHour === 12) {
+    // 12:00 PM
+    initialHour = 12;
+    initialAmPm = "PM";
+  } else if (initialMilitaryHour === 0) {
     // 12:__ AM
     initialHour = 12;
     initialAmPm = "AM";

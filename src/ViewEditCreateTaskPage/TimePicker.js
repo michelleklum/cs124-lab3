@@ -51,9 +51,6 @@ function convertStandardTimeHourToMilitaryTimeHour(hour, amPm) {
   }
 
   if (hour === 12 && amPm === "PM") {
-    console.log("hi");
-    console.log(militaryHour);
-    console.log(amPm);
     // 12:__ PM
     militaryHour = 12;
   }

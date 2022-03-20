@@ -41,8 +41,6 @@ function DateAndTimeBar(props) {
       ? "time-edit-background"
       : null;
 
-  console.log(initialAmPm);
-
   return (
     <Fragment>
       <i className="far fa-clock fa-4x set-date-icon"></i>

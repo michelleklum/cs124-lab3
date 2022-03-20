@@ -87,7 +87,6 @@ function App() {
   getDoc(listDocRef).then(function (listDoc) {
     if (listDoc.data()) {
       listTasksSortMethod = listDoc.data().sortMethod;
-      console.log(listTasksSortMethod);
     }
   });
 

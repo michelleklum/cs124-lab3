@@ -1,6 +1,9 @@
 import "./ListMenu.css";
 import EditListBar from "./EditListBar";
 import HideCompletedBar from "./HideCompletedBar";
+import SortByDeadlineBar from "./SortByDeadlineBar";
+import SortByNameBar from "./SortByNameBar";
+import SortByCreationTimeBar from "./SortByCreationTimeBar";
 import DeleteCompletedBar from "./DeleteCompletedBar";
 import DeleteAllTasksBar from "./DeleteAllTasksBar";
 import DeleteListBar from "./DeleteListBar";
@@ -13,6 +16,18 @@ function ListMenu(props) {
       <EditListBar onChangePage={props.onChangePage} />
       <HideCompletedBar
         hideCompletedTasks={taskList.hideCompletedTasks}
+        currentListId={props.currentListId}
+        onEditList={props.onEditList}
+      />
+      <SortByDeadlineBar
+        currentListId={props.currentListId}
+        onEditList={props.onEditList}
+      />
+      <SortByNameBar
+        currentListId={props.currentListId}
+        onEditList={props.onEditList}
+      />
+      <SortByCreationTimeBar
         currentListId={props.currentListId}
         onEditList={props.onEditList}
       />

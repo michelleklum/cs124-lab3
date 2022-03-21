@@ -8,7 +8,7 @@
   display: grid;
   align-items: center;
   grid-template-columns: 3em 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
   padding-left: 1em;
@@ -54,32 +54,62 @@
   grid-column: 2 / span 1;
 }
 
-.delete-completed-icon {
+.sort-by-deadline-icon {
   grid-row: 3 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.sort-by-deadline-desc {
+  grid-row: 3 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.sort-by-name-icon {
+  grid-row: 4 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.sort-by-name-desc {
+  grid-row: 4 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.sort-by-creation-time-icon {
+  grid-row: 5 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.sort-by-creation-time-desc {
+  grid-row: 5 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.delete-completed-icon {
+  grid-row: 6 / span 1;
   grid-column: 1 / span 1;
 }
 
 .delete-completed-desc {
-  grid-row: 3 / span 1;
+  grid-row: 6 / span 1;
   grid-column: 2 / span 1;
 }
 
 .delete-all-icon {
-  grid-row: 4 / span 1;
+  grid-row: 7 / span 1;
   grid-column: 1 / span 1;
 }
 
 .delete-all-desc {
-  grid-row: 4 / span 1;
+  grid-row: 7 / span 1;
   grid-column: 2 / span 1;
 }
 
 .delete-list-icon {
-  grid-row: 5 / span 1;
+  grid-row: 8 / span 1;
   grid-column: 1 / span 1;
 }
 
 .delete-list-desc {
-  grid-row: 5 / span 1;
+  grid-row: 8 / span 1;
   grid-column: 2 / span 1;
 }

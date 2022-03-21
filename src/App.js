@@ -81,16 +81,7 @@ function App() {
     currentListIdWithDefault,
     "tasks"
   );
-
-  // find out how current list's tasks are sorted
-  const listDocRef = doc(db, listCollectionName, currentListIdWithDefault);
-  let listTasksSortField = "deadline"; // assume current list's tasks are sorted by deadline for now
-  getDoc(listDocRef).then(function (listDoc) {
-    if (listDoc.data()) {
-      listTasksSortField = listDoc.data().sortBy;
-    }
-  });
-
+  const [listTasksSortField, setListTasksSortField] = useState("deadline"); // by default, sort current list's tasks by deadline
   const tasksQuery = query(tasksSubcollectionRef, orderBy(listTasksSortField));
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(tasksQuery);
   const tasks = dbTasks ? dbTasks : [];
@@ -213,7 +204,6 @@ function App() {
       name: name,
       icon: icon,
       hideCompletedTasks: false,
-      sortBy: "deadline", // by default, sort list tasks by deadline
     };
     setDoc(doc(db, listCollectionName, listId), newList).then(() =>
       handleChangePage("Home")
@@ -303,6 +293,7 @@ function App() {
           onDeleteList={handleDeleteList}
           onCreateTask={handleChangeTask}
           onToggleDeleteAlert={handleToggleDeleteAlert}
+          onChangeSort={setListTasksSortField}
         />
       ) : null}
       {currentPage === "ListSearchPage" ? (

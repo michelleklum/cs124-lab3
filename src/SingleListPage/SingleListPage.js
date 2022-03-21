@@ -71,6 +71,7 @@ function SingleListPage(props) {
           onToggleDeleteListAlert={toggleDeleteListAlert}
           onToggleDeleteTasksAlert={toggleDeleteTasksAlert}
           onToggleDeleteCompletedAlert={toggleDeleteCompletedAlert}
+          onChangeSort={props.onChangeSort}
         />
       ) : null}
       {deleteListAlert && (

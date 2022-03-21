@@ -1,17 +1,16 @@
 import React, { Fragment } from "react";
 
 function SortByNameBar(props) {
-  function changeListToSortByName() {
-    props.onEditList(props.currentListId, "sortBy", "name");
-  }
-
   return (
     <Fragment>
       <i
         className="fas fa-sort-alpha-down sort-by-name-icon"
-        onClick={changeListToSortByName}
+        onClick={() => props.onChangeSort("name")}
       ></i>
-      <h2 className="sort-by-name-desc" onClick={changeListToSortByName}>
+      <h2
+        className="sort-by-name-desc"
+        onClick={() => props.onChangeSort("name")}
+      >
         Sort tasks by name
       </h2>
     </Fragment>

@@ -1,19 +1,15 @@
 import React, { Fragment } from "react";
 
 function SortByCreationTimeBar(props) {
-  function changeListToSortByCreationTime() {
-    props.onEditList(props.currentListId, "sortBy", "creationTime");
-  }
-
   return (
     <Fragment>
       <i
         className="fas fa-clock sort-by-creation-time-icon"
-        onClick={changeListToSortByCreationTime}
+        onClick={() => props.onChangeSort("creationTime")}
       ></i>
       <h2
         className="sort-by-creation-time-desc"
-        onClick={changeListToSortByCreationTime}
+        onClick={() => props.onChangeSort("creationTime")}
       >
         Sort tasks by creation time
       </h2>

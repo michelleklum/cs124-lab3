@@ -19,18 +19,9 @@ function ListMenu(props) {
         currentListId={props.currentListId}
         onEditList={props.onEditList}
       />
-      <SortByDeadlineBar
-        currentListId={props.currentListId}
-        onEditList={props.onEditList}
-      />
-      <SortByNameBar
-        currentListId={props.currentListId}
-        onEditList={props.onEditList}
-      />
-      <SortByCreationTimeBar
-        currentListId={props.currentListId}
-        onEditList={props.onEditList}
-      />
+      <SortByDeadlineBar onChangeSort={props.onChangeSort} />
+      <SortByNameBar onChangeSort={props.onChangeSort} />
+      <SortByCreationTimeBar onChangeSort={props.onChangeSort} />
       <DeleteCompletedBar
         currentListId={props.currentListId}
         onDeleteCompleted={props.onDeleteCompleted}

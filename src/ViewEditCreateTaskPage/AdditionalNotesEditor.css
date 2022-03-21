@@ -10,7 +10,6 @@
   background: #eae8e8;
   color: #172528;
   font-size: 12pt;
-  width: 131%;
   height: auto;
   font-family: "Open Sans", Calibri, sans-serif;
   border-top-style: hidden;
@@ -21,4 +20,6 @@
   outline: none;
   padding: 1em;
   border-radius: 0.75em;
+  inline-size: 232px;
+  writing-mode: horizontal-tb; 
 }

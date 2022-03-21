@@ -15,15 +15,11 @@ function AdditionalNotesBar(props) {
       ></i>
       {props.inEditTaskMode || props.inCreateTaskMode ? (
         <AdditionalNotesEditor
-          className={[
-            "set-note",
-            props.openDatePicker || props.openTimePicker
-              ? "set-note-picker-open"
-              : "set-note-picker-closed",
-          ].join(" ")}
           currentListId={props.currentListId}
           tempTaskNotes={props.tempTaskNotes}
           onChangeTaskNotes={props.onChangeTaskNotes}
+          openDatePicker={props.openDatePicker}
+          openTimePicker={props.openTimePicker}
         />
       ) : (
         <p

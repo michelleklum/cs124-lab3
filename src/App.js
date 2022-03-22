@@ -259,7 +259,7 @@ function App() {
   if (dataLoading) {
     return <HomeLoadingPage />;
   }
-  if (!dataError) {
+  if (dataError) {
     return (
       <Fragment>
         <HomeLoadingPage/>

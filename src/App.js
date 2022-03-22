@@ -105,7 +105,8 @@ function App() {
     taskName,
     taskDeadline,
     taskNotes,
-    taskStatus
+    taskStatus,
+    taskPriority
   ) {
     const taskDocRef = doc(
       db,
@@ -120,6 +121,7 @@ function App() {
       deadline: taskDeadline,
       notes: taskNotes,
       isCompleted: taskStatus,
+      priority: taskPriority,
     }).then(() => handleChangePage(prevPage));
   }
 
@@ -209,7 +211,7 @@ function App() {
     );
   }
 
-  function handleCreateTask(listId, taskName, taskDeadline, taskNotes) {
+  function handleCreateTask(listId, taskName, taskDeadline, taskNotes, taskPriority) {
     const taskId = generateUniqueID();
     const newTask = {
       id: taskId,
@@ -219,6 +221,7 @@ function App() {
       deadline: taskDeadline,
       notes: taskNotes,
       isCompleted: false,
+      priority: taskPriority,
     };
     const docRef = doc(
       db,

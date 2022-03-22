@@ -11,7 +11,8 @@ function SaveTaskButton(props) {
       props.taskName,
       props.taskDeadline,
       props.taskNotes,
-      props.taskStatus
+      props.taskStatus,
+      props.taskPriority
     );
   }
 
@@ -21,7 +22,8 @@ function SaveTaskButton(props) {
       props.currentListId,
       props.taskName,
       props.taskDeadline,
-      props.taskNotes
+      props.taskNotes,
+      props.taskPriority
     );
   }
 

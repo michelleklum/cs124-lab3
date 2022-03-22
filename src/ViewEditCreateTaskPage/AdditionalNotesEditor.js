@@ -23,7 +23,12 @@ function AdditionalNotesEditor(props) {
   }
 
   return (
-    <div className="edit-task-notes">
+    <div className={[
+            "set-note", "edit-task-notes",
+            props.openDatePicker || props.openTimePicker
+              ? "set-note-picker-open"
+              : "set-note-picker-closed",
+          ].join(" ")}>
       <textarea
         rows={textareaRows}
         onChange={handleTextareaChange}

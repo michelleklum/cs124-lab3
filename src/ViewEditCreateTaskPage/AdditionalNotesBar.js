@@ -15,27 +15,25 @@ function AdditionalNotesBar(props) {
       ></i>
       {props.inEditTaskMode || props.inCreateTaskMode ? (
         <AdditionalNotesEditor
-          className={[
-            "set-note",
-            props.openDatePicker || props.openTimePicker
-              ? "set-note-picker-open"
-              : "set-note-picker-closed",
-          ].join(" ")}
           currentListId={props.currentListId}
           tempTaskNotes={props.tempTaskNotes}
           onChangeTaskNotes={props.onChangeTaskNotes}
+          openDatePicker={props.openDatePicker}
+          openTimePicker={props.openTimePicker}
         />
       ) : (
-        <p
-          className={[
-            "set-note",
-            props.openDatePicker || props.openTimePicker
-              ? "set-note-picker-open"
-              : "set-note-picker-closed",
-          ].join(" ")}
-        >
-          {props.tempTaskNotes || "No additional notes"}
-        </p>
+        <div className = "set-note">
+          <p
+            className={[
+              "set-note-text",
+              props.openDatePicker || props.openTimePicker
+                ? "set-note-picker-open"
+                : "set-note-picker-closed",
+            ].join(" ")}
+          >
+            {props.tempTaskNotes || "No additional notes"}
+          </p>
+        </div>
       )}
     </Fragment>
   );

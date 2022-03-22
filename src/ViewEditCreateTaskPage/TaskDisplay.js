@@ -58,8 +58,9 @@ function TaskDisplay(props) {
         currentListId={props.currentListId}
         task={props.task}
         inEditTaskMode={props.inEditTaskMode}
-        tempTaskPriority={props.tempTaskStatus}
-        onChangeTaskStatus={props.onChangeTaskStatus}
+        inCreateTaskMode={props.inCreateTaskMode}
+        tempTaskPriority={props.tempTaskPriority}
+        onChangeTaskPriority={props.onChangeTaskPriority}
         openDatePicker={openDatePicker}
         openTimePicker={openTimePicker}
       />

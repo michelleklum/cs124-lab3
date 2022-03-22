@@ -1,11 +1,10 @@
 .priority-options { /* creating icon outline */
-  width: 98.5%;
   margin-left: 0%;
+  width: 99%;
   height: 33px;
   display: flex; /* bottom three styles center the plus icon in the .add-button div */
   align-items: center;
   justify-content: space-between;
-  justify-self: start;
 }
 
 .priority-option {
@@ -15,14 +14,14 @@
 .selected-priority {
   background: #eae8e8;
   border-radius: 0.75em;
-  padding: 12px 12px 12px 12px;
+  padding: 11px 11px 11px 11px;
   text-align: center;
 }
 
 .unselected-priority {
   background: #FEFFFF;
   border-radius: 0.75em;
-  padding: 12px 12px 12px 12px;
+  padding: 11px 11px 11px 11px;
   text-align: center;
   border: #FEFFFF 2px solid;
 }

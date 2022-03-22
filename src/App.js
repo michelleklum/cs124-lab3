@@ -292,6 +292,7 @@ function App() {
           onDeleteList={handleDeleteList}
           onCreateTask={handleChangeTask}
           onToggleDeleteAlert={handleToggleDeleteAlert}
+          listTasksSortField={listTasksSortField}
           onChangeSort={setListTasksSortField}
         />
       ) : null}

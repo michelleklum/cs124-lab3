@@ -8,12 +8,14 @@ import DeleteAlert from "../Global/DeleteAlert";
 
 function SingleListPage(props) {
   const [inMenuMode, setMenuMode] = useState(false);
+  const [menuModeType, setMenuModeType] = useState("general");
   const [deleteListAlert, setDeleteListAlert] = useState(false);
   const [deleteTasksAlert, setDeleteTasksAlert] = useState(false);
   const [deleteCompletedAlert, setDeleteCompletedAlert] = useState(false);
 
   function toggleMenuMode() {
     setMenuMode(!inMenuMode);
+    setMenuModeType("general"); // so that next time menu is opened, it will be the general menu
   }
 
   function toggleDeleteListAlert() {
@@ -59,8 +61,10 @@ function SingleListPage(props) {
           />
         </div>
       </div>
-      {inMenuMode ? (
+      {inMenuMode && menuModeType === "general" ? (
         <ListMenu
+          listMenuType="general"
+          onChangeMenuModeType={setMenuModeType}
           data={props.data}
           currentListId={props.currentListId}
           onEditList={props.onEditList}
@@ -71,6 +75,14 @@ function SingleListPage(props) {
           onToggleDeleteListAlert={toggleDeleteListAlert}
           onToggleDeleteTasksAlert={toggleDeleteTasksAlert}
           onToggleDeleteCompletedAlert={toggleDeleteCompletedAlert}
+        />
+      ) : null}
+      {inMenuMode && menuModeType === "sorting" ? (
+        <ListMenu
+          listMenuType="sorting"
+          onChangeMenuModeType={setMenuModeType}
+          data={props.data}
+          listTasksSortField={props.listTasksSortField}
           onChangeSort={props.onChangeSort}
         />
       ) : null}

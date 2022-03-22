@@ -1,5 +1,6 @@
+/* Universal styling for all Single List Page menus */
 /* first three styles are for sticky toolbar */
-.delete-toolbar-edit-list-menu {
+.single-list-page-menu {
   bottom: 0;
   position: fixed; /* use fixed instead of sticky so toolbar is at bottom even if we don't have that many lists */
   width: 100%;
@@ -7,31 +8,35 @@
   color: #172528;
   display: grid;
   align-items: center;
-  grid-template-columns: 3em 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 3em 1fr 6.5em;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
   padding-left: 1em;
 }
 
-.delete-toolbar-edit-list-menu h2 {
+.single-list-page-menu h2 {
   font-size: 16px !important;
   font-weight: normal;
 }
 
-.delete-toolbar-edit-list-menu i {
+.single-list-page-menu i {
   justify-self: center; /* center icons in menu */
   font-size: 22px !important;
   color: #172528;
 }
 
-.delete-toolbar-edit-list-menu i:active {
+.single-list-page-menu i:active {
   color: #2b7a78;
 }
 
-.delete-toolbar-edit-list-menu h2 {
+.single-list-page-menu h2 {
   font-size: 20px;
   margin-left: 0.5em;
+}
+
+/* Styling for the general Single List Page menu */
+.general-menu-grid {
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .customize-list-icon {
@@ -54,62 +59,112 @@
   grid-column: 2 / span 1;
 }
 
-.sort-by-deadline-icon {
+.sort-icon {
   grid-row: 3 / span 1;
   grid-column: 1 / span 1;
 }
 
-.sort-by-deadline-desc {
+.sort-desc {
   grid-row: 3 / span 1;
   grid-column: 2 / span 1;
 }
 
-.sort-by-name-icon {
-  grid-row: 4 / span 1;
-  grid-column: 1 / span 1;
-}
-
-.sort-by-name-desc {
-  grid-row: 4 / span 1;
-  grid-column: 2 / span 1;
-}
-
-.sort-by-creation-time-icon {
-  grid-row: 5 / span 1;
-  grid-column: 1 / span 1;
-}
-
-.sort-by-creation-time-desc {
-  grid-row: 5 / span 1;
-  grid-column: 2 / span 1;
+.sort-enter-icon {
+  grid-row: 3 / span 1;
+  grid-column: 3 / span 1;
 }
 
 .delete-completed-icon {
-  grid-row: 6 / span 1;
+  grid-row: 4 / span 1;
   grid-column: 1 / span 1;
 }
 
 .delete-completed-desc {
-  grid-row: 6 / span 1;
+  grid-row: 4 / span 1;
   grid-column: 2 / span 1;
 }
 
 .delete-all-icon {
-  grid-row: 7 / span 1;
+  grid-row: 5 / span 1;
   grid-column: 1 / span 1;
 }
 
 .delete-all-desc {
-  grid-row: 7 / span 1;
+  grid-row: 5 / span 1;
   grid-column: 2 / span 1;
 }
 
 .delete-list-icon {
-  grid-row: 8 / span 1;
+  grid-row: 6 / span 1;
   grid-column: 1 / span 1;
 }
 
 .delete-list-desc {
-  grid-row: 8 / span 1;
+  grid-row: 6 / span 1;
   grid-column: 2 / span 1;
+}
+
+/* Styling for the sorting Single List Page menu */
+.sorting-menu-grid {
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.sort-by-deadline-icon {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.sort-by-deadline-desc {
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.sort-by-deadline-check {
+  grid-row: 1 / span 1;
+  grid-column: 3 / span 1;
+}
+
+.sort-by-name-icon {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.sort-by-name-desc {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.sort-by-name-check {
+  grid-row: 2 / span 1;
+  grid-column: 3 / span 1;
+}
+
+.sort-by-creation-time-icon {
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.sort-by-creation-time-desc {
+  grid-row: 3 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.sort-by-creation-time-check {
+  grid-row: 3 / span 1;
+  grid-column: 3 / span 1;
+}
+
+.sort-by-modified-time-icon {
+  grid-row: 4 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.sort-by-modified-time-desc {
+  grid-row: 4 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.sort-by-modified-time-check {
+  grid-row: 4 / span 1;
+  grid-column: 3 / span 1;
 }

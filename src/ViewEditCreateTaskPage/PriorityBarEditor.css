@@ -24,4 +24,21 @@
   border-radius: 0.75em;
   padding: 12px 12px 12px 12px;
   text-align: center;
+  border: #FEFFFF 2px solid;
+}
+
+.selected-None {
+  border: #91C6C3 2px solid;
+}
+
+.selected-Low {
+  border: #979DC7 2px solid;
+}
+
+.selected-Medium {
+  border: #FFBD52 2px solid;
+}
+
+.selected-High {
+  border: #ed554a 2px solid;
 }

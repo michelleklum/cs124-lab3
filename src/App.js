@@ -8,6 +8,7 @@ import SingleListPage from "./SingleListPage/SingleListPage";
 import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskPage";
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
 import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
+import ErrorAlert from "./Global/ErrorAlert";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -64,6 +65,7 @@ function App() {
 
   // Code below gets data (lists) and tasks from database using Firebase queries
   const listCollectionName = "lists";
+  const errorCollectionName = "errors";
   const taskSubcollectionName = "tasks";
 
   // Get data (lists) from Firebase
@@ -195,7 +197,7 @@ function App() {
     deleteDoc(doc(db, listCollectionName, currentListId));
   }
 
-  // Functions below handle list and task creation
+  // Functions below handle list, task, and error creation
   function handleCreateList(name, icon) {
     const listId = generateUniqueID();
     const newList = {
@@ -233,6 +235,20 @@ function App() {
     setDoc(docRef, newTask).then(() => handleChangePage(prevPage));
   }
 
+  function handleCreateErrorReport() {
+    const errorId = generateUniqueID();
+    const newError = {
+      id: errorId,
+      errorTime: serverTimestamp(),
+    };
+    const docRef = doc(
+      db,
+      errorCollectionName,
+      errorId
+    );
+    setDoc(docRef, newError);
+  }
+
   // State and functions below handle alerts and warnings
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
 
@@ -243,9 +259,16 @@ function App() {
   if (dataLoading) {
     return <HomeLoadingPage />;
   }
-  if (dataError) {
-    return <>Error!</>;
+  if (!dataError) {
+    return (
+      <Fragment>
+        <HomeLoadingPage/>
+        <ErrorAlert
+         onCreateErrorReport = {handleCreateErrorReport}/>
+      </Fragment>
+    );
   }
+
   return (
     <Fragment>
       {currentPage === "Home" ? (

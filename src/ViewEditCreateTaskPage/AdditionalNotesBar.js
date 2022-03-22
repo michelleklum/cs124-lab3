@@ -22,16 +22,18 @@ function AdditionalNotesBar(props) {
           openTimePicker={props.openTimePicker}
         />
       ) : (
-        <p
-          className={[
-            "set-note",
-            props.openDatePicker || props.openTimePicker
-              ? "set-note-picker-open"
-              : "set-note-picker-closed",
-          ].join(" ")}
-        >
-          {props.tempTaskNotes || "No additional notes"}
-        </p>
+        <div className = "set-note">
+          <p
+            className={[
+              "set-note-text",
+              props.openDatePicker || props.openTimePicker
+                ? "set-note-picker-open"
+                : "set-note-picker-closed",
+            ].join(" ")}
+          >
+            {props.tempTaskNotes || "No additional notes"}
+          </p>
+        </div>
       )}
     </Fragment>
   );

@@ -54,7 +54,7 @@ function ViewEditCreateTaskPage(props) {
   // or onCreateTask to actually update the data in the App component's state.
   const [tempTaskName, setTempTaskName] = useState(task.name);
   const [tempTaskDeadline, setTempTaskDeadline] = useState(task.deadline);
-  const [tempTaskPriority, setTempTaskPriority] = useState(task.priority);
+  const [tempTaskPriority, setTempTaskPriority] = useState(task.priority ? task.priority : 0);
   // TODO: add deadline for task
   // TODO: deal with no deadline
   // TODO: remove tempTaskDate and tempTaskTime

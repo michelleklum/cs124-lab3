@@ -9,7 +9,6 @@ function DeleteAlert(props) {
         props.onCreateErrorReport();
     }
 
-    console.log(reportSubmitted)
     return (
         <div className={"backdrop"}>
             <div className="alert">

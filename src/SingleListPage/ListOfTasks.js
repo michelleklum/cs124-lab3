@@ -16,7 +16,20 @@ function ListOfTasks(props) {
 
   return (
     <div id="list-of-tasks">
-      {sortedTasksToShow.map((task) => (
+      {incompleteTasks.map((task) => (
+        <TaskCard
+          key={task.id}
+          currentListId={props.currentListId}
+          task={task}
+          inMenuMode={props.inMenuMode}
+          onChangePage={props.onChangePage}
+          onChangeTask={props.onChangeTask}
+          onEditTask={props.onEditTask}
+        />
+      ))}
+      <hr />
+      <h3 className = "completed-tasks-header">Completed</h3>
+      {completedTasks.map((task) => (
         <TaskCard
           key={task.id}
           currentListId={props.currentListId}

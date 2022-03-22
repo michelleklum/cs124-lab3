@@ -6,3 +6,9 @@
   margin-top: 1.4em;
   margin-bottom: 50px; /* so that plus button doesn't cover edit task icon */
 }
+
+.completed-tasks-header {
+  font-weight: 500;
+  margin-left: 5px;
+  color: #172528;
+}

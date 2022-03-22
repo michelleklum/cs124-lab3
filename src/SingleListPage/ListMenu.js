@@ -5,6 +5,7 @@ import HideCompletedBar from "./HideCompletedBar";
 import SortBar from "./SortBar";
 import SortByDeadlineBar from "./SortByDeadlineBar";
 import SortByNameBar from "./SortByNameBar";
+import SortByPriorityBar from "./SortByPriorityBar";
 import SortByCreationTimeBar from "./SortByCreationTimeBar";
 import SortByModificationTimeBar from "./SortByModificationTimeBar";
 import DeleteCompletedBar from "./DeleteCompletedBar";
@@ -44,19 +45,23 @@ function ListMenu(props) {
         <div className="single-list-page-menu sorting-menu-grid">
           <SortByDeadlineBar
             onChangeSort={props.onChangeSort}
-            listTasksSortField={props.listTasksSortField}
+            listTasksPrimarySortField={props.listTasksPrimarySortField}
           />
           <SortByNameBar
             onChangeSort={props.onChangeSort}
-            listTasksSortField={props.listTasksSortField}
+            listTasksPrimarySortField={props.listTasksPrimarySortField}
+          />
+          <SortByPriorityBar
+            onChangeSort={props.onChangeSort}
+            listTasksPrimarySortField={props.listTasksPrimarySortField}
           />
           <SortByCreationTimeBar
             onChangeSort={props.onChangeSort}
-            listTasksSortField={props.listTasksSortField}
+            listTasksPrimarySortField={props.listTasksPrimarySortField}
           />
           <SortByModificationTimeBar
             onChangeSort={props.onChangeSort}
-            listTasksSortField={props.listTasksSortField}
+            listTasksPrimarySortField={props.listTasksPrimarySortField}
           />
         </div>
       )}

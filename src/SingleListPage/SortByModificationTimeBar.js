@@ -13,7 +13,7 @@ function SortByModificationTimeBar(props) {
       >
         Sort by modification time
       </h2>
-      {props.listTasksSortField === "modifiedTime" && (
+      {props.listTasksPrimarySortField === "modifiedTime" && (
         <i className="fas fa-check fa-4x sort-by-modified-time-check"></i>
       )}
     </Fragment>

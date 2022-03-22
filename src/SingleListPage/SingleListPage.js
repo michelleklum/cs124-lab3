@@ -82,7 +82,7 @@ function SingleListPage(props) {
           listMenuType="sorting"
           onChangeMenuModeType={setMenuModeType}
           data={props.data}
-          listTasksSortField={props.listTasksSortField}
+          listTasksPrimarySortField={props.listTasksPrimarySortField}
           onChangeSort={props.onChangeSort}
         />
       ) : null}

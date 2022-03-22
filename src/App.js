@@ -82,28 +82,50 @@ function App() {
     currentListIdWithDefault,
     "tasks"
   );
-  const [listTasksSortField, setListTasksSortField] = useState("deadline"); // by default, sort current list's tasks by deadline
-  const [listTasksSortDirection, setListTasksSortDirection] = useState("asc"); // by default, sort current list's tasks ascending by listTasksSortField
-  function handleChangeSort(newListTasksSortField) {
-    setListTasksSortField(newListTasksSortField);
+  const [listTasksPrimarySortField, setListTasksPrimarySortField] =
+    useState("deadline"); // by default, primary sort current list's tasks by deadline
+  const [listTasksPrimarySortDirection, setListTasksPrimarySortDirection] =
+    useState("asc"); // by default, sort current list's tasks ascending by listTasksPrimarySortField
+  const [listTasksSecondarySortField, setListTasksSecondarySortField] =
+    useState("deadline"); // by default, secondary sort current list's tasks by deadline
+  const [listTasksSecondarySortDirection, setListTasksSecondarySortDirection] =
+    useState("asc"); // by default, sort current list's tasks ascending by listTasksPrimarySortField
+
+  function handleChangeSort(newListTasksPrimarySortField) {
+    setListTasksPrimarySortField(newListTasksPrimarySortField);
     // eslint-disable-next-line default-case
-    switch (newListTasksSortField) {
+    switch (newListTasksPrimarySortField) {
       case "deadline":
       case "name":
-        setListTasksSortDirection("asc");
+        setListTasksPrimarySortDirection("asc");
         break;
       case "creationTime":
       case "modificationTime":
+      case "priority": // TODO: double check!
         // sort by last created and last modified
-        setListTasksSortDirection("desc");
+        setListTasksPrimarySortDirection("desc");
         break;
+    }
+
+    if (newListTasksPrimarySortField === "priority") {
+      setListTasksSecondarySortField("deadline");
+      setListTasksSecondarySortDirection("desc");
     }
   }
 
-  const tasksQuery = query(
+  let tasksQuery = query(
     tasksSubcollectionRef,
-    orderBy(listTasksSortField, listTasksSortDirection)
+    orderBy(listTasksPrimarySortField, listTasksPrimarySortDirection)
   );
+
+  if (listTasksPrimarySortField === "priority") {
+    tasksQuery = query(
+      tasksSubcollectionRef,
+      orderBy(listTasksPrimarySortField, listTasksPrimarySortDirection),
+      orderBy(listTasksSecondarySortField, listTasksSecondarySortDirection)
+    );
+  }
+
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(tasksQuery);
   const tasks = dbTasks ? dbTasks : [];
 
@@ -267,11 +289,7 @@ function App() {
       id: errorId,
       errorTime: serverTimestamp(),
     };
-    const docRef = doc(
-      db,
-      errorCollectionName,
-      errorId
-    );
+    const docRef = doc(db, errorCollectionName, errorId);
     setDoc(docRef, newError);
   }
 
@@ -283,14 +301,13 @@ function App() {
   }
 
   if (dataLoading) {
-    return <HomeLoadingPage/>;
+    return <HomeLoadingPage />;
   }
   if (dataError) {
     return (
       <Fragment>
-        <HomeLoadingPage/>
-        <ErrorAlert
-         onCreateErrorReport = {handleCreateErrorReport}/>
+        <HomeLoadingPage />
+        <ErrorAlert onCreateErrorReport={handleCreateErrorReport} />
       </Fragment>
     );
   }
@@ -344,7 +361,7 @@ function App() {
           onDeleteList={handleDeleteList}
           onCreateTask={handleChangeTask}
           onToggleDeleteAlert={handleToggleDeleteAlert}
-          listTasksSortField={listTasksSortField}
+          listTasksPrimarySortField={listTasksPrimarySortField}
           onChangeSort={handleChangeSort}
         />
       ) : null}

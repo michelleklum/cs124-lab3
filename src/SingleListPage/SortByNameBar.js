@@ -13,7 +13,7 @@ function SortByNameBar(props) {
       >
         Sort by name
       </h2>
-      {props.listTasksSortField === "name" && (
+      {props.listTasksPrimarySortField === "name" && (
         <i className="fas fa-check fa-4x sort-by-name-check"></i>
       )}
     </Fragment>

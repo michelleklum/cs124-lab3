@@ -13,7 +13,7 @@ function SortByDeadlineBar(props) {
       >
         Sort by deadline
       </h2>
-      {props.listTasksSortField === "deadline" && (
+      {props.listTasksPrimarySortField === "deadline" && (
         <i className="fas fa-check fa-4x sort-by-deadline-check"></i>
       )}
     </Fragment>

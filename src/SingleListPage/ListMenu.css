@@ -139,32 +139,47 @@
   grid-column: 3 / span 1;
 }
 
-.sort-by-creation-time-icon {
+.sort-by-priority-icon {
   grid-row: 3 / span 1;
   grid-column: 1 / span 1;
 }
 
-.sort-by-creation-time-desc {
+.sort-by-priority-desc {
   grid-row: 3 / span 1;
   grid-column: 2 / span 1;
 }
 
-.sort-by-creation-time-check {
+.sort-by-priority-check {
   grid-row: 3 / span 1;
   grid-column: 3 / span 1;
 }
 
-.sort-by-modified-time-icon {
+.sort-by-creation-time-icon {
   grid-row: 4 / span 1;
   grid-column: 1 / span 1;
 }
 
-.sort-by-modified-time-desc {
+.sort-by-creation-time-desc {
   grid-row: 4 / span 1;
   grid-column: 2 / span 1;
 }
 
-.sort-by-modified-time-check {
+.sort-by-creation-time-check {
   grid-row: 4 / span 1;
+  grid-column: 3 / span 1;
+}
+
+.sort-by-modified-time-icon {
+  grid-row: 5 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.sort-by-modified-time-desc {
+  grid-row: 5 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.sort-by-modified-time-check {
+  grid-row: 5 / span 1;
   grid-column: 3 / span 1;
 }

@@ -13,7 +13,7 @@ function SortByCreationTimeBar(props) {
       >
         Sort by creation time
       </h2>
-      {props.listTasksSortField === "creationTime" && (
+      {props.listTasksPrimarySortField === "creationTime" && (
         <i className="fas fa-check fa-4x sort-by-creation-time-check"></i>
       )}
     </Fragment>

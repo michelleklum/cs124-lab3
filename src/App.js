@@ -83,7 +83,27 @@ function App() {
     "tasks"
   );
   const [listTasksSortField, setListTasksSortField] = useState("deadline"); // by default, sort current list's tasks by deadline
-  const tasksQuery = query(tasksSubcollectionRef, orderBy(listTasksSortField));
+  const [listTasksSortDirection, setListTasksSortDirection] = useState("asc"); // by default, sort current list's tasks ascending by listTasksSortField
+  function handleChangeSort(newListTasksSortField) {
+    setListTasksSortField(newListTasksSortField);
+    // eslint-disable-next-line default-case
+    switch (newListTasksSortField) {
+      case "deadline":
+      case "name":
+        setListTasksSortDirection("asc");
+        break;
+      case "creationTime":
+      case "modificationTime":
+        // sort by last created and last modified
+        setListTasksSortDirection("desc");
+        break;
+    }
+  }
+
+  const tasksQuery = query(
+    tasksSubcollectionRef,
+    orderBy(listTasksSortField, listTasksSortDirection)
+  );
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(tasksQuery);
   const tasks = dbTasks ? dbTasks : [];
 
@@ -213,7 +233,13 @@ function App() {
     );
   }
 
-  function handleCreateTask(listId, taskName, taskDeadline, taskNotes, taskPriority) {
+  function handleCreateTask(
+    listId,
+    taskName,
+    taskDeadline,
+    taskNotes,
+    taskPriority
+  ) {
     const taskId = generateUniqueID();
     const newTask = {
       id: taskId,
@@ -318,7 +344,8 @@ function App() {
           onDeleteList={handleDeleteList}
           onCreateTask={handleChangeTask}
           onToggleDeleteAlert={handleToggleDeleteAlert}
-          onChangeSort={setListTasksSortField}
+          listTasksSortField={listTasksSortField}
+          onChangeSort={handleChangeSort}
         />
       ) : null}
       {currentPage === "ListSearchPage" ? (

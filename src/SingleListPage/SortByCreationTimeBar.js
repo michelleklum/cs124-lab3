@@ -4,15 +4,18 @@ function SortByCreationTimeBar(props) {
   return (
     <Fragment>
       <i
-        className="fas fa-clock sort-by-creation-time-icon"
+        className="fas fa-calendar-plus sort-by-creation-time-icon"
         onClick={() => props.onChangeSort("creationTime")}
       ></i>
       <h2
         className="sort-by-creation-time-desc"
         onClick={() => props.onChangeSort("creationTime")}
       >
-        Sort tasks by creation time
+        Sort by creation time
       </h2>
+      {props.listTasksSortField === "creationTime" && (
+        <i className="fas fa-check fa-4x sort-by-creation-time-check"></i>
+      )}
     </Fragment>
   );
 }

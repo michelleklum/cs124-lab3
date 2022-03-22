@@ -11,8 +11,11 @@ function SortByNameBar(props) {
         className="sort-by-name-desc"
         onClick={() => props.onChangeSort("name")}
       >
-        Sort tasks by name
+        Sort by name
       </h2>
+      {props.listTasksSortField === "name" && (
+        <i className="fas fa-check fa-4x sort-by-name-check"></i>
+      )}
     </Fragment>
   );
 }

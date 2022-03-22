@@ -1,6 +1,14 @@
 import React, { Fragment } from "react";
 
 function Checkbox(props) {
+  const priorityColors = new Map();
+  priorityColors.set(0, "#91C6C3");
+  priorityColors.set(1, "#979DC7");
+  priorityColors.set(2, "#FFBD52");
+  priorityColors.set(3, "#ed554a");
+
+  const priorityColor = props.priorityNumber ? priorityColors.get(props.priorityNumber) : "#91C6C3"
+
   function handleEditTaskCompletionStatus() {
     // use onChangeTaskStatus for changing task completion status on View Edit Create Task Page
     props.onChangeTaskStatus && props.onChangeTaskStatus(!props.tempTaskStatus);
@@ -33,10 +41,10 @@ function Checkbox(props) {
               : "set-completed-icon-picker-closed",
           ].join(" ")}
           style={{
-            color: "#91C6C3",
+            color: "#BAB2B5",
             fontSize: "23px",
             padding: "2px",
-            border: "#91C6C3 solid medium",
+            border: "#BAB2B5 solid medium",
             borderRadius: "7px",
           }}
           onClick={
@@ -57,7 +65,7 @@ function Checkbox(props) {
             color: "#FeFFFF",
             fontSize: "23px",
             padding: "2px 3.5px",
-            border: "#91C6C3 solid medium",
+            border: priorityColor + " solid medium",
             borderRadius: "7px",
           }}
           onClick={

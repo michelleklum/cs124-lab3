@@ -283,7 +283,7 @@ function App() {
   }
 
   if (dataLoading) {
-    return <HomeLoadingPage />;
+    return <HomeLoadingPage/>;
   }
   if (dataError) {
     return (

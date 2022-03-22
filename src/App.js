@@ -101,15 +101,16 @@ function App() {
         break;
       case "creationTime":
       case "modificationTime":
-      case "priority": // TODO: double check!
+      case "priority":
         // sort by last created and last modified
         setListTasksPrimarySortDirection("desc");
         break;
     }
 
+    // if sorting tasks by priority, sort tasks primarily by descending priority, and then secondarily by ascending deadline
     if (newListTasksPrimarySortField === "priority") {
       setListTasksSecondarySortField("deadline");
-      setListTasksSecondarySortDirection("desc");
+      setListTasksSecondarySortDirection("asc");
     }
   }
 

@@ -50,6 +50,7 @@ function TaskCard(props) {
           disableCheckbox={props.inMenuMode ? true : false}
           onEditTask={props.onEditTask}
           priorityNumber={props.task.priority}
+          fromTaskCard={true}
         />
       </div>
 

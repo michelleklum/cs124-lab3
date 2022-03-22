@@ -9,6 +9,8 @@ function Checkbox(props) {
 
   const priorityColor = props.priorityNumber ? priorityColors.get(props.priorityNumber) : "#91C6C3"
 
+  const completedColor = props.fromTaskCard ? "#BAB2B5" : "#91C6C3"
+  
   function handleEditTaskCompletionStatus() {
     // use onChangeTaskStatus for changing task completion status on View Edit Create Task Page
     props.onChangeTaskStatus && props.onChangeTaskStatus(!props.tempTaskStatus);
@@ -41,10 +43,10 @@ function Checkbox(props) {
               : "set-completed-icon-picker-closed",
           ].join(" ")}
           style={{
-            color: "#BAB2B5",
+            color: completedColor,
             fontSize: "23px",
             padding: "2px",
-            border: "#BAB2B5 solid medium",
+            border: completedColor + " solid medium",
             borderRadius: "7px",
           }}
           onClick={

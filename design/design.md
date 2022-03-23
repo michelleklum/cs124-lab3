@@ -36,7 +36,9 @@ In Lab 2, we also decided to add a deeper shadow to a task card when it has its 
 
 When a user taps the plus button on the Home Page, they will be brought to the Create List Page, where they can enter a list name into the input box in the top navigation bar, and also select an icon to represent their list. We wanted to give users a way to customize the appearances of their lists to their liking. The X icon cancels the action of creating a new list, while the checkmark icon saves the newly created list. This is similar to behavior seen in apps such as Google Calendar, when users edit Calendar Events on mobile devices. The checkmark icon is only enabled after the user has named their list and given it a representative icon.
 
-<img src="create_list_page_final_lab_2.png" alt="Create List Page Lab 2 Final Version" width="200px">
+During usability testing for Lab 3, we noticed that there was no autofocus on the list name input textbox on the Create List Page. So, we corrected that in Lab 3.
+
+<img src="user_test_lab_3_create_list_page_autofocus.png" alt="User Testing Lab 3 Edit Create List Page Autofocus" width="200px">
 
 <img src="create_list_page_in_progress_final_lab_2.png" alt="Create List Page In Progress Lab 2 Final Version" width="200px">
 
@@ -167,6 +169,12 @@ This is the version of our Home Page that we turned in for Lab 1. As mentioned a
 This is the version of our Home Page that we turned in for Lab 1. This version of our home page had neither an app icon nor a logo. We remedied that in Lab 2.
 
 <img src="home_page_final_lab_1.png" alt="Home Page Lab 1 Final Version" width="200px">
+
+## Alternate Designs: Create List Page / Edit List Page
+
+Initially, there was no autofocus on the list name input textbox on the Create List Page / Edit List Page — as shown below. We added an autofocus after we noticed that during Lab 3 usability testing.
+
+<img src="create_list_page_final_lab_2.png" alt="Create List Page Lab 2 Final Version" width="200px">
 
 ## Alternate Designs: Single List Page
 
@@ -299,6 +307,12 @@ Users were confused about why the "Completed" checkbox was not editable from thi
 For Lab 3, we conducted usability testing in-person with two Mudd students and virtually (through Zoom) with a student from another school. We first asked participants to share their impressions of our app just based on the home screen. We asked what they thought our app did and what actions they thought they could perform based on viewing the page. Next, we asked participants to perform a series of tasks while thinking out loud. These tasks included creating, deleting, adn editing lists and tasks, as well as sorting and assigning priority levels to tasks. For instance, we asked each user testing participant to add several tasks to a new list, and then try to change the sorting method of that list to "name" and "creation time."
 
 Users generally seemed to enjoy using our app. One user even remarked that they had the time of their life!
+
+### Edit List Page and Create List Page
+
+When a user was creating a new list during usability testing, we noticed that the Create List Page did not automatically autofocus on the list name input textbox. We decided to add an autofocus to the list name input textbox since users must type in a name in order to create a new list. The autofocus saves users from making an additional click.
+
+<img src="user_test_lab_3_create_list_page_autofocus.png" alt="User Testing Lab 3 Edit Create List Page Autofocus" width="200px">
 
 ### Delete Alert Error
 

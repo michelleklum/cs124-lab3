@@ -32,6 +32,11 @@ In Lab 2, we also decided to add a deeper shadow to a task card when it has its 
 
 <img src="home_page_edit_icons_final_lab_2.png" alt="Home Page Edit Icons Lab 2 Final Version" width="200px">
 
+In Lab 3, we added a message that appears on the Home Page when no lists are present. We saw this idea in the grading rubric for Lab 2 and thought it would be informative and useful for our users, since they can quickly see whether or not they have lists. In user testing, participants also said they'd like to have a message like this when there are no lists present.
+
+<img src="home_page_no_lists_lab_3.png" alt="Home Page Without Lists Lab 3" width="200px">
+
+
 ## Final App: Create List Page / Edit List Page
 
 When a user taps the plus button on the Home Page, they will be brought to the Create List Page, where they can enter a list name into the input box in the top navigation bar, and also select an icon to represent their list. We wanted to give users a way to customize the appearances of their lists to their liking. The X icon cancels the action of creating a new list, while the checkmark icon saves the newly created list. This is similar to behavior seen in apps such as Google Calendar, when users edit Calendar Events on mobile devices. The checkmark icon is only enabled after the user has named their list and given it a representative icon.
@@ -56,7 +61,9 @@ Another Lab 2 change we made was to place completed tasks at the bottom of the l
 
 For Lab 2, we also restyled our checkboxes so that they would better cohere with the aesthetics (in particular, the color scheme) of our app.
 
-In Lab 3, to better distinguish completed tasks from tasks to be done, we grayed-out completed tasks. We also added a header for "Completed" tasks.
+In Lab 3, to better distinguish completed tasks from tasks to be done, we grayed-out completed tasks. We also added a header for "Completed" tasks. Apps like Microsoft's To Do app separate completed tasks from incomplete tasks, and we thought this would be useful for our app. The "Completed" header only appears when the list has completed tasks.
+
+We also restyled checkboxes to match the color of the corresponding task's priority. This choice was based on researching how other apps (Todoist, Microsoft's To Do app, Apple's Reminders app) style checkboxes.
 
 <img src="single_list_page_final_lab_3.png" alt="Single List Page Lab 3 Final Version" width="200px">
 
@@ -90,6 +97,16 @@ Here are what the Single List Page looks like using the other sorting methods: d
 
 <img src="single_list_page_sort_by_modification_time_final_lab_3.png" alt="Single List Page Sort By Modification Time Lab 3 Final Version" width="200px">
 
+In Lab 3, we also added a message when no tasks are present or when all tasks are completed. When a list has no task, the message "No Tasks" will appear on the list page. In user testing, participants said they'd like to have messages like these.
+
+<img src="single_list_page_no_tasks_lab_3.png" alt="Single List Page No Tasks" width="200px">
+
+When a list has completed tasks but no incomplete tasks, a message will appear that confims the user has completed all their tasks.
+
+<img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Tasks" width="200px">
+
+
+
 ## Final App: View Task Page
 
 When a user taps the card for a task on the Single List Page, they are brought to the View Task Page, where they can view more details about that task, such as additional notes, which aren't visible on the Single List Page of all tasks.
@@ -100,7 +117,9 @@ In Lab 1, we had an X icon for returning to the Single List Page from the View T
 
 Also, in Lab 1, we had a checkbox icon indicating the completion status of the task open in the View Task Page. However, during user testing, we observed that many users actually attempted to use that View Task Page checkbox icon to edit the status of their task. That was problematic because the checkbox is disabled on the View Task Page; a user isn't supposed to edit their task while on this page. So, to reduce confusion, for Lab 2, we decided to change the View Task Page task completion status icon into icons that are used solely on this View Task Page.
 
-<img src="view_task_page_final_lab_2.png" alt="View Task Page Lab 2 Final Version" width="200px">
+In Lab 3, we added priorities for each task. In the View Task Page, the prioirity of their task is stated next to the exclamation icon.
+
+<img src="view_task_page_final_lab_3.png" alt="View Task Page Lab 3 Final Version" width="200px">
 
 ## Final App: Edit Task Page
 
@@ -115,6 +134,11 @@ Tapping on the date field opens up a date picker. The user can either click or s
 Tapping on the time field opens up a time picker. The user can either click or swipe (click and drag on a laptop) to move their desired hour, minute, or period (AM / PM) into the selected area. Initially, we only allowed for the swiping motion for scrolling through the time picker. However, during user testing, the go-to action for some of our users was to click their desired hour / minute / period (AM / PM), rather than to scroll. This may have been because we did user testing on a laptop instead of a phone. Regardless, we decided to implement the additional onClick event to allow for users who default to a click action, rather than a scroll action. The time picker was a new part of our UI design introduced for Lab 2.
 
 <img src="edit_task_page_final_lab_2_time_picker.png" alt="Edit Task Page Lab 2 Final Version Time Picker" width="200px">
+
+In Lab 3, we added the option to include a priority with each task. To change the priority for a task, the user can tap the approriate priority level. The selected level will be outlined in the color corresponding to the priority as an additional visual cue of the priority. 
+
+<img src="edit_task_page_select_priority_lab_3.png" alt="Edit Task Page Lab 3 Select Priority" width="200px">
+
 
 ## Final App: Delete Pop-Up Confirmation Messages
 
@@ -131,6 +155,16 @@ For Lab 2, we introduced confirmation messages that would pop up when a user cli
 <img src="alert_single_list_page_menu_mode_delete_list.png" alt="Single List Page Menu Mode Delete List Alert Lab 2 Final Version" width="200px">
 
 <img src="alert_edit_task_page_delete_task.png" alt="Edit Task Page Delete Task Alert Lab 2 Final Version" width="200px">
+
+## Final App: Error Pop-Up Message
+
+For Lab 3, we introduced an error pop-up message whenever Firebase reports an error loading list data. The user then has the opportunity to report the error. If they press the report button, we will log the error in our database, and the user will be notified that their error was reported.
+
+<img src="error_message_before_submitting_lab_3.png" alt="Error Message Before Submitting" width="200px">
+
+<img src="error_message_after_submitting_lab_3.png" alt="Error Message After Submitting" width="200px">
+
+
 
 ## Alternate Designs: Home Page and Single List Page Initial Brainstorming
 
@@ -221,6 +255,10 @@ This is the version of our View Task Page that we turned in for Lab 1. For Lab 2
 In Lab 1, we also had a checkbox icon indicating the task completion status. However, this confused many user testing participants into thinking that clicking the checkbox would actually modify the task completion status, and that wasn't the case. So, for Lab 2, we changed the View Task Page task completion status icon into icons that are used only on the View Task Page.
 
 <img src="view_task_page_final_lab_1.png" alt="View Task Page Lab 1 Final Version" width="200px">
+
+Below is the View Task Page we turned in for Lab 2. In Lab 3, we added task priority as an additional field for each task.
+
+<img src="view_task_page_final_lab_2.png" alt="View Task Page Lab 3 Final Version" width="200px">
 
 ## Alternate Designs: Edit Task Page
 

@@ -8,6 +8,7 @@ import SingleListPage from "./SingleListPage/SingleListPage";
 import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskPage";
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
 import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
+import SingleListLoadingPage from "./SingleListLoadingPage/SingleListLoadingPage";
 import ErrorAlert from "./Global/ErrorAlert";
 
 import { initializeApp } from "firebase/app";
@@ -308,22 +309,18 @@ function App() {
   function handleToggleDeleteAlert() {
     setShowDeleteAlert(!showDeleteAlert);
   }
-
-  if (dataLoading) {
-    return <HomeLoadingPage />;
-  }
-  if (dataError) {
-    return (
-      <Fragment>
-        <HomeLoadingPage />
-        <ErrorAlert onCreateErrorReport={handleCreateErrorReport} />
-      </Fragment>
-    );
-  }
-
   return (
     <Fragment>
-      {currentPage === "Home" ? (
+      {dataError ? (
+        <Fragment>
+          <HomeLoadingPage />
+          <ErrorAlert onCreateErrorReport={handleCreateErrorReport} />
+        </Fragment>
+      ) : null}
+      {currentPage === "Home" && dataLoading ? (
+        <HomeLoadingPage />
+      ) : null}
+      {currentPage === "Home" && !dataLoading ? (
         <Home
           data={data}
           currentListId={currentListId}
@@ -351,7 +348,7 @@ function App() {
           showDeleteAlert={showDeleteAlert}
         />
       ) : null}
-      {currentPage === "SingleListPage" ? (
+      {currentPage === "SingleListPage" && !(tasksLoading || dataLoading) ? (
         <SingleListPage
           data={data}
           tasks={tasks}
@@ -373,6 +370,12 @@ function App() {
           listTasksPrimarySortField={listTasksPrimarySortField}
           onChangeSort={handleChangeSort}
         />
+      ) : null}
+      {currentPage === "SingleListPage" && (tasksLoading || dataLoading) ? (
+        <SingleListLoadingPage
+          data={data}
+          currentListId={currentListId}
+          onChangePage={handleChangePage} />
       ) : null}
       {currentPage === "ListSearchPage" ? (
         <ListSearchPage

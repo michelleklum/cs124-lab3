@@ -11,7 +11,7 @@ function DeleteAlert(props) {
 
     return (
         <div className={"backdrop"}>
-            <div className="alert">
+            <div className="error-alert">
                 <h3 className="alert-description">
                     We've noticed an error loading your data.
                     Try reopening your app, and feel free to report this issue below.

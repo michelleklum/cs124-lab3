@@ -70,13 +70,13 @@ In Lab 3, we added task sorting options, so we expanded the Single List Page Men
 
 <img src="single_list_page_menu_mode_final_lab_3.png" alt="Single List Page Menu Mode Lab 3 Final Version" width="200px">
 
-We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu.
+We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu. Clicking either the icon or the sort option description changes the sorting method to the one selected. The checkmark indicates the current sorting method. Clicking the back arrow takes users back to the general Single List Page Menu.
 
-Clicking either the icon or the sort option description changes the sorting method to the one selected. The checkmark indicates the current sorting method. Clicking the back arrow takes users back to the general Single List Page Menu.
+However, unlike with the sorting options, we decided not to add a separate delete options menu. That's because, during usability testing, users said a separate delete options menu wasn’t necessary, and also indicated that they wanted to be able to delete tasks quickly. Adding a separate delete options menu would have meant that users would have had to make another click in order to perform a delete action. In future labs, we hope to see if more user testing confirms our findings from this round of user testing.
 
 <img src="single_list_page_menu_sorting_final_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Final Version" width="200px">
 
-By default, tasks are sorted by priority. For sorting by priority, we used a Firebase compound index so that the tasks would primarily be sorted by priority and then secondarily sorted by deadline, since we didn't want the tasks to be disorganized within each priority level. Furthermore, if a user is sorting by priority, they probably care more about the task's deadline than its name, creation time, or modification time.
+By default, tasks are sorted by priority. For sorting by priority, we used a Firebase compound index so that the tasks would primarily be sorted by priority and then secondarily sorted by deadline, since we didn't want the tasks to be disorganized within each priority level. Our reasoning was also that if a user is sorting by priority, they probably care more about the task's deadline than its name, creation time, or modification time.
 
 Here are what the Single List Page looks like using the other sorting methods: deadline, name, creation time, modification time — in that order. Notice that completed tasks always remain at the bottom, no matter what. However, completed tasks are also sorted by the selected sorting method.
 
@@ -87,8 +87,6 @@ Here are what the Single List Page looks like using the other sorting methods: d
 <img src="single_list_page_sort_by_creation_time_final_lab_3.png" alt="Single List Page Sort By Creation Time Lab 3 Final Version" width="200px">
 
 <img src="single_list_page_sort_by_modification_time_final_lab_3.png" alt="Single List Page Sort By Modification Time Lab 3 Final Version" width="200px">
-
-However, unlike with the sorting options, we decided not to add a separate delete options menu. That's because, during usability testing, users said a separate delete options menu wasn’t necessary, and also indicated that they wanted to be able to delete tasks quickly. Adding a separate delete options menu would have meant that users would have had to make another click in order to perform a delete action. In future labs, we hope to see if more user testing confirms our findings from this round of user testing.
 
 ## Final App: View Task Page
 
@@ -186,7 +184,7 @@ And as you can see, our checkboxes for Lab 1 were styled a bit oddly. So, for La
 
 <img src="single_list_page_final_lab_1.png" alt="Single List Page Lab 1 Final Version" width="200px">
 
-Below is what our Single List Page looked like for Lab 2. Our completed tasks were not as distinguishable as they could be from tasks to be done. So, for Lab 3, we made the checkboxes for completed tasks gray, and we also added a header for completed tasks.
+Below is what our Single List Page looked like for Lab 2. Our completed tasks were not as distinguishable as they could be from tasks to be done. So, in Lab 3, we made the checkboxes for completed tasks gray, and we also added a header for completed tasks.
 
 <img src="single_list_page_final_lab_2.png" alt="Single List Page Lab 2 Final Version" width="200px">
 
@@ -200,11 +198,11 @@ As mentioned above, we decided it would not be a good idea to have the same tras
 
 <img src="single_list_page_menu_mode_final_lab_2.png" alt="Single List Page Menu Mode Lab 2 Final Version" width="200px">
 
-When we first tried to add task sorting options in Lab 3, we added them directly to the general Single List Page Menu, like below. However, the menu soon felt very cluttered, so we decided to move the sorting options to a separate sort menu that could be access through a "Sort" row in the general Single List Page Menu.
+When we first tried to add task sorting options in Lab 3, we added them directly to the general Single List Page Menu — like below. However, the menu soon felt very cluttered, so we later decided to move the sorting options to a separate sort menu that could be access through a "Sort" row in the general Single List Page Menu.
 
 <img src="single_list_page_menu_mode_v1_lab_3.png" alt="Single List Page Menu Mode Lab 3 Version 1" width="200px">
 
-When we first implemented a separate task sort options menu in Lab 3, it looked like the image below. However, during usability testing, users mentioned that they wanted a one-click way to return back to the general Single List Page Menu, from the sort menu. So, for Lab 3, we ultimately decided to change the layout of the sort menu to contain a header with a back arrow and the phrase "Sort by..." That also allowed us to reduce the repetitiveness of "Sort by" as compared to this initial version of our sort menu.
+When we first implemented a separate task sort options menu in Lab 3, it looked like the image below. However, during usability testing, users mentioned that they wanted a one-click way to return back to the general Single List Page Menu, from the sort menu. So, for Lab 3, we ultimately decided to change the layout of the sort menu to contain a header with a back arrow and the phrase "Sort by..." That also allowed us to reduce the repetitiveness of "Sort by" as compared to the initial version of our sort menu seen below.
 
 <img src="single_list_page_menu_sorting_v1_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Version 1" width="200px">
 
@@ -298,19 +296,19 @@ Users were confused about why the "Completed" checkbox was not editable from thi
 
 ## Usability Testing: Lab 3
 
-For Lab 3, we conducted usability testing in-person with two Mudd students and virtually (through Zoom) with a student from another school. We first asked participants to share their impressions of our app just based on the home screen. We asked what they thought our app did and what actions they thought they could perform based on viewing the page. Next, we asked participants to perform a series of tasks while thinking out loud. These tasks included creating, deleting, editing, and sorting lists and tasks, as well as assigning priority levels to tasks. For instance, we asked each user testing participant to add several tasks to a new list, and then try to change the sorting method of that list to "name" and "creation time."
+For Lab 3, we conducted usability testing in-person with two Mudd students and virtually (through Zoom) with a student from another school. We first asked participants to share their impressions of our app just based on the home screen. We asked what they thought our app did and what actions they thought they could perform based on viewing the page. Next, we asked participants to perform a series of tasks while thinking out loud. These tasks included creating, deleting, adn editing lists and tasks, as well as sorting and assigning priority levels to tasks. For instance, we asked each user testing participant to add several tasks to a new list, and then try to change the sorting method of that list to "name" and "creation time."
 
 Users generally seemed to enjoy using our app. One user even remarked that they had the time of their life!
 
 ### Delete Alert Error
 
-When we asked a user to try deleting all completed tasks in a list during user testing, we realized that we had introduced a bug into our app when we added a Report Error alert in Lab 3. The bug made it so that our delete alerts had too much whitespace on the bottom. After discovering this issue during user testing, we were able to quickly remedy it.
+When we asked a user to try deleting all completed tasks in a list during usability testing, we realized that we had introduced a bug into our app when we added a Report Error popup alert in Lab 3. The bug made it so that our other alerts had too much whitespace on the bottom. After discovering this issue during usability testing, we were able to quickly remedy it.
 
 <img src="user_test_lab_3_delete_alert_error.png" alt="User Testing Lab 3 Delete Alert Error" width="200px">
 
 ### Single List Page Menu Mode
 
-For Lab 3, we did user testing with a version of our task sort options menu that looked like the one below. During user testing, users mentioned that they wanted to be able to directly go back from the sort menu to the general Single List Page Menu. So, we ultimately changed the design of the sort menu so that there would be a header with a back arrow for returning to the general Single List Page Menu.
+For Lab 3, we did usability testing with a version of our task sort options menu that looked like the one below. During usability testing, users mentioned that they wanted to be able to directly go back from the sort menu to the general Single List Page Menu. So, we ultimately changed the design of the sort menu so that there would be a header with a back arrow for returning to the general Single List Page Menu.
 
 <img src="single_list_page_menu_sorting_v1_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Version 1" width="200px">
 

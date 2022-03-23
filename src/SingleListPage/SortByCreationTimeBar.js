@@ -11,7 +11,7 @@ function SortByCreationTimeBar(props) {
         className="sort-by-creation-time-desc"
         onClick={() => props.onChangeSort("creationTime")}
       >
-        Sort by creation time
+        creation time
       </h2>
       {props.listTasksPrimarySortField === "creationTime" && (
         <i className="fas fa-check fa-4x sort-by-creation-time-check"></i>

@@ -11,7 +11,7 @@ function SortByModificationTimeBar(props) {
         className="sort-by-modified-time-desc"
         onClick={() => props.onChangeSort("modifiedTime")}
       >
-        Sort by modification time
+        modification time
       </h2>
       {props.listTasksPrimarySortField === "modifiedTime" && (
         <i className="fas fa-check fa-4x sort-by-modified-time-check"></i>

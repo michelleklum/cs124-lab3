@@ -95,7 +95,6 @@ function TimePicker(props) {
   function changeTaskTime(hour, minute, amPm) {
     hour = convertStandardTimeHourToMilitaryTimeHour(hour, amPm);
 
-    // TODO: Fix bug where clicking task time changes date as well
     // JavaScript Date object months are zero-indexed
     const taskDeadlineJSDate = new Date(
       initialYear,

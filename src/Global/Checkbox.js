@@ -7,10 +7,12 @@ function Checkbox(props) {
   priorityColors.set(2, "#FFBD52");
   priorityColors.set(3, "#ed554a");
 
-  const priorityColor = props.priorityNumber ? priorityColors.get(props.priorityNumber) : "#91C6C3"
+  const priorityColor = props.priorityNumber
+    ? priorityColors.get(props.priorityNumber)
+    : "#91C6C3";
 
-  const completedColor = props.fromTaskCard ? "#BAB2B5" : "#91C6C3"
-  
+  const completedColor = props.fromTaskCard ? "#BAB2B5" : "#91C6C3";
+
   function handleEditTaskCompletionStatus() {
     // use onChangeTaskStatus for changing task completion status on View Edit Create Task Page
     props.onChangeTaskStatus && props.onChangeTaskStatus(!props.tempTaskStatus);
@@ -25,7 +27,7 @@ function Checkbox(props) {
       );
   }
 
-  // TODO: We styled the checkbox directly in the JSX because otherwise, the checkbox icon wouldn't appear.
+  // Styled the checkbox directly in the JSX because otherwise, the checkbox icon wouldn't appear.
 
   // fa-stop is a solid filled-in checkbox from Font Awesome.
   // To make it an outline instead, we turned its color to #FeFFFF to blend in with background,

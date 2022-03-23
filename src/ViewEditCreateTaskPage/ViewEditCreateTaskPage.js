@@ -7,9 +7,6 @@ import DeleteAlert from "../Global/DeleteAlert";
 import { Timestamp } from "firebase/firestore";
 
 function getCurrentDate() {
-  // TODO: handle no time properly in the future
-  // this just assumes current time for now
-
   // Get JavaScript Date object for current date and time
   const currentJSDate = new Date();
 
@@ -34,6 +31,8 @@ function getCurrentDate() {
 }
 
 function ViewEditCreateTaskPage(props) {
+  // TODO: In the future, give users option to not assign a deadline to a task?
+  // By default, this assumes the current time for the task deadline
   const newTask = {
     name: "",
     deadline: getCurrentDate(),
@@ -54,12 +53,9 @@ function ViewEditCreateTaskPage(props) {
   // or onCreateTask to actually update the data in the App component's state.
   const [tempTaskName, setTempTaskName] = useState(task.name);
   const [tempTaskDeadline, setTempTaskDeadline] = useState(task.deadline);
-  const [tempTaskPriority, setTempTaskPriority] = useState(task.priority ? task.priority : 0);
-  // TODO: add deadline for task
-  // TODO: deal with no deadline
-  // TODO: remove tempTaskDate and tempTaskTime
-  // const [tempTaskDate, setTempTaskDate] = useState("");
-  //  const [tempTaskTime, setTempTaskTime] = useState("");
+  const [tempTaskPriority, setTempTaskPriority] = useState(
+    task.priority ? task.priority : 0
+  );
   const [tempTaskNotes, setTempTaskNotes] = useState(task.notes);
   const [tempTaskStatus, setTempTaskStatus] = useState(task.isCompleted);
   return (

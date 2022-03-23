@@ -6,7 +6,7 @@ function AdditionalNotesEditor(props) {
 
   // Makes sure new lines don't overflow additional notes box
   const newLineChars = props.tempTaskNotes.split(/\r\n|\r|\n/).length
-  const maxLength = 100 - newLineChars * 10
+  const maxLength = 85 - newLineChars * 10
 
   function placeCursorAtEndOfValueOnFocus(e) {
     const val = e.target.value;

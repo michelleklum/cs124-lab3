@@ -44,6 +44,14 @@ function ListMenu(props) {
           <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            barSortIcon="fas fa-exclamation-circle"
+            barSortFieldAbbrev="priority"
+            barSortField="priority"
+            barSortFieldText="priority"
+          />
+          <SortByFieldBar
+            onChangeSort={props.onChangeSort}
+            listTasksPrimarySortField={props.listTasksPrimarySortField}
             barSortIcon="fas fa-hourglass-start"
             barSortFieldAbbrev="deadline"
             barSortField="deadline"
@@ -56,14 +64,6 @@ function ListMenu(props) {
             barSortFieldAbbrev="name"
             barSortField="nameLowercasedForSorting"
             barSortFieldText="name"
-          />
-          <SortByFieldBar
-            onChangeSort={props.onChangeSort}
-            listTasksPrimarySortField={props.listTasksPrimarySortField}
-            barSortIcon="fas fa-exclamation-circle"
-            barSortFieldAbbrev="priority"
-            barSortField="priority"
-            barSortFieldText="priority"
           />
           <SortByFieldBar
             onChangeSort={props.onChangeSort}

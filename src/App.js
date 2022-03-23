@@ -83,9 +83,9 @@ function App() {
     "tasks"
   );
   const [listTasksPrimarySortField, setListTasksPrimarySortField] =
-    useState("deadline"); // by default, primary sort current list's tasks by deadline
+    useState("priority"); // by default, primary sort current list's tasks by priority
   const [listTasksPrimarySortDirection, setListTasksPrimarySortDirection] =
-    useState("asc"); // by default, sort current list's tasks ascending by listTasksPrimarySortField
+    useState("desc"); // by default, sort current list's tasks descending by listTasksPrimarySortField
   const [listTasksSecondarySortField, setListTasksSecondarySortField] =
     useState("deadline"); // by default, secondary sort current list's tasks by deadline
   const [listTasksSecondarySortDirection, setListTasksSecondarySortDirection] =

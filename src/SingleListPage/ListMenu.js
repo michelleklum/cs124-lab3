@@ -3,12 +3,8 @@ import "./ListMenu.css";
 import EditListBar from "./EditListBar";
 import HideCompletedBar from "./HideCompletedBar";
 import SortBar from "./SortBar";
+import SortByFieldBar from "./SortByFieldBar";
 import SortByHeaderBar from "./SortByHeaderBar";
-import SortByDeadlineBar from "./SortByDeadlineBar";
-import SortByNameBar from "./SortByNameBar";
-import SortByPriorityBar from "./SortByPriorityBar";
-import SortByCreationTimeBar from "./SortByCreationTimeBar";
-import SortByModificationTimeBar from "./SortByModificationTimeBar";
 import DeleteCompletedBar from "./DeleteCompletedBar";
 import DeleteAllTasksBar from "./DeleteAllTasksBar";
 import DeleteListBar from "./DeleteListBar";
@@ -45,25 +41,45 @@ function ListMenu(props) {
       {props.listMenuType === "sorting" && (
         <div className="single-list-page-menu sorting-menu-grid">
           <SortByHeaderBar onChangeMenuModeType={props.onChangeMenuModeType} />
-          <SortByDeadlineBar
+          <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            barSortIcon="fas fa-hourglass-start"
+            barSortFieldAbbrev="deadline"
+            barSortField="deadline"
+            barSortFieldText="deadline"
           />
-          <SortByNameBar
+          <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            barSortIcon="fas fa-sort-alpha-down"
+            barSortFieldAbbrev="name"
+            barSortField="nameLowercasedForSorting"
+            barSortFieldText="name"
           />
-          <SortByPriorityBar
+          <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            barSortIcon="fas fa-exclamation-circle"
+            barSortFieldAbbrev="priority"
+            barSortField="priority"
+            barSortFieldText="priority"
           />
-          <SortByCreationTimeBar
+          <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            barSortIcon="fas fa-calendar-plus"
+            barSortFieldAbbrev="creation-time"
+            barSortField="creationTime"
+            barSortFieldText="creation time"
           />
-          <SortByModificationTimeBar
+          <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            barSortIcon="fas fa-calendar-check"
+            barSortFieldAbbrev="modified-time"
+            barSortField="modifiedTime"
+            barSortFieldText="modification time"
           />
         </div>
       )}

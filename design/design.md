@@ -296,6 +296,24 @@ Users found the click and drag mechanism (which would translate to scrolling on 
 
 Users were confused about why the "Completed" checkbox was not editable from this page, since the view-only checkbox looked the same as the editable checkbox. We changed the icon used to represent completed and uncompleted tasks on the View Task Page so users would understand that they could not mark a task completed from the View Task Page.
 
+## Usability Testing: Lab 3
+
+For Lab 3, we conducted usability testing in-person with two Mudd students and virtually (through Zoom) with a student from another school. We first asked participants to share their impressions of our app just based on the home screen. We asked what they thought our app did and what actions they thought they could perform based on viewing the page. Next, we asked participants to perform a series of tasks while thinking out loud. These tasks included creating, deleting, editing, and sorting lists and tasks, as well as assigning priority levels to tasks. For instance, we asked each user testing participant to add several tasks to a new list, and then try to change the sorting method of that list to "name" and "creation time."
+
+Users generally seemed to enjoy using our app. One user even remarked that they had the time of their life!
+
+### Delete Alert Error
+
+When we asked a user to try deleting all completed tasks in a list during user testing, we realized that we had introduced a bug into our app when we added a Report Error alert in Lab 3. The bug made it so that our delete alerts had too much whitespace on the bottom. After discovering this issue during user testing, we were able to quickly remedy it.
+
+<img src="user_test_lab_3_delete_alert_error.png" alt="User Testing Lab 3 Delete Alert Error" width="200px">
+
+### Single List Page Menu Mode
+
+For Lab 3, we did user testing with a version of our task sort options menu that looked like the one below. During user testing, users mentioned that they wanted to be able to directly go back from the sort menu to the general Single List Page Menu. So, we ultimately changed the design of the sort menu so that there would be a header with a back arrow for returning to the general Single List Page Menu.
+
+<img src="single_list_page_menu_sorting_v1_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Version 1" width="200px">
+
 ## Challenges
 
 Here are some challenges we faced:

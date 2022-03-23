@@ -4,24 +4,22 @@ p.set-note-text {
   white-space: pre-wrap;
 }
 
+/* To make all text appear initally in additional notes bar, put text in 
+a paragraph (rather than textarea) before user clicks to edit */
 .set-note-before-edit {
   overflow: hidden; /* hides textarea scrollbar */
   background: #eae8e8;
   color: #172528;
-  font-size: 12pt;
   height: auto;
   font-family: "Open Sans", Calibri, sans-serif;
   padding-left: 1em;
   border-radius: 0.75em;
   padding-right: 1em;
-  font-family: "Open Sans", Calibri, sans-serif;
-  border-radius: 0.75em;
-  inline-size: 232px;
-  writing-mode: horizontal-tb; 
-  min-height: 30px !important;
-
+  min-height: 0px !important;
 }
 
+/* Text before adding notes is just a placeholder, so it should have
+same color as placeholder text */
 .no-notes {
   color: grey;
 }

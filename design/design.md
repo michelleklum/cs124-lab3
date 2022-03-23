@@ -122,6 +122,8 @@ In Lab 3, we added priorities for each task. In the View Task Page, the prioirit
 
 When a user taps the pencil icon on the View Task Page, they are brought to the Edit Task Page, where they can edit the task name in the input box at the top of the page. They can also change the task date and time using dropdown menus, as well as add any additional notes, and/or mark the task as completed / not completed. Both the task name and the additional notes inputs will expand vertically as necessary, as the user types. They also both have character limits so that task names and additional notes don't get too long. Clicking the trash can icon at the bottom of the Edit Task Page will delete the task.
 
+In Lab 3, we moved the autofocus from the "Additional notes" input box to the task name input box, based on Prof. Rhodes' advice on our Lab 2 Pull Request. This makes more sense since users must add a task name when they first create a task, and they're more likely to edit a task's name than its additional notes.
+
 <img src="edit_task_page_final_lab_3.png" alt="Edit Task Page Lab 3 Final Version" width="200px">
 
 Tapping on the date field opens up a date picker. The user can either click or swipe (click and drag on a laptop) to move their desired month, day, or year into the selected area. Initially, we only allowed for the swiping motion for scrolling through the date picker. However, during user testing, the go-to action for some of our users was to click their desired month / day / year, rather than to scroll. This may have been because we did user testing on a laptop instead of a phone. Regardless, we decided to implement the additional onClick event to allow for users who default to a click action, rather than a scroll action. The date picker was a new part of our UI design introduced for Lab 2.
@@ -152,9 +154,9 @@ For Lab 2, we introduced confirmation messages that would pop up when a user cli
 
 <img src="alert_edit_task_page_delete_task.png" alt="Edit Task Page Delete Task Alert Lab 2 Final Version" width="200px">
 
-## Final App: Error Pop-Up Message
+## Final App: Report Error Pop-Up Message
 
-For Lab 3, we introduced an error pop-up message whenever Firebase reports an error loading list data. The user then has the opportunity to report the error. If they press the report button, we will log the error in our database, and the user will be notified that their error was reported.
+For Lab 3, we introduced a Report Error pop-up message whenever Firebase reports an error loading list data. The user then has the opportunity to report the error. If they press the report button, we will log the error in our database, and the user will be notified that their error was reported.
 
 <img src="error_message_before_submitting_lab_3.png" alt="Error Message Before Submitting" width="200px">
 
@@ -260,7 +262,7 @@ This is the version of our Edit Task Page that we turned in for Lab 1. We fleshe
 
 <img src="edit_task_page_final_lab_1.png" alt="Edit Task Page Lab 1 Final Version" width="200px">
 
-Below is the Edit Task Page that we turned in for Lab 2. In Lab 3, we added the ability to set a task's priority level. We also moved the autofocus from the "Additional notes" input box to the task name input box.
+Below is the Edit Task Page that we turned in for Lab 2. In Lab 3, we added the ability to set a task's priority level. We also moved the autofocus from the "Additional notes" input box to the task name input box, based on Prof. Rhodes' advice on our Lab 2 Pull Request, and also just because that makes more sense since users must add a task name when they first create a task, and they're more likely to edit a task's name, rather than its additional notes.
 
 <img src="edit_task_page_final_lab_2.png" alt="Edit Task Page Lab 2 Final Version" width="200px">
 

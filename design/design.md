@@ -36,7 +36,6 @@ In Lab 3, we added a message that appears on the Home Page when no lists are pre
 
 <img src="home_page_no_lists_lab_3.png" alt="Home Page Without Lists Lab 3" width="200px">
 
-
 ## Final App: Create List Page / Edit List Page
 
 When a user taps the plus button on the Home Page, they will be brought to the Create List Page, where they can enter a list name into the input box in the top navigation bar, and also select an icon to represent their list. We wanted to give users a way to customize the appearances of their lists to their liking. The X icon cancels the action of creating a new list, while the checkmark icon saves the newly created list. This is similar to behavior seen in apps such as Google Calendar, when users edit Calendar Events on mobile devices. The checkmark icon is only enabled after the user has named their list and given it a representative icon.
@@ -105,8 +104,6 @@ When a list has completed tasks but no incomplete tasks, a message will appear t
 
 <img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Tasks" width="200px">
 
-
-
 ## Final App: View Task Page
 
 When a user taps the card for a task on the Single List Page, they are brought to the View Task Page, where they can view more details about that task, such as additional notes, which aren't visible on the Single List Page of all tasks.
@@ -135,10 +132,9 @@ Tapping on the time field opens up a time picker. The user can either click or s
 
 <img src="edit_task_page_final_lab_2_time_picker.png" alt="Edit Task Page Lab 2 Final Version Time Picker" width="200px">
 
-In Lab 3, we added the option to include a priority with each task. To change the priority for a task, the user can tap the approriate priority level. The selected level will be outlined in the color corresponding to the priority as an additional visual cue of the priority. 
+In Lab 3, we added the option to include a priority with each task. To change the priority for a task, the user can tap the approriate priority level. The selected level will be outlined in the color corresponding to the priority as an additional visual cue of the priority.
 
 <img src="edit_task_page_select_priority_lab_3.png" alt="Edit Task Page Lab 3 Select Priority" width="200px">
-
 
 ## Final App: Delete Pop-Up Confirmation Messages
 
@@ -163,8 +159,6 @@ For Lab 3, we introduced an error pop-up message whenever Firebase reports an er
 <img src="error_message_before_submitting_lab_3.png" alt="Error Message Before Submitting" width="200px">
 
 <img src="error_message_after_submitting_lab_3.png" alt="Error Message After Submitting" width="200px">
-
-
 
 ## Alternate Designs: Home Page and Single List Page Initial Brainstorming
 
@@ -373,6 +367,7 @@ Here are some challenges we faced:
 - We wanted our app to have features like creating a new list/task, deleting lists/tasks, and filtering out completed list items. Ideally, users be able to access these features in a way that is clear and intuitive. We struggled with finding a balance between making buttons for these features visible and making our app uncluttered / preventing users from accidentally deleting items. We found that pop-up menus could work well for deleting lists and filtering, whereas it might be better to have a small, visible button in the bottom of pages for adding lists/tasks.
 - CSS wasn't always the easiest to work with! We had quite a few issues trying to align elements on each page of our app, and working with CSS Flexbox and Gridbox wasn't very easy. We feel that it should be easier and more intuitive to style webpages — maybe CSS needs an update!
 - When we were implementing our walkthrough, we noticed that the sizing of text and elements in our iframes was significantly different than it looked when using a 360x640 pixel portrait-mode mobile display on Chrome Developer Tools. Most fonts and icons were too large for the screen. We troubleshooted for a while but couldn't find much information online about people experiencing similar issues. We tried changing relative sizing to absolute sizing and adding extra tags to our iframes, but none of these solved our problem. After creating a Piazza post and attending grutoring (thanks, Marcos!), we discovered that the issue was with Chrome Developer Tools. Chrome autosizes fonts to fit the device window when using a device emulator. Since we styled our webpages based on how they looked in Chrome Developer Tools, all of our font sizes were influenced by autosizing. To fix this, we had to change all of our icon sizes, text sizes, and other element sizes. We also had to add a viewport meta tag to all of our HTML pages so Chrome wouldn't autosize our fonts.
+- Integrating a Firebase database into our app proved to be much harder than we thought it would be. After installing the Node packages for Firebase, we kept getting a JavaScript heap out of memory error when running `npm run start`. We had to repeat the Firebase install and deploy steps multiple times, and ultimately, we had to create a new GitHub repo from scratch in order to get things to run. Even then, we ran into an issue where no Firebase deploy action was running when we pushed. So, we had to create another new GitHub repo from scratch to finally get everything working.
 
 ## Wins
 

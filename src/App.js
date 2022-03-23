@@ -96,7 +96,7 @@ function App() {
     // eslint-disable-next-line default-case
     switch (newListTasksPrimarySortField) {
       case "deadline":
-      case "name":
+      case "nameLowercasedForSorting":
         setListTasksPrimarySortDirection("asc");
         break;
       case "creationTime":
@@ -142,6 +142,13 @@ function App() {
       modifiedTime: serverTimestamp(),
       [taskField]: newValue,
     });
+
+    if (taskField === "name") {
+      updateDoc(taskDocRef, {
+        modifiedTime: serverTimestamp(),
+        nameLowercasedForSorting: newValue.toLowerCase(),
+      });
+    }
   }
 
   function handleEditTaskAllFields(
@@ -163,6 +170,7 @@ function App() {
     updateDoc(taskDocRef, {
       modifiedTime: serverTimestamp(),
       name: taskName,
+      nameLowercasedForSorting: taskName.toLowerCase(),
       deadline: taskDeadline,
       notes: taskNotes,
       isCompleted: taskStatus,
@@ -269,6 +277,7 @@ function App() {
       creationTime: serverTimestamp(),
       modifiedTime: serverTimestamp(),
       name: taskName,
+      nameLowercasedForSorting: taskName.toLowerCase(),
       deadline: taskDeadline,
       notes: taskNotes,
       isCompleted: false,

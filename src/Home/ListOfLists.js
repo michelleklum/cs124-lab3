@@ -11,6 +11,11 @@ function ListOfLists(props) {
 
   return (
     <div id="list-of-lists">
+      {props.data.length === 0 && 
+      <h3 
+      className="no-lists-message">
+        No Lists
+        </h3>}
       {props.data.map((list) => (
         <ListCard
           key={list.id}

@@ -42,7 +42,7 @@ When a user taps the plus button on the Home Page, they will be brought to the C
 
 ## Final App: Single List Page
 
-When a user taps the card for an individual list on the Home Page, the user will be brought to the Single List Page, which displays all the tasks in that list, sorted in chronological order, as well as a magnifying glass that can be tapped to unfurl a search bar for filtering through the tasks in that list. We thought it would be helpful to have the option to attach dates to tasks in case users want to perform specific tasks at specific times / dates. We also thought the search functionality would be helpful in case there are many tasks in a single list.
+When a user taps the card for an individual list on the Home Page, the user will be brought to the Single List Page, which displays all the tasks in that list, sorted primarily by priority and secondarily by deadline, as well as a magnifying glass that can be tapped to unfurl a search bar for filtering through the tasks in that list. We thought it would be helpful to have the option to attach dates to tasks in case users want to perform specific tasks at specific times / dates. We also thought the search functionality would be helpful in case there are many tasks in a single list.
 
 The circular plus icon in the bottom right corner of the Single List Page serves a similar purpose to the plus icon on the Home Page. But instead of creating a new list, the plus icon now enables users to add a new task.
 
@@ -75,6 +75,20 @@ We initially put all our task sorting options in the general Single List Page Me
 Clicking either the icon or the sort option description changes the sorting method to the one selected. The checkmark indicates the current sorting method. Clicking the back arrow takes users back to the general Single List Page Menu.
 
 <img src="single_list_page_menu_sorting_final_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Final Version" width="200px">
+
+By default, tasks are sorted by priority (see the Single List Page Lab 3 Final Version image above). For sorting by priority, we used a Firebase compound index so that the tasks would primarily be sorted by priority and then secondarily sorted by deadline, since we didn't want the tasks to be disorganized within each priority level. Furthermore, if a user is sorting by priority, they probably care more about the task's deadline than its name, creation time, or modification time.
+
+Here are what the Single List Page looks like using the other sorting methods: deadline, name, creation time, modification time — in that order. Notice that completed tasks always remain at the bottom, no matter what. However, completed tasks are also sorted by the selected sorting method.
+
+<img src="single_list_page_sort_by_deadline_final_lab_3.png" alt="Single List Page Sort By Deadline Lab 3 Final Version" width="200px">
+
+<img src="single_list_page_sort_by_name_final_lab_3.png" alt="Single List Page Sort By Name Lab 3 Final Version" width="200px">
+
+<img src="single_list_page_sort_by_creation_time_final_lab_3.png" alt="Single List Page Sort By Creation Time Lab 3 Final Version" width="200px">
+
+<img src="single_list_page_sort_by_modification_time_final_lab_3.png" alt="Single List Page Sort By Modification Time Lab 3 Final Version" width="200px">
+
+However, unlike with the sorting options, we decided not to add a separate delete options menu. That's because, during usability testing, users said it wasn’t necessary, and also indicated that they wanted to be able to delete tasks quickly. Adding a separate delete options menu would have meant that users would have had to make another click in order to perform a delete action. In future labs, we hope to see if more user testing confirms our findings from this round of user testing.
 
 ## Final App: View Task Page
 
@@ -172,7 +186,7 @@ And as you can see, our checkboxes for Lab 1 were styled a bit oddly. So, for La
 
 <img src="single_list_page_final_lab_1.png" alt="Single List Page Lab 1 Final Version" width="200px">
 
-In Lab 2, our completed tasks were not as distinguishable from tasks to be done. So, for Lab 3, we made the checkboxes for completed tasks gray, and we also added a header for completed tasks.
+Below is what our Single List Page looked like for Lab 2. Our completed tasks were not as distinguishable from tasks to be done. So, for Lab 3, we made the checkboxes for completed tasks gray, and we also added a header for completed tasks.
 
 <img src="single_list_page_final_lab_2.png" alt="Single List Page Lab 2 Final Version" width="200px">
 
@@ -182,9 +196,13 @@ This is the version of our Single List Page Menu Mode that we turned in for Lab 
 
 <img src="single_list_page_menu_mode_final_lab_1.png" alt="Single List Page Menu Mode Lab 1 Final Version" width="200px">
 
-As mentioned above, we decided it would not be a good idea to have the same trash can icon represent three different delete actions: delete completed tasks, delete all tasks, and delete list. So, for Lab 2, we decided to differentiate these actions by assigning each action a distinct icon. In Lab 3, we introduced sorting, so we added a Sort option to this menu.
+As mentioned above, we decided it would not be a good idea to have the same trash can icon represent three different delete actions: delete completed tasks, delete all tasks, and delete list. So, for Lab 2, we decided to differentiate these actions by assigning each action a distinct icon. In Lab 3, we introduced sorting, so we added a "Sort" row to this menu.
 
 <img src="single_list_page_menu_mode_final_lab_2.png" alt="Single List Page Menu Mode Lab 2 Final Version" width="200px">
+
+When we first implemented a separate task sort options menu in Lab 3, it looked like the image below. However, during usability testing, users mentioned that they wanted a one-click way to return back to the general Single List Page Menu, from the sort menu. So, for Lab 3, we ultimately decided to change the layout of the sort menu to contain a header with a back arrow and the phrase "Sort by..." That also allowed us to reduce the repetitiveness of "Sort by" as compared to this initial version of our sort menu.
+
+<img src="single_list_page_menu_sorting_v1_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Version 1" width="200px">
 
 ## Alternate Designs: View Task Page
 
@@ -244,7 +262,7 @@ For Lab 2, we conducted usability testing in-person with three Mudd students and
 
 ### Home Page
 
-All four users understood that our app was a task managing app just from looking at the home screen. They cited the name of our app ("Task Monster") and the layout of the lists on the home screen as primary reasons behind this. All users also understood that the plus icon in the bottom right corner would add a list and that the search button in the upper right corner allowed them to search for lists. Users believed the location of these buttons was intuitive. Users generally believed alphabetical sorting for the lists on the home screen made sense, but a few wanted an option to sort the lists by creation date or modification date. We plan to add this functionality in a future lab. Users also understood that, to enter a list, they just have to tap on the list card.
+All four users understood that our app was a task managing app just from looking at the home screen. They cited the name of our app ("Task Monster") and the layout of the lists on the home screen as primary reasons behind this. All users also understood that the plus icon in the bottom right corner would add a list and that the search button in the upper right corner allowed them to search for lists. Users believed the location of these buttons was intuitive. Users generally believed alphabetical sorting for the lists on the home screen made sense, but a few wanted an option to sort the lists by creation date or modification date. We added this functionality in Lab 3, along with a couple other sorting methods, such as by priority, deadline, and name. Users also understood that, to enter a list, they just have to tap on the list card.
 
 ### Home Page with List in Edit Mode
 

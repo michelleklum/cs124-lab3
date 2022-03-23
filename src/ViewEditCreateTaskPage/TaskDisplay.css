@@ -12,15 +12,15 @@
   grid-template-columns: 60px 2fr 1fr;
   margin: 0 auto;
   width: 91%;
-  margin-bottom: 65px; 
+  margin-bottom: 65px;
 }
 
 .task-display-picker-open {
-  grid-template-rows: 70px 140px 70px 1fr 70px; /* TODO: may have to change depending on whether we add more attributes a task could have! */
+  grid-template-rows: 70px 140px 70px 1fr 70px;
 }
 
 .task-display-picker-closed {
-  grid-template-rows: 70px 70px 1fr 70px; /* TODO: may have to change depending on whether we add more attributes a task could have! */
+  grid-template-rows: 70px 70px 1fr 70px;
 }
 
 .completed-icon-view-page {
@@ -70,7 +70,7 @@
   min-height: 70px;
   vertical-align: middle;
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .note-icon {
@@ -125,10 +125,11 @@
 
 .set-priority-icon {
   font-size: 20px;
-  color: #FEFFFF !important;
+  color: #feffff !important;
 }
 
-.set-priority-icon-circle { /* creating icon outline */
+.set-priority-icon-circle {
+  /* creating icon outline */
   background: #91c6c3;
   border-radius: 50%;
   width: 33px;

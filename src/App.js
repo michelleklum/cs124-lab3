@@ -193,7 +193,6 @@ function App() {
   }
 
   // TODO: CONSOLIDATE EDIT LIST FUNCTIONS!!!!!! (handleEditList and handleEditListAppearance)
-  // TODO: test showing / hiding completed items once we have tasks
   function handleEditList(listId, listField, newValue) {
     const listDocRef = doc(db, listCollectionName, listId);
     updateDoc(listDocRef, {

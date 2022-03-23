@@ -11,7 +11,7 @@ function SortByPriorityBar(props) {
         className="sort-by-priority-desc"
         onClick={() => props.onChangeSort("priority")}
       >
-        Sort by priority
+        priority
       </h2>
       {props.listTasksPrimarySortField === "priority" && (
         <i className="fas fa-check fa-4x sort-by-priority-check"></i>

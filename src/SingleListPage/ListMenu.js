@@ -3,6 +3,7 @@ import "./ListMenu.css";
 import EditListBar from "./EditListBar";
 import HideCompletedBar from "./HideCompletedBar";
 import SortBar from "./SortBar";
+import SortByHeaderBar from "./SortByHeaderBar";
 import SortByDeadlineBar from "./SortByDeadlineBar";
 import SortByNameBar from "./SortByNameBar";
 import SortByPriorityBar from "./SortByPriorityBar";
@@ -43,6 +44,7 @@ function ListMenu(props) {
       )}
       {props.listMenuType === "sorting" && (
         <div className="single-list-page-menu sorting-menu-grid">
+          <SortByHeaderBar onChangeMenuModeType={props.onChangeMenuModeType} />
           <SortByDeadlineBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}

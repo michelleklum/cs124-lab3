@@ -5,15 +5,15 @@ function SortByNameBar(props) {
     <Fragment>
       <i
         className="fas fa-sort-alpha-down sort-by-name-icon"
-        onClick={() => props.onChangeSort("name")}
+        onClick={() => props.onChangeSort("nameLowercasedForSorting")}
       ></i>
       <h2
         className="sort-by-name-desc"
-        onClick={() => props.onChangeSort("name")}
+        onClick={() => props.onChangeSort("nameLowercasedForSorting")}
       >
-        Sort by name
+        name
       </h2>
-      {props.listTasksPrimarySortField === "name" && (
+      {props.listTasksPrimarySortField === "nameLowercasedForSorting" && (
         <i className="fas fa-check fa-4x sort-by-name-check"></i>
       )}
     </Fragment>

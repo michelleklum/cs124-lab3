@@ -1,4 +1,28 @@
 p.set-note-text {
-  inline-size: 245px;
+  inline-size: 232px;
   overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
+
+.set-note-before-edit {
+  overflow: hidden; /* hides textarea scrollbar */
+  background: #eae8e8;
+  color: #172528;
+  font-size: 12pt;
+  height: auto;
+  font-family: "Open Sans", Calibri, sans-serif;
+  padding-left: 1em;
+  border-radius: 0.75em;
+  padding-right: 1em;
+  font-family: "Open Sans", Calibri, sans-serif;
+  border-radius: 0.75em;
+  inline-size: 232px;
+  writing-mode: horizontal-tb; 
+  min-height: 30px !important;
+
+}
+
+.no-notes {
+  color: grey;
+}
+

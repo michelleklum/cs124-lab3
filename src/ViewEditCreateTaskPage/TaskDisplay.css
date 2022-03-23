@@ -73,6 +73,12 @@
   align-items: center; 
 }
 
+.note-icon {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+}
+
 .set-note-text {
   font-size: 12pt;
 }

@@ -18,7 +18,10 @@
   border-bottom-style: hidden;
   border: none;
   outline: none;
-  padding: 1em;
-  border-radius: 0.75em;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.95em;
+  padding-bottom: 0.8em;
+  border-radius: 0.8em;
   text-align: center;
 }

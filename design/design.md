@@ -1,8 +1,8 @@
-# CS 124 Lab 2 Design Document
+# CS 124 Lab 3 Design Document
 
-CS 124 Interaction Design Lab 2: To-do App UI Design (Create Delete Complete Edit)
+CS 124 Interaction Design Lab 3: To-do App UI Design (Cloud Storage, Priority, Sorting)
 
-Link to app: [https://zoetokheim.github.io/cs124-lab2](https://zoetokheim.github.io/cs124-lab2)
+Link to app: [https://cs124-lab3-9c4c8--pr1-lab3-gdlyir33.web.app](https://cs124-lab3-9c4c8--pr1-lab3-gdlyir33.web.app)
 
 ## Final App: Home Page
 
@@ -54,7 +54,9 @@ Another Lab 2 change we made was to place completed tasks at the bottom of the l
 
 For Lab 2, we also restyled our checkboxes so that they would better cohere with the aesthetics (in particular, the color scheme) of our app.
 
-<img src="single_list_page_final_lab_2.png" alt="Single List Page Lab 2 Final Version" width="200px">
+In Lab 3, to better distinguish completed tasks from tasks to be done, we grayed-out completed tasks. We also added a header for "Completed" tasks.
+
+<img src="single_list_page_final_lab_3.png" alt="Single List Page Lab 3 Final Version" width="200px">
 
 Users can tap the 3 horizontal dots in the top right corner of the Single List Page to enter the Single List Page's Menu Mode, where they can customize the list appearance by going to the Edit List Page (which is basically the same as the Create List Page), hide / show completed tasks, delete completed tasks, delete all tasks, or delete the list.
 
@@ -64,7 +66,15 @@ Similarly, we initially had our "Hide completed tasks" filter appear directly on
 
 In Lab 1, we had the same trash can icon for all three delete actions in the Single List Page Menu Mode: delete completed tasks, delete all tasks, and delete list. However, since each action is distinct, we thought it would be confusing to users for all three actions to share the same visual representation. So, for Lab 2, we gave each of these delete actions a unique icon.
 
-<img src="single_list_page_menu_mode_final_lab_2.png" alt="Single List Page Menu Mode Lab 2 Final Version" width="200px">
+In Lab 3, we added task sorting options, so we expanded the Single List Page Menu to contain a "Sort" row.
+
+<img src="single_list_page_menu_mode_final_lab_3.png" alt="Single List Page Menu Mode Lab 3 Final Version" width="200px">
+
+We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu.
+
+Clicking either the icon or the sort option description changes the sorting method to the one selected. The checkmark indicates the current sorting method. Clicking the back arrow takes users back to the general Single List Page Menu.
+
+<img src="single_list_page_menu_sorting_final_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Final Version" width="200px">
 
 ## Final App: View Task Page
 
@@ -162,11 +172,19 @@ And as you can see, our checkboxes for Lab 1 were styled a bit oddly. So, for La
 
 <img src="single_list_page_final_lab_1.png" alt="Single List Page Lab 1 Final Version" width="200px">
 
+In Lab 2, our completed tasks were not as distinguishable from tasks to be done. So, for Lab 3, we made the checkboxes for completed tasks gray, and we also added a header for completed tasks.
+
+<img src="single_list_page_final_lab_2.png" alt="Single List Page Lab 2 Final Version" width="200px">
+
 ## Alternate Designs: Single List Page Menu Mode
 
-This is the version of our Single List Page Menu Mode that we turned in for Lab 1. As mentioned above, we decided it would not be a good idea to have the same trash can icon represent three different delete actions: delete completed tasks, delete all tasks, and delete list. So, for Lab 2, we decided to differentiate these actions by assigning each action a distinct icon.
+This is the version of our Single List Page Menu Mode that we turned in for Lab 1.
 
 <img src="single_list_page_menu_mode_final_lab_1.png" alt="Single List Page Menu Mode Lab 1 Final Version" width="200px">
+
+As mentioned above, we decided it would not be a good idea to have the same trash can icon represent three different delete actions: delete completed tasks, delete all tasks, and delete list. So, for Lab 2, we decided to differentiate these actions by assigning each action a distinct icon. In Lab 3, we introduced sorting, so we added a Sort option to this menu.
+
+<img src="single_list_page_menu_mode_final_lab_2.png" alt="Single List Page Menu Mode Lab 2 Final Version" width="200px">
 
 ## Alternate Designs: View Task Page
 

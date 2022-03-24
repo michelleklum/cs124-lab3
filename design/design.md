@@ -374,6 +374,16 @@ For Lab 3, we did usability testing with a version of our task sort options menu
 
 <img src="single_list_page_menu_sorting_v1_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Version 1" width="200px">
 
+### Messages when No Lists, Tasks, or Incomplete Tasks are Present
+
+During usability testing, all users either explicitly requested or said they'd appreciate a message when no lists are present, no tasks are present within a list, or all tasks are completed. Because of this feedback, we added these messages to our app.
+
+<img src="home_page_no_lists_lab_3.png" alt="Home Page No Lists Lab 3" width="200px">
+
+<img src="single_list_page_no_tasks_lab_3.png" alt="Single List Page No Tasks Lab 3" width="200px">
+
+<img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Incomplete Tasks Lab 3" width="200px">
+
 ## Challenges
 
 Here are some challenges we faced:

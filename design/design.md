@@ -12,8 +12,6 @@ The circular plus icon in the bottom right corner allows users to create a new l
 
 In order to save space, we decided not to display the search bar in a fixed position just under the top navigation bar. Instead, upon being tapped, the magnifying glass icon in the top right corner expands to a search bar that fills the entire top navigation bar. This happens in apps such as Facebook, Twitter, and Instagram, so we thought that users would be accustomed to such behavior. Search results will contain lists whose names match the search, and also tasks whose descriptions match the search. During usability testing, this two-layer searching ability was something users requested. In our current design, two-layer searching is not included (users can only see names of lists); however, we plan to include this in future iterations of our app.
 
-Tapping on the gear icon in the top right will bring users to their user setting page, where they can edit their name, email, etc. That page will be implemented when we introduce user authentication to our app.
-
 In Lab 2, we added an app icon and logo to our Home Page. This was to give our app more brand identity, and also to distinguish our Home Page from other pages of the app.
 
 <img src="home_page_final_lab_2.png" alt="Home Page Lab 2 Final Version" width="200px">
@@ -32,9 +30,13 @@ In Lab 2, we also decided to add a deeper shadow to a task card when it has its 
 
 <img src="home_page_edit_icons_final_lab_2.png" alt="Home Page Edit Icons Lab 2 Final Version" width="200px">
 
-In Lab 3, we added a message that appears on the Home Page when no lists are present. We saw this idea in the grading rubric for Lab 2 and thought it would be informative and useful for our users, since they can quickly see whether or not they have lists. In user testing, participants also said they'd like to have a message like this when there are no lists present.
+In Lab 3, we added a message that appears on the Home Page when no lists are present. We saw this idea in the grading rubric for Lab 2 and thought it would be informative and useful for our users, since it would help users realize the screen is empty because they have no lists (as opposed to no lists being shown because data is being fetched). In user testing, participants also requested a message like this when there are no lists present.
 
 <img src="home_page_no_lists_lab_3.png" alt="Home Page Without Lists Lab 3" width="200px">
+
+Additionally, because we're using Firebase to store our data in Lab 3, it takes a bit of time to load data from the database. Thus, we wanted to make sure our app showed a loading screen while data was being fetched. We decided a screen with a spinning wheel or other icon would look too busy, especially because it typically would only be flashed on the screen of a brief moment. Thus, we created an empty version of the homescreen to display while data is loading. While this screen normally only appears for a fraction of a second, we still think it improves the experience of using the app while data is loading in.
+
+<ADD EMPTY HOMESCREEN>
 
 ## Final App: Create List Page / Edit List Page
 
@@ -96,13 +98,18 @@ Here are what the Single List Page looks like using the other sorting methods: d
 
 <img src="single_list_page_sort_by_modification_time_final_lab_3.png" alt="Single List Page Sort By Modification Time Lab 3 Final Version" width="200px">
 
-In Lab 3, we also added a message when no tasks are present or when all tasks are completed. When a list has no task, the message "No Tasks" will appear on the list page. In user testing, participants said they'd like to have messages like these.
+In Lab 3, we also added a message when no tasks are present or when all tasks are completed. When a list has no tasks, the message "No Tasks" will appear on the list page. In user testing, participants said they'd like to have messages like these. As with the "No Lists" message on the home page when no lists are present, this message makes it clear than an empty list is the result of having no tasks, not an error loading data.
 
 <img src="single_list_page_no_tasks_lab_3.png" alt="Single List Page No Tasks" width="200px">
 
 When a list has completed tasks but no incomplete tasks, a message will appear that confims the user has completed all their tasks.
 
 <img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Tasks" width="200px">
+  
+When opening the Single List Page, it takes a moment for data from Firebase to be fetched. Therefore, for Lab 3, we added a loading screen while task data is loading in. This screen is simply a screen showing an empty list, and it typically only flashes for a brief moment before tasks load in. Because the screen has the same background and top bar as the Single List Page with tasks, the loading is almost imperceptible when opening this page. This is a good thing, since we want opening a page to appear fluid and clean.
+
+<ADD EMPTY SINGLELISTPAGE>
+
 
 ## Final App: View Task Page
 
@@ -114,7 +121,7 @@ In Lab 1, we had an X icon for returning to the Single List Page from the View T
 
 Also, in Lab 1, we had a checkbox icon indicating the completion status of the task open in the View Task Page. However, during user testing, we observed that many users actually attempted to use that View Task Page checkbox icon to edit the status of their task. That was problematic because the checkbox is disabled on the View Task Page; a user isn't supposed to edit their task while on this page. So, to reduce confusion, for Lab 2, we decided to change the View Task Page task completion status icon into icons that are used solely on this View Task Page.
 
-In Lab 3, we added priorities for each task. In the View Task Page, the prioirity of their task is stated next to the exclamation icon.
+In Lab 3, we added priorities for each task. In the View Task Page, the prioirity of their task is stated next to the exclamation icon. There are four priority options: no priority (default option when creating a new task), low priority, medium priority, and high priority.
 
 <img src="view_task_page_final_lab_3.png" alt="View Task Page Lab 3 Final Version" width="200px">
 
@@ -134,7 +141,7 @@ Tapping on the time field opens up a time picker. The user can either click or s
 
 <img src="edit_task_page_final_lab_3_time_picker.png" alt="Edit Task Page Lab 3 Final Version Time Picker" width="200px">
 
-In Lab 3, we added the option to include a priority with each task. To change the priority for a task, the user can tap the approriate priority level. The selected level will be outlined in the color corresponding to the priority as an additional visual cue of the priority.
+In Lab 3, we added the option to include a priority with each task. To change the priority for a task, the user can tap the approriate priority level. The selected level will be outlined in the color corresponding to the priority as an additional visual cue of the priority. The selected priority also has a light gray background to differentiate it from other options.
 
 <img src="edit_task_page_select_priority_lab_3.png" alt="Edit Task Page Lab 3 Select Priority" width="200px">
 

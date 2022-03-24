@@ -40,7 +40,7 @@ function ViewEditCreateTaskPage(props) {
     priority: 0,
     isCompleted: false,
   };
-
+  
   const currentTask = props.tasks.find(
     (task) => task.id === props.currentTaskId
   );

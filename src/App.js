@@ -8,7 +8,6 @@ import SingleListPage from "./SingleListPage/SingleListPage";
 import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskPage";
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
 import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
-import SingleListLoadingPage from "./SingleListLoadingPage/SingleListLoadingPage";
 import ErrorAlert from "./Global/ErrorAlert";
 
 import { initializeApp } from "firebase/app";
@@ -128,7 +127,7 @@ function App() {
     );
   }
 
-  const [dbTasks, tasksLoading, tasksError] = useCollectionData(tasksQuery);
+  const dbTasks = useCollectionData(tasksQuery)[0];
   const tasks = dbTasks ? dbTasks : [];
 
   function handleEditTask(listId, taskId, taskField, newValue) {
@@ -309,6 +308,7 @@ function App() {
   function handleToggleDeleteAlert() {
     setShowDeleteAlert(!showDeleteAlert);
   }
+
   return (
     <Fragment>
       {dataError ? (
@@ -348,12 +348,11 @@ function App() {
           showDeleteAlert={showDeleteAlert}
         />
       ) : null}
-      {currentPage === "SingleListPage" && !(tasksLoading || dataLoading) ? (
+      {currentPage === "SingleListPage" ? (
         <SingleListPage
+          db={db}
           data={data}
-          tasks={tasks}
-          loading={tasksLoading}
-          error={tasksError}
+          tasksQuery={tasksQuery}
           prevPage={prevPage}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
@@ -370,12 +369,6 @@ function App() {
           listTasksPrimarySortField={listTasksPrimarySortField}
           onChangeSort={handleChangeSort}
         />
-      ) : null}
-      {currentPage === "SingleListPage" && (tasksLoading || dataLoading) ? (
-        <SingleListLoadingPage
-          data={data}
-          currentListId={currentListId}
-          onChangePage={handleChangePage} />
       ) : null}
       {currentPage === "ListSearchPage" ? (
         <ListSearchPage

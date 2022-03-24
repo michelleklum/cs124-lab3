@@ -9,6 +9,7 @@ function Home(props) {
       <HomeTopBar
         onChangePage={props.onChangePage}
         onChangeList={props.onChangeList}
+        isLoading={false}
       />
       <ListOfLists
         data={props.data}
@@ -19,12 +20,15 @@ function Home(props) {
       />
       <AddButton
         onChangePage={props.onChangePage}
-        currentPage={props.currentPage} />
-      {props.showDeleteAlert && <DeleteAlert
-        type="this list" 
-        onToggleDeleteAlert={props.onToggleDeleteAlert}
-        onDelete={() => props.onDeleteList()}
-      />}
+        currentPage={props.currentPage}
+      />
+      {props.showDeleteAlert && (
+        <DeleteAlert
+          type="this list"
+          onToggleDeleteAlert={props.onToggleDeleteAlert}
+          onDelete={() => props.onDeleteList()}
+        />
+      )}
     </div>
   );
 }

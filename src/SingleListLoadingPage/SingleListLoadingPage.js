@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from "react";
 import ListTopBar from "../SingleListPage/ListTopBar";
 
 function SingleListLoadingPage(props) {
@@ -8,8 +8,8 @@ function SingleListLoadingPage(props) {
         <ListTopBar
           data={props.data}
           currentListId={props.currentListId}
-          inMenuMode={false}
           onChangePage={props.onChangePage}
+          isLoading={true}
         />
       </div>
     </Fragment>

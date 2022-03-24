@@ -3,8 +3,7 @@ import HomeTopBar from "../Home/HomeTopBar";
 function HomeLoadingPage() {
   return (
     <div>
-      <HomeTopBar
-      />
+      <HomeTopBar isLoading={true} />
     </div>
   );
 }

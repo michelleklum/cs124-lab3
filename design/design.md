@@ -1,8 +1,8 @@
-# CS 124 Lab 2 Design Document
+# CS 124 Lab 3 Design Document
 
-CS 124 Interaction Design Lab 2: To-do App UI Design (Create Delete Complete Edit)
+CS 124 Interaction Design Lab 3: To-do App UI Design (Cloud Storage, Priority, Sorting)
 
-Link to app: [https://zoetokheim.github.io/cs124-lab2](https://zoetokheim.github.io/cs124-lab2)
+Link to app: [https://cs124-lab3-9c4c8--pr1-lab3-gdlyir33.web.app](https://cs124-lab3-9c4c8--pr1-lab3-gdlyir33.web.app)
 
 ## Final App: Home Page
 
@@ -11,8 +11,6 @@ As our app currently stands, this is how the Home Page for an existing user woul
 The circular plus icon in the bottom right corner allows users to create a new list of tasks. We decided it wasn't necessary for the plus icon to be accompanied by any instructive text because during usability testing, participants didn't have trouble comprehending the purpose of a plus icon without text, as we explain further in the usability testing section below.
 
 In order to save space, we decided not to display the search bar in a fixed position just under the top navigation bar. Instead, upon being tapped, the magnifying glass icon in the top right corner expands to a search bar that fills the entire top navigation bar. This happens in apps such as Facebook, Twitter, and Instagram, so we thought that users would be accustomed to such behavior. Search results will contain lists whose names match the search, and also tasks whose descriptions match the search. During usability testing, this two-layer searching ability was something users requested. In our current design, two-layer searching is not included (users can only see names of lists); however, we plan to include this in future iterations of our app.
-
-Tapping on the gear icon in the top right will bring users to their user setting page, where they can edit their name, email, etc. That page will be implemented when we introduce user authentication to our app.
 
 In Lab 2, we added an app icon and logo to our Home Page. This was to give our app more brand identity, and also to distinguish our Home Page from other pages of the app.
 
@@ -32,17 +30,27 @@ In Lab 2, we also decided to add a deeper shadow to a task card when it has its 
 
 <img src="home_page_edit_icons_final_lab_2.png" alt="Home Page Edit Icons Lab 2 Final Version" width="200px">
 
+In Lab 3, we added a message that appears on the Home Page when no lists are present. We saw this idea in the grading rubric for Lab 2 and thought it would be informative and useful for our users, since it would help users realize the screen is empty because they have no lists (as opposed to no lists being shown because data is being fetched). In user testing, participants also requested a message like this when there are no lists present.
+
+<img src="home_page_no_lists_lab_3.png" alt="Home Page Without Lists Lab 3" width="200px">
+
+Additionally, because we're using Firebase to store our data in Lab 3, it takes a bit of time to load data from the database. Thus, we wanted to make sure our app showed a loading screen while data was being fetched. We decided a screen with a spinning wheel or other icon would look too busy, especially because it typically would only be flashed on the screen of a brief moment. Thus, we created an empty version of the homescreen to display while data is loading. While this screen normally only appears for a fraction of a second, we still think it improves the experience of using the app while data is loading in.
+
+<img src="home_loading_page_lab_3.png" alt="Single List Loading Page" width="200px">
+
 ## Final App: Create List Page / Edit List Page
 
 When a user taps the plus button on the Home Page, they will be brought to the Create List Page, where they can enter a list name into the input box in the top navigation bar, and also select an icon to represent their list. We wanted to give users a way to customize the appearances of their lists to their liking. The X icon cancels the action of creating a new list, while the checkmark icon saves the newly created list. This is similar to behavior seen in apps such as Google Calendar, when users edit Calendar Events on mobile devices. The checkmark icon is only enabled after the user has named their list and given it a representative icon.
 
-<img src="create_list_page_final_lab_2.png" alt="Create List Page Lab 2 Final Version" width="200px">
+During usability testing for Lab 3, we noticed that there was no autofocus on the list name input textbox on the Create List Page. So, we corrected that in Lab 3, saving users a click.
+
+<img src="user_test_lab_3_create_list_page_autofocus.png" alt="User Testing Lab 3 Edit Create List Page Autofocus" width="200px">
 
 <img src="create_list_page_in_progress_final_lab_2.png" alt="Create List Page In Progress Lab 2 Final Version" width="200px">
 
 ## Final App: Single List Page
 
-When a user taps the card for an individual list on the Home Page, the user will be brought to the Single List Page, which displays all the tasks in that list, sorted in chronological order, as well as a magnifying glass that can be tapped to unfurl a search bar for filtering through the tasks in that list. We thought it would be helpful to have the option to attach dates to tasks in case users want to perform specific tasks at specific times / dates. We also thought the search functionality would be helpful in case there are many tasks in a single list.
+When a user taps the card for an individual list on the Home Page, the user will be brought to the Single List Page, which displays all the tasks in that list, sorted primarily by priority and secondarily by deadline, as well as a magnifying glass that can be tapped to unfurl a search bar for filtering through the tasks in that list. We thought it would be helpful to have the option to attach dates to tasks in case users want to perform specific tasks at specific times / dates. We also thought the search functionality would be helpful in case there are many tasks in a single list.
 
 The circular plus icon in the bottom right corner of the Single List Page serves a similar purpose to the plus icon on the Home Page. But instead of creating a new list, the plus icon now enables users to add a new task.
 
@@ -54,7 +62,11 @@ Another Lab 2 change we made was to place completed tasks at the bottom of the l
 
 For Lab 2, we also restyled our checkboxes so that they would better cohere with the aesthetics (in particular, the color scheme) of our app.
 
-<img src="single_list_page_final_lab_2.png" alt="Single List Page Lab 2 Final Version" width="200px">
+In Lab 3, to better distinguish completed tasks from tasks to be done, we grayed-out completed tasks. We also added a header for "Completed" tasks. Apps like Microsoft's To Do app separate completed tasks from incomplete tasks, and we thought this would be useful for our app. The "Completed" header only appears when the list has completed tasks.
+
+We also restyled checkboxes to match the color of the corresponding task's priority. This choice was based on researching how other apps (Todoist, Microsoft's To Do app, Apple's Reminders app) style checkboxes.
+
+<img src="single_list_page_final_lab_3.png" alt="Single List Page Lab 3 Final Version" width="200px">
 
 Users can tap the 3 horizontal dots in the top right corner of the Single List Page to enter the Single List Page's Menu Mode, where they can customize the list appearance by going to the Edit List Page (which is basically the same as the Create List Page), hide / show completed tasks, delete completed tasks, delete all tasks, or delete the list.
 
@@ -64,7 +76,39 @@ Similarly, we initially had our "Hide completed tasks" filter appear directly on
 
 In Lab 1, we had the same trash can icon for all three delete actions in the Single List Page Menu Mode: delete completed tasks, delete all tasks, and delete list. However, since each action is distinct, we thought it would be confusing to users for all three actions to share the same visual representation. So, for Lab 2, we gave each of these delete actions a unique icon.
 
-<img src="single_list_page_menu_mode_final_lab_2.png" alt="Single List Page Menu Mode Lab 2 Final Version" width="200px">
+In Lab 3, we added task sorting options, so we expanded the Single List Page Menu to contain a "Sort" row.
+
+<img src="single_list_page_menu_mode_final_lab_3.png" alt="Single List Page Menu Mode Lab 3 Final Version" width="200px">
+
+We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu. Clicking either the icon or the sort option description changes the sorting method to the one selected. The checkmark indicates the current sorting method. Clicking the back arrow takes users back to the general Single List Page Menu.
+
+However, unlike with the sorting options, we decided not to add a separate delete options menu. That's because, during usability testing, users said a separate delete options menu wasn’t necessary, and also indicated that they wanted to be able to delete tasks quickly. Adding a separate delete options menu would have meant that users would have had to make another click in order to perform a delete action. In future labs, we hope to see if more user testing confirms our findings from this round of user testing.
+
+<img src="single_list_page_menu_sorting_final_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Final Version" width="200px">
+
+By default, tasks are sorted by priority. For sorting by priority, we used a Firebase compound index so that the tasks would primarily be sorted by priority and then secondarily sorted by deadline, since we didn't want the tasks to be disorganized within each priority level. Our reasoning was also that if a user is sorting by priority, they probably care more about the task's deadline than its name, creation time, or modification time.
+
+Here are what the Single List Page looks like using the other sorting methods: deadline, name, creation time, modification time — in that order. Notice that completed tasks always remain at the bottom, no matter what. However, completed tasks are also sorted by the selected sorting method.
+
+<img src="single_list_page_sort_by_deadline_final_lab_3.png" alt="Single List Page Sort By Deadline Lab 3 Final Version" width="200px">
+
+<img src="single_list_page_sort_by_name_final_lab_3.png" alt="Single List Page Sort By Name Lab 3 Final Version" width="200px">
+
+<img src="single_list_page_sort_by_creation_time_final_lab_3.png" alt="Single List Page Sort By Creation Time Lab 3 Final Version" width="200px">
+
+<img src="single_list_page_sort_by_modification_time_final_lab_3.png" alt="Single List Page Sort By Modification Time Lab 3 Final Version" width="200px">
+
+In Lab 3, we also added a message when no tasks are present or when all tasks are completed. When a list has no tasks, the message "No Tasks" will appear on the list page. In user testing, participants said they'd like to have messages like these. As with the "No Lists" message on the home page when no lists are present, this message makes it clear than an empty list is the result of having no tasks, not an error loading data.
+
+<img src="single_list_page_no_tasks_lab_3.png" alt="Single List Page No Tasks" width="200px">
+
+When a list has completed tasks but no incomplete tasks, a message will appear that confims the user has completed all their tasks.
+
+<img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Tasks" width="200px">
+  
+When opening the Single List Page, it takes a moment for data from Firebase to be fetched. Therefore, for Lab 3, we added a loading screen while task data is loading in. This screen is simply a screen showing an empty list, and it typically only flashes for a brief moment before tasks load in. Because the screen has the same background and top bar as the Single List Page with tasks, the loading is almost imperceptible when opening this page. This is a good thing, since we want opening a page to appear fluid and clean.
+
+<img src="single_list_loading_page_lab_3.png" alt="Single List Loading Page" width="200px">
 
 ## Final App: View Task Page
 
@@ -76,21 +120,29 @@ In Lab 1, we had an X icon for returning to the Single List Page from the View T
 
 Also, in Lab 1, we had a checkbox icon indicating the completion status of the task open in the View Task Page. However, during user testing, we observed that many users actually attempted to use that View Task Page checkbox icon to edit the status of their task. That was problematic because the checkbox is disabled on the View Task Page; a user isn't supposed to edit their task while on this page. So, to reduce confusion, for Lab 2, we decided to change the View Task Page task completion status icon into icons that are used solely on this View Task Page.
 
-<img src="view_task_page_final_lab_2.png" alt="View Task Page Lab 2 Final Version" width="200px">
+In Lab 3, we added priorities for each task. In the View Task Page, the prioirity of their task is stated next to the exclamation icon. There are four priority options: no priority (default option when creating a new task), low priority, medium priority, and high priority.
+
+<img src="view_task_page_final_lab_3.png" alt="View Task Page Lab 3 Final Version" width="200px">
 
 ## Final App: Edit Task Page
 
 When a user taps the pencil icon on the View Task Page, they are brought to the Edit Task Page, where they can edit the task name in the input box at the top of the page. They can also change the task date and time using dropdown menus, as well as add any additional notes, and/or mark the task as completed / not completed. Both the task name and the additional notes inputs will expand vertically as necessary, as the user types. They also both have character limits so that task names and additional notes don't get too long. Clicking the trash can icon at the bottom of the Edit Task Page will delete the task.
 
-<img src="edit_task_page_final_lab_2.png" alt="Edit Task Page Lab 2 Final Version" width="200px">
+In Lab 3, we moved the autofocus from the "Additional notes" input box to the task name input box, based on Prof. Rhodes' advice on our Lab 2 Pull Request. This makes more sense since users must add a task name when they first create a task, and they're more likely to edit a task's name than its additional notes.
+
+<img src="edit_task_page_final_lab_3.png" alt="Edit Task Page Lab 3 Final Version" width="200px">
 
 Tapping on the date field opens up a date picker. The user can either click or swipe (click and drag on a laptop) to move their desired month, day, or year into the selected area. Initially, we only allowed for the swiping motion for scrolling through the date picker. However, during user testing, the go-to action for some of our users was to click their desired month / day / year, rather than to scroll. This may have been because we did user testing on a laptop instead of a phone. Regardless, we decided to implement the additional onClick event to allow for users who default to a click action, rather than a scroll action. The date picker was a new part of our UI design introduced for Lab 2.
 
-<img src="edit_task_page_final_lab_2_date_picker.png" alt="Edit Task Page Lab 2 Final Version Date Picker" width="200px">
+<img src="edit_task_page_final_lab_3_date_picker.png" alt="Edit Task Page Lab 3 Final Version Date Picker" width="200px">
 
 Tapping on the time field opens up a time picker. The user can either click or swipe (click and drag on a laptop) to move their desired hour, minute, or period (AM / PM) into the selected area. Initially, we only allowed for the swiping motion for scrolling through the time picker. However, during user testing, the go-to action for some of our users was to click their desired hour / minute / period (AM / PM), rather than to scroll. This may have been because we did user testing on a laptop instead of a phone. Regardless, we decided to implement the additional onClick event to allow for users who default to a click action, rather than a scroll action. The time picker was a new part of our UI design introduced for Lab 2.
 
-<img src="edit_task_page_final_lab_2_time_picker.png" alt="Edit Task Page Lab 2 Final Version Time Picker" width="200px">
+<img src="edit_task_page_final_lab_3_time_picker.png" alt="Edit Task Page Lab 3 Final Version Time Picker" width="200px">
+
+In Lab 3, we added the option to include a priority with each task. To change the priority for a task, the user can tap the approriate level. The selected level will be outlined in the color corresponding to the priority as an additional visual cue of the priority. The selected priority also has a light gray background.
+
+<img src="edit_task_page_select_priority_lab_3.png" alt="Edit Task Page Lab 3 Select Priority" width="200px">
 
 ## Final App: Delete Pop-Up Confirmation Messages
 
@@ -107,6 +159,14 @@ For Lab 2, we introduced confirmation messages that would pop up when a user cli
 <img src="alert_single_list_page_menu_mode_delete_list.png" alt="Single List Page Menu Mode Delete List Alert Lab 2 Final Version" width="200px">
 
 <img src="alert_edit_task_page_delete_task.png" alt="Edit Task Page Delete Task Alert Lab 2 Final Version" width="200px">
+
+## Final App: Report Error Pop-Up Message
+
+For Lab 3, we introduced a Report Error Pop-up whenever Firebase reports an error loading list data. The user then has the opportunity to report the error. Pressing the report button will log the error in our database, and the user will be notified that their error was reported.
+
+<img src="error_message_before_submitting_lab_3.png" alt="Error Message Before Submitting" width="200px">
+
+<img src="error_message_after_submitting_lab_3.png" alt="Error Message After Submitting" width="200px">
 
 ## Alternate Designs: Home Page and Single List Page Initial Brainstorming
 
@@ -146,6 +206,12 @@ This is the version of our Home Page that we turned in for Lab 1. This version o
 
 <img src="home_page_final_lab_1.png" alt="Home Page Lab 1 Final Version" width="200px">
 
+## Alternate Designs: Create List Page / Edit List Page
+
+Initially, there was no autofocus on the list name input textbox on the Create List Page / Edit List Page — as shown below. We added an autofocus after we noticed that during Lab 3 usability testing.
+
+<img src="create_list_page_final_lab_2.png" alt="Create List Page Lab 2 Final Version" width="200px">
+
 ## Alternate Designs: Single List Page
 
 This is the first version of our Single List Page that we created. As mentioned above, we later decided to save space by putting the hide completed tasks behind a Single List Page menu mode, and to reduce the chances of users accidentally deleting all tasks by placing that functionality in the menu mode as well. We'll discuss this in more detail in the usability testing section below.
@@ -162,11 +228,27 @@ And as you can see, our checkboxes for Lab 1 were styled a bit oddly. So, for La
 
 <img src="single_list_page_final_lab_1.png" alt="Single List Page Lab 1 Final Version" width="200px">
 
+Below is what our Single List Page looked like for Lab 2. Our incomplete tasks and completed tasks were not as distinct as they could be. So, in Lab 3, we made the checkboxes for completed tasks gray, and we also added a header for completed tasks.
+
+<img src="single_list_page_final_lab_2.png" alt="Single List Page Lab 2 Final Version" width="200px">
+
 ## Alternate Designs: Single List Page Menu Mode
 
-This is the version of our Single List Page Menu Mode that we turned in for Lab 1. As mentioned above, we decided it would not be a good idea to have the same trash can icon represent three different delete actions: delete completed tasks, delete all tasks, and delete list. So, for Lab 2, we decided to differentiate these actions by assigning each action a distinct icon.
+This is the version of our Single List Page Menu Mode that we turned in for Lab 1.
 
 <img src="single_list_page_menu_mode_final_lab_1.png" alt="Single List Page Menu Mode Lab 1 Final Version" width="200px">
+
+As mentioned above, we decided it would not be a good idea to have the same trash can icon represent three different delete actions: delete completed tasks, delete all tasks, and delete list. So, for Lab 2, we decided to differentiate these actions by assigning each action a distinct icon. In Lab 3, we introduced sorting, so we added a "Sort" row to this menu.
+
+<img src="single_list_page_menu_mode_final_lab_2.png" alt="Single List Page Menu Mode Lab 2 Final Version" width="200px">
+
+When we first tried to add task sorting options in Lab 3, we added them directly to the general Single List Page Menu — like below. However, the general Single List Page Menu soon felt very cluttered, so we later decided to move the sorting options to a separate sort menu that could be access through a "Sort" row in the general Single List Page Menu.
+
+<img src="single_list_page_menu_mode_v1_lab_3.png" alt="Single List Page Menu Mode Lab 3 Version 1" width="200px">
+
+When we first implemented a separate task sort options menu in Lab 3, it looked like the image below. However, during usability testing, users mentioned that, from the sort menu, they wanted a one-click way to return back to the general Single List Page Menu. So, for Lab 3, we ultimately decided to change the layout of the sort menu to contain a header with a back arrow and the phrase "Sort by..." Only including the "Sort by" phrase in the header also allowed us to reduce the repetitiveness of "Sort by" as compared to the initial version of our sort menu seen below.
+
+<img src="single_list_page_menu_sorting_v1_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Version 1" width="200px">
 
 ## Alternate Designs: View Task Page
 
@@ -176,11 +258,23 @@ In Lab 1, we also had a checkbox icon indicating the task completion status. How
 
 <img src="view_task_page_final_lab_1.png" alt="View Task Page Lab 1 Final Version" width="200px">
 
+Below is the View Task Page we turned in for Lab 2. In Lab 3, we added task priority as an additional field for each task.
+
+<img src="view_task_page_final_lab_2.png" alt="View Task Page Lab 3 Final Version" width="200px">
+
 ## Alternate Designs: Edit Task Page
 
 This is the version of our Edit Task Page that we turned in for Lab 1. We fleshed out the design of the Edit Task Page further for Lab 2.
 
 <img src="edit_task_page_final_lab_1.png" alt="Edit Task Page Lab 1 Final Version" width="200px">
+
+Below is the Edit Task Page that we turned in for Lab 2. In Lab 3, we added the ability to set a task's priority level. We also moved the autofocus from the "Additional notes" input box to the task name input box, based on Prof. Rhodes' advice on our Lab 2 Pull Request, and also just because that makes more sense since users must add a task name when they first create a task, and they're more likely to edit a task's name, rather than its additional notes.
+
+<img src="edit_task_page_final_lab_2.png" alt="Edit Task Page Lab 2 Final Version" width="200px">
+
+<img src="edit_task_page_final_lab_2_date_picker.png" alt="Edit Task Page Lab 2 Final Version Date Picker" width="200px">
+
+<img src="edit_task_page_final_lab_2_time_picker.png" alt="Edit Task Page Lab 2 Final Version Time Picker" width="200px">
 
 ## Usability Testing: Lab 1
 
@@ -226,7 +320,7 @@ For Lab 2, we conducted usability testing in-person with three Mudd students and
 
 ### Home Page
 
-All four users understood that our app was a task managing app just from looking at the home screen. They cited the name of our app ("Task Monster") and the layout of the lists on the home screen as primary reasons behind this. All users also understood that the plus icon in the bottom right corner would add a list and that the search button in the upper right corner allowed them to search for lists. Users believed the location of these buttons was intuitive. Users generally believed alphabetical sorting for the lists on the home screen made sense, but a few wanted an option to sort the lists by creation date or modification date. We plan to add this functionality in a future lab. Users also understood that, to enter a list, they just have to tap on the list card.
+All four users understood that our app was a task managing app just from looking at the home screen. They cited the name of our app ("Task Monster") and the layout of the lists on the home screen as primary reasons behind this. All users also understood that the plus icon in the bottom right corner would add a list and that the search button in the upper right corner allowed them to search for lists. Users believed the location of these buttons was intuitive. Users generally believed alphabetical sorting for the lists on the home screen made sense, but a few wanted an option to sort the lists by creation date or modification date. We added this functionality in Lab 3, along with a couple other sorting methods, such as by priority, deadline, and name. Users also understood that, to enter a list, they just have to tap on the list card.
 
 ### Home Page with List in Edit Mode
 
@@ -256,6 +350,40 @@ Users found the click and drag mechanism (which would translate to scrolling on 
 
 Users were confused about why the "Completed" checkbox was not editable from this page, since the view-only checkbox looked the same as the editable checkbox. We changed the icon used to represent completed and uncompleted tasks on the View Task Page so users would understand that they could not mark a task completed from the View Task Page.
 
+## Usability Testing: Lab 3
+
+For Lab 3, we conducted usability testing in-person with two Mudd students and virtually (through Zoom) with a student from another school. We first asked participants to share their impressions of our app just based on the home screen. We asked what they thought our app did and what actions they thought they could perform based on viewing the page. Next, we asked participants to perform a series of tasks while thinking out loud. These tasks included creating, deleting, and editing lists and tasks, as well as sorting tasks and assigning priority levels to tasks. For instance, we asked each user testing participant to add several tasks to a new list, and then try to change the sorting method of that list to "name" and "creation time."
+
+Users generally seemed to enjoy using our app. One user even remarked that they had the time of their life!
+
+### Edit List Page and Create List Page
+
+When a user was creating a new list during usability testing, we noticed that the Create List Page did not automatically autofocus on the list name input textbox. We decided to add an autofocus to the list name input textbox since users must type in a name in order to create a new list. The autofocus saves users from making an additional click.
+
+<img src="user_test_lab_3_create_list_page_autofocus.png" alt="User Testing Lab 3 Edit Create List Page Autofocus" width="200px">
+
+### Delete Alert Error
+
+When we asked a user to try deleting all completed tasks in a list during usability testing, we realized that we had introduced a bug into our app when we added a Report Error popup alert in Lab 3. The bug made it so that our other alerts had too much whitespace on the bottom. After discovering this issue during usability testing, we were able to quickly remedy it.
+
+<img src="user_test_lab_3_delete_alert_error.png" alt="User Testing Lab 3 Delete Alert Error" width="200px">
+
+### Single List Page Menu Mode
+
+For Lab 3, we did usability testing with a version of our task sort options menu that looked like the one below. During usability testing, users mentioned that they wanted to be able to directly go back from the sort menu to the general Single List Page Menu. So, we ultimately changed the design of the sort menu so that there would be a header with a back arrow for returning to the general Single List Page Menu.
+
+<img src="single_list_page_menu_sorting_v1_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Version 1" width="200px">
+
+### Messages when No Lists, Tasks, or Incomplete Tasks are Present
+
+During usability testing, all users either explicitly requested or said they'd appreciate a message when no lists are present, no tasks are present within a list, or all tasks are completed. Because of this feedback, we added these messages to our app.
+
+<img src="home_page_no_lists_lab_3.png" alt="Home Page No Lists Lab 3" width="200px">
+
+<img src="single_list_page_no_tasks_lab_3.png" alt="Single List Page No Tasks Lab 3" width="200px">
+
+<img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Incomplete Tasks Lab 3" width="200px">
+
 ## Challenges
 
 Here are some challenges we faced:
@@ -265,6 +393,7 @@ Here are some challenges we faced:
 - We wanted our app to have features like creating a new list/task, deleting lists/tasks, and filtering out completed list items. Ideally, users be able to access these features in a way that is clear and intuitive. We struggled with finding a balance between making buttons for these features visible and making our app uncluttered / preventing users from accidentally deleting items. We found that pop-up menus could work well for deleting lists and filtering, whereas it might be better to have a small, visible button in the bottom of pages for adding lists/tasks.
 - CSS wasn't always the easiest to work with! We had quite a few issues trying to align elements on each page of our app, and working with CSS Flexbox and Gridbox wasn't very easy. We feel that it should be easier and more intuitive to style webpages — maybe CSS needs an update!
 - When we were implementing our walkthrough, we noticed that the sizing of text and elements in our iframes was significantly different than it looked when using a 360x640 pixel portrait-mode mobile display on Chrome Developer Tools. Most fonts and icons were too large for the screen. We troubleshooted for a while but couldn't find much information online about people experiencing similar issues. We tried changing relative sizing to absolute sizing and adding extra tags to our iframes, but none of these solved our problem. After creating a Piazza post and attending grutoring (thanks, Marcos!), we discovered that the issue was with Chrome Developer Tools. Chrome autosizes fonts to fit the device window when using a device emulator. Since we styled our webpages based on how they looked in Chrome Developer Tools, all of our font sizes were influenced by autosizing. To fix this, we had to change all of our icon sizes, text sizes, and other element sizes. We also had to add a viewport meta tag to all of our HTML pages so Chrome wouldn't autosize our fonts.
+- A note from Lab 3: Integrating a Firebase database into our app proved to be much harder than we thought it would be. After installing the Node packages for Firebase, we kept getting a JavaScript heap out of memory error when running `npm run start`. We had to repeat the Firebase install and deploy steps multiple times, and ultimately, we had to create a new GitHub repo from scratch in order to get things to run. Even then, we ran into an issue where no Firebase deploy action was running when we pushed to GitHub. That was probably because the branches of our first new GitHub repo were set up a bit oddly. So, we had to create another new GitHub repo from scratch to finally get everything working.
 
 ## Wins
 
@@ -277,3 +406,4 @@ Here are some parts of our design we're most proud of:
 - Finally, we're proud of adding extra functionality to our app, in addition to what was required of us for Lab 1. For instance, we designed search bars for both the Home Page and the Single List Page, which will enable users to search lists for the lists and/or tasks that they are looking for. We also created an Edit List Page, which will allow users to customize their lists by selecting list icons and maybe even colors in the future.
 - A note from Lab 2: We're happy with our new app icon and logo — designed in Adobe Illustrator!
 - A note from Lab 2: We're proud that we were able to implement the Edit Task Page date picker and time picker from scratch, without usinge external packages. The CSS Gridbox styling was tricky, and it wasn't easy to get both clicking and swiping actions to work, nor was it easy to constrain the date picker to valid days in every month, but we did it!
+- A note from Lab 3: In this lab, we introduced a lot of the cherry-on-the-top elements that enhance the user experience, such as a Report Error Pop-up when there is an error loading list data from Firebase, as well as a loading pages to be displayed when Firebase data is loading. We also added a "No tasks" message for an empty list, as well as a "You've completed all your tasks!" for a list with some completed tasks but no incomplete ones.

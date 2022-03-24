@@ -13,7 +13,7 @@ function CompletionBar(props) {
           openDatePicker={props.openDatePicker}
           openTimePicker={props.openTimePicker}
         />
-      ) : props.task.isTaskCompleted ? (
+      ) : props.task.isCompleted ? (
         <i className="fas fa-solid fa-check completed-icon-view-page"></i>
       ) : (
         <i className="fas fa-solid fa-spinner completed-icon-view-page"></i>

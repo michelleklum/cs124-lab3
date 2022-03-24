@@ -1,25 +1,36 @@
 import React, { Fragment } from "react";
 import "./DateAndTimeBar.css";
 
-function convertMilitaryTimeToStandardTime(militaryTime) {
-  let amPm = "AM"; // assume AM for now
+function DateAndTimeBar(props) {
+  // Get date and time from tempTaskDeadline (which is a Firebase Timestamp)
+  // Convert Firebase Timestamp to JavaScript Date object
+  const tempTaskDeadlineJSDate = props.tempTaskDeadline.toDate();
 
-  let [hour, minute] = militaryTime.split(":");
-  hour = parseInt(hour);
-  if (hour > 12) {
+  // Parse JavaScript Date object
+  const initialMonth = tempTaskDeadlineJSDate.getMonth() + 1; // JavaScript Date object months are zero-indexed
+  const initialDay = tempTaskDeadlineJSDate.getDate();
+  const initialYear = tempTaskDeadlineJSDate.getFullYear();
+
+  // Handle JavaScript Date object's use of military time
+  const initialMilitaryHour = tempTaskDeadlineJSDate.getHours();
+  let initialHour = initialMilitaryHour;
+  let initialAmPm = "AM"; // assume AM for now
+  if (initialMilitaryHour > 12) {
     // PM times
-    hour -= 12;
-    amPm = "PM";
-  } else if (hour === 0) {
+    initialHour -= 12;
+    initialAmPm = "PM";
+  } else if (initialMilitaryHour === 12) {
+    // 12:00 PM
+    initialHour = 12;
+    initialAmPm = "PM";
+  } else if (initialMilitaryHour === 0) {
     // 12:__ AM
-    hour = 12;
-    amPm = "AM";
+    initialHour = 12;
+    initialAmPm = "AM";
   }
 
-  return `${hour}:${minute} ${amPm}`;
-}
+  const initialMinute = tempTaskDeadlineJSDate.getMinutes();
 
-function DateAndTimeBar(props) {
   const dateEditCreateModeBackgroundClassName =
     props.inEditTaskMode || props.inCreateTaskMode
       ? "date-edit-background"
@@ -39,7 +50,9 @@ function DateAndTimeBar(props) {
         )}
         onClick={props.onDateClick}
       >
-        {props.tempTaskDate}
+        {`${String(initialMonth).padStart(2, "0")}/${String(
+          initialDay
+        ).padStart(2, "0")}/${initialYear}`}
       </p>
       <p
         className={["set-time", timeEditCreateModeBackgroundClassName].join(
@@ -47,7 +60,9 @@ function DateAndTimeBar(props) {
         )}
         onClick={props.onTimeClick}
       >
-        {convertMilitaryTimeToStandardTime(props.tempTaskTime)}
+        {`${String(initialHour).padStart(2, "0")}:${String(
+          initialMinute
+        ).padStart(2, "0")} ${initialAmPm}`}
       </p>
     </Fragment>
   );

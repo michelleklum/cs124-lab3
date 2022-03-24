@@ -5,6 +5,7 @@ import DatePicker from "./DatePicker";
 import TimePicker from "./TimePicker";
 import AdditionalNotesBar from "./AdditionalNotesBar";
 import CompletionBar from "./CompletionBar";
+import PriorityBar from "./PriorityBar";
 
 function TaskDisplay(props) {
   const [openDatePicker, setOpenDatePicker] = useState(false);
@@ -41,8 +42,7 @@ function TaskDisplay(props) {
         task={props.task}
         inEditTaskMode={props.inEditTaskMode}
         inCreateTaskMode={props.inCreateTaskMode}
-        tempTaskDate={props.tempTaskDate}
-        tempTaskTime={props.tempTaskTime}
+        tempTaskDeadline={props.tempTaskDeadline}
         onDateClick={
           props.inEditTaskMode || props.inCreateTaskMode
             ? toggleDatePicker
@@ -53,6 +53,16 @@ function TaskDisplay(props) {
             ? toggleTimePicker
             : null
         }
+      />
+      <PriorityBar
+        currentListId={props.currentListId}
+        task={props.task}
+        inEditTaskMode={props.inEditTaskMode}
+        inCreateTaskMode={props.inCreateTaskMode}
+        tempTaskPriority={props.tempTaskPriority}
+        onChangeTaskPriority={props.onChangeTaskPriority}
+        openDatePicker={openDatePicker}
+        openTimePicker={openTimePicker}
       />
       <AdditionalNotesBar
         currentListId={props.currentListId}
@@ -66,14 +76,14 @@ function TaskDisplay(props) {
       />
       {openDatePicker ? (
         <DatePicker
-          tempTaskDate={props.tempTaskDate}
-          onChangeTaskDate={props.onChangeTaskDate}
+          tempTaskDeadline={props.tempTaskDeadline}
+          onChangeTaskDeadline={props.onChangeTaskDeadline}
         />
       ) : null}
       {openTimePicker ? (
         <TimePicker
-          tempTaskTime={props.tempTaskTime}
-          onChangeTaskTime={props.onChangeTaskTime}
+          tempTaskDeadline={props.tempTaskDeadline}
+          onChangeTaskDeadline={props.onChangeTaskDeadline}
         />
       ) : null}
       {!props.inCreateTaskMode && (

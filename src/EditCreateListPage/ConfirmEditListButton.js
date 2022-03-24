@@ -1,34 +1,42 @@
+import React, { useState } from "react";
+
 function ConfirmEditListButton(props) {
+    const [confirmInProgress, setConfirmInProgress] = useState(false);
+
     function confirmEdit() {
+        setConfirmInProgress(true);
         props.onEditList(props.currentListId,
             props.listName,
-            props.listIcon)
-        props.onChangePage(props.prevPage)
+            props.listIcon);
     }
 
     function confirmCreateList() {
+        setConfirmInProgress(true);
         props.onCreateList(props.listName,
-            props.listIcon)
-        props.onChangePage("Home")
+            props.listIcon);
     }
 
     return (
         <div>
-            {props.inEditListMode && (props.listName !== "") && (props.listIcon !== "") &&
+            {confirmInProgress &&
+                <div className="right-aligned">
+                    <i className="fas fa-check fa-4x" id="no-info"></i>
+                </div>}
+            {!confirmInProgress && props.inEditListMode && (props.listName !== "") && (props.listIcon !== "") &&
                 <div className="right-aligned">
                     <i className="fas fa-check fa-4x"
                         onClick={() => confirmEdit()}></i>
                 </div>}
-            {props.inEditListMode && (props.listName === "" || props.listIcon === "") &&
+            {!confirmInProgress && props.inEditListMode && (props.listName === "" || props.listIcon === "") &&
                 <div className="right-aligned">
                     <i className="fas fa-check fa-4x" id="no-info"></i>
                 </div>}
-            {props.inCreateListMode && (props.listName !== "") && (props.listIcon !== "") &&
+            {!confirmInProgress && props.inCreateListMode && (props.listName !== "") && (props.listIcon !== "") &&
                 <div className="right-aligned create-mode-confirm">
                     <i className="fas fa-check fa-4x"
                         onClick={() => confirmCreateList()}></i>
                 </div>}
-            {props.inCreateListMode && (props.listName === "" || props.listIcon === "") &&
+            {!confirmInProgress && props.inCreateListMode && (props.listName === "" || props.listIcon === "") &&
                 <div className="right-aligned">
                     <i className="fas fa-check fa-4x" id="no-info"></i>
                 </div>}

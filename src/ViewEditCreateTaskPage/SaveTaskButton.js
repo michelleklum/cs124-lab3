@@ -1,45 +1,54 @@
+import React, { useState } from "react";
+
 function SaveTaskButton(props) {
+  const [confirmInProgress, setConfirmInProgress] = useState(false);
+
   function confirmEditTask() {
+    setConfirmInProgress(true);
     props.onEditAllTaskFields(
       props.currentListId,
       props.currentTaskId,
       props.taskName,
-      props.taskDate,
-      props.taskTime,
+      props.taskDeadline,
       props.taskNotes,
-      props.taskStatus
+      props.taskStatus,
+      props.taskPriority
     );
-    props.onChangePage(props.prevPage);
   }
 
   function confirmCreateTask() {
+    setConfirmInProgress(true);
     props.onCreateTask(
       props.currentListId,
       props.taskName,
-      props.taskDate,
-      props.taskTime,
-      props.taskNotes
+      props.taskDeadline,
+      props.taskNotes,
+      props.taskPriority
     );
-    props.onChangePage(props.prevPage);
   }
 
   return (
     <div>
-      {props.inEditTaskMode && props.taskName !== "" && (
+      {confirmInProgress && <i className="fas fa-check fa-4x" id="no-info"></i>}
+      {!confirmInProgress && props.inEditTaskMode && props.taskName !== "" && (
         <i className="fas fa-check fa-4x" onClick={() => confirmEditTask()}></i>
       )}
-      {props.inEditTaskMode && props.taskName === "" && (
+      {!confirmInProgress && props.inEditTaskMode && props.taskName === "" && (
         <i className="fas fa-check fa-4x" id="no-info"></i>
       )}
-      {props.inCreateTaskMode && props.taskName !== "" && (
-        <i
-          className="fas fa-check fa-4x"
-          onClick={() => confirmCreateTask()}
-        ></i>
-      )}
-      {props.inCreateTaskMode && props.taskName === "" && (
-        <i className="fas fa-check fa-4x" id="no-info"></i>
-      )}
+      {!confirmInProgress &&
+        props.inCreateTaskMode &&
+        props.taskName !== "" && (
+          <i
+            className="fas fa-check fa-4x"
+            onClick={() => confirmCreateTask()}
+          ></i>
+        )}
+      {!confirmInProgress &&
+        props.inCreateTaskMode &&
+        props.taskName === "" && (
+          <i className="fas fa-check fa-4x" id="no-info"></i>
+        )}
     </div>
   );
 }

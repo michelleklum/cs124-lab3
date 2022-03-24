@@ -6,11 +6,17 @@ function HomeTopBar(props) {
     <div className="top-bar" id="home-top-bar">
       <div className="top-bar-content">
         <div className="logo">
-          <img src={require("./header_task_monster.png")} width="210"
-            height="55" alt="Task Monster" />
+          <img
+            src={require("./header_task_monster.png")}
+            width="210"
+            height="55"
+            alt="Task Monster"
+          />
         </div>
         <div className="right-aligned">
-          <HomeSearchButton onChangePage={props.onChangePage} />
+          {!props.isLoading && (
+            <HomeSearchButton onChangePage={props.onChangePage} />
+          )}
         </div>
       </div>
     </div>

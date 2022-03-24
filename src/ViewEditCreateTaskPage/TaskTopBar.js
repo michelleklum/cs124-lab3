@@ -37,17 +37,13 @@ function TaskTopBar(props) {
           onEditAllTaskFields={props.onEditAllTaskFields}
           onCreateTask={props.onCreateTask}
           taskName={props.tempTaskName}
-          taskDate={props.tempTaskDate}
-          taskTime={props.tempTaskTime}
+          taskDeadline={props.tempTaskDeadline}
           taskNotes={props.tempTaskNotes}
           taskStatus={props.tempTaskStatus}
+          taskPriority={props.tempTaskPriority}
         />
       ) : (
-        <EditTaskButton
-          onChangePage={props.onChangePage}
-          taskName={props.tempTaskName}
-          taskDate={props.tempTaskDate}
-        />
+        <EditTaskButton onChangePage={props.onChangePage} />
       )}
     </div>
   );

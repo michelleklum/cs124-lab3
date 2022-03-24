@@ -24,6 +24,7 @@ function EditListTopBar(props) {
                         autoComplete="off"
                         value={props.tempListName}
                         maxLength="22"
+                        autoFocus
                         onInput={e => props.onChangeListName(e.target.value)}
                     />
                 </div>

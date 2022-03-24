@@ -1,6 +1,18 @@
 import React, { Fragment } from "react";
 
 function Checkbox(props) {
+  const priorityColors = new Map();
+  priorityColors.set(0, "#91C6C3");
+  priorityColors.set(1, "#979DC7");
+  priorityColors.set(2, "#FFBD52");
+  priorityColors.set(3, "#ed554a");
+
+  const priorityColor = props.priorityNumber
+    ? priorityColors.get(props.priorityNumber)
+    : "#91C6C3";
+
+  const completedColor = props.fromTaskCard ? "#BAB2B5" : "#91C6C3";
+
   function handleEditTaskCompletionStatus() {
     // use onChangeTaskStatus for changing task completion status on View Edit Create Task Page
     props.onChangeTaskStatus && props.onChangeTaskStatus(!props.tempTaskStatus);
@@ -10,12 +22,12 @@ function Checkbox(props) {
       props.onEditTask(
         props.currentListId,
         props.task.id,
-        "isTaskCompleted",
+        "isCompleted",
         !props.tempTaskStatus
       );
   }
 
-  // TODO: We styled the checkbox directly in the JSX because otherwise, the checkbox icon wouldn't appear.
+  // Styled the checkbox directly in the JSX because otherwise, the checkbox icon wouldn't appear.
 
   // fa-stop is a solid filled-in checkbox from Font Awesome.
   // To make it an outline instead, we turned its color to #FeFFFF to blend in with background,
@@ -33,10 +45,10 @@ function Checkbox(props) {
               : "set-completed-icon-picker-closed",
           ].join(" ")}
           style={{
-            color: "#91C6C3",
+            color: completedColor,
             fontSize: "23px",
             padding: "2px",
-            border: "#91C6C3 solid medium",
+            border: completedColor + " solid medium",
             borderRadius: "7px",
           }}
           onClick={
@@ -57,7 +69,7 @@ function Checkbox(props) {
             color: "#FeFFFF",
             fontSize: "23px",
             padding: "2px 3.5px",
-            border: "#91C6C3 solid medium",
+            border: priorityColor + " solid medium",
             borderRadius: "7px",
           }}
           onClick={

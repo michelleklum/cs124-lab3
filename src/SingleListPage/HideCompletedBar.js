@@ -4,14 +4,14 @@ function HideCompletedBar(props) {
   function changeListHideCompletedState() {
     props.onEditList(
       props.currentListId,
-      "areCompletedTasksHidden",
-      !props.areCompletedTasksHidden
+      "hideCompletedTasks",
+      !props.hideCompletedTasks
     );
   }
 
   return (
     <Fragment>
-      {props.areCompletedTasksHidden ? (
+      {props.hideCompletedTasks ? (
         <Fragment>
           <i
             className="fas fa-eye hide-icon"

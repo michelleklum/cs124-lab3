@@ -1,5 +1,5 @@
 import "./ListOfLists.css";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import ListCard from "./ListCard";
 
 function ListOfLists(props) {
@@ -9,24 +9,25 @@ function ListOfLists(props) {
     setListInEditMode(listId);
   }
 
-  function sortListsCompareFunction(a, b) {
-    return a.listName.toLowerCase() < b.listName.toLowerCase() ? -1 : 1;
-  }
-
   return (
     <div id="list-of-lists">
-      {props.data.sort(sortListsCompareFunction).map((list) => (
+      {props.data.length === 0 && 
+      <h3 
+      className="no-lists-message">
+        No Lists
+        </h3>}
+      {props.data.map((list) => (
         <ListCard
           key={list.id}
           id={list.id}
-          listName={list.listName}
-          listIcon={list.listIcon}
+          listName={list.name}
+          listIcon={list.icon}
           onChangePage={props.onChangePage}
           onChangeList={props.onChangeList}
           onDeleteList={props.onDeleteList}
           onToggleDeleteAlert={props.onToggleDeleteAlert}
-          listInEditMode = {listInEditMode}
-          onEditList = {handleEditListMode}
+          listInEditMode={listInEditMode}
+          onEditList={handleEditListMode}
         />
       ))}
     </div>

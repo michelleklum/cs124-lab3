@@ -6,3 +6,14 @@
   margin-top: 1.4em;
   margin-bottom: 100px; /* so that plus button doesn't cover edit task icon */
 }
+
+.no-lists-message {
+  width: 100px;
+  margin-left: auto;
+  margin-top: 200px;
+  margin-right: auto;
+  font-weight: 500;
+  font-size: 16pt;
+  color: grey;
+  text-align: center;
+}

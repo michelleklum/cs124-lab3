@@ -6,3 +6,28 @@
   margin-top: 1.4em;
   margin-bottom: 50px; /* so that plus button doesn't cover edit task icon */
 }
+
+.completed-tasks-header {
+  font-weight: 500;
+  margin-left: 5px;
+  color: #172528;
+}
+
+.empty-message {
+  width: 100px;
+  margin-left: auto;
+  margin-top: 200px;
+  margin-right: auto;
+  font-weight: 500;
+  font-size: 16pt;
+  color: grey;
+  text-align: center;
+}
+
+.all-completed-message {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  color: grey;
+  text-align: center;
+}

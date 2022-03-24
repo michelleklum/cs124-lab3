@@ -353,7 +353,7 @@ Users were confused about why the "Completed" checkbox was not editable from thi
 
 ## Usability Testing: Lab 3
 
-For Lab 3, we conducted usability testing in-person with two Mudd students and virtually (through Zoom) with a student from another school. We first asked participants to share their impressions of our app just based on the home screen. We asked what they thought our app did and what actions they thought they could perform based on viewing the page. Next, we asked participants to perform a series of tasks while thinking out loud. These tasks included creating, deleting, adn editing lists and tasks, as well as sorting and assigning priority levels to tasks. For instance, we asked each user testing participant to add several tasks to a new list, and then try to change the sorting method of that list to "name" and "creation time."
+For Lab 3, we conducted usability testing in-person with two Mudd students and virtually (through Zoom) with a student from another school. We first asked participants to share their impressions of our app just based on the home screen. We asked what they thought our app did and what actions they thought they could perform based on viewing the page. Next, we asked participants to perform a series of tasks while thinking out loud. These tasks included creating, deleting, and editing lists and tasks, as well as sorting and assigning priority levels to tasks. For instance, we asked each user testing participant to add several tasks to a new list, and then try to change the sorting method of that list to "name" and "creation time."
 
 Users generally seemed to enjoy using our app. One user even remarked that they had the time of their life!
 
@@ -374,6 +374,16 @@ When we asked a user to try deleting all completed tasks in a list during usabil
 For Lab 3, we did usability testing with a version of our task sort options menu that looked like the one below. During usability testing, users mentioned that they wanted to be able to directly go back from the sort menu to the general Single List Page Menu. So, we ultimately changed the design of the sort menu so that there would be a header with a back arrow for returning to the general Single List Page Menu.
 
 <img src="single_list_page_menu_sorting_v1_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Version 1" width="200px">
+
+### Messages when No Lists, Tasks, or Incomplete Tasks are Present
+
+During usability testing, all users either explicitly requested or said they'd appreciate a message when no lists are present, no tasks are present within a list, or all tasks are completed. Because of this feedback, we added these messages to our app.
+
+<img src="home_page_no_lists_lab_3.png" alt="Home Page No Lists Lab 3" width="200px">
+
+<img src="single_list_page_no_tasks_lab_3.png" alt="Single List Page No Tasks Lab 3" width="200px">
+
+<img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Incomplete Tasks Lab 3" width="200px">
 
 ## Challenges
 

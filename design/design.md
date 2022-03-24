@@ -36,7 +36,7 @@ In Lab 3, we added a message that appears on the Home Page when no lists are pre
 
 Additionally, because we're using Firebase to store our data in Lab 3, it takes a bit of time to load data from the database. Thus, we wanted to make sure our app showed a loading screen while data was being fetched. We decided a screen with a spinning wheel or other icon would look too busy, especially because it typically would only be flashed on the screen of a brief moment. Thus, we created an empty version of the homescreen to display while data is loading. While this screen normally only appears for a fraction of a second, we still think it improves the experience of using the app while data is loading in.
 
-<ADD EMPTY HOMESCREEN>
+<img src="home_loading_page_lab_3.png" alt="Single List Loading Page" width="200px">
 
 ## Final App: Create List Page / Edit List Page
 
@@ -108,7 +108,7 @@ When a list has completed tasks but no incomplete tasks, a message will appear t
   
 When opening the Single List Page, it takes a moment for data from Firebase to be fetched. Therefore, for Lab 3, we added a loading screen while task data is loading in. This screen is simply a screen showing an empty list, and it typically only flashes for a brief moment before tasks load in. Because the screen has the same background and top bar as the Single List Page with tasks, the loading is almost imperceptible when opening this page. This is a good thing, since we want opening a page to appear fluid and clean.
 
-<ADD EMPTY SINGLELISTPAGE>
+<img src="single_list_loading_page_lab_3.png" alt="Single List Loading Page" width="200px">
 
 
 ## Final App: View Task Page

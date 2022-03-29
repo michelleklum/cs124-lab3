@@ -3,11 +3,11 @@ import "./EditListButton.css";
 function EditListButton(props) {
   function handleEditList(newPage) {
     props.onChangeList(props.id);
-    props.onChangePage(newPage)
+    props.onChangePage(newPage);
   }
   return (
     <i
-      className="fas fa-pencil-alt fa-4x edit-list"
+      className="fas fa-pencil-alt fa-4x edit-list right-aligned"
       onClick={() => handleEditList("EditListPage")}
     ></i>
   );

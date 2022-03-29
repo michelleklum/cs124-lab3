@@ -1,51 +1,51 @@
 .icon-options {
-    background: #eae8e8;
-    border-radius: 15px;
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    justify-content: space-evenly;
-    row-gap: 1em;
-    column-gap: 1em;
-    margin-top: 1em;
-    margin-left: 1em;
-    margin-right: 1em;
-    padding-top: 1.2em;
-    padding-bottom: 1.2em;
-    padding-left: 6em;
-    padding-right: 6em;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  }
-  
-  .icon-options div {
-    color: #172528;
-    background: rgb(252, 252, 252);
-    padding: 0.2em 0.2em 0.2em 0.2em;
-    margin: auto;
-    border-radius: 10px;
-    width: 40px;
-    height: 40px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  }
-  
-  .icon-options i {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #172528;
-  }
-  
-  .selected i {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #33aaaa;
-  }
-  
-  div.selected {
-    background: #feffff;
-    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.2);
-  }
+  background: #eae8e8;
+  border-radius: 15px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  justify-content: space-evenly;
+  row-gap: 1em;
+  column-gap: 1em;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  padding-left: 6em;
+  padding-right: 6em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.icon-options div {
+  color: #172528;
+  background: rgb(252, 252, 252);
+  padding: 0.2em 0.2em 0.2em 0.2em;
+  margin: auto;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.icon-options i {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #172528;
+}
+
+.selected i {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #33aaaa;
+}
+
+div.selected {
+  background: #feffff;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.2);
+}

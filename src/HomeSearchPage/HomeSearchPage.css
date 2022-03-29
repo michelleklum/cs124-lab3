@@ -1,9 +1,8 @@
 /* margin-left: auto and margin-right: auto and width: 90% are to center list of lists, leaving 5% width on each side */
 #filtered-lists {
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    margin-top: 1.4em;
-    margin-bottom: 100px; /* so that plus button doesn't cover edit task icon */
-  }
-  
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  margin-top: 1.4em;
+  margin-bottom: 100px; /* so that plus button doesn't cover edit task icon */
+}

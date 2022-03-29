@@ -29,10 +29,10 @@ i.list-icon {
 }
 
 .list-grid {
-  grid-template-columns: 1.9em 13em 3em;
+  grid-template-columns: 1.9em 13em 1fr;
 }
 
 .edit-list-grid {
-  grid-template-columns: 1.9em 9.6em 2em 3em;
+  grid-template-columns: 1.9em 9.6em 1fr 2em;
   box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
 }

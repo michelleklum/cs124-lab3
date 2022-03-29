@@ -9,7 +9,7 @@
 #task-display {
   display: grid;
   align-items: center;
-  grid-template-columns: 60px 2fr 1fr;
+  grid-template-columns: 60px 2fr 85px;
   margin: 0 auto;
   width: 91%;
   margin-bottom: 65px;
@@ -33,7 +33,6 @@
   grid-row: 1 / span 1;
   justify-self: start;
   font-size: 25pt !important;
-  /* padding-top: 10px; */
 }
 
 .set-date {

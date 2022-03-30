@@ -1,7 +1,6 @@
-import "./HomeTopBar.css";
-import HomeSearchButton from "./HomeSearchButton";
+import "./TopBar.css";
 
-function HomeTopBar(props) {
+function TopBar() {
   return (
     <div className="top-bar" id="home-top-bar">
       <div className="top-bar-content">
@@ -13,14 +12,9 @@ function HomeTopBar(props) {
             alt="Task Monster"
           />
         </div>
-        <div className="right-aligned">
-          {!props.isLoading && (
-            <HomeSearchButton onChangePage={props.onChangePage} />
-          )}
-        </div>
       </div>
     </div>
   );
 }
 
-export default HomeTopBar;
+export default TopBar;

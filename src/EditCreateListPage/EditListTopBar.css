@@ -1,51 +1,58 @@
 .edit-list-header i {
-    font-size: 30px !important;
+  font-size: 30px !important;
 }
 
 .top-bar i {
-    color: #feffff;
+  color: #feffff;
 }
 
 .edit-list-header {
-    height: 80px;
+  height: 80px;
 }
 
 .edit-list-header-content {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 1fr;
-    position: relative;
-    top: 48%;
-    transform: translate(0, -50%);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  top: 48%;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
 }
 
-.list-name input {
-    border-radius: 20px;
-    margin-left: 0.3em;
-    text-align: center;
-    width: 95%;
-    position: relative;
-    top: 12px;
-    transform: translate(0, -50%);
-    color: #172528;
-    line-height: 2.2em;
-    font-size: 18px;
-    font-family: "Open Sans", Calibri, sans-serif;
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: hidden;
-    border: none;
-    outline: none;  
-  }
+.list-name {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
 
-  .edit-list-name-label {
-    visibility: hidden;
-  }
+.list-name input[type="text"] {
+  border-radius: 20px;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  top: 12px;
+  transform: translate(0, -50%);
+  color: #172528;
+  line-height: 2.2em;
+  font-size: 18px;
+  font-family: "Open Sans", Calibri, sans-serif;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  border: none;
+  outline: none;
+}
 
-  /* get rid of default input outline on hover and click */
+.edit-list-name-label {
+  visibility: hidden;
+}
+
+/* get rid of default input outline on hover and click */
 .list-name input:hover,
 .list-name input:focus,
 .list-name input:active {
-  outline: solid #91C6C3;
+  outline: solid #91c6c3;
 }

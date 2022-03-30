@@ -10,15 +10,15 @@ function ListTopBar(props) {
     <div className="top-bar">
       <div className="top-bar-content">
         <div className="left-aligned">
-          <ListBackButton onChangePage={props.onChangePage} />
+          <ListBackButton
+            onChangePage={props.onChangePage}
+            inMenuMode={props.inMenuMode}
+          />
           <h2>{taskList.name}</h2>
         </div>
         <div className="right-aligned">
           {props.inMenuMode || props.isLoading ? null : (
-            <ListSearchButton
-              onChangePage={props.onChangePage}
-              onChangeList={props.onChangeList}
-            />
+            <ListSearchButton onChangePage={props.onChangePage} />
           )}
           {!props.isLoading && (
             <ListMenuButton onChangeMenuMode={props.onChangeMenuMode} />

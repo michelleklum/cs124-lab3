@@ -1,19 +1,12 @@
-import HomeTopBar from "./HomeTopBar";
-import ListOfLists from "./ListOfLists";
+import "./LargeScreen.css";
+import ListOfLists from "../Home/ListOfLists";
 import AddButton from "../Global/AddButton";
 import DeleteAlert from "../Global/DeleteAlert";
 
 function Home(props) {
+  // TODO add back search bar
   return (
-    <div>
-      {!props.isLargeScreen && (
-        <HomeTopBar
-          onChangePage={props.onChangePage}
-          onChangeList={props.onChangeList}
-          isLoading={false}
-        />
-      )}
-
+    <div className="side-bar">
       <ListOfLists
         data={props.data}
         onChangePage={props.onChangePage}

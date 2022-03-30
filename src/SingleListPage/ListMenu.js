@@ -11,11 +11,16 @@ import DeleteListBar from "./DeleteListBar";
 
 function ListMenu(props) {
   const taskList = props.data.find((list) => list.id === props.currentListId);
+  const screenSizeClassName = props.isLargeScreen
+    ? "large-screen-list-menu"
+    : "small-screen-list-menu";
 
   return (
     <Fragment>
       {props.listMenuType === "general" && (
-        <div className="single-list-page-menu general-menu-grid">
+        <div
+          className={`single-list-page-menu general-menu-grid ${screenSizeClassName}`}
+        >
           <EditListBar onChangePage={props.onChangePage} />
           <HideCompletedBar
             hideCompletedTasks={taskList.hideCompletedTasks}
@@ -39,7 +44,9 @@ function ListMenu(props) {
         </div>
       )}
       {props.listMenuType === "sorting" && (
-        <div className="single-list-page-menu sorting-menu-grid">
+        <div
+          className={`single-list-page-menu sorting-menu-grid ${screenSizeClassName}`}
+        >
           <SortByHeaderBar onChangeMenuModeType={props.onChangeMenuModeType} />
           <SortByFieldBar
             onChangeSort={props.onChangeSort}

@@ -4,7 +4,7 @@
 
 /* Single List Page Menu Mode Styles */
 /* place overlay of black background with lightened opacity over rest of page */
-#single-list-menu-mode-overlay {
+.single-list-menu-mode-overlay {
   margin-top: 0;
   padding-top: 0;
   width: 100%;
@@ -12,4 +12,19 @@
   background: black;
   opacity: 12%;
   height: 100%;
+}
+
+/* For large screens: >= 769px wide */
+.large-screen-header {
+  display: flex;
+  align-items: center;
+}
+
+.single-list-task-name {
+  margin-left: 5%;
+  font-size: 18px;
+}
+
+.large-screen-icons {
+  position: relative; /* in order to position single list page menu absolute to this */
 }

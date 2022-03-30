@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { generateUniqueID } from "web-vitals/dist/modules/lib/generateUniqueID";
 import "./App.css";
+import { useMediaQuery } from "react-responsive";
 import Home from "./Home/Home";
 import HomeSearchPage from "./HomeSearchPage/HomeSearchPage";
 import ListSearchPage from "./ListSearchPage/ListSearchPage";
@@ -9,6 +10,8 @@ import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskP
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
 import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
 import ErrorAlert from "./Global/ErrorAlert";
+import TopBar from "./LargeScreens/TopBar";
+import MainContent from "./LargeScreens/MainContent";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -41,12 +44,15 @@ const db = getFirestore(firebaseApp);
 function App() {
   // Code below changes current/previous page, current list, and current task
   const [currentPage, setCurrentPage] = useState("Home");
+  const [largeScreenSideBar, setLargeScreenSideBar] = useState("Home");
+  const [largeScreenSubpage, setLargeScreenSubpage] = useState("Home");
   const [prevPage, setPrevPage] = useState("Home");
   const [currentListId, setCurrentListId] = useState();
   const [currentTaskId, setCurrentTaskId] = useState();
 
   function handleChangePage(newPage) {
     setPrevPage(currentPage);
+    setLargeScreenSubpage(newPage);
     setCurrentPage(newPage);
     if (newPage === "Home") {
       handleChangeList(null);
@@ -309,7 +315,39 @@ function App() {
     setShowDeleteAlert(!showDeleteAlert);
   }
 
-  return (
+  // react-responsive media query for responsive design
+  const isLargeScreen = useMediaQuery({ minWidth: 769 });
+
+  return isLargeScreen ? (
+    <Fragment>
+      <TopBar />
+      <MainContent
+        isLargeScreen={isLargeScreen}
+        largeScreenSideBar={largeScreenSideBar}
+        largeScreenSubpage={largeScreenSubpage}
+        data={data}
+        currentListId={currentListId}
+        currentTaskId={currentTaskId}
+        currentPage={currentPage}
+        onDeleteList={handleDeleteList}
+        onChangePage={handleChangePage}
+        onChangeList={handleChangeList}
+        onCreateTask={handleCreateList}
+        onToggleDeleteAlert={handleToggleDeleteAlert}
+        showDeleteAlert={showDeleteAlert}
+        db={db}
+        tasksQuery={tasksQuery}
+        prevPage={prevPage}
+        onChangeTask={handleChangeTask}
+        onEditTask={handleEditTask}
+        onEditList={handleEditList}
+        onDeleteCompleted={handleDeleteCompletedTasks}
+        onDeleteAllTasks={handleDeleteAllTasks}
+        listTasksPrimarySortField={listTasksPrimarySortField}
+        onChangeSort={handleChangeSort}
+      />
+    </Fragment>
+  ) : (
     <Fragment>
       {dataError ? (
         <Fragment>

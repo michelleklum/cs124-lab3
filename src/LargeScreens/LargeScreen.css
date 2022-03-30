@@ -1,0 +1,41 @@
+.main-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.side-bar {
+  width: 42%;
+  padding-right: 2.25em;
+  border-right: #bab2b5 1.5px solid; /* vertical line dividing Side Bar from Subpage */
+  height: 100vh; /* to make border extend all the way vertically */
+}
+
+.large-screen-subpage {
+  /* background: #feffff; */
+  height: 100vh;
+  width: 58%;
+}
+
+@media screen and (min-width: 1200px) {
+  .side-bar {
+    width: 35%;
+  }
+
+  .large-screen-subpage {
+    width: 70%;
+  }
+}
+
+.welcome-message {
+  width: 100px;
+  margin-left: auto;
+  margin-top: 35%;
+  margin-right: auto;
+  font-weight: 500;
+  font-size: 16pt;
+  color: grey;
+  text-align: center;
+}

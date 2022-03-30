@@ -6,20 +6,18 @@ import SingleListPage from "../SingleListPage/SingleListPage";
 
 function MainContent(props) {
   // TODO add back search bar to both home (add HomeSearch option to side-bar) and single list page
-  // TODO add back menu to single list page
+  // TODO add back sorting menu to single list page
   return (
     <div className="main-content">
       <div className="side-bar">
-        {props.largeScreenSideBar === "Home" ? (
-          <Home
-            isLargeScreen={props.isLargeScreen}
-            data={props.data}
-            onChangePage={props.onChangePage}
-            onChangeList={props.onChangeList}
-            onDeleteList={props.onDeleteList}
-            onToggleDeleteAlert={props.onToggleDeleteAlert}
-          />
-        ) : null}
+        <Home
+          isLargeScreen={props.isLargeScreen}
+          data={props.data}
+          onChangePage={props.onChangePage}
+          onChangeList={props.onChangeList}
+          onDeleteList={props.onDeleteList}
+          onToggleDeleteAlert={props.onToggleDeleteAlert}
+        />
       </div>
       <AddButton
         onChangePage={props.onChangePage}
@@ -33,7 +31,7 @@ function MainContent(props) {
         />
       )}
       <div className="large-screen-subpage">
-        {props.largeScreenSubpage === "SingleListPage" ? (
+        {props.currentListId ? (
           <SingleListPage
             isLargeScreen={props.isLargeScreen}
             db={props.db}

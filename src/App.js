@@ -42,17 +42,17 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 function App() {
+  // react-responsive media query for responsive design
+  const isLargeScreen = useMediaQuery({ minWidth: 769 });
+
   // Code below changes current/previous page, current list, and current task
   const [currentPage, setCurrentPage] = useState("Home");
-  const [largeScreenSideBar, setLargeScreenSideBar] = useState("Home");
-  const [largeScreenSubpage, setLargeScreenSubpage] = useState("Home");
   const [prevPage, setPrevPage] = useState("Home");
   const [currentListId, setCurrentListId] = useState();
   const [currentTaskId, setCurrentTaskId] = useState();
 
   function handleChangePage(newPage) {
     setPrevPage(currentPage);
-    setLargeScreenSubpage(newPage);
     setCurrentPage(newPage);
     if (newPage === "Home") {
       handleChangeList(null);
@@ -315,16 +315,11 @@ function App() {
     setShowDeleteAlert(!showDeleteAlert);
   }
 
-  // react-responsive media query for responsive design
-  const isLargeScreen = useMediaQuery({ minWidth: 769 });
-
   return isLargeScreen ? (
     <Fragment>
       <TopBar />
       <MainContent
         isLargeScreen={isLargeScreen}
-        largeScreenSideBar={largeScreenSideBar}
-        largeScreenSubpage={largeScreenSubpage}
         data={data}
         currentListId={currentListId}
         currentTaskId={currentTaskId}

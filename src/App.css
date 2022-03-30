@@ -32,6 +32,13 @@ body {
   margin: 0;
 }
 
+@media screen and (min-width: 769px) {
+  html,
+  body {
+    background: #feffff;
+  }
+}
+
 .top-bar i {
   font-size: 26px !important;
 }

@@ -7,7 +7,7 @@
 }
 
 .side-bar {
-  width: 42%;
+  width: 400px;
   padding-right: 2.25em;
   border-right: #bab2b5 1.5px solid; /* vertical line dividing Side Bar from Subpage */
   height: 100vh; /* to make border extend all the way vertically */
@@ -16,17 +16,7 @@
 .large-screen-subpage {
   /* background: #feffff; */
   height: 100vh;
-  width: 58%;
-}
-
-@media screen and (min-width: 1200px) {
-  .side-bar {
-    width: 35%;
-  }
-
-  .large-screen-subpage {
-    width: 70%;
-  }
+  flex-grow: 1;
 }
 
 .welcome-message {

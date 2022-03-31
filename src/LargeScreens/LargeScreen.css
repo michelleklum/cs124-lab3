@@ -1,13 +1,13 @@
 .main-content {
   margin-left: auto;
   margin-right: auto;
-  width: 95%;
+  width: 97.5%;
   display: flex;
   align-items: flex-start;
 }
 
 .side-bar {
-  width: 400px;
+  width: 220px;
   padding-right: 2.25em;
   border-right: #bab2b5 1.5px solid; /* vertical line dividing Side Bar from Subpage */
   height: 100vh; /* to make border extend all the way vertically */

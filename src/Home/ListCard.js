@@ -41,10 +41,11 @@ function ListCard(props) {
   }
 
   let gridClassName = inEditMode ? "edit-list-grid" : "list-grid";
+  let largeScreenName = props.isLargeScreen ? "large-screen-list-card" : "";
 
   return (
     <div
-      className={["list", gridClassName].join(" ")}
+      className={["list", gridClassName, largeScreenName].join(" ")}
       onClick={handleListCardClick}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -65,7 +66,9 @@ function ListCard(props) {
             id={props.id} />
         </Fragment>
       ) : (
-        <EnterListArrow onListIconClick={() => props.onEditList(null)} />
+        <EnterListArrow 
+          onListIconClick={() => props.onEditList(null)} 
+          isLargeScreen={props.isLargeScreen}/>
       )}
     </div>
   );

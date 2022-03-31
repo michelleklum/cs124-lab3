@@ -13,8 +13,8 @@ function Home(props) {
           isLoading={false}
         />
       )}
-
       <ListOfLists
+        isLargeScreen={props.isLargeScreen}
         data={props.data}
         onChangePage={props.onChangePage}
         onChangeList={props.onChangeList}

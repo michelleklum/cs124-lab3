@@ -10,7 +10,12 @@ function ListOfLists(props) {
   }
 
   return (
-    <div id="list-of-lists">
+    <div className={[
+      "list-of-lists",
+      props.isLargeScreen
+        ? "large-screen-list"
+        : "",
+    ].join(" ")}>
       {props.data.length === 0 && 
       <h3 
       className="no-lists-message">
@@ -18,6 +23,7 @@ function ListOfLists(props) {
         </h3>}
       {props.data.map((list) => (
         <ListCard
+          isLargeScreen={props.isLargeScreen}
           key={list.id}
           id={list.id}
           listName={list.name}

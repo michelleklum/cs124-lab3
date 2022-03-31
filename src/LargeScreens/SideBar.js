@@ -7,6 +7,7 @@ function Home(props) {
   // TODO add back search bar
   return (
     <div className="side-bar">
+      <h2>Ahh</h2>
       <ListOfLists
         data={props.data}
         onChangePage={props.onChangePage}

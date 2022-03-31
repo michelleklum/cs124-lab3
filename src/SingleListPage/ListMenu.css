@@ -10,12 +10,14 @@
   padding-left: 1em;
 }
 
+/* On small screens, menu will be fixed at bottom of screen */
 .small-screen-list-menu {
   bottom: 0;
-  position: fixed; /* use fixed instead of sticky so toolbar is at bottom even if we don't have that many lists */
+  position: fixed; /* use fixed instead of sticky so menu is at bottom even if we don't have that many lists */
   width: 100%;
 }
 
+/* On large screens, menu will be positioned relative to 3 dots in the list header and will have a set width */
 .large-screen-list-menu {
   position: absolute;
   right: 0;
@@ -23,7 +25,6 @@
   border-radius: 5px;
   width: 360px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
 }
 
 .single-list-page-menu h2 {

@@ -6,7 +6,6 @@ import SingleListPage from "../SingleListPage/SingleListPage";
 
 function MainContent(props) {
   // TODO add back search bar to both home (add HomeSearch option to side-bar) and single list page
-  // TODO add back sorting menu to single list page
   return (
     <div className="main-content">
       <div className="side-bar">

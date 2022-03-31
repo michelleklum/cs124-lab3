@@ -60,10 +60,7 @@ function SingleListPage(props) {
         />
       ) : (
         <div>
-          <div
-            id="single-list-page"
-            onClick={inMenuMode ? toggleMenuMode : null}
-          >
+          <div id="single-list-page">
             {props.isLargeScreen ? (
               <div className="large-screen-header">
                 <h3 className="single-list-task-name">{taskList.name}</h3>
@@ -131,6 +128,7 @@ function SingleListPage(props) {
                   ? "single-list-menu-mode-overlay"
                   : null
               }
+              onClick={inMenuMode ? toggleMenuMode : null}
             >
               <ListOfTasks
                 db={props.db}

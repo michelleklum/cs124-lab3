@@ -41,17 +41,17 @@ function MainContent(props) {
             currentListId={props.currentListId}
             currentTaskId={props.currentTaskId}
             currentPage={props.currentPage}
-            onChangePage={props.handleChangePage}
-            onChangeTask={props.handleChangeTask}
-            onEditTask={props.handleEditTask}
-            onEditList={props.handleEditList}
-            onDeleteCompleted={props.handleDeleteCompletedTasks}
-            onDeleteAllTasks={props.handleDeleteAllTasks}
-            onDeleteList={props.handleDeleteList}
-            onCreateTask={props.handleChangeTask}
-            onToggleDeleteAlert={props.handleToggleDeleteAlert}
+            onChangePage={props.onChangePage}
+            onChangeTask={props.onChangeTask}
+            onEditTask={props.onEditTask}
+            onEditList={props.onEditList}
+            onDeleteCompleted={props.onDeleteCompleted}
+            onDeleteAllTasks={props.onDeleteAllTasks}
+            onDeleteList={props.onDeleteList}
+            onCreateTask={props.onCreateTask}
+            onToggleDeleteAlert={props.onToggleDeleteAlert}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
-            onChangeSort={props.handleChangeSort}
+            onChangeSort={props.onChangeSort}
           />
         ) : (
           <h3 className="welcome-message">Welcome!</h3>

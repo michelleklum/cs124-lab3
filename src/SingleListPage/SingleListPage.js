@@ -59,7 +59,7 @@ function SingleListPage(props) {
           />
           <ErrorAlert />
         </Fragment>
-      ) : tasksLoading ? (
+      ) : tasksLoading && !props.isLargeScreen ? (
         <SingleListLoadingPage
           data={props.data}
           currentListId={props.currentListId}

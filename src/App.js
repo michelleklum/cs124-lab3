@@ -353,7 +353,9 @@ function App() {
           <ErrorAlert onCreateErrorReport={handleCreateErrorReport} />
         </Fragment>
       ) : null}
-      {currentPage === "Home" && dataLoading ? <HomeLoadingPage /> : null}
+      {!isLargeScreen && currentPage === "Home" && dataLoading ? (
+        <HomeLoadingPage />
+      ) : null}
       {currentPage === "Home" && !dataLoading ? (
         <Home
           data={data}

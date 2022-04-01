@@ -11,7 +11,7 @@
   margin-top: 0;
   padding-top: 0;
   width: 100%;
-  position: fixed; /* make list unscrollable, and make black overlay extend at least to top bar */
+  position: fixed;
   background-color: rgba(9, 15, 16, 0.4);
   height: 100%;
 }

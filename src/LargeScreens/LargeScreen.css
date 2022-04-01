@@ -9,13 +9,19 @@
 .side-bar {
   width: 220px;
   padding-right: 2.25em;
-  border-right: #bab2b5 1.5px solid; /* vertical line dividing Side Bar from Subpage */
-  height: 100vh; /* to make border extend all the way vertically */
+  height: calc(100vh - 60px); /* Top Bar is 60px */
+}
+
+.vertical-divider {
+  border-right: #bab2b5 1.5px solid; /* vertical line dividing Side Bar from Large Screen Subpage */
+  height: calc(
+    100vh - 60px
+  ); /* to make vertical line extend all the way vertically */
 }
 
 .large-screen-subpage {
   /* background: #feffff; */
-  height: 100vh;
+  height: calc(100vh - 60px); /* Top Bar is 60px */
   flex-grow: 1;
 }
 
@@ -28,4 +34,9 @@
   font-size: 16pt;
   color: grey;
   text-align: center;
+}
+
+/* When LargeScreenPopup is open, make all of MainContent unscrollable */
+.unscrollable {
+  overflow: hidden;
 }

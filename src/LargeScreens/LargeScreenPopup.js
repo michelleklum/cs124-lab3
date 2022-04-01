@@ -4,7 +4,7 @@ import ViewEditCreateTaskPage from "../ViewEditCreateTaskPage/ViewEditCreateTask
 function LargeScreenPopup(props) {
   return (
     <div className="large-screen-popup-page-background">
-      <div className="overlay" onClick={props.onToggleLargeScreenPopup}></div>
+      <div className="overlay"></div>
       <div className="popup">
         {props.currentPage === "ViewTaskPage" ? (
           <ViewEditCreateTaskPage

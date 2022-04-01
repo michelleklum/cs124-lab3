@@ -62,6 +62,7 @@
   width: 72%;
 }
 
+/* For responsive design, make sure search bar input remains at a good relative width to the search bar */
 @media screen and (min-width: 400px) {
   .search input[type="text"] {
     width: 80%;

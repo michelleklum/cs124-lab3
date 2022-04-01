@@ -32,6 +32,7 @@ body {
   margin: 0;
 }
 
+/* For large screens, background should be white */
 @media screen and (min-width: 769px) {
   html,
   body {
@@ -79,31 +80,45 @@ p {
 }
 
 /* Delete toolbar for deleting on Edit Task Page  + Edit List Page */
-/* first three styles are for sticky toolbar */
-.delete-toolbar {
+/* first four styles are for sticky toolbar */
+.delete-bar {
+  /* need margin-top auto so that delete bar is always at the very bottom */
+  /* relies on delete bar's parent #task-page being a CSS Flexbox */
+  margin-top: auto;
   bottom: 0;
-  position: fixed; /* use fixed instead of sticky so toolbar is at bottom even if we don't have that many lists */
   width: 100%;
-  height: 10%;
+  height: 80px;
   background: #ed554a;
   color: #feffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 0;
-  padding-bottom: 0;
 }
 
-.delete-toolbar:active {
+/* For small screens, delete bar should be fixed at bottom of webpage */
+@media screen and (max-width: 768px) {
+  .delete-bar {
+    position: fixed; /* use fixed instead of sticky so toolbar is at bottom even if we don't have that many lists */
+  }
+}
+
+/* For large screens, delete bar needs extra padding on bottom */
+@media screen and (min-width: 769px) {
+  .delete-bar {
+    padding-bottom: 4px;
+  }
+}
+
+.delete-bar:active {
   color: #eae8e8;
 }
 
-.delete-toolbar i {
+.delete-bar i {
   font-size: 23pt !important;
   color: #feffff;
 }
 
-.delete-toolbar h2 {
+.delete-bar h2 {
   margin-left: 0.5em;
 }
 

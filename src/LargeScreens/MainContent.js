@@ -43,12 +43,15 @@ function MainContent(props) {
             onChangePage={props.onChangePage}
             onChangeTask={props.onChangeTask}
             onEditTask={props.onEditTask}
+            onEditAllTaskFields={props.onEditAllTaskFields}
+            onDeleteTask={props.onDeleteTask}
             onEditList={props.onEditList}
             onDeleteCompleted={props.onDeleteCompleted}
             onDeleteAllTasks={props.onDeleteAllTasks}
             onDeleteList={props.onDeleteList}
             onCreateTask={props.onCreateTask}
             onToggleDeleteAlert={props.onToggleDeleteAlert}
+            showDeleteAlert={props.showDeleteAlert}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
             onChangeSort={props.onChangeSort}
           />

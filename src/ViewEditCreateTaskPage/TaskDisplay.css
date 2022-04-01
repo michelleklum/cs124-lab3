@@ -16,11 +16,11 @@
 }
 
 .task-display-picker-open {
-  grid-template-rows: 70px 140px 70px 1fr 70px;
+  grid-template-rows: 65px 130px 65px 1fr 65px;
 }
 
 .task-display-picker-closed {
-  grid-template-rows: 70px 70px 1fr 70px;
+  grid-template-rows: 65px 65px 1fr 65px;
 }
 
 .completed-icon-view-page {

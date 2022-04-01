@@ -40,7 +40,7 @@ function ViewEditCreateTaskPage(props) {
     priority: 0,
     isCompleted: false,
   };
-  
+
   const currentTask = props.tasks.find(
     (task) => task.id === props.currentTaskId
   );
@@ -99,14 +99,14 @@ function ViewEditCreateTaskPage(props) {
       {props.inEditTaskMode ? (
         <DeleteTaskBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
       ) : null}
-      {props.inEditTaskMode ? (
-        <DeleteTaskBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
-      ) : null}
       {props.showDeleteAlert && (
         <DeleteAlert
           type="this task"
           onToggleDeleteAlert={props.onToggleDeleteAlert}
-          onDelete={() => props.onDeleteTask(props.currentTaskId)}
+          onDelete={function () {
+            props.onDeleteTask(props.currentTaskId);
+            props.isLargeScreen && props.onToggleLargeScreenPopup();
+          }}
         />
       )}
     </div>

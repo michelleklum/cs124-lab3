@@ -250,6 +250,7 @@ function App() {
 
   function handleDeleteList() {
     setCurrentPage("Home"); // Change page first to avoid error where no tasks are found
+    setCurrentListId(null);
     deleteDoc(doc(db, listCollectionName, currentListId));
   }
 
@@ -335,6 +336,8 @@ function App() {
         prevPage={prevPage}
         onChangeTask={handleChangeTask}
         onEditTask={handleEditTask}
+        onEditAllTaskFields={handleEditTaskAllFields}
+        onDeleteTask={handleDeleteTask}
         onEditList={handleEditList}
         onDeleteCompleted={handleDeleteCompletedTasks}
         onDeleteAllTasks={handleDeleteAllTasks}

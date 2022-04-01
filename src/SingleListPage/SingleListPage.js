@@ -9,6 +9,8 @@ import ErrorAlert from "../Global/ErrorAlert";
 import SingleListLoadingPage from "../SingleListLoadingPage/SingleListLoadingPage";
 import ListSearchButton from "./ListSearchButton";
 import ListMenuButton from "./ListMenuButton";
+import LargeScreenPopup from "../LargeScreens/LargeScreenPopup";
+
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
 function SingleListPage(props) {
@@ -17,6 +19,7 @@ function SingleListPage(props) {
   const [deleteListAlert, setDeleteListAlert] = useState(false);
   const [deleteTasksAlert, setDeleteTasksAlert] = useState(false);
   const [deleteCompletedAlert, setDeleteCompletedAlert] = useState(false);
+  const [largeScreenPopup, setLargeScreenPopup] = useState(false);
 
   // Get tasks (current list's tasks) from Firebase
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(
@@ -40,6 +43,10 @@ function SingleListPage(props) {
 
   function toggleDeleteCompletedAlert() {
     setDeleteCompletedAlert(!deleteCompletedAlert);
+  }
+
+  function toggleLargeScreenPopup() {
+    setLargeScreenPopup(!largeScreenPopup);
   }
 
   return (
@@ -139,6 +146,7 @@ function SingleListPage(props) {
                 onChangePage={props.onChangePage}
                 onChangeTask={props.onChangeTask}
                 onEditTask={props.onEditTask}
+                onToggleLargeScreenPopup={toggleLargeScreenPopup}
               />
             </div>
           </div>
@@ -192,6 +200,23 @@ function SingleListPage(props) {
           )}
         </div>
       )}
+      {largeScreenPopup && props.isLargeScreen && props.currentTaskId ? (
+        <LargeScreenPopup
+          isLargeScreen={props.isLargeScreen}
+          onToggleLargeScreenPopup={toggleLargeScreenPopup}
+          tasks={tasks}
+          currentPage={props.currentPage}
+          prevPage={props.prevPage}
+          currentListId={props.currentListId}
+          currentTaskId={props.currentTaskId}
+          onChangePage={props.onChangePage}
+          onCreateTask={props.onCreateTask}
+          onDeleteTask={props.onDeleteTask}
+          onEditAllTaskFields={props.onEditAllTaskFields}
+          onToggleDeleteAlert={props.onToggleDeleteAlert}
+          showDeleteAlert={props.showDeleteAlert}
+        />
+      ) : null}
     </Fragment>
   );
 }

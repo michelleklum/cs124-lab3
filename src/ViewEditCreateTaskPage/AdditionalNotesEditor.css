@@ -21,5 +21,12 @@
   padding: 1em;
   border-radius: 0.75em;
   inline-size: 232px;
-  writing-mode: horizontal-tb; 
+  writing-mode: horizontal-tb;
+}
+
+/* For large screens, make AdditionalNotesEditor textarea wider */
+@media screen and (min-width: 769px) {
+  .edit-task-notes textarea {
+    inline-size: 420px;
+  }
 }

@@ -335,6 +335,7 @@ function App() {
         onEditTask={handleEditTask}
         onEditAllTaskFields={handleEditTaskAllFields}
         onDeleteTask={handleDeleteTask}
+        onEditList={handleEditList}
         onEditListAppearance={handleEditListAppearance}
         onDeleteCompleted={handleDeleteCompletedTasks}
         onDeleteAllTasks={handleDeleteAllTasks}

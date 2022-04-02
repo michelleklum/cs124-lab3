@@ -1,9 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import "./LargeScreen.css";
-import AddButton from "../Global/AddButton";
-import DeleteAlert from "../Global/DeleteAlert";
-import Home from "../Home/Home";
 import SingleListPage from "../SingleListPage/SingleListPage";
+import SideBar from "./SideBar";
 import LargeScreenPopup from "./LargeScreenPopup";
 
 import { useCollectionData } from "react-firebase-hooks/firestore";
@@ -29,7 +27,7 @@ function MainContent(props) {
     !tasksError && (
       <div className="main-content">
         <div className={`side-bar ${unscrollableClassName}`}>
-          <Home
+          <SideBar
             isLargeScreen={props.isLargeScreen}
             data={props.data}
             onChangePage={props.onChangePage}

@@ -47,8 +47,6 @@ function ListCard(props) {
   let selectedList = (props.isLargeScreen && props.id === props.currentListId) ? 
                         "selected-list" : "";
   
-  console.log(props.id)
-  console.log(props.currentListId)
 
   return (
     <div

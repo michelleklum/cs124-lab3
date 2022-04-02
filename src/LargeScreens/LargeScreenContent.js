@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import "./LargeScreen.css";
-import SingleListPage from "../SingleListPage/SingleListPage";
+import LargeScreenTopBar from "./LargeScreenTopBar";
 import LargeScreenSideBar from "./LargeScreenSideBar";
+import LargeScreenSubpage from "./LargeScreenSubpage";
 import LargeScreenPopup from "./LargeScreenPopup";
 
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
-function LargeScreenMainContent(props) {
+function LargeScreenContent(props) {
   // Get tasks (current list's tasks) from Firebase
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(
     props.tasksQuery
@@ -14,8 +15,6 @@ function LargeScreenMainContent(props) {
   const tasks = dbTasks ? dbTasks : [];
 
   const [showLargeScreenPopup, setShowLargeScreenPopup] = useState(false);
-
-  console.log(showLargeScreenPopup);
 
   function toggleLargeScreenPopup() {
     setShowLargeScreenPopup(!showLargeScreenPopup);
@@ -25,23 +24,23 @@ function LargeScreenMainContent(props) {
 
   // TODO add back search bar to both home (add HomeSearch option to side-bar) and single list page
   return (
-    !tasksLoading &&
-    !tasksError && (
-      <div className="main-content">
-        <div className={`side-bar ${unscrollableClassName}`}>
-          <LargeScreenSideBar
-            isLargeScreen={props.isLargeScreen}
-            data={props.data}
-            onChangePage={props.onChangePage}
-            onChangeList={props.onChangeList}
-            onDeleteList={props.onDeleteList}
-            onToggleDeleteAlert={props.onToggleDeleteAlert}
-          />
-        </div>
-        <div className="vertical-divider"></div>
-        <div className={`large-screen-subpage ${unscrollableClassName}`}>
-          {props.currentListId ? (
-            <SingleListPage
+    <Fragment>
+      <LargeScreenTopBar />
+      {!tasksLoading && !tasksError && (
+        <div className="main-content">
+          <div className={`side-bar ${unscrollableClassName}`}>
+            <LargeScreenSideBar
+              isLargeScreen={props.isLargeScreen}
+              data={props.data}
+              onChangePage={props.onChangePage}
+              onChangeList={props.onChangeList}
+              onDeleteList={props.onDeleteList}
+              onToggleDeleteAlert={props.onToggleDeleteAlert}
+            />
+          </div>
+          <div className="vertical-divider"></div>
+          <div className={`large-screen-subpage ${unscrollableClassName}`}>
+            <LargeScreenSubpage
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={toggleLargeScreenPopup}
               db={props.db}
@@ -66,33 +65,31 @@ function LargeScreenMainContent(props) {
               listTasksPrimarySortField={props.listTasksPrimarySortField}
               onChangeSort={props.onChangeSort}
             />
-          ) : (
-            <h3 className="welcome-message">Welcome!</h3>
+          </div>
+          {showLargeScreenPopup && props.isLargeScreen && (
+            <LargeScreenPopup
+              isLargeScreen={props.isLargeScreen}
+              onToggleLargeScreenPopup={toggleLargeScreenPopup}
+              data={props.data}
+              tasks={tasks}
+              currentPage={props.currentPage}
+              prevPage={props.prevPage}
+              currentListId={props.currentListId}
+              currentTaskId={props.currentTaskId}
+              onChangePage={props.onChangePage}
+              onChangeList={props.onChangeList}
+              onCreateTask={props.onCreateTask}
+              onDeleteTask={props.onDeleteTask}
+              onEditAllTaskFields={props.onEditAllTaskFields}
+              onEditListAppearance={props.onEditListAppearance}
+              onToggleDeleteAlert={props.onToggleDeleteAlert}
+              showDeleteAlert={props.showDeleteAlert}
+            />
           )}
         </div>
-        {showLargeScreenPopup && props.isLargeScreen ? (
-          <LargeScreenPopup
-            isLargeScreen={props.isLargeScreen}
-            onToggleLargeScreenPopup={toggleLargeScreenPopup}
-            data={props.data}
-            tasks={tasks}
-            currentPage={props.currentPage}
-            prevPage={props.prevPage}
-            currentListId={props.currentListId}
-            currentTaskId={props.currentTaskId}
-            onChangePage={props.onChangePage}
-            onChangeList={props.onChangeList}
-            onCreateTask={props.onCreateTask}
-            onDeleteTask={props.onDeleteTask}
-            onEditAllTaskFields={props.onEditAllTaskFields}
-            onEditListAppearance={props.onEditListAppearance}
-            onToggleDeleteAlert={props.onToggleDeleteAlert}
-            showDeleteAlert={props.showDeleteAlert}
-          />
-        ) : null}
-      </div>
-    )
+      )}
+    </Fragment>
   );
 }
 
-export default LargeScreenMainContent;
+export default LargeScreenContent;

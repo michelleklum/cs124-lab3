@@ -40,10 +40,6 @@ body {
   }
 }
 
-.top-bar i {
-  font-size: 26px !important;
-}
-
 h1 {
   font-size: 25px;
   color: #feffff;
@@ -57,6 +53,10 @@ h3 {
 p {
   font-size: 35px;
   color: #172528;
+}
+
+.top-bar i {
+  font-size: 26px !important;
 }
 
 /* margin-right auto makes single list icon + list name flush to left */
@@ -79,49 +79,7 @@ p {
   padding-left: 0.5em;
 }
 
-/* Delete toolbar for deleting on Edit Task Page  + Edit List Page */
-/* first four styles are for sticky toolbar */
-.delete-bar {
-  /* need margin-top auto so that delete bar is always at the very bottom */
-  /* relies on delete bar's parent #task-page being a CSS Flexbox */
-  margin-top: auto;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-  background: #ed554a;
-  color: #feffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* For small screens, delete bar should be fixed at bottom of webpage */
-@media screen and (max-width: 768px) {
-  .delete-bar {
-    position: fixed; /* use fixed instead of sticky so toolbar is at bottom even if we don't have that many lists */
-  }
-}
-
-/* For large screens, delete bar needs extra padding on bottom */
-@media screen and (min-width: 769px) {
-  .delete-bar {
-    padding-bottom: 4px;
-  }
-}
-
-.delete-bar:active {
-  color: #eae8e8;
-}
-
-.delete-bar i {
-  font-size: 23pt !important;
-  color: #feffff;
-}
-
-.delete-bar h2 {
-  margin-left: 0.5em;
-}
-
+/* Grayed-out styling for save checkmark, for when user has not yet entered all required info  */
 #no-info {
   color: #bab2b5 !important;
 }

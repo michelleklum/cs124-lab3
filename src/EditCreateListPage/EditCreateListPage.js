@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./EditCreateListPage.css";
 import EditListTopBar from "./EditListTopBar";
 import ListIconOptions from "./ListIconOptions";
-import DeleteListBarFromEditPage from "./DeleteListBarFromEditPage";
+import DeleteTaskListBar from "../Global/DeleteTaskListBar";
 import DeleteAlert from "../Global/DeleteAlert";
 
 function EditCreateListPage(props) {
@@ -40,9 +40,7 @@ function EditCreateListPage(props) {
         onChangePage={props.onChangePage}
       />
       {props.inEditListMode ? (
-        <DeleteListBarFromEditPage
-          onToggleDeleteAlert={props.onToggleDeleteAlert}
-        />
+        <DeleteTaskListBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
       ) : null}
       {props.showDeleteAlert && (
         <DeleteAlert

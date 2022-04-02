@@ -10,8 +10,7 @@ import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskP
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
 import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
 import ErrorAlert from "./Global/ErrorAlert";
-import LargeScreenTopBar from "./LargeScreens/LargeScreenTopBar";
-import LargeScreenMainContent from "./LargeScreens/LargeScreenMainContent";
+import LargeScreenContent from "./LargeScreens/LargeScreenContent";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -318,8 +317,7 @@ function App() {
 
   return isLargeScreen ? (
     <Fragment>
-      <LargeScreenTopBar />
-      <LargeScreenMainContent
+      <LargeScreenContent
         isLargeScreen={isLargeScreen}
         data={data}
         currentListId={currentListId}
@@ -328,7 +326,6 @@ function App() {
         onDeleteList={handleDeleteList}
         onChangePage={handleChangePage}
         onChangeList={handleChangeList}
-        onCreateTask={handleCreateList}
         onToggleDeleteAlert={handleToggleDeleteAlert}
         showDeleteAlert={showDeleteAlert}
         db={db}
@@ -339,6 +336,7 @@ function App() {
         onEditAllTaskFields={handleEditTaskAllFields}
         onDeleteTask={handleDeleteTask}
         onEditList={handleEditList}
+        onEditListAppearance={handleEditListAppearance}
         onDeleteCompleted={handleDeleteCompletedTasks}
         onDeleteAllTasks={handleDeleteAllTasks}
         listTasksPrimarySortField={listTasksPrimarySortField}
@@ -365,7 +363,6 @@ function App() {
           onDeleteList={handleDeleteList}
           onChangePage={handleChangePage}
           onChangeList={handleChangeList}
-          onCreateTask={handleCreateList}
           onToggleDeleteAlert={handleToggleDeleteAlert}
           showDeleteAlert={showDeleteAlert}
         />
@@ -463,7 +460,7 @@ function App() {
           data={data}
           prevPage={prevPage}
           currentListId={currentListId}
-          onEditList={handleEditListAppearance}
+          onEditListAppearance={handleEditListAppearance}
           onChangePage={handleChangePage}
           onChangeList={handleChangeList}
           onDeleteList={handleDeleteList}
@@ -479,7 +476,7 @@ function App() {
           data={data}
           prevPage={prevPage}
           currentListId={currentListId}
-          onEditList={handleEditListAppearance}
+          onEditListAppearance={handleEditListAppearance}
           onCreateList={handleCreateList}
           onChangeList={handleChangeList}
           onChangePage={handleChangePage}

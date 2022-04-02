@@ -79,6 +79,7 @@ function SingleListPage(props) {
                   {inMenuMode && menuModeType === "general" ? (
                     <ListMenu
                       isLargeScreen={props.isLargeScreen}
+                      onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
                       tasks={tasks}
                       listMenuType="general"
                       onChangeMenuModeType={setMenuModeType}
@@ -140,6 +141,7 @@ function SingleListPage(props) {
                 onChangePage={props.onChangePage}
                 onChangeTask={props.onChangeTask}
                 onEditTask={props.onEditTask}
+                isLargeScreen={props.isLargeScreen}
                 onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               />
             </div>

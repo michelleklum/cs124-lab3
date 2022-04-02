@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./EditCreateListPage.css";
 import EditListTopBar from "./EditListTopBar";
 import ListIconOptions from "./ListIconOptions";
-import DeleteListBarFromEditPage from "./DeleteListBarFromEditPage";
+import DeleteTaskListBar from "../Global/DeleteTaskListBar";
 import DeleteAlert from "../Global/DeleteAlert";
 
 function EditCreateListPage(props) {
@@ -18,13 +18,14 @@ function EditCreateListPage(props) {
     <div id="edit-list-page">
       <div className="edit-list-header top-bar">
         <EditListTopBar
+          isLargeScreen={props.isLargeScreen}
+          onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
           data={props.data}
           prevPage={props.prevPage}
           onChangePage={props.onChangePage}
           currentListId={props.currentListId}
-          onEditList={props.onEditList}
+          onEditListAppearance={props.onEditListAppearance}
           onCreateList={props.onCreateList}
-          onChangeList={props.onChangeList}
           tempListName={tempListName}
           tempSelectedIcon={tempSelectedIcon}
           onChangeListName={setTempListName}
@@ -36,13 +37,10 @@ function EditCreateListPage(props) {
       <ListIconOptions
         onChangeListIcon={setTempSelectedIcon}
         tempSelectedIcon={tempSelectedIcon}
-        onEditList={props.onEditList}
         onChangePage={props.onChangePage}
       />
       {props.inEditListMode ? (
-        <DeleteListBarFromEditPage
-          onToggleDeleteAlert={props.onToggleDeleteAlert}
-        />
+        <DeleteTaskListBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
       ) : null}
       {props.showDeleteAlert && (
         <DeleteAlert

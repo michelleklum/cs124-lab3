@@ -1,35 +1,38 @@
-.edit-list-title {
-    font-weight: 100;
-    background: #feffff;
-    color: #172528;
-    border-radius: 10px;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    padding-top: 0.1em;
-    position: relative;
-    padding-bottom: 0.1em;
-    top: 30%;
-  }
-  
-  .edit-list-header {
-    height: 80px;
-  }
-  
-  .edit-list-header i {
-    font-size: 29px !important;
-  }
-  
-  .edit-list-header-content {
-    display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
-    grid-template-rows: 1fr;
-    position: relative;
-    top: 42%;
-    transform: translate(0, -50%);
-  }
+#edit-list-page {
+  background: #feffff;
+  height: calc(
+    100vh - 60px
+  ); /* need this so #feffff background color extends entire screen, but delete bar still remains at bottom */
+  display: flex;
+  flex-direction: column;
+}
 
-  #edit-list-page {
-    background: #feffff;
-    height: 100vh; /* need this so #feffff background color extends entire screen */
-  }
-  
+.edit-list-title {
+  font-weight: 100;
+  background: #feffff;
+  color: #172528;
+  border-radius: 10px;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 0.1em;
+  position: relative;
+  padding-bottom: 0.1em;
+  top: 30%;
+}
+
+.edit-list-header {
+  height: 80px;
+}
+
+.edit-list-header i {
+  font-size: 29px !important;
+}
+
+.edit-list-header-content {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-rows: 1fr;
+  position: relative;
+  top: 42%;
+  transform: translate(0, -50%);
+}

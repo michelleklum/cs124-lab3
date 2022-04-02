@@ -33,7 +33,7 @@ function TaskCard(props) {
   function handleTaskCardClick() {
     props.onChangePage("ViewTaskPage");
     props.onChangeTask(props.task.id);
-    props.onToggleLargeScreenPopup();
+    props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
 
   const completedTaskClassName = props.task.isCompleted

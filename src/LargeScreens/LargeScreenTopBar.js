@@ -1,6 +1,6 @@
-import "./TopBar.css";
+import "./LargeScreenTopBar.css";
 
-function TopBar() {
+function LargeScreenTopBar() {
   return (
     <div className="top-bar" id="home-top-bar">
       <div className="top-bar-content">
@@ -17,4 +17,4 @@ function TopBar() {
   );
 }
 
-export default TopBar;
+export default LargeScreenTopBar;

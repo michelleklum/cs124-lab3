@@ -10,8 +10,8 @@ import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskP
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
 import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
 import ErrorAlert from "./Global/ErrorAlert";
-import TopBar from "./LargeScreens/TopBar";
-import MainContent from "./LargeScreens/MainContent";
+import LargeScreenTopBar from "./LargeScreens/LargeScreenTopBar";
+import LargeScreenMainContent from "./LargeScreens/LargeScreenMainContent";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -318,8 +318,8 @@ function App() {
 
   return isLargeScreen ? (
     <Fragment>
-      <TopBar />
-      <MainContent
+      <LargeScreenTopBar />
+      <LargeScreenMainContent
         isLargeScreen={isLargeScreen}
         data={data}
         currentListId={currentListId}

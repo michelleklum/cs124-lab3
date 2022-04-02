@@ -1,6 +1,6 @@
 import Home from "../Home/Home";
 
-function SideBar(props) {
+function LargeScreenSideBar(props) {
   return (
     <Home
       isLargeScreen={props.isLargeScreen}
@@ -13,4 +13,4 @@ function SideBar(props) {
   );
 }
 
-export default SideBar;
+export default LargeScreenSideBar;

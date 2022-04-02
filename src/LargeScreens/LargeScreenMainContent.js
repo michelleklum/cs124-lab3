@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./LargeScreen.css";
 import SingleListPage from "../SingleListPage/SingleListPage";
-import SideBar from "./SideBar";
+import LargeScreenSideBar from "./LargeScreenSideBar";
 import LargeScreenPopup from "./LargeScreenPopup";
 
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
-function MainContent(props) {
+function LargeScreenMainContent(props) {
   // Get tasks (current list's tasks) from Firebase
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(
     props.tasksQuery
@@ -27,7 +27,7 @@ function MainContent(props) {
     !tasksError && (
       <div className="main-content">
         <div className={`side-bar ${unscrollableClassName}`}>
-          <SideBar
+          <LargeScreenSideBar
             isLargeScreen={props.isLargeScreen}
             data={props.data}
             onChangePage={props.onChangePage}
@@ -90,4 +90,4 @@ function MainContent(props) {
   );
 }
 
-export default MainContent;
+export default LargeScreenMainContent;

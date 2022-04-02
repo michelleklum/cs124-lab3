@@ -16,6 +16,7 @@ function Home(props) {
       <ListOfLists
         isLargeScreen={props.isLargeScreen}
         data={props.data}
+        currentListId={props.currentListId}
         onChangePage={props.onChangePage}
         onChangeList={props.onChangeList}
         onDeleteList={props.onDeleteList}

@@ -21,10 +21,12 @@ function ListCard(props) {
 
   function handleTouchEnd() {
     // touchEnd !== 0 ensures there's a drag, not a click/tap
-    if (touchStart - touchEnd > 75 && touchEnd !== 0 && !inEditMode) {
+    if (touchStart - touchEnd > 75 && touchEnd !== 0
+      && !inEditMode && !props.isLargeScreen) {
       props.onEditList(props.id);
     }
-    if (touchStart - touchEnd < -75 && touchEnd !== 0 && inEditMode) {
+    if (touchStart - touchEnd < -75 && touchEnd !== 0 
+      && inEditMode && !props.isLargeScreen) {
       props.onEditList(null);
     }
 
@@ -42,10 +44,15 @@ function ListCard(props) {
 
   let gridClassName = inEditMode ? "edit-list-grid" : "list-grid";
   let largeScreenName = props.isLargeScreen ? "large-screen-list-card" : "";
+  let selectedList = (props.isLargeScreen && props.id === props.currentListId) ? 
+                        "selected-list" : "";
+  
+  console.log(props.id)
+  console.log(props.currentListId)
 
   return (
     <div
-      className={["list", gridClassName, largeScreenName].join(" ")}
+      className={["list", gridClassName, largeScreenName, selectedList].join(" ")}
       onClick={handleListCardClick}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -66,9 +73,9 @@ function ListCard(props) {
             id={props.id} />
         </Fragment>
       ) : (
-        <EnterListArrow 
-          onListIconClick={() => props.onEditList(null)} 
-          isLargeScreen={props.isLargeScreen}/>
+        <EnterListArrow
+          onListIconClick={() => props.onEditList(null)}
+          isLargeScreen={props.isLargeScreen} />
       )}
     </div>
   );

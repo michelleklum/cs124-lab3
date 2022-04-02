@@ -28,6 +28,7 @@ function ListOfLists(props) {
           id={list.id}
           listName={list.name}
           listIcon={list.icon}
+          currentListId={props.currentListId}
           onChangePage={props.onChangePage}
           onChangeList={props.onChangeList}
           onDeleteList={props.onDeleteList}

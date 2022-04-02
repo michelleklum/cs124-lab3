@@ -30,6 +30,7 @@ function LargeScreenMainContent(props) {
           <LargeScreenSideBar
             isLargeScreen={props.isLargeScreen}
             data={props.data}
+            currentListId={props.currentListId}
             onChangePage={props.onChangePage}
             onChangeList={props.onChangeList}
             onDeleteList={props.onDeleteList}

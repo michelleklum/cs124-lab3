@@ -2,7 +2,10 @@ function TaskBackButton(props) {
   return (
     <i
       className="fas fa-chevron-left fa-4x"
-      onClick={() => props.onChangePage("SingleListPage")}
+      onClick={function () {
+        props.onChangePage("SingleListPage");
+        props.isLargeScreen && props.onToggleLargeScreenPopup();
+      }}
     ></i>
   );
 }

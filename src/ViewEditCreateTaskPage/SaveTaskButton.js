@@ -14,6 +14,7 @@ function SaveTaskButton(props) {
       props.taskStatus,
       props.taskPriority
     );
+    props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
 
   function confirmCreateTask() {
@@ -25,6 +26,7 @@ function SaveTaskButton(props) {
       props.taskNotes,
       props.taskPriority
     );
+    props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
 
   return (

@@ -21,7 +21,11 @@ function ListMenu(props) {
         <div
           className={`single-list-page-menu general-menu-grid ${screenSizeClassName}`}
         >
-          <EditListBar onChangePage={props.onChangePage} />
+          <EditListBar
+            onChangePage={props.onChangePage}
+            isLargeScreen={props.isLargeScreen}
+            onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+          />
           <HideCompletedBar
             hideCompletedTasks={taskList.hideCompletedTasks}
             currentListId={props.currentListId}

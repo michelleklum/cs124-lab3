@@ -28,6 +28,7 @@ function ListOfTasks(props) {
           onChangePage={props.onChangePage}
           onChangeTask={props.onChangeTask}
           onEditTask={props.onEditTask}
+          isLargeScreen={props.isLargeScreen}
           onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
         />
       ))}
@@ -44,6 +45,7 @@ function ListOfTasks(props) {
               onChangePage={props.onChangePage}
               onChangeTask={props.onChangeTask}
               onEditTask={props.onEditTask}
+              isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
             />
           ))}

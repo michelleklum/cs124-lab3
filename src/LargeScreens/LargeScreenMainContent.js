@@ -13,13 +13,15 @@ function LargeScreenMainContent(props) {
   );
   const tasks = dbTasks ? dbTasks : [];
 
-  const [largeScreenPopup, setLargeScreenPopup] = useState(false);
+  const [showLargeScreenPopup, setShowLargeScreenPopup] = useState(false);
+
+  console.log(showLargeScreenPopup);
 
   function toggleLargeScreenPopup() {
-    setLargeScreenPopup(!largeScreenPopup);
+    setShowLargeScreenPopup(!showLargeScreenPopup);
   }
 
-  const unscrollableClassName = largeScreenPopup ? "unscrollable" : null;
+  const unscrollableClassName = showLargeScreenPopup ? "unscrollable" : null;
 
   // TODO add back search bar to both home (add HomeSearch option to side-bar) and single list page
   return (
@@ -41,6 +43,7 @@ function LargeScreenMainContent(props) {
           {props.currentListId ? (
             <SingleListPage
               isLargeScreen={props.isLargeScreen}
+              onToggleLargeScreenPopup={toggleLargeScreenPopup}
               db={props.db}
               data={props.data}
               tasksQuery={props.tasksQuery}
@@ -62,25 +65,27 @@ function LargeScreenMainContent(props) {
               showDeleteAlert={props.showDeleteAlert}
               listTasksPrimarySortField={props.listTasksPrimarySortField}
               onChangeSort={props.onChangeSort}
-              onToggleLargeScreenPopup={toggleLargeScreenPopup}
             />
           ) : (
             <h3 className="welcome-message">Welcome!</h3>
           )}
         </div>
-        {largeScreenPopup && props.isLargeScreen && props.currentTaskId ? (
+        {showLargeScreenPopup && props.isLargeScreen ? (
           <LargeScreenPopup
             isLargeScreen={props.isLargeScreen}
             onToggleLargeScreenPopup={toggleLargeScreenPopup}
+            data={props.data}
             tasks={tasks}
             currentPage={props.currentPage}
             prevPage={props.prevPage}
             currentListId={props.currentListId}
             currentTaskId={props.currentTaskId}
             onChangePage={props.onChangePage}
+            onChangeList={props.onChangeList}
             onCreateTask={props.onCreateTask}
             onDeleteTask={props.onDeleteTask}
             onEditAllTaskFields={props.onEditAllTaskFields}
+            onEditListAppearance={props.onEditListAppearance}
             onToggleDeleteAlert={props.onToggleDeleteAlert}
             showDeleteAlert={props.showDeleteAlert}
           />

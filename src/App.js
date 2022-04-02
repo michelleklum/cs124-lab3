@@ -328,7 +328,6 @@ function App() {
         onDeleteList={handleDeleteList}
         onChangePage={handleChangePage}
         onChangeList={handleChangeList}
-        onCreateTask={handleCreateList}
         onToggleDeleteAlert={handleToggleDeleteAlert}
         showDeleteAlert={showDeleteAlert}
         db={db}
@@ -338,7 +337,7 @@ function App() {
         onEditTask={handleEditTask}
         onEditAllTaskFields={handleEditTaskAllFields}
         onDeleteTask={handleDeleteTask}
-        onEditList={handleEditList}
+        onEditListAppearance={handleEditListAppearance}
         onDeleteCompleted={handleDeleteCompletedTasks}
         onDeleteAllTasks={handleDeleteAllTasks}
         listTasksPrimarySortField={listTasksPrimarySortField}
@@ -365,7 +364,6 @@ function App() {
           onDeleteList={handleDeleteList}
           onChangePage={handleChangePage}
           onChangeList={handleChangeList}
-          onCreateTask={handleCreateList}
           onToggleDeleteAlert={handleToggleDeleteAlert}
           showDeleteAlert={showDeleteAlert}
         />
@@ -463,7 +461,7 @@ function App() {
           data={data}
           prevPage={prevPage}
           currentListId={currentListId}
-          onEditList={handleEditListAppearance}
+          onEditListAppearance={handleEditListAppearance}
           onChangePage={handleChangePage}
           onChangeList={handleChangeList}
           onDeleteList={handleDeleteList}
@@ -479,7 +477,7 @@ function App() {
           data={data}
           prevPage={prevPage}
           currentListId={currentListId}
-          onEditList={handleEditListAppearance}
+          onEditListAppearance={handleEditListAppearance}
           onCreateList={handleCreateList}
           onChangeList={handleChangeList}
           onChangePage={handleChangePage}

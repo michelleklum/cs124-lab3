@@ -2,7 +2,7 @@ import "./LargeScreenTopBar.css";
 
 function LargeScreenTopBar() {
   return (
-    <div className="top-bar" id="home-top-bar">
+    <div className="top-bar" id="home-top-bar-large-screen">
       <div className="top-bar-content">
         <div className="logo">
           <img

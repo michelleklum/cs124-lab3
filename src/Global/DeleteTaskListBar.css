@@ -1,8 +1,8 @@
-/* Delete toolbar for deleting on Edit Task Page + Edit List Page */
+/* Delete bar for deleting task on Edit Task Page + list on Edit List Page */
 /* first four styles are for sticky toolbar */
 .delete-bar {
   /* need margin-top auto so that delete bar is always at the very bottom */
-  /* relies on delete bar's parent #task-page being a CSS Flexbox */
+  /* relies on each delete bar instance's respective parent (#task-page or #edit-list-page) being a CSS Flexbox */
   margin-top: auto;
   bottom: 0;
   width: 100%;

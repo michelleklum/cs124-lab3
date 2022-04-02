@@ -46,7 +46,7 @@ function ListCard(props) {
   let largeScreenName = props.isLargeScreen ? "large-screen-list-card" : "";
   let selectedList = (props.isLargeScreen && props.id === props.currentListId) ? 
                         "selected-list" : "";
-  
+
 
   return (
     <div
@@ -73,7 +73,7 @@ function ListCard(props) {
       ) : (
         <EnterListArrow
           onListIconClick={() => props.onEditList(null)}
-          isLargeScreen={props.isLargeScreen} />
+          isLargeScreen={props.isLargeScreen}/>
       )}
     </div>
   );

@@ -91,6 +91,6 @@ i.large-screen-arrow {
   grid-template-columns: 1.9em 15em 1fr;
 }
 
-.selected-list > i {
-  color:#172528;
+.selected-list > i.fa-chevron-right {
+  color:#EAE8E8;
 }

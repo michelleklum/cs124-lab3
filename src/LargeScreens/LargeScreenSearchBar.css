@@ -4,7 +4,7 @@
   color: #bab2b5;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
-  width: 300px;
+  width: 220px;
   display: flex;
   align-items: center;
 }
@@ -12,19 +12,25 @@
 /* For responsive design, make sure everything in large screen header still fits into width of screen */
 @media screen and (min-width: 800px) {
   .large-screen-search {
-    width: 320px;
+    width: 280px;
   }
 }
 
 @media screen and (min-width: 820px) {
   .large-screen-search {
-    width: 360px;
+    width: 300px;
   }
 }
 
 @media screen and (min-width: 900px) {
   .large-screen-search {
-    width: 400px;
+    width: 340x;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .large-screen-search {
+    width: 390px;
   }
 }
 
@@ -56,5 +62,5 @@
   margin-left: 1em;
   border: none;
   outline: none;
-  width: 82%; /* For responsive design, make sure search bar input remains at a good relative width to the search bar */
+  width: 75%; /* For responsive design, make sure search bar input remains at a good relative width to the search bar */
 }

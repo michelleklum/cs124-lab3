@@ -8,7 +8,7 @@ function ListTopBar(props) {
 
   return (
     <div className="top-bar">
-      <div className="top-bar-content">
+      <div className="list-top-bar-content">
         <div className="left-aligned">
           <ListBackButton
             onChangePage={props.onChangePage}

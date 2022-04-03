@@ -1,5 +1,3 @@
-import "./CancelEditListButton.css";
-
 function CancelEditListButton(props) {
   return (
     <div className="left-aligned">

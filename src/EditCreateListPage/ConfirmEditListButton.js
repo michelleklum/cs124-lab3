@@ -22,7 +22,7 @@ function ConfirmEditListButton(props) {
   return (
     <div>
       {confirmInProgress && (
-        <div className="right-aligned">
+        <div className="confirm-edit-list right-aligned">
           <i className="fas fa-check fa-4x" id="no-info"></i>
         </div>
       )}
@@ -30,14 +30,14 @@ function ConfirmEditListButton(props) {
         props.inEditListMode &&
         props.listName !== "" &&
         props.listIcon !== "" && (
-          <div className="right-aligned">
+          <div className="confirm-edit-list right-aligned">
             <i className="fas fa-check fa-4x" onClick={() => confirmEdit()}></i>
           </div>
         )}
       {!confirmInProgress &&
         props.inEditListMode &&
         (props.listName === "" || props.listIcon === "") && (
-          <div className="right-aligned">
+          <div className="confirm-edit-list right-aligned">
             <i className="fas fa-check fa-4x" id="no-info"></i>
           </div>
         )}
@@ -45,7 +45,7 @@ function ConfirmEditListButton(props) {
         props.inCreateListMode &&
         props.listName !== "" &&
         props.listIcon !== "" && (
-          <div className="right-aligned create-mode-confirm">
+          <div className="confirm-edit-list right-aligned create-mode-confirm">
             <i
               className="fas fa-check fa-4x"
               onClick={() => confirmCreateList()}
@@ -55,7 +55,7 @@ function ConfirmEditListButton(props) {
       {!confirmInProgress &&
         props.inCreateListMode &&
         (props.listName === "" || props.listIcon === "") && (
-          <div className="right-aligned">
+          <div className="confirm-edit-list right-aligned">
             <i className="fas fa-check fa-4x" id="no-info"></i>
           </div>
         )}

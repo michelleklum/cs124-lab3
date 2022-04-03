@@ -56,7 +56,7 @@ p {
 }
 
 .top-bar i {
-  font-size: 26px !important;
+  font-size: 26px;
 }
 
 /* margin-right auto makes single list icon + list name flush to left */

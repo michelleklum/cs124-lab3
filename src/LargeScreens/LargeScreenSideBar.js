@@ -9,7 +9,7 @@ function LargeScreenSideBar(props) {
         onChangePage={props.onChangePage}
         onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
       />
-      <Home
+      {!props.loading && <Home
         isLargeScreen={props.isLargeScreen}
         data={props.data}
         currentListId={props.currentListId}
@@ -17,7 +17,7 @@ function LargeScreenSideBar(props) {
         onChangeList={props.onChangeList}
         onDeleteList={props.onDeleteList}
         onToggleDeleteAlert={props.onToggleDeleteAlert}
-      />
+      />}
     </Fragment>
   );
 }

@@ -27,9 +27,9 @@ function LargeScreenSubpage(props) {
       listTasksPrimarySortField={props.listTasksPrimarySortField}
       onChangeSort={props.onChangeSort}
     />
-  ) : (
+  ) : !props.loading ? (
     <h3 className="welcome-message">Welcome!</h3>
-  );
+  ) : null;
 }
 
 export default LargeScreenSubpage;

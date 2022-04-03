@@ -21,11 +21,47 @@ function LargeScreenContent(props) {
   }
 
   const unscrollableClassName = showLargeScreenPopup ? "unscrollable" : null;
-
   // TODO add back search bar to both home (add HomeSearch option to side-bar) and single list page
   return (
     <Fragment>
       <LargeScreenTopBar />
+      {(props.dataLoading) && (
+        <div className="main-content">
+          <div className={`side-bar ${unscrollableClassName}`}>
+            <LargeScreenSideBar
+              loading={props.dataLoading}
+            />
+          </div>
+          <div className="vertical-divider"></div>
+          <div className={`large-screen-subpage ${unscrollableClassName}`}>
+            <LargeScreenSubpage
+              loading={props.dataLoading}
+            />
+          </div>
+        </div>
+      )}
+      {!props.dataLoading && tasksLoading && (
+        <div className="main-content">
+          <div className={`side-bar ${unscrollableClassName}`}>
+            <LargeScreenSideBar
+              isLargeScreen={props.isLargeScreen}
+              onToggleLargeScreenPopup={toggleLargeScreenPopup}
+              data={props.data}
+              currentListId={props.currentListId}
+              onChangePage={props.onChangePage}
+              onChangeList={props.onChangeList}
+              onDeleteList={props.onDeleteList}
+              onToggleDeleteAlert={props.onToggleDeleteAlert}
+            />
+          </div>
+          <div className="vertical-divider"></div>
+          <div className={`large-screen-subpage ${unscrollableClassName}`}>
+            <LargeScreenSubpage
+              loading={tasksLoading}
+            />
+          </div>
+        </div>
+      )}
       {!tasksLoading && !tasksError && (
         <div className="main-content">
           <div className={`side-bar ${unscrollableClassName}`}>

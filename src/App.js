@@ -321,6 +321,7 @@ function App() {
       <LargeScreenContent
         isLargeScreen={isLargeScreen}
         data={data}
+        dataLoading={dataLoading}
         currentListId={currentListId}
         currentTaskId={currentTaskId}
         currentPage={currentPage}

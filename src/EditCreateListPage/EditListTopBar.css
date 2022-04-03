@@ -8,7 +8,7 @@
 
 .edit-list-header-content {
   display: grid;
-  grid-template-columns: 64px 1fr 64px;
+  grid-template-columns: 60px 1fr 68px;
   grid-template-rows: 1fr;
   top: 48%;
   width: 100%;

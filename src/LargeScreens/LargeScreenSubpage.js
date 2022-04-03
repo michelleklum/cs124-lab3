@@ -30,7 +30,7 @@ function LargeScreenSubpage(props) {
       setSearchQuery={props.setSearchQuery}
     />
   ) : !props.loading ? (
-    <div>
+    <div className="welcome">
       <img
         src={require("../Global/welcome_screen_task_monster.png")}
         alt="Task Monster Welcome Logo"

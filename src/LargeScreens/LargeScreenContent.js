@@ -25,18 +25,14 @@ function LargeScreenContent(props) {
   return (
     <Fragment>
       <LargeScreenTopBar />
-      {(props.dataLoading) && (
+      {props.dataLoading && (
         <div className="main-content">
           <div className={`side-bar ${unscrollableClassName}`}>
-            <LargeScreenSideBar
-              loading={props.dataLoading}
-            />
+            <LargeScreenSideBar loading={props.dataLoading} />
           </div>
           <div className="vertical-divider"></div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
-            <LargeScreenSubpage
-              loading={props.dataLoading}
-            />
+            <LargeScreenSubpage loading={props.dataLoading} />
           </div>
         </div>
       )}
@@ -56,9 +52,7 @@ function LargeScreenContent(props) {
           </div>
           <div className="vertical-divider"></div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
-            <LargeScreenSubpage
-              loading={tasksLoading}
-            />
+            <LargeScreenSubpage loading={tasksLoading} />
           </div>
         </div>
       )}
@@ -117,6 +111,7 @@ function LargeScreenContent(props) {
               onChangePage={props.onChangePage}
               onChangeList={props.onChangeList}
               onCreateList={props.onCreateList}
+              onDeleteList={props.onDeleteList}
               onCreateTask={props.onCreateTask}
               onDeleteTask={props.onDeleteTask}
               onEditAllTaskFields={props.onEditAllTaskFields}

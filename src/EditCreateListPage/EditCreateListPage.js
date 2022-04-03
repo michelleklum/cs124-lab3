@@ -9,8 +9,10 @@ function EditCreateListPage(props) {
   const currentList = props.data.find(
     (list) => list.id === props.currentListId
   );
-  const list = (currentList && !props.inCreateListMode) ?
-    currentList : { name: "", icon: "" };
+  const list =
+    currentList && !props.inCreateListMode
+      ? currentList
+      : { name: "", icon: "" };
 
   const [tempListName, setTempListName] = useState(list.name);
   const [tempSelectedIcon, setTempSelectedIcon] = useState(list.icon);
@@ -48,7 +50,10 @@ function EditCreateListPage(props) {
         <DeleteAlert
           type="this list"
           onToggleDeleteAlert={props.onToggleDeleteAlert}
-          onDelete={() => props.onDeleteList(props.currentListId)}
+          onDelete={function () {
+            props.onDeleteList(props.currentListId);
+            props.isLargeScreen && props.onToggleLargeScreenPopup();
+          }}
         />
       )}
     </div>

@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import "./LargeScreen.css";
+import "./LargeScreenContent.css";
 import LargeScreenTopBar from "./LargeScreenTopBar";
 import LargeScreenSideBar from "./LargeScreenSideBar";
 import LargeScreenSubpage from "./LargeScreenSubpage";

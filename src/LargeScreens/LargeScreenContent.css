@@ -3,7 +3,6 @@
   margin-right: auto;
   width: 97.5%;
   display: flex;
-  align-items: flex-start;
 }
 
 .side-bar {
@@ -14,9 +13,13 @@
 
 .vertical-divider {
   border-right: #bab2b5 1.5px solid; /* vertical line dividing Side Bar from Large Screen Subpage */
+  align-self: stretch;
+}
+
+.unscrollable .vertical-divider {
   height: calc(
     100vh - 60px
-  ); /* to make vertical line extend all the way vertically */
+  ); /* to make sure the page is actually unscrollable */
 }
 
 .large-screen-subpage {
@@ -42,7 +45,7 @@
 }
 
 .sidebar-header-text {
-  font-size:13pt;
+  font-size: 13pt;
   margin-left: 7px;
   margin-bottom: 16px;
   font-weight: 700;
@@ -66,5 +69,3 @@
   font-size: 6px !important;
   color: #172528 !important;
 }
-
-

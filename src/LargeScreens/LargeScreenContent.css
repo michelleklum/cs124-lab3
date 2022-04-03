@@ -74,13 +74,12 @@
 
 .sidebar-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   width: 240px;
 }
 
 .sidebar-header i {
-  margin-top: 19px;
   color: #172528 !important;
 }
 

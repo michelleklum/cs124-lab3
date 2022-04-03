@@ -16,3 +16,7 @@
   margin-right: 36px;
   justify-content: space-between;
 }
+
+.large-screen-icons i:hover {
+  color: #172528 !important;
+}

@@ -9,7 +9,8 @@ function EditCreateListPage(props) {
   const currentList = props.data.find(
     (list) => list.id === props.currentListId
   );
-  const list = currentList ? currentList : { name: "", icon: "" };
+  const list = (currentList && !props.inCreateListMode) ?
+    currentList : { name: "", icon: "" };
 
   const [tempListName, setTempListName] = useState(list.name);
   const [tempSelectedIcon, setTempSelectedIcon] = useState(list.icon);
@@ -32,6 +33,7 @@ function EditCreateListPage(props) {
           onChangeListIcon={setTempSelectedIcon}
           inEditListMode={props.inEditListMode}
           inCreateListMode={props.inCreateListMode}
+          onChangeList={props.onChangeList}
         />
       </div>
       <ListIconOptions

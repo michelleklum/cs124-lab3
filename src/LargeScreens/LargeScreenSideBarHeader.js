@@ -1,10 +1,15 @@
-import React, { Fragment } from "react";
+import LargeScreenAddButton from "./LargeScreenAddButton";
 
 function LargeScreenSideBarHeader(props) {
   return (
-    <Fragment>      
-    <h2 className="sidebar-header">Your Lists</h2>
-    </Fragment>
+    <div className="sidebar-header">      
+    <h2 className="sidebar-header-text">Your Lists</h2>
+    <LargeScreenAddButton
+      onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+      addType="list"
+      onChangePage={props.onChangePage}
+    />
+    </div>
   );
 }
 

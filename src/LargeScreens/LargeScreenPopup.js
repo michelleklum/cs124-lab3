@@ -38,6 +38,23 @@ function LargeScreenPopup(props) {
             showDeleteAlert={props.showDeleteAlert}
           />
         ) : null}
+        {props.currentPage === "CreateTaskPage" ? (
+          <ViewEditCreateTaskPage
+            isLargeScreen={props.isLargeScreen}
+            onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+            tasks={props.tasks}
+            prevPage={props.prevPage}
+            currentListId={props.currentListId}
+            onChangePage={props.onChangePage}
+            onCreateTask={props.onCreateTask}
+            onDeleteTask={props.onDeleteTask}
+            onEditAllTaskFields={props.onEditAllTaskFields}
+            inEditTaskMode={false}
+            inCreateTaskMode={true}
+            onToggleDeleteAlert={props.onToggleDeleteAlert}
+            showDeleteAlert={props.showDeleteAlert}
+          />
+        ) : null}
         {props.currentPage === "EditListPage" ? (
           <EditCreateListPage
             isLargeScreen={props.isLargeScreen}
@@ -47,6 +64,7 @@ function LargeScreenPopup(props) {
             currentListId={props.currentListId}
             onEditListAppearance={props.onEditListAppearance}
             onChangePage={props.onChangePage}
+            onChangeList={props.onChangeList}
             onDeleteList={props.onDeleteList}
             onCreateList={props.onCreateList}
             inEditListMode={true}
@@ -65,7 +83,10 @@ function LargeScreenPopup(props) {
             onEditListAppearance={props.onEditListAppearance}
             onCreateList={props.onCreateList}
             onChangePage={props.onChangePage}
+            onChangeList={props.onChangeList}
             onDeleteList={props.onDeleteList}
+            inEditListMode={false}
+            inCreateListMode={true}
           />
         ) : null}
       </div>

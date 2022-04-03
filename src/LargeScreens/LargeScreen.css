@@ -41,11 +41,30 @@
   overflow: hidden;
 }
 
-.sidebar-header {
-  font-size:12pt;
+.sidebar-header-text {
+  font-size:13pt;
   margin-left: 7px;
-  margin-bottom:9px;
-  font-weight:700;
+  margin-bottom: 16px;
+  font-weight: 700;
   color: #172528;
+  margin-top: 20px;
 }
+
+.sidebar-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 240px;
+}
+
+.sidebar-header i {
+  margin-top: 19px;
+  color: #172528 !important;
+}
+
+.large-screen-add-button {
+  font-size: 6px !important;
+  color: #172528 !important;
+}
+
 

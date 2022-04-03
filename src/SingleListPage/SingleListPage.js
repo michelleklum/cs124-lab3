@@ -11,6 +11,7 @@ import ListSearchButton from "./ListSearchButton";
 import ListMenuButton from "./ListMenuButton";
 
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import LargeScreenAddButton from "../LargeScreens/LargeScreenAddButton";
 
 function SingleListPage(props) {
   const [inMenuMode, setMenuMode] = useState(false);
@@ -25,7 +26,7 @@ function SingleListPage(props) {
   );
   const tasks = dbTasks ? dbTasks : [];
   const taskList = props.data.find((list) => list.id === props.currentListId);
-
+  
   function toggleMenuMode() {
     setMenuMode(!inMenuMode);
     setMenuModeType("general"); // so that next time menu is opened, it will be the general menu
@@ -67,10 +68,16 @@ function SingleListPage(props) {
                 <h3 className="single-list-task-name">{taskList.name}</h3>
                 <div className="large-screen-icons right-aligned">
                   {inMenuMode ? null : (
-                    <ListSearchButton
-                      isLargeScreen={props.isLargeScreen}
-                      onChangePage={props.onChangePage}
-                    />
+                    <Fragment>
+                      <LargeScreenAddButton
+                        onToggleLargeScreenPopup={props.onToggleLargeScreenPopup} 
+                        onChangePage={props.onChangePage}
+                        addType={"task"}/>
+                      <ListSearchButton
+                        isLargeScreen={props.isLargeScreen}
+                        onChangePage={props.onChangePage}
+                      />
+                    </Fragment>
                   )}
                   <ListMenuButton
                     isLargeScreen={props.isLargeScreen}

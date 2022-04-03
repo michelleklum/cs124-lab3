@@ -265,7 +265,8 @@ function App() {
       hideCompletedTasks: false,
     };
     setDoc(doc(db, listCollectionName, listId), newList).then(() =>
-      handleChangePage("Home")
+      {handleChangePage("Home");
+       handleChangeList(listId);}
     );
   }
 
@@ -332,9 +333,11 @@ function App() {
         tasksQuery={tasksQuery}
         prevPage={prevPage}
         onChangeTask={handleChangeTask}
+        onCreateTask={handleCreateTask}
         onEditTask={handleEditTask}
         onEditAllTaskFields={handleEditTaskAllFields}
         onDeleteTask={handleDeleteTask}
+        onCreateList={handleCreateList}
         onEditList={handleEditList}
         onEditListAppearance={handleEditListAppearance}
         onDeleteCompleted={handleDeleteCompletedTasks}

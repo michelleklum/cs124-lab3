@@ -31,6 +31,7 @@ function LargeScreenContent(props) {
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar
               isLargeScreen={props.isLargeScreen}
+              onToggleLargeScreenPopup={toggleLargeScreenPopup}
               data={props.data}
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
@@ -79,6 +80,7 @@ function LargeScreenContent(props) {
               currentTaskId={props.currentTaskId}
               onChangePage={props.onChangePage}
               onChangeList={props.onChangeList}
+              onCreateList={props.onCreateList}
               onCreateTask={props.onCreateTask}
               onDeleteTask={props.onDeleteTask}
               onEditAllTaskFields={props.onEditAllTaskFields}

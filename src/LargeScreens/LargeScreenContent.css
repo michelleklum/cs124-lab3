@@ -92,6 +92,6 @@
 }
 
 .welcome-logo {
-  width: min(50%, 400px);
-  margin-top: 20%;
+  width: min(40%, 400px);
+  margin-top: 20vh;
 }

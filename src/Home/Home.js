@@ -22,10 +22,12 @@ function Home(props) {
         onDeleteList={props.onDeleteList}
         onToggleDeleteAlert={props.onToggleDeleteAlert}
       />
-      <AddButton
-        onChangePage={props.onChangePage}
-        currentPage={props.currentPage}
-      />
+      {!props.isLargeScreen && (
+        <AddButton
+          onChangePage={props.onChangePage}
+          currentPage={props.currentPage}
+        />
+      )}
       {props.showDeleteAlert && (
         <DeleteAlert
           type="this list"

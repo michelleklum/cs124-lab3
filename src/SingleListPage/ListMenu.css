@@ -20,6 +20,7 @@
 /* On large screens, menu will be positioned relative to 3 dots in the list header and will have a set width */
 .large-screen-list-menu {
   position: absolute;
+  top: 30px;
   right: 0;
   background-color: #feffff;
   border-radius: 5px;

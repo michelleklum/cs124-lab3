@@ -1,0 +1,41 @@
+.large-screen-search {
+  border-radius: 20px;
+  background: #eae8e8;
+  color: #bab2b5;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  width: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.large-screen-search i {
+  margin-left: 0.2em;
+  font-size: 19px !important;
+}
+
+/* get rid of default input outline on hover and click */
+.large-screen-search input:hover,
+.large-screen-search input:active {
+  outline: none;
+}
+
+.large-screen-search-label {
+  display: none;
+}
+
+.large-screen-search input[type="text"] {
+  background: #eae8e8;
+  color: #172528;
+  line-height: 0.5em;
+  font-size: 15px;
+  font-family: "Open Sans", Calibri, sans-serif;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  margin-left: 1em;
+  border: none;
+  outline: none;
+  width: 82%; /* For responsive design, make sure search bar input remains at a good relative width to the search bar */
+}

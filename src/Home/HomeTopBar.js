@@ -5,7 +5,7 @@ function HomeTopBar(props) {
   return (
     <div className="top-bar" id="home-top-bar">
       <div className="top-bar-content">
-        <div className="logo">
+        <div className="logo small-screen-logo">
           <img
             src={require("../Global/header_task_monster.png")}
             width="210"

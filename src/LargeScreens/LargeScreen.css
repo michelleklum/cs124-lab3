@@ -67,4 +67,11 @@
   color: #172528 !important;
 }
 
+.large-screen-subpage {
+  text-align: center;
+}
 
+.welcome-logo {
+  width: min(50%, 400px);
+  margin-top: 20%;
+}

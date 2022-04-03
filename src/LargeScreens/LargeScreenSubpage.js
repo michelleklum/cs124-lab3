@@ -28,7 +28,13 @@ function LargeScreenSubpage(props) {
       onChangeSort={props.onChangeSort}
     />
   ) : !props.loading ? (
-    <h3 className="welcome-message">Welcome!</h3>
+    <div>
+      <img
+        src={require("../Global/welcome_screen_task_monster.png")}
+        alt="Task Monster Welcome Logo"
+        className="welcome-logo"
+      />
+    </div>
   ) : null;
 }
 

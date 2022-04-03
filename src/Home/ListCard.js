@@ -8,7 +8,7 @@ function ListCard(props) {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
-  const inEditMode = (props.listInEditMode === props.id);
+  const inEditMode = props.listInEditMode === props.id;
 
   /* The three functions below handle user swiping left or right on ListCard to reveal / hide edit and delete icons */
   function handleTouchStart(e) {
@@ -21,12 +21,20 @@ function ListCard(props) {
 
   function handleTouchEnd() {
     // touchEnd !== 0 ensures there's a drag, not a click/tap
-    if (touchStart - touchEnd > 75 && touchEnd !== 0
-      && !inEditMode && !props.isLargeScreen) {
+    if (
+      touchStart - touchEnd > 75 &&
+      touchEnd !== 0 &&
+      !inEditMode &&
+      !props.isLargeScreen
+    ) {
       props.onEditList(props.id);
     }
-    if (touchStart - touchEnd < -75 && touchEnd !== 0 
-      && inEditMode && !props.isLargeScreen) {
+    if (
+      touchStart - touchEnd < -75 &&
+      touchEnd !== 0 &&
+      inEditMode &&
+      !props.isLargeScreen
+    ) {
       props.onEditList(null);
     }
 
@@ -39,18 +47,22 @@ function ListCard(props) {
     if (!inEditMode) {
       props.onChangePage("SingleListPage");
       props.onChangeList(props.id);
+      props.isLargeScreen && props.setSearchQuery("");
     }
   }
 
   let gridClassName = inEditMode ? "edit-list-grid" : "list-grid";
   let largeScreenName = props.isLargeScreen ? "large-screen-list-card" : "";
-  let selectedList = (props.isLargeScreen && props.id === props.currentListId) ? 
-                        "selected-list" : "";
-
+  let selectedList =
+    props.isLargeScreen && props.id === props.currentListId
+      ? "selected-list"
+      : "";
 
   return (
     <div
-      className={["list", gridClassName, largeScreenName, selectedList].join(" ")}
+      className={["list", gridClassName, largeScreenName, selectedList].join(
+        " "
+      )}
       onClick={handleListCardClick}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -68,12 +80,14 @@ function ListCard(props) {
           <DeleteListButton
             onToggleDeleteAlert={props.onToggleDeleteAlert}
             onChangeList={props.onChangeList}
-            id={props.id} />
+            id={props.id}
+          />
         </Fragment>
       ) : (
         <EnterListArrow
           onListIconClick={() => props.onEditList(null)}
-          isLargeScreen={props.isLargeScreen}/>
+          isLargeScreen={props.isLargeScreen}
+        />
       )}
     </div>
   );

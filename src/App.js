@@ -264,10 +264,10 @@ function App() {
       icon: icon,
       hideCompletedTasks: false,
     };
-    setDoc(doc(db, listCollectionName, listId), newList).then(() =>
-      {handleChangePage("Home");
-       handleChangeList(listId);}
-    );
+    setDoc(doc(db, listCollectionName, listId), newList).then(() => {
+      handleChangePage("Home");
+      handleChangeList(listId);
+    });
   }
 
   function handleCreateTask(
@@ -296,7 +296,7 @@ function App() {
       taskSubcollectionName,
       taskId
     );
-    setDoc(docRef, newTask).then(() => handleChangePage(prevPage));
+    setDoc(docRef, newTask).then(() => handleChangePage("SingleListPage"));
   }
 
   function handleCreateErrorReport() {

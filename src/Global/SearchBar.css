@@ -19,7 +19,7 @@
 .search {
   position: sticky;
   top: 0;
-  flex-grow: 1; /* make search bar width responsive since its within the search-background flexbox */
+  flex-grow: 1; /* make search bar width responsive since it's within the search-background flexbox */
   border-radius: 20px;
   background: #eae8e8;
   color: #bab2b5;

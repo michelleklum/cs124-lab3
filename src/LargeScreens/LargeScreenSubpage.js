@@ -26,6 +26,8 @@ function LargeScreenSubpage(props) {
       showDeleteAlert={props.showDeleteAlert}
       listTasksPrimarySortField={props.listTasksPrimarySortField}
       onChangeSort={props.onChangeSort}
+      searchQuery={props.searchQuery}
+      setSearchQuery={props.setSearchQuery}
     />
   ) : !props.loading ? (
     <div>

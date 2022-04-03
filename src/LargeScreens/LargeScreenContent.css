@@ -3,7 +3,6 @@
   margin-right: auto;
   width: 97.5%;
   display: flex;
-  align-items: flex-start;
 }
 
 .side-bar {
@@ -14,9 +13,13 @@
 
 .vertical-divider {
   border-right: #bab2b5 1.5px solid; /* vertical line dividing Side Bar from Large Screen Subpage */
+  align-self: stretch;
+}
+
+.unscrollable .vertical-divider {
   height: calc(
     100vh - 60px
-  ); /* to make vertical line extend all the way vertically */
+  ); /* to make sure the page is actually unscrollable */
 }
 
 .large-screen-subpage {
@@ -28,12 +31,30 @@
 .welcome-message {
   width: 100px;
   margin-left: auto;
-  margin-top: 35%;
   margin-right: auto;
+  margin-top: 15%;
   font-weight: 500;
   font-size: 16pt;
   color: grey;
-  text-align: center;
+}
+
+/* Header for filtered tasks view (when user has entered a search query) */
+.large-screen-filtered-tasks-header {
+  display: flex;
+  align-items: center;
+  margin-top: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.large-screen-filtered-tasks-header i {
+  color: #172528 !important;
+  margin-left: 0.8em;
+}
+
+.large-screen-filtered-tasks-header .large-screen-search {
+  flex-grow: 1;
 }
 
 /* When LargeScreenPopup is open, make all of MainContent unscrollable */
@@ -42,7 +63,7 @@
 }
 
 .sidebar-header-text {
-  font-size:13pt;
+  font-size: 13pt;
   margin-left: 7px;
   margin-bottom: 16px;
   font-weight: 700;
@@ -52,13 +73,12 @@
 
 .sidebar-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   width: 240px;
 }
 
 .sidebar-header i {
-  margin-top: 19px;
   color: #172528 !important;
 }
 

@@ -21,11 +21,14 @@ function Home(props) {
         onChangeList={props.onChangeList}
         onDeleteList={props.onDeleteList}
         onToggleDeleteAlert={props.onToggleDeleteAlert}
+        setSearchQuery={props.setSearchQuery}
       />
-      <AddButton
-        onChangePage={props.onChangePage}
-        currentPage={props.currentPage}
-      />
+      {!props.isLargeScreen && (
+        <AddButton
+          onChangePage={props.onChangePage}
+          currentPage={props.currentPage}
+        />
+      )}
       {props.showDeleteAlert && (
         <DeleteAlert
           type="this list"

@@ -13,24 +13,3 @@
   opacity: 12%;
   height: 100%;
 }
-
-/* For large screens: >= 769px wide */
-.large-screen-header {
-  display: flex;
-  align-items: center;
-  margin-top:2px;
-}
-
-.single-list-task-name {
-  margin-left: 5%;
-  font-size: 18px;
-}
-
-.large-screen-icons {
-  position: relative; /* in order to position single list page menu absolute to this */
-  display: flex;
-  align-items: right;
-  width: 110px;
-  margin-right: 36px;
-  justify-content: space-between;
-}

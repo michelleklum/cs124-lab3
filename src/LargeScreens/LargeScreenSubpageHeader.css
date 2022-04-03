@@ -1,0 +1,25 @@
+.large-screen-header {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.single-list-task-name {
+  margin-left: 5%;
+  margin-right: 2%;
+  font-size: 18px;
+  width: 180px;
+  overflow-wrap: break-word;
+}
+
+.large-screen-icons {
+  position: relative; /* in order to position single list page menu absolute to this */
+  display: flex;
+  align-items: center;
+  margin-right: 36px;
+  justify-content: space-between;
+}
+
+.large-screen-icons i:hover {
+  color: #172528 !important;
+}

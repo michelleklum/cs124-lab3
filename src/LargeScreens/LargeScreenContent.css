@@ -31,12 +31,11 @@
 .welcome-message {
   width: 100px;
   margin-left: auto;
-  margin-top: 35%;
   margin-right: auto;
+  margin-top: 15%;
   font-weight: 500;
   font-size: 16pt;
   color: grey;
-  text-align: center;
 }
 
 /* Header for filtered tasks view (when user has entered a search query) */

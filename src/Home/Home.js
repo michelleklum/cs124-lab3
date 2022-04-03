@@ -21,6 +21,7 @@ function Home(props) {
         onChangeList={props.onChangeList}
         onDeleteList={props.onDeleteList}
         onToggleDeleteAlert={props.onToggleDeleteAlert}
+        setSearchQuery={props.setSearchQuery}
       />
       {!props.isLargeScreen && (
         <AddButton

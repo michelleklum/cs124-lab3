@@ -10,17 +10,15 @@ function ListOfLists(props) {
   }
 
   return (
-    <div className={[
-      "list-of-lists",
-      props.isLargeScreen
-        ? "large-screen-list"
-        : "",
-    ].join(" ")}>
-      {props.data.length === 0 && 
-      <h3 
-      className="no-lists-message">
-        No Lists
-        </h3>}
+    <div
+      className={[
+        "list-of-lists",
+        props.isLargeScreen ? "large-screen-list" : "",
+      ].join(" ")}
+    >
+      {props.data.length === 0 && (
+        <h3 className="no-lists-message">No Lists</h3>
+      )}
       {props.data.map((list) => (
         <ListCard
           isLargeScreen={props.isLargeScreen}
@@ -35,6 +33,7 @@ function ListOfLists(props) {
           onToggleDeleteAlert={props.onToggleDeleteAlert}
           listInEditMode={listInEditMode}
           onEditList={handleEditListMode}
+          setSearchQuery={props.setSearchQuery}
         />
       ))}
     </div>

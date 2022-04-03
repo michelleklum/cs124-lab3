@@ -12,7 +12,12 @@ function LargeScreenSubpageHeader(props) {
       <div className="large-screen-icons right-aligned">
         {props.inMenuMode ? null : (
           <Fragment>
-            <LargeScreenSearchBar />
+            <LargeScreenSearchBar
+              onChangePage={props.onChangePage}
+              searchQuery={props.searchQuery}
+              setSearchQuery={props.setSearchQuery}
+              prevPage={props.prevPage}
+            />
             <LargeScreenAddButton
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               onChangePage={props.onChangePage}

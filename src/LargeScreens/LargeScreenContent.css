@@ -39,6 +39,25 @@
   text-align: center;
 }
 
+/* Header for filtered tasks view (when user has entered a search query) */
+.large-screen-filtered-tasks-header {
+  display: flex;
+  align-items: center;
+  margin-top: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.large-screen-filtered-tasks-header i {
+  color: #172528 !important;
+  margin-left: 0.8em;
+}
+
+.large-screen-filtered-tasks-header .large-screen-search {
+  flex-grow: 1;
+}
+
 /* When LargeScreenPopup is open, make all of MainContent unscrollable */
 .unscrollable {
   overflow: hidden;

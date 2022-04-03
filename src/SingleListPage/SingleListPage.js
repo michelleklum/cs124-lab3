@@ -83,6 +83,9 @@ function SingleListPage(props) {
                 tasks={tasks}
                 listTasksPrimarySortField={props.listTasksPrimarySortField}
                 onChangeSort={props.onChangeSort}
+                searchQuery={props.searchQuery}
+                setSearchQuery={props.setSearchQuery}
+                prevPage={props.prevPage}
               />
             ) : (
               <ListTopBar

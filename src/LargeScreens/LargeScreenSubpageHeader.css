@@ -5,7 +5,7 @@
 }
 
 .single-list-task-name {
-  margin-left: 5%;
+  margin-left: 26px;
   margin-right: 2%;
   font-size: 18px;
   width: 180px;
@@ -16,10 +16,14 @@
   position: relative; /* in order to position single list page menu absolute to this */
   display: flex;
   align-items: center;
-  margin-right: 36px;
+  margin-right: 33px;
   justify-content: space-between;
 }
 
 .large-screen-icons i:hover {
   color: #172528 !important;
+}
+
+.large-screen-header i {
+  font-size: 25px !important;
 }

@@ -7,6 +7,14 @@
   margin-bottom: 50px; /* so that plus button doesn't cover edit task icon */
 }
 
+/* For large screens */
+@media screen and (min-width: 769px) {
+  #list-of-tasks {
+    width: max(90%, calc(100% - 50px)); 
+    height: auto;
+  }
+}
+
 .completed-tasks-header {
   font-weight: 500;
   margin-left: 5px;

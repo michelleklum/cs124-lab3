@@ -296,7 +296,7 @@ function App() {
       taskSubcollectionName,
       taskId
     );
-    setDoc(docRef, newTask).then(() => handleChangePage(prevPage));
+    setDoc(docRef, newTask).then(() => handleChangePage("SingleListPage"));
   }
 
   function handleCreateErrorReport() {

@@ -18,7 +18,6 @@ function LargeScreenSearchBar(props) {
           name="search"
           placeholder="Search"
           autoComplete="off"
-          autoFocus
           value={props.searchQuery}
           onInput={(e) => props.setSearchQuery(e.target.value)}
         />

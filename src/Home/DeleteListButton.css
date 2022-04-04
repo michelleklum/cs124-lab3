@@ -1,5 +1,6 @@
 .delete-list {
   color: #ed554a;
+  margin-right: -10px;
 }
 
 .delete-list:active {

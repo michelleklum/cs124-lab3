@@ -29,7 +29,7 @@
 .task-and-date h2 {
   font-size: 16px;
   margin-bottom: 0; /* to make task and date flush next to each other vertically */
-  inline-size: 245px;
+  inline-size: min(auto, 245px);
   overflow-wrap: break-word;
 }
 

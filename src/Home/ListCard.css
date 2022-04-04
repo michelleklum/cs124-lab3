@@ -29,11 +29,11 @@ i.list-icon {
 }
 
 .list-grid {
-  grid-template-columns: 1.9em 13em 1fr;
+  grid-template-columns: 1.9em 1fr 2em;
 }
 
 .edit-list-grid {
-  grid-template-columns: 1.9em 9.6em 1fr 2em;
+  grid-template-columns: 1.9em 1fr 2em 2em;
   box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -93,4 +93,8 @@ i.large-screen-arrow {
 
 .selected-list > i.fa-chevron-right {
   color:#EAE8E8;
+}
+
+#enter-list {
+  margin-right:-10px;
 }

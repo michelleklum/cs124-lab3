@@ -1,5 +1,6 @@
 .edit-list {
   color: #ebc323;
+  margin-right: -12px;
 }
 
 .edit-list:active {

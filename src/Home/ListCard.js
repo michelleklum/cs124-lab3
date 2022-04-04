@@ -81,6 +81,7 @@ function ListCard(props) {
             onToggleDeleteAlert={props.onToggleDeleteAlert}
             onChangeList={props.onChangeList}
             id={props.id}
+            className="right-list-icon"
           />
         </Fragment>
       ) : (

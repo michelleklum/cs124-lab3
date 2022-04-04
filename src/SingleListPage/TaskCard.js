@@ -86,8 +86,8 @@ function TaskCard(props) {
           ).padStart(2, "0")} ${initialAmPm}`}
         </p>
       </div>
-      <i className="fas fa-info-circle fa-4x info-task"
-        onClick={handleTaskCardClick}></i>
+      {props.isLargeScreen && <i className="fas fa-info-circle fa-4x info-task"
+        onClick={handleTaskCardClick}></i>}
     </div>
   );
 }

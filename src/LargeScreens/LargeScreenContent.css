@@ -12,31 +12,10 @@
   height: calc(100vh - 60px); /* Top Bar is 60px */
 }
 
-.vertical-divider {
-  border-right: #bab2b5 1.5px solid; /* vertical line dividing Side Bar from Large Screen Subpage */
-  align-self: stretch;
-}
-
-.unscrollable .vertical-divider {
-  height: calc(
-    100vh - 60px
-  ); /* to make sure the page is actually unscrollable */
-}
-
 .large-screen-subpage {
   /* background: #feffff; */
   height: calc(100vh - 60px); /* Top Bar is 60px */
   flex-grow: 1;
-}
-
-.welcome-message {
-  width: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 15%;
-  font-weight: 500;
-  font-size: 16pt;
-  color: grey;
 }
 
 /* Header for filtered tasks view (when user has entered a search query) */
@@ -89,10 +68,20 @@
 }
 
 .welcome {
-  text-align: center;
+  display: flex;
+  align-items: center; /* center Flexbox items with each other vertically */
 }
 
 .welcome-logo {
+  margin: 0 auto; /* center horizontally */
   width: min(40%, 400px);
   margin-top: 20vh;
+}
+
+/* Vertical divider between LargeScreenSideBar and LargeScreenSubpage */
+/* This styling is only used for the Welcome page */
+/* The vertical divider for when Large Screen SingleListPage is shown is styled in SingleListPage.css */
+.welcome-vertical-divider {
+  border-left: #bab2b5 1.5px solid;
+  height: 100vh;
 }

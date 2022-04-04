@@ -31,6 +31,7 @@ function LargeScreenSubpage(props) {
     />
   ) : !props.loading ? (
     <div className="welcome">
+      <div className="welcome-vertical-divider"></div>
       <img
         src={require("../Global/welcome_screen_task_monster.png")}
         alt="Task Monster Welcome Logo"

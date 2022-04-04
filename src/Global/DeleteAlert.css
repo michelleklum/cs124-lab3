@@ -17,7 +17,7 @@
   height: 100px;
   width: 200px;
   position: relative;
-  padding: 3%;
+  padding: min(20px, 4%);
 }
 
 .alert-description {

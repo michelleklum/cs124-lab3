@@ -10,9 +10,15 @@ function ListOfTasks(props) {
   // Put incomplete tasks first, and then completed tasks.
   // Within each sublist (i.e., incomplete tasks), sort by date.
   return (
-    <div id="list-of-tasks">
+    <div className={[
+      "list-of-tasks",
+      props.isLargeScreen ? "large-screen-list-of-tasks" : "",
+    ].join(" ")}>
       {completedTasks.length > 0 && incompleteTasks.length === 0 && (
-        <h3 className="all-completed-message">
+        <h3 className={[
+          "all-completed-message",
+          props.isLargeScreen ? "large-screen-completed-message" : "",
+        ].join(" ")}>
           You've completed all your tasks!
         </h3>
       )}
@@ -34,8 +40,11 @@ function ListOfTasks(props) {
       ))}
       {!list.hideCompletedTasks && completedTasks.length > 0 && (
         <div>
-          <hr />
-          <h3 className="completed-tasks-header">Completed</h3>
+          {!props.isLargeScreen && <hr />}
+          <h3 className={[
+            "completed-tasks-header",
+            props.isLargeScreen ? "large-screen-completed-tasks-header" : "",
+          ].join(" ")}>Completed</h3>
           {completedTasks.map((task) => (
             <TaskCard
               key={task.id}

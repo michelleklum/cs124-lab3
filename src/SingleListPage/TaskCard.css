@@ -43,3 +43,29 @@
 .overdue {
   color: #ed554a;
 }
+
+.large-screen-task-card {
+  border-radius: 0px;
+  background: #feffff;
+  box-shadow: 0 0 0 0;
+  border-bottom: 1px #BAB2B5 solid;
+  color: #17252a;
+  margin-bottom: 0.25em;
+  margin-top: 0.25em;
+  padding: 0.2em 1.5em 0.2em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-task {
+  color:#91C6C3 !important;
+  font-size: 24pt;
+  margin-right: 0px !important;
+}
+
+.info-task:hover {
+  color:#33AAAA !important;
+  font-size: 24pt;
+  margin-right: 0px !important;
+}

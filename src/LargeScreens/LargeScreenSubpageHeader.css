@@ -10,7 +10,7 @@
   margin-left: 26px;
   margin-right: 2%;
   font-size: 18px;
-  width: 180px;
+  width: 140px;
   overflow-wrap: break-word;
 }
 
@@ -18,19 +18,37 @@
 /* But can allow list taks name to be wider as screen gets wider */
 @media screen and (min-width: 800px) {
   .single-list-name {
-    width: 200px;
+    width: 160px;
   }
 }
 
 @media screen and (min-width: 845px) {
   .single-list-name {
-    width: 220px;
+    width: 180px;
   }
 }
 
 @media screen and (min-width: 855px) {
   .single-list-name {
-    width: 230px;
+    width: 180px;
+  }
+}
+
+@media screen and (min-width: 865px) {
+  .single-list-name {
+    width: 180px;
+  }
+}
+
+@media screen and (min-width: 885px) {
+  .single-list-name {
+    width: 220px;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .single-list-name {
+    width: calc(100vw - 770px);
   }
 }
 

@@ -9,7 +9,7 @@
 
 /* margin: 0 auto; and width: 90%; are to center top bar content, leaving 5% width on each side */
 /* but to do that, we really just need margin-left: auto and margin-right: auto */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 769px) and (min-height: 690px) {
   .top-bar-content {
     display: flex;
     align-items: center;
@@ -23,7 +23,6 @@
     margin: 0;
   }
 }
-
 
 .logo {
   padding-top: 10px;

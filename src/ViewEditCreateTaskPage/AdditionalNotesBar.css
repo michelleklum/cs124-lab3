@@ -5,7 +5,7 @@ p.set-note-text {
 }
 
 /* For large screens, make additional notes text wider */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 769px) and (min-height: 690px) {
   p.set-note-text {
     inline-size: 420px;
   }

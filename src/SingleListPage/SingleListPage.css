@@ -13,3 +13,12 @@
   opacity: 12%;
   height: 100%;
 }
+
+/* For large screens */
+@media screen and (min-width: 769px) and (min-height: 690px) {
+  #single-list-page {
+    /* Vertical divider between LargeScreenSideBar and LargeScreenSubpage */
+    border-left: #bab2b5 1.5px solid;
+    min-height: 100vh;
+  }
+}

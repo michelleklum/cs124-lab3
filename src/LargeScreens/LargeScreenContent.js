@@ -67,7 +67,6 @@ function LargeScreenContent(props) {
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar loading={props.dataLoading} />
           </div>
-          <div className="vertical-divider"></div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
             <LargeScreenSubpage loading={props.dataLoading} />
           </div>
@@ -87,7 +86,6 @@ function LargeScreenContent(props) {
               onToggleDeleteAlert={props.onToggleDeleteAlert}
             />
           </div>
-          <div className="vertical-divider"></div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
             <LargeScreenSubpage loading={tasksLoading} />
           </div>
@@ -108,7 +106,6 @@ function LargeScreenContent(props) {
               setSearchQuery={setSearchQuery}
             />
           </div>
-          <div className="vertical-divider"></div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
             {searchQuery ? (
               <Fragment>

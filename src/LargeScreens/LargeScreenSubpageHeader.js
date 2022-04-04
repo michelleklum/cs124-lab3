@@ -8,7 +8,7 @@ import ListMenu from "../SingleListPage/ListMenu";
 function LargeScreenSubpageHeader(props) {
   return (
     <div className="large-screen-header">
-      <h3 className="single-list-task-name">{props.list.name}</h3>
+      <h3 className="single-list-name">{props.list.name}</h3>
       <div className="large-screen-icons right-aligned">
         {props.inMenuMode ? null : (
           <Fragment>

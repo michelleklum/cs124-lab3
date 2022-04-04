@@ -10,6 +10,7 @@
 }
 
 /* For responsive design, make sure everything in large screen header still fits into width of screen */
+/* But can allow search bar to be wider as screen gets wider */
 @media screen and (min-width: 700px) {
   .large-screen-search {
     width: 190px;

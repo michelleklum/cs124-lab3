@@ -10,27 +10,33 @@
 }
 
 /* For responsive design, make sure everything in large screen header still fits into width of screen */
+@media screen and (min-width: 700px) {
+  .large-screen-search {
+    width: 190px;
+  }
+}
+
 @media screen and (min-width: 800px) {
   .large-screen-search {
-    width: 280px;
+    width: 220px;
   }
 }
 
 @media screen and (min-width: 820px) {
   .large-screen-search {
-    width: 300px;
+    width: 240px;
   }
 }
 
 @media screen and (min-width: 900px) {
   .large-screen-search {
-    width: 340x;
+    width: 260x;
   }
 }
 
 @media screen and (min-width: 950px) {
   .large-screen-search {
-    width: 390px;
+    width: 300px;
   }
 }
 
@@ -63,4 +69,10 @@
   border: none;
   outline: none;
   width: 75%; /* For responsive design, make sure search bar input remains at a good relative width to the search bar */
+}
+
+@media screen and (min-width: 700px) {
+  .large-screen-search input[type="text"] {
+    width: 70%; /* For responsive design, make sure search bar input remains at a good relative width to the search bar */
+  }
 }

@@ -44,6 +44,7 @@ function App() {
   // react-responsive media query for responsive design
   // Large Screens will be defined as having a minWidth of 769px and a minHeight of 690px
   const isLargeScreen = useMediaQuery({ minWidth: 769, minHeight: 690 });
+  const isNarrowScreen = useMediaQuery({ maxWidth: 290 });
 
   // Code below changes current/previous page, current list, and current task
   const [currentPage, setCurrentPage] = useState("Home");
@@ -362,6 +363,7 @@ function App() {
       {currentPage === "Home" && !dataLoading ? (
         <Home
           data={data}
+          isNarrowScreen={isNarrowScreen}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           currentPage={currentPage}

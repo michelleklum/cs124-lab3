@@ -75,7 +75,7 @@
 .welcome-logo {
   margin: 0 auto; /* center horizontally */
   width: min(40%, 400px);
-  margin-top: 20vh;
+  margin-top: 1vh;
 }
 
 /* Vertical divider between LargeScreenSideBar and LargeScreenSubpage */

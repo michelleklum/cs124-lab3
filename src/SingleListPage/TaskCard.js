@@ -40,7 +40,6 @@ function TaskCard(props) {
     props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
 
-  console.log(props.isLargeScreen)
   const completedTaskClassName = props.task.isCompleted
     ? "task-card-completed"
     : null;

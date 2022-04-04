@@ -20,6 +20,7 @@ function LargeScreenSearchBar(props) {
           autoComplete="off"
           value={props.searchQuery}
           onInput={(e) => props.setSearchQuery(e.target.value)}
+          autoFocus={props.searchQuery.length > 0}
         />
       </div>
     </Fragment>

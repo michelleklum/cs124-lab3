@@ -42,7 +42,8 @@ const db = getFirestore(firebaseApp);
 
 function App() {
   // react-responsive media query for responsive design
-  const isLargeScreen = useMediaQuery({ minWidth: 769 });
+  // Large Screens will be defined as having a minWidth of 769px and a minHeight of 690px
+  const isLargeScreen = useMediaQuery({ minWidth: 769, minHeight: 690 });
 
   // Code below changes current/previous page, current list, and current task
   const [currentPage, setCurrentPage] = useState("Home");

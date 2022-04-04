@@ -38,3 +38,8 @@
   font-size: 14px;
   color: #2b7a78;
 }
+
+/* For overdue tasks, display deadline in red */
+.overdue {
+  color: #ed554a;
+}

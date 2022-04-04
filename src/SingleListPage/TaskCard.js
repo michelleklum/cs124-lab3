@@ -29,6 +29,10 @@ function TaskCard(props) {
     initialAmPm = "AM";
   }
 
+  // Check if task is overdue; overdue tasks will have deadline shown in red
+  const isOverdue = taskDeadlineJSDate < new Date();
+  const overdueClassName = isOverdue ? "overdue" : null;
+
   const numTaskCharsToShow = 30;
   function handleTaskCardClick() {
     props.onChangePage("ViewTaskPage");
@@ -66,7 +70,7 @@ function TaskCard(props) {
               : props.task.name}
           </h2>
         </label>
-        <p className="date">
+        <p className={`date ${overdueClassName}`}>
           {`${String(initialMonth).padStart(2, "0")}/${String(
             initialDay
           ).padStart(2, "0")}/${initialYear}`}

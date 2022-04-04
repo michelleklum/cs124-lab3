@@ -4,12 +4,32 @@
   margin-top: 2px;
 }
 
-.single-list-task-name {
+.single-list-name {
   margin-left: 26px;
   margin-right: 2%;
   font-size: 18px;
   width: 180px;
   overflow-wrap: break-word;
+}
+
+/* For responsive design, make sure everything in large screen header still fits into width of screen */
+/* But can allow list taks name to be wider as screen gets wider */
+@media screen and (min-width: 800px) {
+  .single-list-name {
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 845px) {
+  .single-list-name {
+    width: 220px;
+  }
+}
+
+@media screen and (min-width: 855px) {
+  .single-list-name {
+    width: 230px;
+  }
 }
 
 .large-screen-icons {

@@ -8,7 +8,7 @@
 .side-bar {
   width: 220px;
   padding-right: 2.5em;
-  padding-left: .7em;
+  padding-left: 0.7em;
   height: calc(100vh - 60px); /* Top Bar is 60px */
 }
 

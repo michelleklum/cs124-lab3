@@ -64,9 +64,13 @@ function ListCard(props) {
         " "
       )}
       onClick={handleListCardClick}
+      onKeyDown={(e) => (e.code === "Enter") ? handleListCardClick() : null}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      onTouchEnd={handleTouchEnd} 
+      role="button"
+      tabIndex="0"
+      aria-pressed="true"
     >
       <i className={`fas fa-${props.listIcon} fa-4x list-icon`}></i>
       <h2>{props.listName}</h2>

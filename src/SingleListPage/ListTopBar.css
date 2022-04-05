@@ -21,7 +21,7 @@
   font-size: 21px;
   color: #feffff;
   margin: 0;
-  width: calc(100vw - 160px);
+  width: min(300px, calc(100vw - 160px));
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

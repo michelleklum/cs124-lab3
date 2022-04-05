@@ -105,9 +105,6 @@
   align-items: center;
 }
 
-.set-note-text {
-}
-
 .set-note-icon-picker-closed,
 .set-note-picker-closed {
   grid-row: 3 / span 1;

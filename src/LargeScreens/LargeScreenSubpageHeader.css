@@ -16,15 +16,15 @@
 
 /* For responsive design, make sure everything in large screen header still fits into width of screen */
 /* But can allow list taks name to be wider as screen gets wider */
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
   .single-list-name {
-    width: 160px;
+    width: 130px;
   }
 }
 
 @media screen and (min-width: 845px) {
   .single-list-name {
-    width: 190px;
+    width: 140px;
   }
 }
 
@@ -36,7 +36,7 @@
 
 @media screen and (min-width: 865px) {
   .single-list-name {
-    width: 180px;
+    width: 190px;
   }
 }
 
@@ -56,7 +56,7 @@
   position: relative; /* in order to position single list page menu absolute to this */
   display: flex;
   align-items: center;
-  margin-right: 33px;
+  margin-right: 53px;
   justify-content: space-between;
 }
 

@@ -4,7 +4,7 @@ import "./LargeScreenSearchBar.css";
 function LargeScreenSearchBar(props) {
   return (
     <Fragment>
-      <div className="large-screen-search">
+      <div id="large-screen-search-bar" className="large-screen-search">
         <i className="fas fa-search fa-3x"></i>
         <label
           htmlFor="large-screen-search"

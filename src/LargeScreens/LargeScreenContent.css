@@ -5,6 +5,21 @@
   display: flex;
 }
 
+@media screen and (min-width: 769px) and (min-height: 690px) {
+  .list-menu-button:hover {
+    background: #EAE8E8;
+    padding: 7px 7px 7px 7px;
+    margin-left: 5.5px;
+    border-radius: 8px;
+    margin-right: -5px;
+  }
+  .list-menu-button {
+    background: #feffff;
+    padding: 6px 7px 6px 7px;
+    margin-right: -5px;
+  }
+}
+
 .side-bar {
   width: 220px;
   padding-right: 2.5em;
@@ -38,9 +53,10 @@
 }
 
 /* When LargeScreenPopup is open, make all of MainContent unscrollable */
-.unscrollable {
+/* .unscrollable  {   <-- this was messing up formatting, so I commented this out
   overflow: hidden;
-}
+} */
+
 
 .sidebar-header-text {
   font-size: 13pt;
@@ -55,11 +71,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 240px;
+  width: 246px;
 }
 
-.sidebar-header i {
+.large-screen-add-button i {
   color: #172528 !important;
+  margin-left: 8px;
+  padding: 6px 7px 6px 7px;
+}
+
+.large-screen-add-button:hover i {
+  background: #EAE8E8;
+  border-radius: 8px;
+  padding: 6px 7px 6px 7px;
 }
 
 .large-screen-add-button {
@@ -83,5 +107,5 @@
 /* The vertical divider for when Large Screen SingleListPage is shown is styled in SingleListPage.css */
 .welcome-vertical-divider {
   border-left: #bab2b5 1.5px solid;
-  height: 100vh;
+  height: calc(100vh - 61px);
 }

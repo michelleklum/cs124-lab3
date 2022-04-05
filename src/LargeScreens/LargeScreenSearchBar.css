@@ -17,27 +17,27 @@
   }
 }
 
-@media screen and (min-width: 800px) {
-  .large-screen-search {
-    width: 220px;
-  }
-}
-
 @media screen and (min-width: 830px) {
   .large-screen-search {
-    width: 240px;
+    width: 210px;
   }
 }
 
 @media screen and (min-width: 900px) {
   .large-screen-search {
-    width: 260x;
+    width: 230x;
   }
 }
 
 @media screen and (min-width: 950px) {
   .large-screen-search {
-    width: 300px;
+    width: 290px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .large-screen-search {
+    width: 310px;
   }
 }
 

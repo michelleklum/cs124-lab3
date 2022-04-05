@@ -17,7 +17,14 @@
 /* For small screens, delete bar should be fixed at bottom of webpage */
 @media screen and (max-width: 768px), (max-height: 689px) {
   .delete-bar {
-    position: fixed; /* use fixed instead of sticky so toolbar is at bottom even if we don't have that many lists */
+    position: fixed; /* use fixed instead of sticky so bar is at bottom even if we don't have that many lists */
+  }
+}
+
+/* On very short screens, don't want delete bar to stick to bottom of screen */
+@media screen and (max-height: 550px) {
+  .delete-bar {
+    position: static;
   }
 }
 

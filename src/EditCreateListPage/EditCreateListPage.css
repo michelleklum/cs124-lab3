@@ -1,17 +1,15 @@
 #edit-list-page {
-  background: #feffff;
-  height: calc(
-    100vh - 60px
-  ); /* need this so #feffff background color extends entire screen, but delete bar still remains at bottom */
   display: flex;
   flex-direction: column;
+  background: #feffff;
+  min-height: 640px; /* to make white background extend at least 640px for large screens */
 }
 
-/* For large screens */
-@media screen and (min-width: 769px) and (min-height: 690px) {
+/* For small screens, background should be white */
+@media screen and (max-width: 768px), (max-height: 689px) {
   #edit-list-page {
-    min-height: 640px; /* to make white background extend at least 640px for large screens */
-    height: auto;
+    height: 100%; /* need this so #feffff background color extends entire screen */
+    min-height: 100vh; /* need this so #feffff background color extends entire screen, even if content doesn't extend entire screen  */
   }
 }
 

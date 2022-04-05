@@ -18,7 +18,8 @@
 }
 
 /* On very short screens, override even the styles from .small-screen-list-menu */
-@media screen and (max-height: 550px) {
+/* Important to get max-height exactly correct; otherwise there will be a strange non-white gap between menu and bottom of screen */
+@media screen and (max-height: 365px) {
   /* On very short screens, menu should not be sticky; otherwise, we cannot see the top bar */
   .single-list-page-menu {
     position: static;

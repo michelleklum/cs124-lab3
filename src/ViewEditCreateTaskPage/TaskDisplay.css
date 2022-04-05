@@ -15,17 +15,16 @@
   margin-bottom: 65px;
 }
 
+#task-display p {
+  font-size: 12pt !important;
+}
+
 .task-display-picker-open {
   grid-template-rows: 65px 130px 65px 1fr 65px;
 }
 
 .task-display-picker-closed {
   grid-template-rows: 65px 65px 1fr 65px;
-}
-
-.completed-icon-view-page {
-  font-size: 25pt !important;
-  grid-row: 4 / span 1;
 }
 
 .set-date-icon {
@@ -38,13 +37,11 @@
 .set-date {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
-  font-size: 12pt;
 }
 
 .set-time {
   grid-column: 3 / span 1;
   grid-row: 1 / span 1;
-  font-size: 12pt;
 }
 
 .date-picker,
@@ -52,7 +49,6 @@
   grid-column: 1 / span 3;
   grid-row: 2 / span 1;
   justify-self: center;
-  font-size: 12pt;
 }
 
 .set-priority-icon {
@@ -73,7 +69,6 @@
 }
 
 .set-priority {
-  font-size: 12pt !important;
   grid-column: 2 / span 2;
 }
 
@@ -111,7 +106,6 @@
 }
 
 .set-note-text {
-  font-size: 12pt;
 }
 
 .set-note-icon-picker-closed,
@@ -129,9 +123,13 @@
   justify-self: start;
 }
 
+.completed-icon-view-page {
+  font-size: 25pt !important;
+  grid-row: 4 / span 1;
+}
+
 .set-completed {
   grid-column: 2 / span 2;
-  font-size: 12pt !important;
 }
 
 .set-completed-icon-picker-closed,

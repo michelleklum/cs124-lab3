@@ -17,6 +17,18 @@
   width: 100%;
 }
 
+/* On very short screens, override even the styles from .small-screen-list-menu */
+@media screen and (max-height: 550px) {
+  /* On very short screens, menu should not be sticky; otherwise, we cannot see the top bar */
+  .single-list-page-menu {
+    position: static;
+  }
+
+  .single-list-menu-mode-overlay {
+    display: none; /* otherwise, the list of tasks will show from behind the menu */
+  }
+}
+
 /* On large screens, menu will be positioned relative to 3 dots in the list header and will have a set width */
 .large-screen-list-menu {
   position: absolute;

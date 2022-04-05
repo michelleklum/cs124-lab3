@@ -55,6 +55,38 @@
   font-size: 12pt;
 }
 
+.set-priority-icon {
+  font-size: 20px;
+  color: #feffff !important;
+}
+
+.set-priority-icon-circle {
+  /* creating icon outline */
+  background: #91c6c3;
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  display: flex; /* bottom three styles center the plus icon in the .add-button div */
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+}
+
+.set-priority {
+  font-size: 12pt !important;
+  grid-column: 2 / span 2;
+}
+
+.set-priority-icon-picker-open,
+.set-priority-picker-open {
+  grid-row: 3 / span 1;
+}
+
+.set-priority-icon-picker-closed,
+.set-priority-picker-closed {
+  grid-row: 2 / span 1;
+}
+
 .set-note-icon {
   grid-column: 1 / span 1;
   justify-self: start;
@@ -99,7 +131,7 @@
 
 .set-completed {
   grid-column: 2 / span 2;
-  font-size: 12pt;
+  font-size: 12pt !important;
 }
 
 .set-completed-icon-picker-closed,
@@ -110,36 +142,4 @@
 .set-completed-icon-picker-open,
 .set-completed-picker-open {
   grid-row: 5 / span 1;
-}
-
-.set-priority-icon-picker-open,
-.set-priority-picker-open {
-  grid-row: 3 / span 1;
-}
-
-.set-priority-icon-picker-closed,
-.set-priority-picker-closed {
-  grid-row: 2 / span 1;
-}
-
-.set-priority-icon {
-  font-size: 20px;
-  color: #feffff !important;
-}
-
-.set-priority-icon-circle {
-  /* creating icon outline */
-  background: #91c6c3;
-  border-radius: 50%;
-  width: 33px;
-  height: 33px;
-  display: flex; /* bottom three styles center the plus icon in the .add-button div */
-  align-items: center;
-  justify-content: center;
-  justify-self: start;
-}
-
-.set-priority {
-  font-size: 12pt;
-  grid-column: 2 / span 2;
 }

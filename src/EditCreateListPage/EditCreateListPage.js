@@ -19,7 +19,7 @@ function EditCreateListPage(props) {
 
   return (
     <div id="edit-list-page">
-      <div className="edit-list-header top-bar">
+      <div className="top-bar">
         <EditListTopBar
           isLargeScreen={props.isLargeScreen}
           onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
@@ -38,11 +38,13 @@ function EditCreateListPage(props) {
           onChangeList={props.onChangeList}
         />
       </div>
-      <ListIconOptions
-        onChangeListIcon={setTempSelectedIcon}
-        tempSelectedIcon={tempSelectedIcon}
-        onChangePage={props.onChangePage}
-      />
+      <div className="list-options">
+        <ListIconOptions
+          onChangeListIcon={setTempSelectedIcon}
+          tempSelectedIcon={tempSelectedIcon}
+          onChangePage={props.onChangePage}
+        />
+      </div>
       {props.inEditListMode ? (
         <DeleteTaskListBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
       ) : null}

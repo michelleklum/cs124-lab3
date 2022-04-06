@@ -101,16 +101,18 @@ function App() {
   function handleChangeSort(newListTasksPrimarySortField) {
     // If user clicked on the already-selected sort field, just toggle sort direction
     if (listTasksPrimarySortField === newListTasksPrimarySortField) {
+      // if sorting tasks by priority, sort tasks primarily by priority, and then secondarily by deadline
+      if (newListTasksPrimarySortField === "priority") {
+        // if we were previously sorting tasks by priority ascending, now sort primarily by priority descending and secondarily by deadline ascending
+        // else if we were previously sorting tasks by priority descending, now sort primarily by priority ascending and secondarily by deadline descending
+        listTasksPrimarySortDirection === "asc"
+          ? setListTasksSecondarySortDirection("asc")
+          : setListTasksSecondarySortDirection("desc");
+      }
+
       listTasksPrimarySortDirection === "asc"
         ? setListTasksPrimarySortDirection("desc")
         : setListTasksPrimarySortDirection("asc");
-
-      // if sorting tasks by priority, sort tasks primarily by priority, and then secondarily by deadline
-      if (newListTasksPrimarySortField === "priority") {
-        listTasksSecondarySortDirection === "asc"
-          ? setListTasksSecondarySortDirection("desc")
-          : setListTasksSecondarySortDirection("asc");
-      }
     } else {
       setListTasksPrimarySortField(newListTasksPrimarySortField);
       // eslint-disable-next-line default-case

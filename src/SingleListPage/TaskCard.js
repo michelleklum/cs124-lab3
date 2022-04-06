@@ -36,11 +36,9 @@ function TaskCard(props) {
 
   const numTaskCharsToShow = 30;
   function handleTaskCardClick() {
-    if (!(props.inMenuMode || props.isLargeScreen)) {
-      props.onChangePage("ViewTaskPage");
-      props.onChangeTask(props.task.id);
-      props.isLargeScreen && props.onToggleLargeScreenPopup();
-    }
+    props.onChangePage("ViewTaskPage");
+    props.onChangeTask(props.task.id);
+    props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
 
   const completedTaskClassName = props.task.isCompleted
@@ -74,13 +72,19 @@ function TaskCard(props) {
 
       <div
         className="task-and-date"
-        onClick={handleTaskCardClick}
-        role="button"
-        tabIndex="0"
-        aria-label={`View details for task: ${props.task.name}`}
+        onClick={
+          !(props.inMenuMode || props.isLargeScreen) && handleTaskCardClick
+        }
+        role={!(props.inMenuMode || props.isLargeScreen) && `button`}
+        tabIndex={!(props.inMenuMode || props.isLargeScreen) && `0`}
+        aria-label={
+          !(props.inMenuMode || props.isLargeScreen) &&
+          `View details for task: ${props.task.name}`
+        }
         onKeyDown={(e) =>
           e.code === "Enter" || e.code === "Space"
-            ? handleTaskCardClick()
+            ? !(props.inMenuMode || props.isLargeScreen) &&
+              handleTaskCardClick()
             : null
         }
       >

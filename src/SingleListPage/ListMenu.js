@@ -6,6 +6,7 @@ import SortBar from "./SortBar";
 import SortByFieldBar from "./SortByFieldBar";
 import SortByHeaderBar from "./SortByHeaderBar";
 import DeleteCompletedBar from "./DeleteCompletedBar";
+import DeleteOverdueBar from "./DeleteOverdueBar";
 import DeleteAllTasksBar from "./DeleteAllTasksBar";
 import DeleteListBar from "./DeleteListBar";
 
@@ -19,7 +20,7 @@ function ListMenu(props) {
     <Fragment>
       {props.listMenuType === "general" && (
         <div
-          className={`single-list-page-menu general-menu-grid ${screenSizeClassName}`}
+          className={`single-list-page-menu general-menu ${screenSizeClassName}`}
         >
           <EditListBar
             onChangePage={props.onChangePage}
@@ -33,23 +34,24 @@ function ListMenu(props) {
           />
           <SortBar onChangeMenuModeType={props.onChangeMenuModeType} />
           <DeleteCompletedBar
-            currentListId={props.currentListId}
             onDeleteCompleted={props.onDeleteCompleted}
             onToggleDeleteCompletedAlert={props.onToggleDeleteCompletedAlert}
           />
+          <DeleteOverdueBar
+            onDeleteOverdue={props.onDeleteOverdue}
+            onToggleDeleteOverdueAlert={props.onToggleDeleteOverdueAlert}
+          />
           <DeleteAllTasksBar
-            currentListId={props.currentListId}
             onToggleDeleteTasksAlert={props.onToggleDeleteTasksAlert}
           />
           <DeleteListBar
-            currentListId={props.currentListId}
             onToggleDeleteListAlert={props.onToggleDeleteListAlert}
           />
         </div>
       )}
       {props.listMenuType === "sorting" && (
         <div
-          className={`single-list-page-menu sorting-menu-grid ${screenSizeClassName}`}
+          className={`single-list-page-menu sorting-menu ${screenSizeClassName}`}
         >
           <SortByHeaderBar onChangeMenuModeType={props.onChangeMenuModeType} />
           <SortByFieldBar

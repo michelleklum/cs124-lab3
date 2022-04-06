@@ -19,6 +19,7 @@ function LargeScreenSubpage(props) {
       onDeleteTask={props.onDeleteTask}
       onEditList={props.onEditList}
       onDeleteCompleted={props.onDeleteCompleted}
+      onDeleteOverdue={props.onDeleteOverdue}
       onDeleteAllTasks={props.onDeleteAllTasks}
       onDeleteList={props.onDeleteList}
       onCreateTask={props.onCreateTask}

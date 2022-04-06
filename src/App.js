@@ -235,6 +235,23 @@ function App() {
       );
   }
 
+  function handleDeleteOverdueTasks() {
+    // Remove tasks whose deadlines are before current time
+    tasks
+      .filter((task) => task.deadline.toDate() < new Date())
+      .map((task) =>
+        deleteDoc(
+          doc(
+            db,
+            listCollectionName,
+            currentListId,
+            taskSubcollectionName,
+            task.id
+          )
+        )
+      );
+  }
+
   function handleDeleteAllTasks() {
     tasks.map((task) =>
       deleteDoc(
@@ -344,6 +361,7 @@ function App() {
         onEditList={handleEditList}
         onEditListAppearance={handleEditListAppearance}
         onDeleteCompleted={handleDeleteCompletedTasks}
+        onDeleteOverdue={handleDeleteOverdueTasks}
         onDeleteAllTasks={handleDeleteAllTasks}
         listTasksPrimarySortField={listTasksPrimarySortField}
         onChangeSort={handleChangeSort}
@@ -402,6 +420,7 @@ function App() {
           onEditTask={handleEditTask}
           onEditList={handleEditList}
           onDeleteCompleted={handleDeleteCompletedTasks}
+          onDeleteOverdue={handleDeleteOverdueTasks}
           onDeleteAllTasks={handleDeleteAllTasks}
           onDeleteList={handleDeleteList}
           onCreateTask={handleChangeTask}

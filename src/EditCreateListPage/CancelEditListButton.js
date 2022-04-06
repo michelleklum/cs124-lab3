@@ -1,8 +1,9 @@
 function CancelEditListButton(props) {
-
   function handleOnClick() {
     props.onChangePage(props.prevPage);
-    props.isLargeScreen && props.onToggleLargeScreenPopup();
+    if (props.isLargeScreen) {
+      props.onToggleLargeScreenPopup();
+    } 
   }
 
   return (

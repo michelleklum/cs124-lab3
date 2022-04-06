@@ -73,13 +73,13 @@ function TaskCard(props) {
       <div
         className="task-and-date"
         onClick={
-          !(props.inMenuMode || props.isLargeScreen) && handleTaskCardClick
+          !(props.inMenuMode || props.isLargeScreen) ? handleTaskCardClick : undefined
         }
-        role={!(props.inMenuMode || props.isLargeScreen) && `button`}
-        tabIndex={!(props.inMenuMode || props.isLargeScreen) && `0`}
+        role={!(props.inMenuMode || props.isLargeScreen) ? `button` : ""}
+        tabIndex={!(props.inMenuMode || props.isLargeScreen) ? `0` : ""}
         aria-label={
-          !(props.inMenuMode || props.isLargeScreen) &&
-          `View details for task: ${props.task.name}`
+          !(props.inMenuMode || props.isLargeScreen) ? 
+          `View details for task: ${props.task.name}` : ""
         }
         onKeyDown={(e) =>
           e.code === "Enter" || e.code === "Space"

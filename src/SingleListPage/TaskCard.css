@@ -39,8 +39,8 @@
   color: #2b7a78;
 }
 
-/* For overdue tasks, display deadline in red */
-.overdue {
+/* For overdue tasks that are not yet completed, display deadline in red */
+.overdue-and-incomplete {
   color: #ed554a;
 }
 
@@ -48,7 +48,7 @@
   border-radius: 0px;
   background: #feffff;
   box-shadow: 0 0 0 0;
-  border-bottom: 1px #BAB2B5 solid;
+  border-bottom: 1px #bab2b5 solid;
   color: #17252a;
   margin-bottom: 0.25em;
   margin-top: 0.25em;
@@ -59,13 +59,13 @@
 }
 
 .info-task {
-  color:#91C6C3 !important;
+  color: #91c6c3 !important;
   font-size: 24pt;
   margin-right: 0px !important;
 }
 
 .info-task:hover {
-  color:#33AAAA !important;
+  color: #33aaaa !important;
   font-size: 24pt;
   margin-right: 0px !important;
 }

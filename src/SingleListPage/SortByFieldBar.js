@@ -1,6 +1,10 @@
 import React, { Fragment } from "react";
 
 function SortByFieldBar(props) {
+  const sortArrowIconClassName =
+    props.listTasksPrimarySortDirection === "asc"
+      ? "fas fa-long-arrow-alt-down fa-4x"
+      : "fas fa-long-arrow-alt-up fa-4x";
   return (
     <Fragment>
       <i
@@ -15,7 +19,8 @@ function SortByFieldBar(props) {
       </h2>
       {props.listTasksPrimarySortField === props.barSortField && (
         <i
-          className={`fas fa-check fa-4x sort-by-${props.barSortFieldAbbrev}-check`}
+          className={`${sortArrowIconClassName} sort-by-${props.barSortFieldAbbrev}-indicator`}
+          onClick={() => props.onChangeSort(props.barSortField)}
         ></i>
       )}
     </Fragment>

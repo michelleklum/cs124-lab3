@@ -17,19 +17,6 @@
   width: 100%;
 }
 
-/* On very short screens, override even the styles from .small-screen-list-menu */
-/* Important to get max-height exactly correct; otherwise there will be a strange non-white gap between menu and bottom of screen */
-@media screen and (max-height: 365px) {
-  /* On very short screens, menu should not be sticky; otherwise, we cannot see the top bar */
-  .single-list-page-menu {
-    position: static;
-  }
-
-  .single-list-menu-mode-overlay {
-    display: none; /* otherwise, the list of tasks will show from behind the menu */
-  }
-}
-
 /* On large screens, menu will be positioned relative to 3 dots in the list header and will have a set width */
 .large-screen-list-menu {
   position: absolute;
@@ -62,9 +49,23 @@
 }
 
 /* Styling for the general Single List Page menu */
-.general-menu-grid {
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+.general-menu {
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 3em 1fr 6.5em;
+}
+
+/* On very short screens, override even the styles from .small-screen-list-menu */
+/* Important to get max-height exactly correct; otherwise there will be a strange non-white gap between menu and bottom of screen */
+/* TODO: Must update max-height whenever adding an additional row to general List Menu */
+@media screen and (max-height: 410px) {
+  /* On very short screens, menu should not be sticky; otherwise, we cannot see the top bar */
+  .general-menu {
+    position: static;
+  }
+
+  .single-list-menu-mode-overlay {
+    display: none; /* otherwise, the list of tasks will show from behind the menu */
+  }
 }
 
 .customize-list-icon {
@@ -112,30 +113,54 @@
   grid-column: 2 / span 1;
 }
 
-.delete-all-icon {
+.delete-overdue-icon {
   grid-row: 5 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.delete-overdue-desc {
+  grid-row: 5 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.delete-all-icon {
+  grid-row: 6 / span 1;
   grid-column: 1 / span 1;
 }
 
 .delete-all-desc {
-  grid-row: 5 / span 1;
+  grid-row: 6 / span 1;
   grid-column: 2 / span 1;
 }
 
 .delete-list-icon {
-  grid-row: 6 / span 1;
+  grid-row: 7 / span 1;
   grid-column: 1 / span 1;
 }
 
 .delete-list-desc {
-  grid-row: 6 / span 1;
+  grid-row: 7 / span 1;
   grid-column: 2 / span 1;
 }
 
 /* Styling for the sorting Single List Page menu */
-.sorting-menu-grid {
+.sorting-menu {
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 2em 3em 1fr 6.5em;
+}
+
+/* On very short screens, override even the styles from .small-screen-list-menu */
+/* Important to get max-height exactly correct; otherwise there will be a strange non-white gap between menu and bottom of screen */
+/* TODO: Must update max-height whenever adding an additional row to sorting List Menu */
+@media screen and (max-height: 365px) {
+  /* On very short screens, menu should not be sticky; otherwise, we cannot see the top bar */
+  .sorting-menu {
+    position: static;
+  }
+
+  .single-list-menu-mode-overlay {
+    display: none; /* otherwise, the list of tasks will show from behind the menu */
+  }
 }
 
 .sort-by-header-back-icon {
@@ -158,7 +183,7 @@
   grid-column: 3 / span 1;
 }
 
-.sort-by-priority-check {
+.sort-by-priority-indicator {
   grid-row: 2 / span 1;
   grid-column: 4 / span 1;
 }
@@ -173,7 +198,7 @@
   grid-column: 3 / span 1;
 }
 
-.sort-by-deadline-check {
+.sort-by-deadline-indicator {
   grid-row: 3 / span 1;
   grid-column: 4 / span 1;
 }
@@ -188,7 +213,7 @@
   grid-column: 3 / span 1;
 }
 
-.sort-by-name-check {
+.sort-by-name-indicator {
   grid-row: 4 / span 1;
   grid-column: 4 / span 1;
 }
@@ -203,7 +228,7 @@
   grid-column: 3 / span 1;
 }
 
-.sort-by-creation-time-check {
+.sort-by-creation-time-indicator {
   grid-row: 5 / span 1;
   grid-column: 4 / span 1;
 }
@@ -218,7 +243,7 @@
   grid-column: 3 / span 1;
 }
 
-.sort-by-modified-time-check {
+.sort-by-modified-time-indicator {
   grid-row: 6 / span 1;
   grid-column: 4 / span 1;
 }

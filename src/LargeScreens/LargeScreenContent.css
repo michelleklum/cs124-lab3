@@ -7,7 +7,7 @@
 
 @media screen and (min-width: 769px) and (min-height: 690px) {
   .list-menu-button:hover {
-    background: #EAE8E8;
+    background: #eae8e8;
     padding: 7px 7px 7px 7px;
     margin-left: 5.5px;
     border-radius: 8px;
@@ -53,10 +53,9 @@
 }
 
 /* When LargeScreenPopup is open, make all of MainContent unscrollable */
-/* .unscrollable  {   <-- this was messing up formatting, so I commented this out
+.unscrollable {
   overflow: hidden;
-} */
-
+}
 
 .sidebar-header-text {
   font-size: 13pt;
@@ -81,7 +80,7 @@
 }
 
 .large-screen-add-button:hover i {
-  background: #EAE8E8;
+  background: #eae8e8;
   border-radius: 8px;
   padding: 6px 7px 6px 7px;
 }

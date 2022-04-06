@@ -17,6 +17,7 @@ function SingleListPage(props) {
   const [deleteListAlert, setDeleteListAlert] = useState(false);
   const [deleteTasksAlert, setDeleteTasksAlert] = useState(false);
   const [deleteCompletedAlert, setDeleteCompletedAlert] = useState(false);
+  const [deleteOverdueAlert, setDeleteOverdueAlert] = useState(false);
 
   // Get tasks (current list's tasks) from Firebase
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(
@@ -42,6 +43,10 @@ function SingleListPage(props) {
     setDeleteCompletedAlert(!deleteCompletedAlert);
   }
 
+  function toggleDeleteOverdueAlert() {
+    setDeleteOverdueAlert(!deleteOverdueAlert);
+  }
+
   return (
     <Fragment>
       {tasksError ? (
@@ -58,126 +63,141 @@ function SingleListPage(props) {
           currentListId={props.currentListId}
           onChangePage={props.onChangePage}
         />
-      ) : tasksLoading && props.isLargeScreen ? (
-        null
-      ) : (
-          <div>
-            <div id="single-list-page">
-              {props.isLargeScreen ? (
-                <LargeScreenSubpageHeader
-                  isLargeScreen={props.isLargeScreen}
-                  onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
-                  inMenuMode={inMenuMode}
-                  onChangeMenuMode={toggleMenuMode}
-                  menuModeType={menuModeType}
-                  onChangeMenuModeType={setMenuModeType}
-                  currentListId={props.currentListId}
-                  onEditList={props.onEditList}
-                  onDeleteCompleted={props.onDeleteCompleted}
-                  onDeleteAllTasks={props.onDeleteAllTasks}
-                  onDeleteList={props.onDeleteList}
-                  onChangePage={props.onChangePage}
-                  onToggleDeleteListAlert={toggleDeleteListAlert}
-                  onToggleDeleteTasksAlert={toggleDeleteTasksAlert}
-                  onToggleDeleteCompletedAlert={toggleDeleteCompletedAlert}
-                  data={props.data}
-                  list={taskList}
-                  tasks={tasks}
-                  listTasksPrimarySortField={props.listTasksPrimarySortField}
-                  onChangeSort={props.onChangeSort}
-                  searchQuery={props.searchQuery}
-                  setSearchQuery={props.setSearchQuery}
-                  prevPage={props.prevPage}
-                />
-              ) : (
-                <ListTopBar
-                  data={props.data}
-                  currentListId={props.currentListId}
-                  inMenuMode={inMenuMode}
-                  onChangePage={props.onChangePage}
-                  onChangeList={props.onChangeList}
-                  onChangeMenuMode={toggleMenuMode}
-                  isLoading={false}
-                />
-              )}
-              {!props.isLargeScreen && (
-                <AddButton
-                  currentPage={props.currentPage}
-                  onChangePage={props.onChangePage}
-                />
-              )}
-              <div
-                className={
-                  inMenuMode && !props.isLargeScreen
-                    ? "single-list-menu-mode-overlay"
-                    : null
-                }
-                onClick={inMenuMode ? toggleMenuMode : null}
-              >
-                <ListOfTasks
-                  db={props.db}
-                  tasks={tasks}
-                  data={props.data}
-                  currentListId={props.currentListId}
-                  inMenuMode={inMenuMode}
-                  onChangePage={props.onChangePage}
-                  onChangeTask={props.onChangeTask}
-                  onEditTask={props.onEditTask}
-                  isLargeScreen={props.isLargeScreen}
-                  onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
-                />
-              </div>
-            </div>
-            {!props.isLargeScreen && inMenuMode && menuModeType === "general" ? (
-              <ListMenu
+      ) : tasksLoading && props.isLargeScreen ? null : (
+        <div>
+          <div id="single-list-page">
+            {props.isLargeScreen ? (
+              <LargeScreenSubpageHeader
                 isLargeScreen={props.isLargeScreen}
-                tasks={tasks}
-                listMenuType="general"
+                onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+                inMenuMode={inMenuMode}
+                onChangeMenuMode={toggleMenuMode}
+                menuModeType={menuModeType}
                 onChangeMenuModeType={setMenuModeType}
-                data={props.data}
                 currentListId={props.currentListId}
                 onEditList={props.onEditList}
                 onDeleteCompleted={props.onDeleteCompleted}
+                onDeleteOverdue={props.onDeleteOverdue}
                 onDeleteAllTasks={props.onDeleteAllTasks}
                 onDeleteList={props.onDeleteList}
                 onChangePage={props.onChangePage}
                 onToggleDeleteListAlert={toggleDeleteListAlert}
                 onToggleDeleteTasksAlert={toggleDeleteTasksAlert}
                 onToggleDeleteCompletedAlert={toggleDeleteCompletedAlert}
-              />
-            ) : null}
-            {!props.isLargeScreen && inMenuMode && menuModeType === "sorting" ? (
-              <ListMenu
-                listMenuType="sorting"
-                onChangeMenuModeType={setMenuModeType}
+                onToggleDeleteOverdueAlert={toggleDeleteOverdueAlert}
                 data={props.data}
+                list={taskList}
+                tasks={tasks}
                 listTasksPrimarySortField={props.listTasksPrimarySortField}
+                listTasksPrimarySortDirection={
+                  props.listTasksPrimarySortDirection
+                }
                 onChangeSort={props.onChangeSort}
+                searchQuery={props.searchQuery}
+                setSearchQuery={props.setSearchQuery}
+                prevPage={props.prevPage}
               />
-            ) : null}
-            {deleteListAlert && (
-              <DeleteAlert
-                type="this list"
-                onToggleDeleteAlert={toggleDeleteListAlert}
-                onDelete={() => props.onDeleteList(tasks)}
-              />
-            )}
-            {deleteTasksAlert && (
-              <DeleteAlert
-                type="all tasks"
-                onToggleDeleteAlert={toggleDeleteTasksAlert}
-                onDelete={() => props.onDeleteAllTasks(tasks)}
-              />
-            )}
-            {deleteCompletedAlert && (
-              <DeleteAlert
-                type="all completed tasks"
-                onToggleDeleteAlert={toggleDeleteCompletedAlert}
-                onDelete={() => props.onDeleteCompleted(tasks)}
+            ) : (
+              <ListTopBar
+                data={props.data}
+                currentListId={props.currentListId}
+                inMenuMode={inMenuMode}
+                onChangePage={props.onChangePage}
+                onChangeList={props.onChangeList}
+                onChangeMenuMode={toggleMenuMode}
+                isLoading={false}
               />
             )}
+            {!props.isLargeScreen && (
+              <AddButton
+                currentPage={props.currentPage}
+                onChangePage={props.onChangePage}
+              />
+            )}
+            <div
+              className={
+                inMenuMode && !props.isLargeScreen
+                  ? "single-list-menu-mode-overlay"
+                  : null
+              }
+              onClick={inMenuMode ? toggleMenuMode : null}
+            >
+              <ListOfTasks
+                db={props.db}
+                tasks={tasks}
+                data={props.data}
+                currentListId={props.currentListId}
+                inMenuMode={inMenuMode}
+                onChangePage={props.onChangePage}
+                onChangeTask={props.onChangeTask}
+                onEditTask={props.onEditTask}
+                isLargeScreen={props.isLargeScreen}
+                onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              />
+            </div>
           </div>
-        )}
+          {!props.isLargeScreen && inMenuMode && menuModeType === "general" ? (
+            <ListMenu
+              isLargeScreen={props.isLargeScreen}
+              tasks={tasks}
+              listMenuType="general"
+              onChangeMenuModeType={setMenuModeType}
+              data={props.data}
+              currentListId={props.currentListId}
+              onEditList={props.onEditList}
+              onDeleteCompleted={props.onDeleteCompleted}
+              onDeleteOverdue={props.onDeleteOverdue}
+              onDeleteAllTasks={props.onDeleteAllTasks}
+              onDeleteList={props.onDeleteList}
+              onChangePage={props.onChangePage}
+              onToggleDeleteListAlert={toggleDeleteListAlert}
+              onToggleDeleteTasksAlert={toggleDeleteTasksAlert}
+              onToggleDeleteCompletedAlert={toggleDeleteCompletedAlert}
+              onToggleDeleteOverdueAlert={toggleDeleteOverdueAlert}
+            />
+          ) : null}
+          {!props.isLargeScreen && inMenuMode && menuModeType === "sorting" ? (
+            <ListMenu
+              listMenuType="sorting"
+              onChangeMenuModeType={setMenuModeType}
+              data={props.data}
+              listTasksPrimarySortField={props.listTasksPrimarySortField}
+              listTasksPrimarySortDirection={
+                props.listTasksPrimarySortDirection
+              }
+              onChangeSort={props.onChangeSort}
+            />
+          ) : null}
+          {deleteListAlert && (
+            <DeleteAlert
+              type="this list"
+              onToggleDeleteAlert={toggleDeleteListAlert}
+              onDelete={() => props.onDeleteList(tasks)}
+            />
+          )}
+          {deleteTasksAlert && (
+            <DeleteAlert
+              type="all tasks"
+              onToggleDeleteAlert={toggleDeleteTasksAlert}
+              onDelete={() => props.onDeleteAllTasks(tasks)}
+            />
+          )}
+          {deleteCompletedAlert && (
+            <DeleteAlert
+              type="all completed tasks"
+              onToggleDeleteAlert={toggleDeleteCompletedAlert}
+              onDelete={() => props.onDeleteCompleted(tasks)}
+            />
+          )}
+          {deleteOverdueAlert && (
+            <DeleteAlert
+              type="all overdue tasks"
+              onToggleDeleteAlert={toggleDeleteOverdueAlert}
+              onDelete={() => props.onDeleteOverdue(tasks)}
+            />
+          )}
+        </div>
+      )}
     </Fragment>
   );
 }

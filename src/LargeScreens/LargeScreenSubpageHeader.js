@@ -40,12 +40,14 @@ function LargeScreenSubpageHeader(props) {
             currentListId={props.currentListId}
             onEditList={props.onEditList}
             onDeleteCompleted={props.onDeleteCompleted}
+            onDeleteOverdue={props.onDeleteOverdue}
             onDeleteAllTasks={props.onDeleteAllTasks}
             onDeleteList={props.onDeleteList}
             onChangePage={props.onChangePage}
             onToggleDeleteListAlert={props.onToggleDeleteListAlert}
             onToggleDeleteTasksAlert={props.onToggleDeleteTasksAlert}
             onToggleDeleteCompletedAlert={props.onToggleDeleteCompletedAlert}
+            onToggleDeleteOverdueAlert={props.onToggleDeleteOverdueAlert}
           />
         ) : null}
         {props.inMenuMode && props.menuModeType === "sorting" ? (
@@ -55,6 +57,7 @@ function LargeScreenSubpageHeader(props) {
             onChangeMenuModeType={props.onChangeMenuModeType}
             data={props.data}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
             onChangeSort={props.onChangeSort}
           />
         ) : null}

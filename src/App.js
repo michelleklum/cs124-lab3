@@ -99,25 +99,41 @@ function App() {
     useState("asc"); // by default, sort current list's tasks ascending by listTasksPrimarySortField
 
   function handleChangeSort(newListTasksPrimarySortField) {
-    setListTasksPrimarySortField(newListTasksPrimarySortField);
-    // eslint-disable-next-line default-case
-    switch (newListTasksPrimarySortField) {
-      case "deadline":
-      case "nameLowercasedForSorting":
-        setListTasksPrimarySortDirection("asc");
-        break;
-      case "creationTime":
-      case "modificationTime":
-      case "priority":
-        // sort by last created and last modified
-        setListTasksPrimarySortDirection("desc");
-        break;
-    }
+    // If user clicked on the already-selected sort field, just toggle sort direction
+    if (listTasksPrimarySortField === newListTasksPrimarySortField) {
+      // if sorting tasks by priority, sort tasks primarily by priority, and then secondarily by deadline
+      if (newListTasksPrimarySortField === "priority") {
+        // if we were previously sorting tasks by priority ascending, now sort primarily by priority descending and secondarily by deadline ascending
+        // else if we were previously sorting tasks by priority descending, now sort primarily by priority ascending and secondarily by deadline descending
+        listTasksPrimarySortDirection === "asc"
+          ? setListTasksSecondarySortDirection("asc")
+          : setListTasksSecondarySortDirection("desc");
+      }
 
-    // if sorting tasks by priority, sort tasks primarily by descending priority, and then secondarily by ascending deadline
-    if (newListTasksPrimarySortField === "priority") {
-      setListTasksSecondarySortField("deadline");
-      setListTasksSecondarySortDirection("asc");
+      listTasksPrimarySortDirection === "asc"
+        ? setListTasksPrimarySortDirection("desc")
+        : setListTasksPrimarySortDirection("asc");
+    } else {
+      setListTasksPrimarySortField(newListTasksPrimarySortField);
+      // eslint-disable-next-line default-case
+      switch (newListTasksPrimarySortField) {
+        case "deadline":
+        case "nameLowercasedForSorting":
+          setListTasksPrimarySortDirection("asc");
+          break;
+        case "creationTime":
+        case "modificationTime":
+        case "priority":
+          // sort by last created, last modified, and highest priority (with secondary sort of deadline)
+          setListTasksPrimarySortDirection("desc");
+          break;
+      }
+
+      // if sorting tasks by priority, sort tasks primarily by descending priority, and then secondarily by ascending deadline
+      if (newListTasksPrimarySortField === "priority") {
+        setListTasksSecondarySortField("deadline");
+        setListTasksSecondarySortDirection("asc");
+      }
     }
   }
 
@@ -222,6 +238,23 @@ function App() {
   function handleDeleteCompletedTasks() {
     tasks
       .filter((task) => task.isCompleted)
+      .map((task) =>
+        deleteDoc(
+          doc(
+            db,
+            listCollectionName,
+            currentListId,
+            taskSubcollectionName,
+            task.id
+          )
+        )
+      );
+  }
+
+  function handleDeleteOverdueTasks() {
+    // Remove tasks whose deadlines are before current time
+    tasks
+      .filter((task) => task.deadline.toDate() < new Date())
       .map((task) =>
         deleteDoc(
           doc(
@@ -344,8 +377,10 @@ function App() {
         onEditList={handleEditList}
         onEditListAppearance={handleEditListAppearance}
         onDeleteCompleted={handleDeleteCompletedTasks}
+        onDeleteOverdue={handleDeleteOverdueTasks}
         onDeleteAllTasks={handleDeleteAllTasks}
         listTasksPrimarySortField={listTasksPrimarySortField}
+        listTasksPrimarySortDirection={listTasksPrimarySortDirection}
         onChangeSort={handleChangeSort}
       />
     </Fragment>
@@ -402,11 +437,13 @@ function App() {
           onEditTask={handleEditTask}
           onEditList={handleEditList}
           onDeleteCompleted={handleDeleteCompletedTasks}
+          onDeleteOverdue={handleDeleteOverdueTasks}
           onDeleteAllTasks={handleDeleteAllTasks}
           onDeleteList={handleDeleteList}
           onCreateTask={handleChangeTask}
           onToggleDeleteAlert={handleToggleDeleteAlert}
           listTasksPrimarySortField={listTasksPrimarySortField}
+          listTasksPrimarySortDirection={listTasksPrimarySortDirection}
           onChangeSort={handleChangeSort}
         />
       ) : null}

@@ -162,6 +162,7 @@ function SingleListPage(props) {
               listMenuType="sorting"
               onChangeMenuModeType={setMenuModeType}
               data={props.data}
+              currentListId={props.currentListId}
               listTasksPrimarySortField={props.listTasksPrimarySortField}
               listTasksPrimarySortDirection={
                 props.listTasksPrimarySortDirection

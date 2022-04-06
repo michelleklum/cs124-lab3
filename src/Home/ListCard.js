@@ -59,16 +59,14 @@ function ListCard(props) {
       : "";
 
   return (
-    <div
+    <button
       className={["list", gridClassName, largeScreenName, selectedList].join(
         " "
       )}
       onClick={handleListCardClick}
-      onKeyDown={(e) => (e.code === "Enter") ? handleListCardClick() : null}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd} 
-      role="button"
       tabIndex="0"
       aria-label = {props.listName + ", list"}
     >
@@ -94,7 +92,7 @@ function ListCard(props) {
           isLargeScreen={props.isLargeScreen}
         />
       )}
-    </div>
+    </button>
   );
 }
 

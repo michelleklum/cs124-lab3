@@ -32,6 +32,14 @@ body {
   margin: 0;
 }
 
+button {
+  font-family: "Open Sans", Calibri, sans-serif;
+  margin: 0;
+  border: hidden;
+  text-align: left;
+  width: 100%;
+}
+
 /* For large screens, background should be white */
 @media screen and (min-width: 769px) and (min-height: 690px) {
   html,

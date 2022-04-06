@@ -4,7 +4,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   color: #172528;
   margin-bottom: 1em;
-  padding: 0.3em 2em 0.3em 1em;
+  padding: 0.4em 2em 0.4em 1.3em;
   display: grid;
   align-items: center;
   justify-content: flex-start;
@@ -21,6 +21,11 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  margin-left: 8px;
+}
+
+.list-icon {
+  width: 35px;
 }
 
 i.list-icon {

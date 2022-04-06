@@ -99,25 +99,39 @@ function App() {
     useState("asc"); // by default, sort current list's tasks ascending by listTasksPrimarySortField
 
   function handleChangeSort(newListTasksPrimarySortField) {
-    setListTasksPrimarySortField(newListTasksPrimarySortField);
-    // eslint-disable-next-line default-case
-    switch (newListTasksPrimarySortField) {
-      case "deadline":
-      case "nameLowercasedForSorting":
-        setListTasksPrimarySortDirection("asc");
-        break;
-      case "creationTime":
-      case "modificationTime":
-      case "priority":
-        // sort by last created and last modified
-        setListTasksPrimarySortDirection("desc");
-        break;
-    }
+    // If user clicked on the already-selected sort field, just toggle sort direction
+    if (listTasksPrimarySortField === newListTasksPrimarySortField) {
+      listTasksPrimarySortDirection === "asc"
+        ? setListTasksPrimarySortDirection("desc")
+        : setListTasksPrimarySortDirection("asc");
 
-    // if sorting tasks by priority, sort tasks primarily by descending priority, and then secondarily by ascending deadline
-    if (newListTasksPrimarySortField === "priority") {
-      setListTasksSecondarySortField("deadline");
-      setListTasksSecondarySortDirection("asc");
+      // if sorting tasks by priority, sort tasks primarily by priority, and then secondarily by deadline
+      if (newListTasksPrimarySortField === "priority") {
+        listTasksSecondarySortDirection === "asc"
+          ? setListTasksSecondarySortDirection("desc")
+          : setListTasksSecondarySortDirection("asc");
+      }
+    } else {
+      setListTasksPrimarySortField(newListTasksPrimarySortField);
+      // eslint-disable-next-line default-case
+      switch (newListTasksPrimarySortField) {
+        case "deadline":
+        case "nameLowercasedForSorting":
+          setListTasksPrimarySortDirection("asc");
+          break;
+        case "creationTime":
+        case "modificationTime":
+        case "priority":
+          // sort by last created, last modified, and highest priority (with secondary sort of deadline)
+          setListTasksPrimarySortDirection("desc");
+          break;
+      }
+
+      // if sorting tasks by priority, sort tasks primarily by descending priority, and then secondarily by ascending deadline
+      if (newListTasksPrimarySortField === "priority") {
+        setListTasksSecondarySortField("deadline");
+        setListTasksSecondarySortDirection("asc");
+      }
     }
   }
 
@@ -364,6 +378,7 @@ function App() {
         onDeleteOverdue={handleDeleteOverdueTasks}
         onDeleteAllTasks={handleDeleteAllTasks}
         listTasksPrimarySortField={listTasksPrimarySortField}
+        listTasksPrimarySortDirection={listTasksPrimarySortDirection}
         onChangeSort={handleChangeSort}
       />
     </Fragment>
@@ -426,6 +441,7 @@ function App() {
           onCreateTask={handleChangeTask}
           onToggleDeleteAlert={handleToggleDeleteAlert}
           listTasksPrimarySortField={listTasksPrimarySortField}
+          listTasksPrimarySortDirection={listTasksPrimarySortDirection}
           onChangeSort={handleChangeSort}
         />
       ) : null}

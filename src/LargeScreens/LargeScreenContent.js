@@ -152,6 +152,9 @@ function LargeScreenContent(props) {
                 onToggleDeleteAlert={props.onToggleDeleteAlert}
                 showDeleteAlert={props.showDeleteAlert}
                 listTasksPrimarySortField={props.listTasksPrimarySortField}
+                listTasksPrimarySortDirection={
+                  props.listTasksPrimarySortDirection
+                }
                 onChangeSort={props.onChangeSort}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}

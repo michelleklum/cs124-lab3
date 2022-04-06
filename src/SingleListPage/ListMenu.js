@@ -57,6 +57,7 @@ function ListMenu(props) {
           <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
             barSortIcon="fas fa-exclamation-circle"
             barSortFieldAbbrev="priority"
             barSortField="priority"
@@ -65,6 +66,7 @@ function ListMenu(props) {
           <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
             barSortIcon="fas fa-hourglass-start"
             barSortFieldAbbrev="deadline"
             barSortField="deadline"
@@ -73,6 +75,7 @@ function ListMenu(props) {
           <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
             barSortIcon="fas fa-sort-alpha-down"
             barSortFieldAbbrev="name"
             barSortField="nameLowercasedForSorting"
@@ -81,6 +84,7 @@ function ListMenu(props) {
           <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
             barSortIcon="fas fa-calendar-plus"
             barSortFieldAbbrev="creation-time"
             barSortField="creationTime"
@@ -89,6 +93,7 @@ function ListMenu(props) {
           <SortByFieldBar
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
             barSortIcon="fas fa-calendar-check"
             barSortFieldAbbrev="modified-time"
             barSortField="modifiedTime"

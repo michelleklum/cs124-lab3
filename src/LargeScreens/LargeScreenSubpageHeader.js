@@ -57,6 +57,7 @@ function LargeScreenSubpageHeader(props) {
             onChangeMenuModeType={props.onChangeMenuModeType}
             data={props.data}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
+            listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
             onChangeSort={props.onChangeSort}
           />
         ) : null}

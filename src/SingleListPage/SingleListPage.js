@@ -89,6 +89,9 @@ function SingleListPage(props) {
                 list={taskList}
                 tasks={tasks}
                 listTasksPrimarySortField={props.listTasksPrimarySortField}
+                listTasksPrimarySortDirection={
+                  props.listTasksPrimarySortDirection
+                }
                 onChangeSort={props.onChangeSort}
                 searchQuery={props.searchQuery}
                 setSearchQuery={props.setSearchQuery}
@@ -159,6 +162,9 @@ function SingleListPage(props) {
               onChangeMenuModeType={setMenuModeType}
               data={props.data}
               listTasksPrimarySortField={props.listTasksPrimarySortField}
+              listTasksPrimarySortDirection={
+                props.listTasksPrimarySortDirection
+              }
               onChangeSort={props.onChangeSort}
             />
           ) : null}

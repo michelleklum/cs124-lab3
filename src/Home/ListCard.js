@@ -70,7 +70,7 @@ function ListCard(props) {
       onTouchEnd={handleTouchEnd} 
       role="button"
       tabIndex="0"
-      aria-pressed="true"
+      aria-label = {props.listName + ", list"}
     >
       <i className={`fas fa-${props.listIcon} fa-4x list-icon`}></i>
       <h2>{props.listName}</h2>

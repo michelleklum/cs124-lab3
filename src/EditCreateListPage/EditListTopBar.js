@@ -29,6 +29,8 @@ function EditListTopBar(props) {
             maxLength="22"
             autoFocus
             onInput={(e) => props.onChangeListName(e.target.value)}
+            aria-label={"Edit list name"}
+            tabIndex="0"
           />
         </div>
         <ConfirmEditListButton

@@ -9,6 +9,10 @@ function EditListButton(props) {
     <i
       className="fas fa-pencil-alt fa-4x edit-list right-aligned"
       onClick={() => handleEditList("EditListPage")}
+      aria-label = "Edit List"
+      role="button"
+      tabIndex="0"
+      onKeyDown={(e) => (e.code === "Enter") ? handleEditList("EditListPage") : null}
     ></i>
   );
 }

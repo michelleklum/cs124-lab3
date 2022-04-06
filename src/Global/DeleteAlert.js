@@ -1,6 +1,11 @@
 import "./DeleteAlert.css";
 
 function DeleteAlert(props) {
+  function handleDelete() {
+    props.onDelete();
+    props.onToggleDeleteAlert();
+  }
+
   return (
     <div className="backdrop">
       <div className="alert">
@@ -12,16 +17,22 @@ function DeleteAlert(props) {
             className={"alert-button alert-cancel"}
             type={"button"}
             onClick={() => props.onToggleDeleteAlert()}
+            aria-label="Cancel Delete"
+            tabIndex="0"
+            role="button"
+            onKeyDown={(e) => (e.code === "Enter") ?
+              props.onToggleDeleteAlert() : null}
           >
             Cancel
           </div>
           <div
             className={"alert-button alert-delete"}
             type={"button"}
-            onClick={() => {
-              props.onDelete();
-              props.onToggleDeleteAlert();
-            }}
+            onClick={handleDelete}
+            aria-label="Confirm Delete"
+            tabIndex="0"
+            role="button"
+            onKeyDown={(e) => (e.code === "Enter") ? handleDelete() : null}
           >
             Delete
           </div>

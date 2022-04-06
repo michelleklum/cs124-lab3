@@ -112,6 +112,7 @@ function SingleListPage(props) {
               <AddButton
                 currentPage={props.currentPage}
                 onChangePage={props.onChangePage}
+                addLabel="Add New Task"
               />
             )}
             <div

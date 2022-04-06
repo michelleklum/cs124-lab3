@@ -54,6 +54,12 @@ function Checkbox(props) {
           onClick={
             props.disableCheckbox ? null : handleEditTaskCompletionStatus
           }
+          aria-label="Mark task uncompleted - task is currently complted"
+          tabIndex="0"
+          role="button"
+          onKeyDown={(e) => (e.code === "Enter") ?
+            (props.disableCheckbox ? null : handleEditTaskCompletionStatus()) : null}
+
         ></i>
       ) : (
         <i
@@ -75,6 +81,11 @@ function Checkbox(props) {
           onClick={
             props.disableCheckbox ? null : handleEditTaskCompletionStatus
           }
+          aria-label="Mark task completed - task is currently uncompleted"
+          tabIndex="0"
+          role="button"
+          onKeyDown={(e) => (e.code === "Enter") ?
+            (props.disableCheckbox ? null : handleEditTaskCompletionStatus()) : null}
         ></i>
       )}
     </Fragment>

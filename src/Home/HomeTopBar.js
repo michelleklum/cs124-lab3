@@ -12,6 +12,8 @@ function HomeTopBar(props) {
             width="210"
             height="55"
             alt="Task Monster"
+            aria-label="Task Monster Logo"
+            
           />}
           {props.isNarrowScreen &&
           <img
@@ -20,6 +22,7 @@ function HomeTopBar(props) {
             height="42"
             alt="Task Monster"
             className="narrow-logo"
+            aria-label="Task Monster Logo"
           />}
         </div>
         <div className="right-aligned">

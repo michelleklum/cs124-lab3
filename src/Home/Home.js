@@ -28,6 +28,7 @@ function Home(props) {
         <AddButton
           onChangePage={props.onChangePage}
           currentPage={props.currentPage}
+          addLabel="Add New List"
         />
       )}
       {props.showDeleteAlert && (

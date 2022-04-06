@@ -29,9 +29,10 @@ function TaskCard(props) {
     initialAmPm = "AM";
   }
 
-  // Check if task is overdue; overdue tasks will have deadline shown in red
+  // Check if task is overdue and incomplete; overdue tasks that are not yet completed will have deadline shown in red
   const isOverdue = taskDeadlineJSDate < new Date();
-  const overdueClassName = isOverdue ? "overdue" : null;
+  const overdueIncompleteClassName =
+    isOverdue && !props.task.isCompleted ? "overdue-and-incomplete" : null;
 
   const numTaskCharsToShow = 30;
   function handleTaskCardClick() {
@@ -49,8 +50,13 @@ function TaskCard(props) {
     : null;
 
   return (
-    <div className={["task", completedTaskClassName,
-      largeScreenTaskClassName].join(" ")}>
+    <div
+      className={[
+        "task",
+        completedTaskClassName,
+        largeScreenTaskClassName,
+      ].join(" ")}
+    >
       <div className="left-aligned">
         <Checkbox
           className="checkbox"
@@ -66,8 +72,9 @@ function TaskCard(props) {
 
       <div
         className="task-and-date"
-        onClick={props.inMenuMode || props.isLargeScreen ? null :
-          handleTaskCardClick}
+        onClick={
+          props.inMenuMode || props.isLargeScreen ? null : handleTaskCardClick
+        }
       >
         <label htmlFor={`task-${props.task.id}`}>
           <h2>
@@ -76,7 +83,7 @@ function TaskCard(props) {
               : props.task.name}
           </h2>
         </label>
-        <p className={`date ${overdueClassName}`}>
+        <p className={`date ${overdueIncompleteClassName}`}>
           {`${String(initialMonth).padStart(2, "0")}/${String(
             initialDay
           ).padStart(2, "0")}/${initialYear}`}
@@ -86,8 +93,12 @@ function TaskCard(props) {
           ).padStart(2, "0")} ${initialAmPm}`}
         </p>
       </div>
-      {props.isLargeScreen && <i className="fas fa-info-circle fa-4x info-task"
-        onClick={handleTaskCardClick}></i>}
+      {props.isLargeScreen && (
+        <i
+          className="fas fa-info-circle fa-4x info-task"
+          onClick={handleTaskCardClick}
+        ></i>
+      )}
     </div>
   );
 }

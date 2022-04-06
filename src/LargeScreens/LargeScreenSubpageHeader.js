@@ -27,6 +27,8 @@ function LargeScreenSubpageHeader(props) {
         )}
         <ListMenuButton
           isLargeScreen={props.isLargeScreen}
+          taskList={props.list}
+          inMenuMode={props.inMenuMode}
           onChangeMenuMode={props.onChangeMenuMode}
         />
         {props.inMenuMode && props.menuModeType === "general" ? (
@@ -56,6 +58,7 @@ function LargeScreenSubpageHeader(props) {
             listMenuType="sorting"
             onChangeMenuModeType={props.onChangeMenuModeType}
             data={props.data}
+            currentListId={props.currentListId}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
             listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
             onChangeSort={props.onChangeSort}

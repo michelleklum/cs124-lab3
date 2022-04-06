@@ -21,30 +21,40 @@ function ListMenu(props) {
       {props.listMenuType === "general" && (
         <div
           className={`single-list-page-menu general-menu ${screenSizeClassName}`}
+          aria-label={`General options menu for current list: ${taskList.name}`}
         >
           <EditListBar
+            taskList={taskList}
             onChangePage={props.onChangePage}
             isLargeScreen={props.isLargeScreen}
             onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
           />
           <HideCompletedBar
+            taskList={taskList}
             hideCompletedTasks={taskList.hideCompletedTasks}
             currentListId={props.currentListId}
             onEditList={props.onEditList}
           />
-          <SortBar onChangeMenuModeType={props.onChangeMenuModeType} />
+          <SortBar
+            taskList={taskList}
+            onChangeMenuModeType={props.onChangeMenuModeType}
+          />
           <DeleteCompletedBar
+            taskList={taskList}
             onDeleteCompleted={props.onDeleteCompleted}
             onToggleDeleteCompletedAlert={props.onToggleDeleteCompletedAlert}
           />
           <DeleteOverdueBar
+            taskList={taskList}
             onDeleteOverdue={props.onDeleteOverdue}
             onToggleDeleteOverdueAlert={props.onToggleDeleteOverdueAlert}
           />
           <DeleteAllTasksBar
+            taskList={taskList}
             onToggleDeleteTasksAlert={props.onToggleDeleteTasksAlert}
           />
           <DeleteListBar
+            taskList={taskList}
             onToggleDeleteListAlert={props.onToggleDeleteListAlert}
           />
         </div>
@@ -52,9 +62,14 @@ function ListMenu(props) {
       {props.listMenuType === "sorting" && (
         <div
           className={`single-list-page-menu sorting-menu ${screenSizeClassName}`}
+          aria-label={`Sorting options menu for current list: ${taskList.name}`}
         >
-          <SortByHeaderBar onChangeMenuModeType={props.onChangeMenuModeType} />
+          <SortByHeaderBar
+            taskList={taskList}
+            onChangeMenuModeType={props.onChangeMenuModeType}
+          />
           <SortByFieldBar
+            taskList={taskList}
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
             listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
@@ -64,6 +79,7 @@ function ListMenu(props) {
             barSortFieldText="priority"
           />
           <SortByFieldBar
+            taskList={taskList}
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
             listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
@@ -73,6 +89,7 @@ function ListMenu(props) {
             barSortFieldText="deadline"
           />
           <SortByFieldBar
+            taskList={taskList}
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
             listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
@@ -82,6 +99,7 @@ function ListMenu(props) {
             barSortFieldText="name"
           />
           <SortByFieldBar
+            taskList={taskList}
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
             listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
@@ -91,6 +109,7 @@ function ListMenu(props) {
             barSortFieldText="creation time"
           />
           <SortByFieldBar
+            taskList={taskList}
             onChangeSort={props.onChangeSort}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
             listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}

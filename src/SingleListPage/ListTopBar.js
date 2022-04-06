@@ -18,10 +18,17 @@ function ListTopBar(props) {
         </div>
         <div className="right-aligned list-icons">
           {props.inMenuMode || props.isLoading ? null : (
-            <ListSearchButton onChangePage={props.onChangePage} />
+            <ListSearchButton
+              taskList={taskList}
+              onChangePage={props.onChangePage}
+            />
           )}
           {!props.isLoading && (
-            <ListMenuButton onChangeMenuMode={props.onChangeMenuMode} />
+            <ListMenuButton
+              taskList={taskList}
+              inMenuMode={props.inMenuMode}
+              onChangeMenuMode={props.onChangeMenuMode}
+            />
           )}
         </div>
       </div>

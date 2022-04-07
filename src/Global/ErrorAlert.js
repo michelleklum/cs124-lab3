@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./ErrorAlert.css";
+import FocusTrap from "focus-trap-react";
 
-function DeleteAlert(props) {
+function ErrorAlert(props) {
   const [reportSubmitted, setReportSubmitted] = useState(false);
 
   function submitError() {
@@ -10,31 +11,33 @@ function DeleteAlert(props) {
   }
 
   return (
-    <div className="backdrop">
-      <div className="error-alert">
-        <h3 className="alert-description">
-          We've noticed an error loading your data. Try reopening your app, and
-          feel free to report this issue below.
-        </h3>
-        <div className="alert-buttons">
-          {!reportSubmitted && (
-            <div
-              className={"alert-button alert-report"}
-              type={"button"}
-              onClick={submitError}
-            >
-              Report
-            </div>
-          )}
-          {reportSubmitted && (
-            <div className={"alert-button error-reported"} type={"button"}>
-              Thanks for reporting!
-            </div>
-          )}
+    <FocusTrap>
+      <div className="backdrop">
+        <div className="error-alert">
+          <h3 className="alert-description">
+            We've noticed an error loading your data. Try reopening your app,
+            and feel free to report this issue below.
+          </h3>
+          <div className="alert-buttons">
+            {!reportSubmitted && (
+              <div
+                className={"alert-button alert-report"}
+                type={"button"}
+                onClick={submitError}
+              >
+                Report
+              </div>
+            )}
+            {reportSubmitted && (
+              <div className={"alert-button error-reported"} type={"button"}>
+                Thanks for reporting!
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </FocusTrap>
   );
 }
 
-export default DeleteAlert;
+export default ErrorAlert;

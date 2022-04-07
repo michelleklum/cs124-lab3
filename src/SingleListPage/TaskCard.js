@@ -73,13 +73,16 @@ function TaskCard(props) {
       <div
         className="task-and-date"
         onClick={
-          !(props.inMenuMode || props.isLargeScreen) ? handleTaskCardClick : undefined
+          !(props.inMenuMode || props.isLargeScreen)
+            ? handleTaskCardClick
+            : undefined
         }
         role={!(props.inMenuMode || props.isLargeScreen) ? `button` : ""}
         tabIndex={!(props.inMenuMode || props.isLargeScreen) ? `0` : ""}
         aria-label={
-          !(props.inMenuMode || props.isLargeScreen) ? 
-          `View details for task: ${props.task.name}` : ""
+          !(props.inMenuMode || props.isLargeScreen)
+            ? `View details for task: ${props.task.name}`
+            : ""
         }
         onKeyDown={(e) =>
           e.code === "Enter" || e.code === "Space"
@@ -105,20 +108,16 @@ function TaskCard(props) {
           ).padStart(2, "0")} ${initialAmPm}`}
         </p>
       </div>
-      {props.isLargeScreen && (
-        <i
-          className="fas fa-info-circle fa-4x info-task"
-          onClick={handleTaskCardClick}
-          role="button"
-          tabIndex="0"
-          aria-label={`View details for task: ${props.task.name}`}
-          onKeyDown={(e) =>
-            e.code === "Enter" || e.code === "Space"
-              ? handleTaskCardClick()
-              : null
-          }
-        ></i>
-      )}
+      <div className="right-aligned">
+        {props.isLargeScreen && (
+          <button onClick={handleTaskCardClick}>
+            <i
+              className="fas fa-info-circle fa-4x info-task"
+              aria-label={`View details for task: ${props.task.name}`}
+            ></i>
+          </button>
+        )}
+      </div>
     </div>
   );
 }

@@ -66,9 +66,8 @@ function ListCard(props) {
       onClick={handleListCardClick}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd} 
-      tabIndex="0"
-      aria-label = {props.listName + ", list"}
+      onTouchEnd={handleTouchEnd}
+      aria-label={props.listName + ", list"}
     >
       <i className={`fas fa-${props.listIcon} fa-4x list-icon`}></i>
       <h2>{props.listName}</h2>

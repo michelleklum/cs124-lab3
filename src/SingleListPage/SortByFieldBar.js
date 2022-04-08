@@ -5,11 +5,58 @@ function SortByFieldBar(props) {
     props.onChangeSort(props.barSortField);
   }
 
-  const ascendingDescendingAdjective =
+  let sortDirectionWords =
     props.listTasksPrimarySortDirection === "asc" ? "ascending" : "descending";
+  // eslint-disable-next-line default-case
+  switch (props.listTasksPrimarySortField) {
+    case "priority":
+      sortDirectionWords =
+        props.listTasksPrimarySortDirection === "asc"
+          ? "from low to high"
+          : "from high to low";
+      break;
+    case "deadline":
+      sortDirectionWords =
+        props.listTasksPrimarySortDirection === "asc"
+          ? "from earliest to latest"
+          : "from latest to earliest";
+      break;
+    case "nameLowercasedForSorting":
+      sortDirectionWords =
+        props.listTasksPrimarySortDirection === "asc"
+          ? "alphabetically"
+          : "reverse alphabetically";
+      break;
+    case "creationTime":
+      sortDirectionWords =
+        props.listTasksPrimarySortDirection === "asc"
+          ? "from least recent to most recent"
+          : "from most recent to least recent";
+      break;
+    case "modifiedTime":
+      sortDirectionWords =
+        props.listTasksPrimarySortDirection === "asc"
+          ? "from least recent to most recent"
+          : "from most recent to least recent";
+      break;
+  }
 
-  const notSelectedSortFieldAriaLabel = `Tasks in current list ${props.taskList.name} are currently sorted by ${props.listTasksPrimarySortField}, ${ascendingDescendingAdjective}. Change sorting method for current list ${props.taskList.name} to ${props.barSortFieldText}`;
-  const selectedSortFieldAriaLabel = `Tasks in current list ${props.taskList.name} are currently sorted by ${props.listTasksPrimarySortField}, ${ascendingDescendingAdjective}. Toggle sorting direction`;
+  let sortMethodWord = props.listTasksPrimarySortField;
+  // eslint-disable-next-line default-case
+  switch (sortMethodWord) {
+    case "nameLowercasedForSorting":
+      sortMethodWord = "name";
+      break;
+    case "creationTime":
+      sortMethodWord = "creation time";
+      break;
+    case "modifiedTime":
+      sortMethodWord = "modification time";
+      break;
+  }
+
+  const notSelectedSortFieldAriaLabel = `Tasks in current list ${props.taskList.name} are currently sorted by ${sortMethodWord}, ${sortDirectionWords}. Change sorting method for current list ${props.taskList.name} to ${props.barSortFieldText}`;
+  const selectedSortFieldAriaLabel = `Tasks in current list ${props.taskList.name} are currently sorted by ${sortMethodWord}, ${sortDirectionWords}. Toggle sorting direction`;
 
   const sortArrowIconClassName =
     props.listTasksPrimarySortDirection === "asc"

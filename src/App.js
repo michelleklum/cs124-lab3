@@ -122,7 +122,7 @@ function App() {
           setListTasksPrimarySortDirection("asc");
           break;
         case "creationTime":
-        case "modificationTime":
+        case "modifiedTime":
         case "priority":
           // sort by last created, last modified, and highest priority (with secondary sort of deadline)
           setListTasksPrimarySortDirection("desc");

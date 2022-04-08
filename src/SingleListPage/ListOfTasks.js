@@ -8,7 +8,7 @@ function ListOfTasks(props) {
   const incompleteTasks = props.tasks.filter((task) => !task.isCompleted);
 
   // Put incomplete tasks first, and then completed tasks.
-  // Within each sublist (i.e., incomplete tasks), sort by date.
+  // Within each sublist (i.e., incomplete tasks), sort by listTasksPrimarySortField (and if that is priority, then also by listTasksSecondarySortField of deadline).
   return (
     <div
       className={[

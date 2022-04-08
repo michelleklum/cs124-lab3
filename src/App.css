@@ -34,6 +34,7 @@ body {
 
 button {
   font-family: "Open Sans", Calibri, sans-serif;
+  padding: 0;
   margin: 0;
   border: hidden;
   text-align: left;

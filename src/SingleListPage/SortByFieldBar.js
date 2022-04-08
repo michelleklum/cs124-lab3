@@ -18,47 +18,36 @@ function SortByFieldBar(props) {
 
   return (
     <Fragment>
-      <i
-        className={`${props.barSortIcon} sort-by-${props.barSortFieldAbbrev}-icon`}
+      <button
+        className={`menu-icon-button sort-by-${props.barSortFieldAbbrev}-icon`}
         onClick={handleClick}
-        role="button"
-        tabIndex="0"
         aria-label={
           props.listTasksPrimarySortField === props.barSortField
             ? selectedSortFieldAriaLabel
             : notSelectedSortFieldAriaLabel
-        }
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
-        }
-      ></i>
-      <h2
-        className={`sort-by-${props.barSortFieldAbbrev}-desc`}
-        onClick={handleClick}
-        role="button"
-        tabIndex="0"
-        aria-label={
-          props.listTasksPrimarySortField === props.barSortField
-            ? selectedSortFieldAriaLabel
-            : notSelectedSortFieldAriaLabel
-        }
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
         }
       >
-        {props.barSortFieldText}
-      </h2>
+        <i className={props.barSortIcon}></i>
+      </button>
+      <button
+        className={`sort-by-${props.barSortFieldAbbrev}-desc`}
+        onClick={handleClick}
+        aria-label={
+          props.listTasksPrimarySortField === props.barSortField
+            ? selectedSortFieldAriaLabel
+            : notSelectedSortFieldAriaLabel
+        }
+      >
+        <h2>{props.barSortFieldText}</h2>
+      </button>
       {props.listTasksPrimarySortField === props.barSortField && (
-        <i
-          className={`${sortArrowIconClassName} sort-by-${props.barSortFieldAbbrev}-indicator`}
+        <button
+          className={`sort-by-${props.barSortFieldAbbrev}-indicator`}
           onClick={handleClick}
-          role="button"
-          tabIndex="0"
           aria-label={selectedSortFieldAriaLabel}
-          onKeyDown={(e) =>
-            e.code === "Enter" || e.code === "Space" ? handleClick() : null
-          }
-        ></i>
+        >
+          <i className={sortArrowIconClassName}></i>
+        </button>
       )}
     </Fragment>
   );

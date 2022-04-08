@@ -1,9 +1,18 @@
 function CancelEditTaskButton(props) {
-  function handleCancelEditTask() {
+  function handleClick() {
     props.onChangePage(props.prevPage);
     props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
-  return <i className="fas fa-times fa-4x" onClick={handleCancelEditTask}></i>;
+
+  return (
+    <button
+      className="cancel-edit-task-button"
+      onClick={handleClick}
+      aria-label={`Cancel changes to current task: ${props.tempTaskName}`}
+    >
+      <i className="fas fa-times fa-4x"></i>
+    </button>
+  );
 }
 
 export default CancelEditTaskButton;

@@ -462,6 +462,7 @@ function App() {
         <ViewEditCreateTaskPage
           tasks={tasks}
           prevPage={prevPage}
+          data={data}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}
@@ -473,6 +474,7 @@ function App() {
         <ViewEditCreateTaskPage
           tasks={tasks}
           prevPage={prevPage}
+          data={data}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}
@@ -489,6 +491,7 @@ function App() {
         <ViewEditCreateTaskPage
           tasks={tasks}
           prevPage={prevPage}
+          data={data}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}

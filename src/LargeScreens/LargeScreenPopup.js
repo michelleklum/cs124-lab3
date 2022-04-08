@@ -15,6 +15,7 @@ function LargeScreenPopup(props) {
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               tasks={props.tasks}
               prevPage={props.prevPage}
+              data={props.data}
               currentListId={props.currentListId}
               currentTaskId={props.currentTaskId}
               onChangePage={props.onChangePage}
@@ -28,6 +29,7 @@ function LargeScreenPopup(props) {
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               tasks={props.tasks}
               prevPage={props.prevPage}
+              data={props.data}
               currentListId={props.currentListId}
               currentTaskId={props.currentTaskId}
               onChangePage={props.onChangePage}
@@ -46,6 +48,7 @@ function LargeScreenPopup(props) {
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               tasks={props.tasks}
               prevPage={props.prevPage}
+              data={props.data}
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
               onCreateTask={props.onCreateTask}

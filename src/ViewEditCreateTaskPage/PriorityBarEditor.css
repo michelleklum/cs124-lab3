@@ -1,7 +1,6 @@
-.priority-options { /* creating icon outline */
+.priority-options {
+  /* creating icon outline */
   margin-left: 0%;
-  width: 99%;
-  height: 33px;
   display: flex; /* bottom three styles center the plus icon in the .add-button div */
   align-items: center;
   justify-content: space-between;
@@ -9,35 +8,36 @@
 
 .priority-option {
   font-size: 15px;
+  width: auto;
 }
 
 .selected-priority {
   background: #eae8e8;
   border-radius: 0.75em;
-  padding: 11px 11px 11px 11px;
+  padding: 0px 20px 0px 20px;
   text-align: center;
 }
 
 .unselected-priority {
-  background: #FEFFFF;
+  background: #feffff;
   border-radius: 0.75em;
-  padding: 11px 11px 11px 11px;
+  padding: 0px 20px 0px 20px;
   text-align: center;
-  border: #FEFFFF 2px solid;
+  border: #feffff 2px solid;
 }
 
-.selected-None {
-  border: #91C6C3 2px solid;
+.selected-none {
+  border: #91c6c3 2px solid;
 }
 
-.selected-Low {
-  border: #979DC7 2px solid;
+.selected-low {
+  border: #979dc7 2px solid;
 }
 
-.selected-Medium {
-  border: #FFBD52 2px solid;
+.selected-medium {
+  border: #ffbd52 2px solid;
 }
 
-.selected-High {
+.selected-high {
   border: #ed554a 2px solid;
 }

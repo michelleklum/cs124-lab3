@@ -31,6 +31,16 @@ function DateAndTimeBar(props) {
 
   const initialMinute = tempTaskDeadlineJSDate.getMinutes();
 
+  const formattedTempTaskDate = `${String(initialMonth).padStart(
+    2,
+    "0"
+  )}/${String(initialDay).padStart(2, "0")}/${initialYear}`;
+
+  const formattedTempTaskTime = `${String(initialHour).padStart(
+    2,
+    "0"
+  )}:${String(initialMinute).padStart(2, "0")} ${initialAmPm}`;
+
   const dateEditCreateModeBackgroundClassName =
     props.inEditTaskMode || props.inCreateTaskMode
       ? "date-edit-background"
@@ -41,6 +51,9 @@ function DateAndTimeBar(props) {
       ? "time-edit-background"
       : null;
 
+  const openCloseDatePickerVerb = props.openDatePicker ? "Close" : "Open";
+  const openCloseTimePickerVerb = props.openTimePicker ? "Close" : "Open";
+
   return (
     <Fragment>
       <i className="far fa-clock fa-4x set-date-icon"></i>
@@ -49,20 +62,42 @@ function DateAndTimeBar(props) {
           " "
         )}
         onClick={props.onDateClick}
+        role={props.inEditTaskMode || props.inCreateTaskMode ? `button` : ""}
+        tabIndex={props.inEditTaskMode || props.inCreateTaskMode ? `0` : ""}
+        aria-label={
+          props.inEditTaskMode || props.inCreateTaskMode
+            ? `Task deadline date is currently set to: ${formattedTempTaskDate}. ${openCloseDatePickerVerb} task deadline date picker`
+            : ""
+        }
+        onKeyDown={(e) =>
+          e.code === "Enter" || e.code === "Space"
+            ? (props.inEditTaskMode || props.inCreateTaskMode) &&
+              props.onDateClick()
+            : null
+        }
       >
-        {`${String(initialMonth).padStart(2, "0")}/${String(
-          initialDay
-        ).padStart(2, "0")}/${initialYear}`}
+        {formattedTempTaskDate}
       </p>
       <p
         className={["set-time", timeEditCreateModeBackgroundClassName].join(
           " "
         )}
         onClick={props.onTimeClick}
+        role={props.inEditTaskMode || props.inCreateTaskMode ? `button` : ""}
+        tabIndex={props.inEditTaskMode || props.inCreateTaskMode ? `0` : ""}
+        aria-label={
+          props.inEditTaskMode || props.inCreateTaskMode
+            ? `Task deadline time is currently set to: ${formattedTempTaskTime}. ${openCloseTimePickerVerb} task deadline time picker`
+            : ""
+        }
+        onKeyDown={(e) =>
+          e.code === "Enter" || e.code === "Space"
+            ? (props.inEditTaskMode || props.inCreateTaskMode) &&
+              props.onTimeClick()
+            : null
+        }
       >
-        {`${String(initialHour).padStart(2, "0")}:${String(
-          initialMinute
-        ).padStart(2, "0")} ${initialAmPm}`}
+        {formattedTempTaskTime}
       </p>
     </Fragment>
   );

@@ -1,19 +1,21 @@
 function LargeScreenAddButton(props) {
-
   function handleClick() {
     if (props.addType === "list") {
-      props.onChangePage("CreateListPage") 
+      props.onChangePage("CreateListPage");
+    } else {
+      props.onChangePage("CreateTaskPage");
     }
-    else {
-      props.onChangePage("CreateTaskPage")
-    }
-    props.onToggleLargeScreenPopup()
+    props.onToggleLargeScreenPopup();
   }
 
   return (
-    <div className="large-screen-add-button" onClick={handleClick}>
+    <button
+      className="large-screen-add-button"
+      onClick={handleClick}
+      aria-label={`Create new ${props.addType}`}
+    >
       <i className="fas fa-plus fa-4x"></i>
-    </div>
+    </button>
   );
 }
 

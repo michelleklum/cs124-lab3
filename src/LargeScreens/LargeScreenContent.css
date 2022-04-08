@@ -71,8 +71,13 @@
 }
 
 .large-screen-add-button {
+  width: auto;
   font-size: 6px !important;
   color: #172528 !important;
+}
+
+.large-screen-cancel-search-button {
+  width: auto;
 }
 
 .welcome {

@@ -111,6 +111,7 @@ function LargeScreenContent(props) {
               <Fragment>
                 <div className="large-screen-filtered-tasks-header">
                   <LargeScreenSearchBar
+                    listName={list.name}
                     searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery}
                   />

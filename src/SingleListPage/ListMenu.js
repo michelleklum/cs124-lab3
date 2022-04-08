@@ -21,7 +21,6 @@ function ListMenu(props) {
       {props.listMenuType === "general" && (
         <div
           className={`single-list-page-menu general-menu ${screenSizeClassName}`}
-          aria-label={`General options menu for current list: ${taskList.name}`}
         >
           <EditListBar
             taskList={taskList}
@@ -62,7 +61,6 @@ function ListMenu(props) {
       {props.listMenuType === "sorting" && (
         <div
           className={`single-list-page-menu sorting-menu ${screenSizeClassName}`}
-          aria-label={`Sorting options menu for current list: ${taskList.name}`}
         >
           <SortByHeaderBar
             taskList={taskList}

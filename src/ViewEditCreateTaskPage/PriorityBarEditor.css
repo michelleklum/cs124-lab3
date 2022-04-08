@@ -11,19 +11,49 @@
   width: auto;
 }
 
+.selected-priority,
+.unselected-priority {
+  border-radius: 0.75em;
+  padding: 0px 1px 0px 1px;
+  text-align: center;
+}
+
 .selected-priority {
   background: #eae8e8;
-  border-radius: 0.75em;
-  padding: 0px 20px 0px 20px;
-  text-align: center;
 }
 
 .unselected-priority {
   background: #feffff;
-  border-radius: 0.75em;
-  padding: 0px 20px 0px 20px;
-  text-align: center;
   border: #feffff 2px solid;
+}
+
+/* For wider screens, make priority option buttons wider */
+@media screen and (min-width: 295px) {
+  .selected-priority,
+  .unselected-priority {
+    padding: 0px 3px 0px 3px;
+  }
+}
+
+@media screen and (min-width: 310px) {
+  .selected-priority,
+  .unselected-priority {
+    padding: 0px 5px 0px 5px;
+  }
+}
+
+@media screen and (min-width: 360px) {
+  .selected-priority,
+  .unselected-priority {
+    padding: 0px 10px 0px 10px;
+  }
+}
+
+@media screen and (min-width: 450px) {
+  .selected-priority,
+  .unselected-priority {
+    padding: 0px 20px 0px 20px;
+  }
 }
 
 .selected-none {

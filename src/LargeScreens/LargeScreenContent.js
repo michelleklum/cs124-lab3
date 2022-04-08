@@ -128,6 +128,10 @@ function LargeScreenContent(props) {
               <LargeScreenSubpage
                 isLargeScreen={props.isLargeScreen}
                 onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+                inMenuMode={props.inMenuMode}
+                menuModeType={props.menuModeType}
+                setMenuModeType={props.setMenuModeType}
+                onChangeMenuMode={props.onChangeMenuMode}
                 db={props.db}
                 data={props.data}
                 tasksQuery={props.tasksQuery}

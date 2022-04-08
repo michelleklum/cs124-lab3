@@ -12,8 +12,6 @@ import LargeScreenSubpageHeader from "../LargeScreens/LargeScreenSubpageHeader";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 
 function SingleListPage(props) {
-  const [inMenuMode, setMenuMode] = useState(false);
-  const [menuModeType, setMenuModeType] = useState("general");
   const [deleteListAlert, setDeleteListAlert] = useState(false);
   const [deleteTasksAlert, setDeleteTasksAlert] = useState(false);
   const [deleteCompletedAlert, setDeleteCompletedAlert] = useState(false);
@@ -25,11 +23,6 @@ function SingleListPage(props) {
   );
   const tasks = dbTasks ? dbTasks : [];
   const taskList = props.data.find((list) => list.id === props.currentListId);
-
-  function toggleMenuMode() {
-    setMenuMode(!inMenuMode);
-    setMenuModeType("general"); // so that next time menu is opened, it will be the general menu
-  }
 
   function toggleDeleteListAlert() {
     setDeleteListAlert(!deleteListAlert);
@@ -70,10 +63,10 @@ function SingleListPage(props) {
               <LargeScreenSubpageHeader
                 isLargeScreen={props.isLargeScreen}
                 onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
-                inMenuMode={inMenuMode}
-                onChangeMenuMode={toggleMenuMode}
-                menuModeType={menuModeType}
-                onChangeMenuModeType={setMenuModeType}
+                inMenuMode={props.inMenuMode}
+                onChangeMenuMode={props.onChangeMenuMode}
+                menuModeType={props.menuModeType}
+                onChangeMenuModeType={props.setMenuModeType}
                 currentListId={props.currentListId}
                 onEditList={props.onEditList}
                 onDeleteCompleted={props.onDeleteCompleted}
@@ -101,10 +94,10 @@ function SingleListPage(props) {
               <ListTopBar
                 data={props.data}
                 currentListId={props.currentListId}
-                inMenuMode={inMenuMode}
+                inMenuMode={props.inMenuMode}
                 onChangePage={props.onChangePage}
                 onChangeList={props.onChangeList}
-                onChangeMenuMode={toggleMenuMode}
+                onChangeMenuMode={props.onChangeMenuMode}
                 isLoading={false}
               />
             )}
@@ -117,18 +110,18 @@ function SingleListPage(props) {
             )}
             <div
               className={
-                inMenuMode && !props.isLargeScreen
+                props.inMenuMode && !props.isLargeScreen
                   ? "single-list-menu-mode-overlay"
                   : null
               }
-              onClick={inMenuMode ? toggleMenuMode : null}
+              onClick={props.inMenuMode ? props.onChangeMenuMode : null}
             >
               <ListOfTasks
                 db={props.db}
                 tasks={tasks}
                 data={props.data}
                 currentListId={props.currentListId}
-                inMenuMode={inMenuMode}
+                inMenuMode={props.inMenuMode}
                 onChangePage={props.onChangePage}
                 onChangeTask={props.onChangeTask}
                 onEditTask={props.onEditTask}
@@ -137,12 +130,14 @@ function SingleListPage(props) {
               />
             </div>
           </div>
-          {!props.isLargeScreen && inMenuMode && menuModeType === "general" ? (
+          {!props.isLargeScreen &&
+          props.inMenuMode &&
+          props.menuModeType === "general" ? (
             <ListMenu
               isLargeScreen={props.isLargeScreen}
               tasks={tasks}
               listMenuType="general"
-              onChangeMenuModeType={setMenuModeType}
+              onChangeMenuModeType={props.setMenuModeType}
               data={props.data}
               currentListId={props.currentListId}
               onEditList={props.onEditList}
@@ -157,10 +152,12 @@ function SingleListPage(props) {
               onToggleDeleteOverdueAlert={toggleDeleteOverdueAlert}
             />
           ) : null}
-          {!props.isLargeScreen && inMenuMode && menuModeType === "sorting" ? (
+          {!props.isLargeScreen &&
+          props.inMenuMode &&
+          props.menuModeType === "sorting" ? (
             <ListMenu
               listMenuType="sorting"
-              onChangeMenuModeType={setMenuModeType}
+              onChangeMenuModeType={props.setMenuModeType}
               data={props.data}
               currentListId={props.currentListId}
               listTasksPrimarySortField={props.listTasksPrimarySortField}

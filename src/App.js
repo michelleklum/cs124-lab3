@@ -46,16 +46,27 @@ function App() {
   const isLargeScreen = useMediaQuery({ minWidth: 769, minHeight: 690 });
   const isNarrowScreen = useMediaQuery({ maxWidth: 290 });
 
-  // Code below toggles large screen popup; also changes current + previous page, current list, and current task
+  // Code below tracks state of large screen popup (open or closed)
   const [showLargeScreenPopup, setShowLargeScreenPopup] = useState(false);
-  const [currentPage, setCurrentPage] = useState("Home");
-  const [prevPage, setPrevPage] = useState("Home");
-  const [currentListId, setCurrentListId] = useState();
-  const [currentTaskId, setCurrentTaskId] = useState();
 
   function toggleLargeScreenPopup() {
     setShowLargeScreenPopup(!showLargeScreenPopup);
   }
+
+  // Code below tracks state of menu (open or closed; type of menu)
+  const [inMenuMode, setMenuMode] = useState(false);
+  const [menuModeType, setMenuModeType] = useState("general");
+
+  function toggleMenuMode() {
+    setMenuMode(!inMenuMode);
+    setMenuModeType("general"); // so that next time menu is opened, it will be the general menu
+  }
+
+  // Code below changes current page, previous page, current list, and current task
+  const [currentPage, setCurrentPage] = useState("Home");
+  const [prevPage, setPrevPage] = useState("Home");
+  const [currentListId, setCurrentListId] = useState();
+  const [currentTaskId, setCurrentTaskId] = useState();
 
   function handleChangePage(newPage) {
     setPrevPage(currentPage);
@@ -78,6 +89,9 @@ function App() {
         setShowLargeScreenPopup(false);
         break;
     }
+
+    // If menu is open, close it
+    inMenuMode && toggleMenuMode();
   }
 
   function handleChangeList(newListId) {
@@ -377,6 +391,10 @@ function App() {
         isLargeScreen={isLargeScreen}
         showLargeScreenPopup={showLargeScreenPopup}
         onToggleLargeScreenPopup={toggleLargeScreenPopup}
+        inMenuMode={inMenuMode}
+        menuModeType={menuModeType}
+        setMenuModeType={setMenuModeType}
+        onChangeMenuMode={toggleMenuMode}
         data={data}
         dataLoading={dataLoading}
         currentListId={currentListId}
@@ -447,6 +465,10 @@ function App() {
       ) : null}
       {currentPage === "SingleListPage" ? (
         <SingleListPage
+          inMenuMode={inMenuMode}
+          menuModeType={menuModeType}
+          setMenuModeType={setMenuModeType}
+          onChangeMenuMode={toggleMenuMode}
           db={db}
           data={data}
           tasksQuery={tasksQuery}

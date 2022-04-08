@@ -15,7 +15,6 @@ function ListOfTasks(props) {
         "list-of-tasks",
         props.isLargeScreen ? "large-screen-list-of-tasks" : "",
       ].join(" ")}
-      aria-label={`List of tasks in current list: ${list.name}`}
     >
       {completedTasks.length > 0 && incompleteTasks.length === 0 && (
         <h3

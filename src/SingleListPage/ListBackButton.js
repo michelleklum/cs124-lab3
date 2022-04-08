@@ -4,11 +4,12 @@ function ListBackButton(props) {
   }
 
   return (
-    <button className="list-back-button" onClick={handleClick}>
-      <i
-        className="fas fa-chevron-left fa-4x"
-        aria-label={"Exit current list and return to home page"}
-      ></i>
+    <button
+      className="list-back-button"
+      onClick={handleClick}
+      aria-label={"Exit current list and return to home page"}
+    >
+      <i className="fas fa-chevron-left fa-4x"></i>
     </button>
   );
 }

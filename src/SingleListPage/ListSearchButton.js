@@ -6,11 +6,11 @@ function ListSearchButton(props) {
   }
 
   return (
-    <button onClick={handleClick}>
-      <i
-        className="search-button fas fa-search fa-4x"
-        aria-label={`Open search bar for current list: ${props.taskList.name}`}
-      ></i>
+    <button
+      onClick={handleClick}
+      aria-label={`Open search bar for current list: ${props.taskList.name}`}
+    >
+      <i className="search-button fas fa-search fa-4x"></i>
     </button>
   );
 }

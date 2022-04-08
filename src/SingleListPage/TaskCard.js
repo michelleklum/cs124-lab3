@@ -110,11 +110,11 @@ function TaskCard(props) {
       </div>
       <div className="right-aligned">
         {props.isLargeScreen && (
-          <button onClick={handleTaskCardClick}>
-            <i
-              className="fas fa-info-circle fa-4x info-task"
-              aria-label={`View details for task: ${props.task.name}`}
-            ></i>
+          <button
+            onClick={handleTaskCardClick}
+            aria-label={`View details for task: ${props.task.name}`}
+          >
+            <i className="fas fa-info-circle fa-4x info-task"></i>
           </button>
         )}
       </div>

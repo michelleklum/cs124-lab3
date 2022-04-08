@@ -51,13 +51,9 @@ function LargeScreenContent(props) {
     searchQuery
   );
 
-  const [showLargeScreenPopup, setShowLargeScreenPopup] = useState(false);
-
-  function toggleLargeScreenPopup() {
-    setShowLargeScreenPopup(!showLargeScreenPopup);
-  }
-
-  const unscrollableClassName = showLargeScreenPopup ? "unscrollable" : null;
+  const unscrollableClassName = props.showLargeScreenPopup
+    ? "unscrollable"
+    : null;
 
   return (
     <Fragment>
@@ -77,7 +73,7 @@ function LargeScreenContent(props) {
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar
               isLargeScreen={props.isLargeScreen}
-              onToggleLargeScreenPopup={toggleLargeScreenPopup}
+              onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               data={props.data}
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
@@ -96,7 +92,7 @@ function LargeScreenContent(props) {
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar
               isLargeScreen={props.isLargeScreen}
-              onToggleLargeScreenPopup={toggleLargeScreenPopup}
+              onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               data={props.data}
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
@@ -131,7 +127,7 @@ function LargeScreenContent(props) {
             ) : (
               <LargeScreenSubpage
                 isLargeScreen={props.isLargeScreen}
-                onToggleLargeScreenPopup={toggleLargeScreenPopup}
+                onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
                 db={props.db}
                 data={props.data}
                 tasksQuery={props.tasksQuery}
@@ -162,10 +158,10 @@ function LargeScreenContent(props) {
               />
             )}
           </div>
-          {showLargeScreenPopup && props.isLargeScreen && (
+          {props.showLargeScreenPopup && props.isLargeScreen && (
             <LargeScreenPopup
               isLargeScreen={props.isLargeScreen}
-              onToggleLargeScreenPopup={toggleLargeScreenPopup}
+              onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               data={props.data}
               tasks={tasks}
               currentPage={props.currentPage}

@@ -1,6 +1,8 @@
 function CancelEditTaskButton(props) {
   function handleClick() {
-    props.onChangePage(props.prevPage);
+    // when user cancels changes to task on EditTaskPage, they should return to SingleListPage,
+    // not the prevPage (which would be ViewTaskPage)
+    props.onChangePage("SingleListPage");
     props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
 

@@ -46,11 +46,16 @@ function App() {
   const isLargeScreen = useMediaQuery({ minWidth: 769, minHeight: 690 });
   const isNarrowScreen = useMediaQuery({ maxWidth: 290 });
 
-  // Code below changes current/previous page, current list, and current task
+  // Code below toggles large screen popup; also changes current + previous page, current list, and current task
+  const [showLargeScreenPopup, setShowLargeScreenPopup] = useState(false);
   const [currentPage, setCurrentPage] = useState("Home");
   const [prevPage, setPrevPage] = useState("Home");
   const [currentListId, setCurrentListId] = useState();
   const [currentTaskId, setCurrentTaskId] = useState();
+
+  function toggleLargeScreenPopup() {
+    setShowLargeScreenPopup(!showLargeScreenPopup);
+  }
 
   function handleChangePage(newPage) {
     setPrevPage(currentPage);
@@ -59,6 +64,19 @@ function App() {
       handleChangeList(null);
     } else if (newPage === "SingleListPage") {
       handleChangeTask(null);
+    }
+
+    switch (newPage) {
+      case "ViewTaskPage":
+      case "EditTaskPage":
+      case "CreateTaskPage":
+      case "EditListPage":
+      case "CreateListPage":
+        setShowLargeScreenPopup(true);
+        break;
+      default:
+        setShowLargeScreenPopup(false);
+        break;
     }
   }
 
@@ -198,7 +216,9 @@ function App() {
       notes: taskNotes,
       isCompleted: taskStatus,
       priority: taskPriority,
-    }).then(() => handleChangePage(prevPage));
+    }).then(() => handleChangePage("SingleListPage"));
+    // when user cancels changes to task on CreateTaskPage but especially EditTaskPage, they should return to SingleListPage,
+    // not the EditTaskPage's prevPage (which would be ViewTaskPage)
   }
 
   function handleDeleteTask(taskId) {
@@ -355,6 +375,8 @@ function App() {
     <Fragment>
       <LargeScreenContent
         isLargeScreen={isLargeScreen}
+        showLargeScreenPopup={showLargeScreenPopup}
+        onToggleLargeScreenPopup={toggleLargeScreenPopup}
         data={data}
         dataLoading={dataLoading}
         currentListId={currentListId}

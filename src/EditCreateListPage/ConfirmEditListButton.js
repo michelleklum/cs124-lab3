@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 
 function ConfirmEditListButton(props) {
   const [confirmInProgress, setConfirmInProgress] = useState(false);
@@ -20,71 +20,68 @@ function ConfirmEditListButton(props) {
   }
 
   return (
-    <div>
+    <Fragment>
       {confirmInProgress && (
-        <div className="confirm-edit-list right-aligned">
+        <button
+          className="confirm-edit-list right-aligned"
+          aria-label={"Cannot confirm list without list info"}
+          onClick={() => confirmEdit()}>
           <i
             className="fas fa-check fa-4x"
             id="no-info"
-            aria-label={"Cannot confirm list without list info"}
-            tabIndex="0"
           ></i>
-        </div>
+        </button>
       )}
       {!confirmInProgress &&
         props.inEditListMode &&
         props.listName !== "" &&
         props.listIcon !== "" && (
-          <div className="confirm-edit-list right-aligned">
+          <button
+            className="confirm-edit-list right-aligned"
+            aria-label={"Confirm edited list"}>
             <i
               className="fas fa-check fa-4x"
-              aria-label={"Confirm edited list"}
-              tabIndex="0"
-              role="button"
-              onKeyDown={(e) => (e.code === "Enter") ? confirmEdit() : null}
-              onClick={() => confirmEdit()}></i>
-          </div>
+            ></i>
+          </button>
         )}
       {!confirmInProgress &&
         props.inEditListMode &&
         (props.listName === "" || props.listIcon === "") && (
-          <div className="confirm-edit-list right-aligned">
+          <button
+            className="confirm-edit-list right-aligned"
+            aria-label={"Cannot confirm edited list without list info"}>
             <i
               className="fas fa-check fa-4x"
               id="no-info"
-              aria-label={"Cannot confirm edited list without list info"}
-              tabIndex="0"
             ></i>
-          </div>
+          </button>
         )}
       {!confirmInProgress &&
         props.inCreateListMode &&
         props.listName !== "" &&
         props.listIcon !== "" && (
-          <div className="confirm-edit-list right-aligned create-mode-confirm">
+          <button
+            className="confirm-edit-list right-aligned create-mode-confirm"
+            aria-label={"Confirm created list"}
+            onClick={() => confirmCreateList()}>
             <i
               className="fas fa-check fa-4x"
-              aria-label={"Confirm created list"}
-              tabIndex="0"
-              role="button"
-              onKeyDown={(e) => (e.code === "Enter") ? confirmCreateList() : null}
-              onClick={() => confirmCreateList()}
             ></i>
-          </div>
+          </button>
         )}
       {!confirmInProgress &&
         props.inCreateListMode &&
         (props.listName === "" || props.listIcon === "") && (
-          <div className="confirm-edit-list right-aligned">
+          <button
+            className="confirm-edit-list right-aligned"
+            aria-label={"Cannot confirm created list without list info"}>
             <i
               className="fas fa-check fa-4x"
               id="no-info"
-              aria-label={"Cannot confirm created list without list info"}
-              tabIndex="0"
             ></i>
-          </div>
+          </button>
         )}
-    </div>
+    </Fragment>
   );
 }
 

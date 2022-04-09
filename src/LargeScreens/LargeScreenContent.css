@@ -87,8 +87,8 @@
 
 .welcome-logo {
   margin: 0 auto; /* center horizontally */
-  width: min(40%, 400px);
-  margin-top: 1vh;
+  width: min(20%, 170px);
+  margin-top: -200px;
 }
 
 /* Vertical divider between LargeScreenSideBar and LargeScreenSubpage */

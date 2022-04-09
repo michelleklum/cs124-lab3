@@ -18,6 +18,7 @@ function SearchBar(props) {
           autoFocus
           value={props.searchQuery}
           onInput={(e) => props.setSearchQuery(e.target.value)}
+          aria-label={props.searchLabel}
         />
       </div>
       <CancelSearch

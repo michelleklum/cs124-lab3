@@ -44,6 +44,7 @@ function ListSearchPage(props) {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         prevPage={props.prevPage}
+        searchLabel={list.name}
       />
       <div id="filtered-tasks">
         {searchFilteredTasksToShow.map((task) => (

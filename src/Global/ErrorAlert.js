@@ -20,17 +20,17 @@ function ErrorAlert(props) {
           </h3>
           <div className="alert-buttons">
             {!reportSubmitted && (
-              <div
+              <button
                 className={"alert-button alert-report"}
                 type={"button"}
                 onClick={submitError}
               >
                 Report
-              </div>
+              </button>
             )}
             {reportSubmitted && (
               <div className={"alert-button error-reported"} type={"button"}>
-                Thanks for reporting!
+                <p>Thanks for reporting!</p>
               </div>
             )}
           </div>

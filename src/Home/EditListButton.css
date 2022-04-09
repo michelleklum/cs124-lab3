@@ -1,7 +1,8 @@
 .edit-list {
   color: #ebc323;
-  margin-right: -12px;
 }
+
+
 
 .edit-list:active {
   color: #2b7a78;

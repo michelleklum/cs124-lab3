@@ -13,6 +13,7 @@
 
 .list i {
   font-size: 25px !important;
+  text-align: center;
 }
 
 .list h2 {
@@ -21,11 +22,12 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  margin-left: 8px;
+  margin-left: 10px;
 }
 
 .list-icon {
   width: 35px;
+  margin-left: -4px;
 }
 
 i.list-icon {
@@ -34,11 +36,11 @@ i.list-icon {
 }
 
 .list-grid {
-  grid-template-columns: 1.9em 1fr 2em;
+  grid-template-columns: 1.9em 1fr 1.2em;
 }
 
 .edit-list-grid {
-  grid-template-columns: 1.9em 1fr 2em 2em;
+  grid-template-columns: 1.9em 1fr 1em 3.3em;
   box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -72,6 +74,12 @@ i.large-screen-arrow {
   margin-left: 1em;
 }
 
+@media screen and (min-width: 769px) and (min-height: 689px) {
+  i.large-screen-arrow {
+    margin-left: 0em;
+  }
+}
+
 .large-screen-list-card:hover {
   background: #EAE8E8;
   margin-bottom: 0em;
@@ -100,6 +108,4 @@ i.large-screen-arrow {
   color:#EAE8E8;
 }
 
-#enter-list {
-  margin-right:-10px;
-}
+

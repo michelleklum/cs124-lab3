@@ -36,19 +36,21 @@
     margin-top: 1.8em;
   }
 }
-.icon-options div {
+.icon-options button {
   color: #172528;
   background: #feffff;
   padding: 0.2em 0.2em 0.2em 0.2em;
   margin: auto;
   border-radius: 10px;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding-left: 0.5em;
 }
 
 @media screen and (max-width: 310px) {
-  .icon-options div {
+  .icon-options button {
     border-radius: 8px;
     width: 30px;
     height: 30px;
@@ -58,23 +60,41 @@
   }
 }
 
+
 .icon-options i {
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: #172528;
+  width: 45px;
+}
+
+.icon i {
+  text-align: center;
+}
+
+.icon {
+  text-align: center;
+}
+
+.unselected i {
+  width: 35px;
 }
 
 .selected i {
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 35px;
   color: #33aaaa !important; 
 }
 
-div.selected {
+button.selected {
   background: #feffff;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 315px) {
+  .icon-options {
+    font-size: 19px !important;
+  }
+  .icon-options button {
+    width: 40px !important;
+    height: 40px;
+  }
 }

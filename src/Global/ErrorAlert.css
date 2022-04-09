@@ -14,7 +14,7 @@
   border-radius: 7pt;
   margin: 0 auto;
   top: 35%;
-  height: 160px;
+  height: 170px;
   width: 200px;
   position: relative;
   padding: 3%;
@@ -50,7 +50,12 @@
 
 .error-reported {
   background: #eae8e8;
-  width: 80%;
+  width: 80% !important;
   color: #172528;
-  font-size: 12pt;
+}
+
+.error-reported p {
+  position: relative;
+  top: -27%;
+  font-size: 12pt !important;
 }

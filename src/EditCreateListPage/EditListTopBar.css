@@ -24,6 +24,14 @@
   width: 100%;
 }
 
+.cancel-edit-list-button {
+  width: 60px;
+}
+
+.confirm-edit-list {
+  width: 60px;
+}
+
 .list-name input[type="text"] {
   border-radius: 20px;
   text-align: center;

@@ -2,9 +2,12 @@ import "./DeleteTaskListBar.css";
 
 function DeleteTaskListBar(props) {
   return (
-    <div className="delete-bar" onClick={() => props.onToggleDeleteAlert()}>
+    <button
+      className="delete-bar"
+      onClick={() => props.onToggleDeleteAlert()}
+      aria-label="Delete">
       <i className="fas fa-trash-alt fa-4x trash"></i>
-    </div>
+    </button>
   );
 }
 

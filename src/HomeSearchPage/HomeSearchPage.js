@@ -26,6 +26,7 @@ function HomeSearchPage(props) {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         prevPage={props.prevPage}
+        searchLabel="All lists"
       />
       <div id="filtered-lists">
         {filteredLists.map((list) => (

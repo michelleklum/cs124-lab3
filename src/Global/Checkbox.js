@@ -35,58 +35,55 @@ function Checkbox(props) {
   return (
     <Fragment>
       {props.tempTaskStatus ? (
-        <i
-          id={`task-${props.task.id}`}
-          name={`is-task-${props.task.id}-complete`}
-          className={[
-            "fas fa-solid fa-check fa-4x set-completed-icon checkbox-checked",
-            props.openDatePicker || props.openTimePicker
-              ? "set-completed-icon-picker-open"
-              : "set-completed-icon-picker-closed",
-          ].join(" ")}
-          style={{
-            color: completedColor,
-            fontSize: "23px",
-            padding: "2px",
-            border: completedColor + " solid medium",
-            borderRadius: "7px",
-          }}
+        <button
+          aria-label="Mark task uncompleted - task is currently completed"
           onClick={
             props.disableCheckbox ? null : handleEditTaskCompletionStatus
           }
-          aria-label="Mark task uncompleted - task is currently completed"
-          tabIndex="0"
-          role="button"
-          onKeyDown={(e) => (e.code === "Enter") ?
-            (props.disableCheckbox ? null : handleEditTaskCompletionStatus()) : null}
-
-        ></i>
+        >
+          <i
+            id={`task-${props.task.id}`}
+            name={`is-task-${props.task.id}-complete`}
+            className={[
+              "fas fa-solid fa-check fa-4x set-completed-icon checkbox-checked",
+              props.openDatePicker || props.openTimePicker
+                ? "set-completed-icon-picker-open"
+                : "set-completed-icon-picker-closed",
+            ].join(" ")}
+            style={{
+              color: completedColor,
+              fontSize: "23px",
+              padding: "2px",
+              border: completedColor + " solid medium",
+              borderRadius: "7px",
+            }}
+          ></i>
+        </button>
       ) : (
-        <i
-          id={`task-${props.task.id}`}
-          name={`is-task-${props.task.id}-complete`}
-          className={[
-            "fas fa-solid fa-stop fa-4x set-completed-icon checkbox-unchecked",
-            props.openDatePicker || props.openTimePicker
-              ? "set-completed-icon-picker-open"
-              : "set-completed-icon-picker-closed",
-          ].join(" ")}
-          style={{
-            color: "#FeFFFF",
-            fontSize: "23px",
-            padding: "2px 3.5px",
-            border: priorityColor + " solid medium",
-            borderRadius: "7px",
-          }}
+        <button
           onClick={
             props.disableCheckbox ? null : handleEditTaskCompletionStatus
           }
           aria-label="Mark task completed - task is currently uncompleted"
-          tabIndex="0"
-          role="button"
-          onKeyDown={(e) => (e.code === "Enter") ?
-            (props.disableCheckbox ? null : handleEditTaskCompletionStatus()) : null}
-        ></i>
+        >
+          <i
+            id={`task-${props.task.id}`}
+            name={`is-task-${props.task.id}-complete`}
+            className={[
+              "fas fa-solid fa-stop fa-4x set-completed-icon checkbox-unchecked",
+              props.openDatePicker || props.openTimePicker
+                ? "set-completed-icon-picker-open"
+                : "set-completed-icon-picker-closed",
+            ].join(" ")}
+            style={{
+              color: "#FeFFFF",
+              fontSize: "23px",
+              padding: "2px 3.5px",
+              border: priorityColor + " solid medium",
+              borderRadius: "7px",
+            }}
+          ></i>
+        </button>
       )}
     </Fragment>
   );

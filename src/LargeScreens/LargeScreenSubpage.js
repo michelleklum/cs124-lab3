@@ -39,12 +39,13 @@ function LargeScreenSubpage(props) {
     <div className="welcome">
       <div className="welcome-vertical-divider"></div>
       <img
-        src={require("../Global/welcome_screen_task_monster.png")}
-        alt="Task Monster Welcome Logo"
+        src={require("../Global/logo_task_monster.png")}
+        alt="Task Monster Logo"
         className="welcome-logo"
       />
+      <h3></h3>
     </div>
   ) : null;
 }
-
+  
 export default LargeScreenSubpage;

@@ -28,9 +28,6 @@ function DeleteAlert(props) {
               type={"button"}
               onClick={handleDelete}
               aria-label="Confirm Delete"
-              tabIndex="0"
-              role="button"
-              onKeyDown={(e) => (e.code === "Enter") ? handleDelete() : null}
             >
               Delete
             </button>

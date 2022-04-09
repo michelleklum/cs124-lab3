@@ -1,8 +1,11 @@
 .delete-list {
   color: #ed554a;
-  margin-right: -10px;
 }
 
 .delete-list:active {
   color: #2b7a78;
+}
+
+.delete-list-button {
+  padding-left: 22px;
 }

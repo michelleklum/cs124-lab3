@@ -6,14 +6,15 @@ function EditListButton(props) {
     props.onChangePage(newPage);
   }
   return (
-    <i
-      className="fas fa-pencil-alt fa-4x edit-list right-aligned"
+    <button
+      className="edit-list-button"
       onClick={() => handleEditList("EditListPage")}
-      aria-label = "Edit List"
-      role="button"
-      tabIndex="0"
-      onKeyDown={(e) => (e.code === "Enter") ? handleEditList("EditListPage") : null}
-    ></i>
+      aria-label="Edit List">
+      <i
+        className="fas fa-pencil-alt fa-4x edit-list right-aligned"
+      ></i>
+
+    </button>
   );
 }
 

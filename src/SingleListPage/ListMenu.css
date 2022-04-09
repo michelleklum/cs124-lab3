@@ -106,6 +106,8 @@
 .sort-enter-icon {
   grid-row: 3 / span 1;
   grid-column: 3 / span 1;
+  text-align: right;
+  width: 60px;
 }
 
 .delete-completed-icon {

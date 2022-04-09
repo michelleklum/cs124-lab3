@@ -105,7 +105,7 @@ function LargeScreenContent(props) {
           </div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
             {searchQuery ? (
-              <Fragment>
+              <div id="single-list-page">
                 <div className="large-screen-filtered-tasks-header">
                   <LargeScreenSearchBar
                     listName={list.name}
@@ -124,7 +124,7 @@ function LargeScreenContent(props) {
                     />
                   ))}
                 </div>
-              </Fragment>
+              </div>
             ) : (
               <LargeScreenSubpage
                 isLargeScreen={props.isLargeScreen}

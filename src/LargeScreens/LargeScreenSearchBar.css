@@ -5,6 +5,7 @@
   padding-top: 0.3em;
   padding-bottom: 0.3em;
   width: 220px;
+  padding-top: 5px;
   display: flex;
   align-items: center;
 }

@@ -8,15 +8,12 @@ function AddButton(props) {
   }
 
   return (
-    <div className="add-button"
+    <button className="add-button"
       onClick={handleClick}
       aria-label={props.addLabel}
-      tabIndex="0"
-      role="button"
-      onKeyDown={(e) => (e.code === "Enter") ? handleClick() : null}
     >
       <i className="fas fa-plus fa-4x"></i>
-    </div>
+    </button>
   );
 }
 

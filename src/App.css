@@ -38,6 +38,7 @@ button {
   border: hidden;
   text-align: left;
   width: 100%;
+  background: none;
 }
 
 /* For large screens, background should be white */

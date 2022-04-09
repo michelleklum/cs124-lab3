@@ -13,19 +13,15 @@ function DeleteAlert(props) {
           Are you sure you want to delete {props.type}?
         </h3>
         <div className="alert-buttons">
-          <div
+          <button
             className={"alert-button alert-cancel"}
             type={"button"}
             onClick={() => props.onToggleDeleteAlert()}
             aria-label="Cancel Delete"
-            tabIndex="0"
-            role="button"
-            onKeyDown={(e) => (e.code === "Enter") ?
-              props.onToggleDeleteAlert() : null}
           >
             Cancel
-          </div>
-          <div
+          </button>
+          <button
             className={"alert-button alert-delete"}
             type={"button"}
             onClick={handleDelete}
@@ -35,7 +31,7 @@ function DeleteAlert(props) {
             onKeyDown={(e) => (e.code === "Enter") ? handleDelete() : null}
           >
             Delete
-          </div>
+          </button>
         </div>
       </div>
     </div>

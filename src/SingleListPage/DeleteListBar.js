@@ -10,7 +10,7 @@ function DeleteListBar(props) {
       <button
         className="menu-icon-button delete-list-icon"
         onClick={handleClick}
-        aria-label={`Delete current list: ${props.taskList.name}`}
+        tabIndex="-1"
       >
         <i className="fas fa-dumpster-fire"></i>
       </button>

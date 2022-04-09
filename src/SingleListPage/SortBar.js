@@ -10,7 +10,7 @@ function SortBar(props) {
       <button
         className="menu-icon-button sort-icon"
         onClick={handleClick}
-        aria-label={`Enter sorting options menu for current list: ${props.taskList.name}`}
+        tabIndex="-1"
       >
         <i className="fas fa-sort-amount-down"></i>
       </button>
@@ -24,7 +24,7 @@ function SortBar(props) {
       <button
         className="sort-enter-icon"
         onClick={handleClick}
-        aria-label={`Enter sorting options menu for current list: ${props.taskList.name}`}
+        tabIndex="-1"
       >
         <i className="fas fa-chevron-right fa-4x"></i>
       </button>

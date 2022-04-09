@@ -110,22 +110,22 @@
   width: 60px;
 }
 
-.delete-completed-icon {
-  grid-row: 4 / span 1;
-  grid-column: 1 / span 1;
-}
-
-.delete-completed-desc {
-  grid-row: 4 / span 1;
-  grid-column: 2 / span 1;
-}
-
 .delete-overdue-icon {
-  grid-row: 5 / span 1;
+  grid-row: 4 / span 1;
   grid-column: 1 / span 1;
 }
 
 .delete-overdue-desc {
+  grid-row: 4 / span 1;
+  grid-column: 2 / span 1;
+}
+
+.delete-completed-icon {
+  grid-row: 5 / span 1;
+  grid-column: 1 / span 1;
+}
+
+.delete-completed-desc {
   grid-row: 5 / span 1;
   grid-column: 2 / span 1;
 }

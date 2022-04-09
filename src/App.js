@@ -385,7 +385,6 @@ function App() {
     setShowDeleteAlert(!showDeleteAlert);
   }
 
-  console.log(showDeleteAlert)
   return isLargeScreen ? (
     <Fragment>
       <LargeScreenContent

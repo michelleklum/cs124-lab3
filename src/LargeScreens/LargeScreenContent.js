@@ -55,7 +55,6 @@ function LargeScreenContent(props) {
     ? "unscrollable"
     : null;
 
-  console.log(props.showDeleteAlert);
   return (
     <Fragment>
       <LargeScreenTopBar />

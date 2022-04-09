@@ -7,28 +7,20 @@ function DeleteOverdueBar(props) {
 
   return (
     <Fragment>
-      <i
-        className="fas fa-trash delete-overdue-icon"
+      <button
+        className="menu-icon-button delete-overdue-icon"
         onClick={handleClick}
-        role="button"
-        tabIndex="0"
         aria-label={`Delete all overdue tasks in current list: ${props.taskList.name}`}
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
-        }
-      ></i>
-      <h2
+      >
+        <i className="fas fa-trash"></i>
+      </button>
+      <button
         className="delete-overdue-desc"
         onClick={handleClick}
-        role="button"
-        tabIndex="0"
         aria-label={`Delete all overdue tasks in current list: ${props.taskList.name}`}
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
-        }
       >
-        Delete overdue tasks
-      </h2>
+        <h2>Delete overdue tasks</h2>
+      </button>
     </Fragment>
   );
 }

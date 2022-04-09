@@ -8,14 +8,13 @@ function ListOfTasks(props) {
   const incompleteTasks = props.tasks.filter((task) => !task.isCompleted);
 
   // Put incomplete tasks first, and then completed tasks.
-  // Within each sublist (i.e., incomplete tasks), sort by date.
+  // Within each sublist (i.e., incomplete tasks), sort by listTasksPrimarySortField (and if that is priority, then also by listTasksSecondarySortField of deadline).
   return (
     <div
       className={[
         "list-of-tasks",
         props.isLargeScreen ? "large-screen-list-of-tasks" : "",
       ].join(" ")}
-      aria-label={`List of tasks in current list: ${list.name}`}
     >
       {completedTasks.length > 0 && incompleteTasks.length === 0 && (
         <h3

@@ -3,7 +3,7 @@
   align-items: center;
   margin-top: 2px;
   margin-bottom: 1px;
-  border-bottom: 1.5px solid #BAB2B5;
+  border-bottom: 1.5px solid #bab2b5;
 }
 
 .single-list-name {
@@ -66,4 +66,20 @@
 
 .large-screen-header i {
   font-size: 25px !important;
+}
+
+@media screen and (min-width: 769px) and (min-height: 690px) {
+  .list-menu-button:hover {
+    background: #eae8e8;
+    padding: 7px 7px 7px 7px;
+    margin-left: 5.5px;
+    border-radius: 8px;
+    margin-right: -5px;
+  }
+
+  .list-menu-button {
+    background: #feffff;
+    padding: 6px 7px 6px 7px;
+    margin-right: -5px;
+  }
 }

@@ -7,28 +7,20 @@ function DeleteListBar(props) {
 
   return (
     <Fragment>
-      <i
-        className="fas fa-dumpster-fire delete-list-icon"
+      <button
+        className="menu-icon-button delete-list-icon"
         onClick={handleClick}
-        role="button"
-        tabIndex="0"
         aria-label={`Delete current list: ${props.taskList.name}`}
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
-        }
-      ></i>
-      <h2
+      >
+        <i className="fas fa-dumpster-fire"></i>
+      </button>
+      <button
         className="delete-list-desc"
         onClick={handleClick}
-        role="button"
-        tabIndex="0"
         aria-label={`Delete current list: ${props.taskList.name}`}
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
-        }
       >
-        Delete list
-      </h2>
+        <h2>Delete list</h2>
+      </button>
     </Fragment>
   );
 }

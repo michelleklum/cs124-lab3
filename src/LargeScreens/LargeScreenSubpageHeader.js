@@ -13,6 +13,7 @@ function LargeScreenSubpageHeader(props) {
         {props.inMenuMode ? null : (
           <Fragment>
             <LargeScreenSearchBar
+              listName={props.list.name}
               onChangePage={props.onChangePage}
               searchQuery={props.searchQuery}
               setSearchQuery={props.setSearchQuery}

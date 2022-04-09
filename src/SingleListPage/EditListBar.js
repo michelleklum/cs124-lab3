@@ -8,28 +8,20 @@ function EditListBar(props) {
 
   return (
     <Fragment>
-      <i
-        className="fas fa-palette customize-list-icon"
+      <button
+        className="menu-icon-button customize-list-icon"
         onClick={handleClick}
-        role="button"
-        tabIndex="0"
         aria-label={`Customize current list: ${props.taskList.name}`}
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
-        }
-      ></i>
-      <h2
+      >
+        <i className="fas fa-palette"></i>
+      </button>
+      <button
         className="customize-list-desc"
         onClick={handleClick}
-        role="button"
-        tabIndex="0"
         aria-label={`Customize current list: ${props.taskList.name}`}
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
-        }
       >
-        Customize list
-      </h2>
+        <h2>Customize list</h2>
+      </button>
     </Fragment>
   );
 }

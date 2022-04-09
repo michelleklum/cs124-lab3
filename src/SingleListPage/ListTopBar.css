@@ -34,6 +34,10 @@
   white-space: nowrap;
 }
 
+.list-back-button {
+  width: auto;
+}
+
 .list-icons {
   display: flex;
   align-items: center;

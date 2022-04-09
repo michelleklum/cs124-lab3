@@ -5,21 +5,6 @@
   display: flex;
 }
 
-@media screen and (min-width: 769px) and (min-height: 690px) {
-  .list-menu-button:hover {
-    background: #eae8e8;
-    padding: 7px 7px 7px 7px;
-    margin-left: 5.5px;
-    border-radius: 8px;
-    margin-right: -5px;
-  }
-  .list-menu-button {
-    background: #feffff;
-    padding: 6px 7px 6px 7px;
-    margin-right: -5px;
-  }
-}
-
 .side-bar {
   width: 220px;
   padding-right: 2.5em;
@@ -86,8 +71,13 @@
 }
 
 .large-screen-add-button {
+  width: auto;
   font-size: 6px !important;
   color: #172528 !important;
+}
+
+.large-screen-cancel-search-button {
+  width: auto;
 }
 
 .welcome {

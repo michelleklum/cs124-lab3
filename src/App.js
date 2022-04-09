@@ -46,7 +46,23 @@ function App() {
   const isLargeScreen = useMediaQuery({ minWidth: 769, minHeight: 690 });
   const isNarrowScreen = useMediaQuery({ maxWidth: 290 });
 
-  // Code below changes current/previous page, current list, and current task
+  // Code below tracks state of large screen popup (open or closed)
+  const [showLargeScreenPopup, setShowLargeScreenPopup] = useState(false);
+
+  function toggleLargeScreenPopup() {
+    setShowLargeScreenPopup(!showLargeScreenPopup);
+  }
+
+  // Code below tracks state of menu (open or closed; type of menu)
+  const [inMenuMode, setMenuMode] = useState(false);
+  const [menuModeType, setMenuModeType] = useState("general");
+
+  function toggleMenuMode() {
+    setMenuMode(!inMenuMode);
+    setMenuModeType("general"); // so that next time menu is opened, it will be the general menu
+  }
+
+  // Code below changes current page, previous page, current list, and current task
   const [currentPage, setCurrentPage] = useState("Home");
   const [prevPage, setPrevPage] = useState("Home");
   const [currentListId, setCurrentListId] = useState();
@@ -60,6 +76,22 @@ function App() {
     } else if (newPage === "SingleListPage") {
       handleChangeTask(null);
     }
+
+    switch (newPage) {
+      case "ViewTaskPage":
+      case "EditTaskPage":
+      case "CreateTaskPage":
+      case "EditListPage":
+      case "CreateListPage":
+        setShowLargeScreenPopup(true);
+        break;
+      default:
+        setShowLargeScreenPopup(false);
+        break;
+    }
+
+    // If menu is open, close it
+    inMenuMode && toggleMenuMode();
   }
 
   function handleChangeList(newListId) {
@@ -122,7 +154,7 @@ function App() {
           setListTasksPrimarySortDirection("asc");
           break;
         case "creationTime":
-        case "modificationTime":
+        case "modifiedTime":
         case "priority":
           // sort by last created, last modified, and highest priority (with secondary sort of deadline)
           setListTasksPrimarySortDirection("desc");
@@ -198,7 +230,9 @@ function App() {
       notes: taskNotes,
       isCompleted: taskStatus,
       priority: taskPriority,
-    }).then(() => handleChangePage(prevPage));
+    }).then(() => handleChangePage("SingleListPage"));
+    // when user cancels changes to task on CreateTaskPage but especially EditTaskPage, they should return to SingleListPage,
+    // not the EditTaskPage's prevPage (which would be ViewTaskPage)
   }
 
   function handleDeleteTask(taskId) {
@@ -356,6 +390,12 @@ function App() {
     <Fragment>
       <LargeScreenContent
         isLargeScreen={isLargeScreen}
+        showLargeScreenPopup={showLargeScreenPopup}
+        onToggleLargeScreenPopup={toggleLargeScreenPopup}
+        inMenuMode={inMenuMode}
+        menuModeType={menuModeType}
+        setMenuModeType={setMenuModeType}
+        onChangeMenuMode={toggleMenuMode}
         data={data}
         dataLoading={dataLoading}
         currentListId={currentListId}
@@ -426,6 +466,10 @@ function App() {
       ) : null}
       {currentPage === "SingleListPage" ? (
         <SingleListPage
+          inMenuMode={inMenuMode}
+          menuModeType={menuModeType}
+          setMenuModeType={setMenuModeType}
+          onChangeMenuMode={toggleMenuMode}
           db={db}
           data={data}
           tasksQuery={tasksQuery}
@@ -463,6 +507,7 @@ function App() {
         <ViewEditCreateTaskPage
           tasks={tasks}
           prevPage={prevPage}
+          data={data}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}
@@ -474,6 +519,7 @@ function App() {
         <ViewEditCreateTaskPage
           tasks={tasks}
           prevPage={prevPage}
+          data={data}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}
@@ -490,6 +536,7 @@ function App() {
         <ViewEditCreateTaskPage
           tasks={tasks}
           prevPage={prevPage}
+          data={data}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}

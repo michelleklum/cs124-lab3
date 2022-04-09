@@ -51,13 +51,9 @@ function LargeScreenContent(props) {
     searchQuery
   );
 
-  const [showLargeScreenPopup, setShowLargeScreenPopup] = useState(false);
-
-  function toggleLargeScreenPopup() {
-    setShowLargeScreenPopup(!showLargeScreenPopup);
-  }
-
-  const unscrollableClassName = showLargeScreenPopup ? "unscrollable" : null;
+  const unscrollableClassName = props.showLargeScreenPopup
+    ? "unscrollable"
+    : null;
 
   console.log(props.showDeleteAlert)
   return (
@@ -78,7 +74,7 @@ function LargeScreenContent(props) {
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar
               isLargeScreen={props.isLargeScreen}
-              onToggleLargeScreenPopup={toggleLargeScreenPopup}
+              onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               data={props.data}
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
@@ -97,7 +93,7 @@ function LargeScreenContent(props) {
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar
               isLargeScreen={props.isLargeScreen}
-              onToggleLargeScreenPopup={toggleLargeScreenPopup}
+              onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               data={props.data}
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
@@ -112,6 +108,7 @@ function LargeScreenContent(props) {
               <Fragment>
                 <div className="large-screen-filtered-tasks-header">
                   <LargeScreenSearchBar
+                    listName={list.name}
                     searchQuery={searchQuery}
                     setSearchQuery={setSearchQuery}
                   />
@@ -131,7 +128,11 @@ function LargeScreenContent(props) {
             ) : (
               <LargeScreenSubpage
                 isLargeScreen={props.isLargeScreen}
-                onToggleLargeScreenPopup={toggleLargeScreenPopup}
+                onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+                inMenuMode={props.inMenuMode}
+                menuModeType={props.menuModeType}
+                setMenuModeType={props.setMenuModeType}
+                onChangeMenuMode={props.onChangeMenuMode}
                 db={props.db}
                 data={props.data}
                 tasksQuery={props.tasksQuery}
@@ -162,10 +163,10 @@ function LargeScreenContent(props) {
               />
             )}
           </div>
-          {showLargeScreenPopup && props.isLargeScreen && (
+          {props.showLargeScreenPopup && props.isLargeScreen && (
             <LargeScreenPopup
               isLargeScreen={props.isLargeScreen}
-              onToggleLargeScreenPopup={toggleLargeScreenPopup}
+              onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               data={props.data}
               tasks={tasks}
               currentPage={props.currentPage}

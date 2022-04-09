@@ -254,35 +254,46 @@ function DatePicker(props) {
     }
   }
 
+  const prevMonth = getPrevMonth(selectedMonth);
+  const prevDay = getPrevDay(selectedDay, selectedMonth, selectedYear);
+  const prevYear = getPrevYear(selectedYear);
+
+  const nextMonth = getNextMonth(selectedMonth);
+  const nextDay = getNextDay(selectedDay, selectedMonth, selectedYear);
+  const nextYear = getNextYear(selectedYear);
+
   return (
     <div className="date-picker">
-      <p
+      <button
         className="prev-month"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToPrev}
+        aria-label={`Set task deadline month to one month earlier: ${prevMonth}`}
       >
-        {getPrevMonth(selectedMonth)}
-      </p>
-      <p
+        <p>{prevMonth}</p>
+      </button>
+      <button
         className="prev-day"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToPrev}
+        aria-label={`Set task deadline date to one day earlier: ${prevDay}`}
       >
-        {getPrevDay(selectedDay, selectedMonth, selectedYear)}
-      </p>
-      <p
+        <p>{prevDay}</p>
+      </button>
+      <button
         className="prev-year"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToPrev}
+        aria-label={`Set task deadline date to one year earlier: ${prevYear}`}
       >
-        {getPrevYear(selectedYear)}
-      </p>
+        <p>{prevYear}</p>
+      </button>
 
       <p
         className="selected-month"
@@ -309,33 +320,36 @@ function DatePicker(props) {
         {selectedYear}
       </p>
 
-      <p
+      <button
         className="next-month"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToNext}
+        aria-label={`Set task deadline date to one month later: ${nextMonth}`}
       >
-        {getNextMonth(selectedMonth)}
-      </p>
-      <p
+        <p>{nextMonth}</p>
+      </button>
+      <button
         className="next-day"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToNext}
+        aria-label={`Set task deadline date to one day later: ${nextDay}`}
       >
-        {getNextDay(selectedDay, selectedMonth, selectedYear)}
-      </p>
-      <p
+        <p>{nextDay}</p>
+      </button>
+      <button
         className="next-year"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToNext}
+        aria-label={`Set task deadline date to one year later: ${nextYear}`}
       >
-        {getNextYear(selectedYear)}
-      </p>
+        <p>{nextYear}</p>
+      </button>
     </div>
   );
 }

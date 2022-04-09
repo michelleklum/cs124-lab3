@@ -7,38 +7,27 @@ function SortBar(props) {
 
   return (
     <Fragment>
-      <i
-        className="fas fa-sort-amount-down sort-icon"
+      <button
+        className="menu-icon-button sort-icon"
         onClick={handleClick}
-        role="button"
-        tabIndex="0"
         aria-label={`Enter sorting options menu for current list: ${props.taskList.name}`}
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
-        }
-      ></i>
-      <h2
+      >
+        <i className="fas fa-sort-amount-down"></i>
+      </button>
+      <button
         className="sort-desc"
         onClick={handleClick}
-        role="button"
-        tabIndex="0"
         aria-label={`Enter sorting options menu for current list: ${props.taskList.name}`}
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
-        }
       >
-        Sort
-      </h2>
-      <i
-        className="fas fa-chevron-right fa-4x sort-enter-icon"
+        <h2>Sort</h2>
+      </button>
+      <button
+        className="sort-enter-icon"
         onClick={handleClick}
-        role="button"
-        tabIndex="0"
         aria-label={`Enter sorting options menu for current list: ${props.taskList.name}`}
-        onKeyDown={(e) =>
-          e.code === "Enter" || e.code === "Space" ? handleClick() : null
-        }
-      ></i>
+      >
+        <i className="fas fa-chevron-right fa-4x"></i>
+      </button>
     </Fragment>
   );
 }

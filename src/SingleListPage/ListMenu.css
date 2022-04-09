@@ -10,6 +10,11 @@
   padding-left: 1em;
 }
 
+/* To make menu icons align horizontally */
+.menu-icon-button {
+  text-align: center;
+}
+
 /* On small screens, menu will be fixed at bottom of screen */
 .small-screen-list-menu {
   bottom: 0;
@@ -57,7 +62,7 @@
 /* On very short screens, override even the styles from .small-screen-list-menu */
 /* Important to get max-height exactly correct; otherwise there will be a strange non-white gap between menu and bottom of screen */
 /* TODO: Must update max-height whenever adding an additional row to general List Menu */
-@media screen and (max-height: 410px) {
+@media screen and (max-height: 420px) {
   /* On very short screens, menu should not be sticky; otherwise, we cannot see the top bar */
   .general-menu {
     position: static;
@@ -152,7 +157,7 @@
 /* On very short screens, override even the styles from .small-screen-list-menu */
 /* Important to get max-height exactly correct; otherwise there will be a strange non-white gap between menu and bottom of screen */
 /* TODO: Must update max-height whenever adding an additional row to sorting List Menu */
-@media screen and (max-height: 365px) {
+@media screen and (max-height: 370px) {
   /* On very short screens, menu should not be sticky; otherwise, we cannot see the top bar */
   .sorting-menu {
     position: static;

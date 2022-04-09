@@ -13,6 +13,8 @@
 .task-card-completed h2,
 .task-card-completed p {
   text-decoration: #172528 1.6px line-through;
+  color: #172528;
+  opacity: 72%;
 }
 
 .task i {

@@ -21,6 +21,7 @@ function LargeScreenSearchBar(props) {
           value={props.searchQuery}
           onInput={(e) => props.setSearchQuery(e.target.value)}
           autoFocus={props.searchQuery.length > 0}
+          aria-label={props.listName}
         />
       </div>
     </Fragment>

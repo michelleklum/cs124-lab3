@@ -7,7 +7,8 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.6.10",
-    "firebase-tools": "^10.5.0",
+    "firebase-tools": "^10.6.0",
+    "focus-trap-react": "^8.9.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-firebase-hooks": "^5.0.3",
@@ -20,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "install-dependencies": "npm install firebase-tools firebase react-firebase-hooks react-responsive",
+    "install-dependencies": "npm install firebase-tools firebase react-firebase-hooks react-responsive focus-trap-react",
     "firebase-login": "npx firebase login",
     "firebase-init": "npx firebase init"
   },

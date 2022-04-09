@@ -65,6 +65,7 @@ function ViewEditCreateTaskPage(props) {
         onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
         task={task}
         prevPage={props.prevPage}
+        data={props.data}
         currentListId={props.currentListId}
         currentTaskId={props.currentTaskId}
         onChangePage={props.onChangePage}

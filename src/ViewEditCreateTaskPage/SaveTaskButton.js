@@ -8,11 +8,11 @@ function SaveTaskButton(props) {
     props.onEditAllTaskFields(
       props.currentListId,
       props.currentTaskId,
-      props.taskName,
-      props.taskDeadline,
-      props.taskNotes,
-      props.taskStatus,
-      props.taskPriority
+      props.tempTaskName,
+      props.tempTaskDeadline,
+      props.tempTaskNotes,
+      props.tempTaskStatus,
+      props.tempTaskPriority
     );
     props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
@@ -21,10 +21,10 @@ function SaveTaskButton(props) {
     setConfirmInProgress(true);
     props.onCreateTask(
       props.currentListId,
-      props.taskName,
-      props.taskDeadline,
-      props.taskNotes,
-      props.taskPriority
+      props.tempTaskName,
+      props.tempTaskDeadline,
+      props.tempTaskNotes,
+      props.tempTaskPriority
     );
     props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
@@ -32,23 +32,32 @@ function SaveTaskButton(props) {
   return (
     <div>
       {confirmInProgress && <i className="fas fa-check fa-4x" id="no-info"></i>}
-      {!confirmInProgress && props.inEditTaskMode && props.taskName !== "" && (
-        <i className="fas fa-check fa-4x" onClick={() => confirmEditTask()}></i>
-      )}
-      {!confirmInProgress && props.inEditTaskMode && props.taskName === "" && (
-        <i className="fas fa-check fa-4x" id="no-info"></i>
+      {!confirmInProgress && props.inEditTaskMode && props.tempTaskName !== "" && (
+        <button
+          onClick={confirmEditTask}
+          aria-label={`Save changes to current task: ${props.tempTaskName}`}
+        >
+          <i className="fas fa-check fa-4x"></i>
+        </button>
       )}
       {!confirmInProgress &&
-        props.inCreateTaskMode &&
-        props.taskName !== "" && (
-          <i
-            className="fas fa-check fa-4x"
-            onClick={() => confirmCreateTask()}
-          ></i>
+        props.inEditTaskMode &&
+        props.tempTaskName === "" && (
+          <i className="fas fa-check fa-4x" id="no-info"></i>
         )}
       {!confirmInProgress &&
         props.inCreateTaskMode &&
-        props.taskName === "" && (
+        props.tempTaskName !== "" && (
+          <button
+            onClick={confirmCreateTask}
+            aria-label={`Create new task: ${props.tempTaskName}`}
+          >
+            <i className="fas fa-check fa-4x"></i>
+          </button>
+        )}
+      {!confirmInProgress &&
+        props.inCreateTaskMode &&
+        props.tempTaskName === "" && (
           <i className="fas fa-check fa-4x" id="no-info"></i>
         )}
     </div>

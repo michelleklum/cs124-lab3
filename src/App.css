@@ -97,3 +97,14 @@ button {
 #no-info {
   color: #bab2b5 !important;
 }
+
+/* Hide accessibility Skip to Content link */
+.skip-to-content {
+  left: -999px;
+  position: absolute;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: -999;
+}

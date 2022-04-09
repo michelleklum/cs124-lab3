@@ -60,6 +60,7 @@ function SingleListPage(props) {
         />
       ) : tasksLoading && props.isLargeScreen ? null : (
         <div>
+          <span id="main-content"></span>
           <div id="single-list-page">
             {props.isLargeScreen ? (
               <LargeScreenSubpageHeader

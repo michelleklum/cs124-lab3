@@ -43,9 +43,8 @@ function LargeScreenSubpage(props) {
         alt="Task Monster Logo"
         className="welcome-logo"
       />
-      <h3></h3>
     </div>
   ) : null;
 }
-  
+
 export default LargeScreenSubpage;

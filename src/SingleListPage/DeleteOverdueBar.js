@@ -10,7 +10,7 @@ function DeleteOverdueBar(props) {
       <button
         className="menu-icon-button delete-overdue-icon"
         onClick={handleClick}
-        aria-label={`Delete all overdue tasks in current list: ${props.taskList.name}`}
+        tabIndex="-1"
       >
         <i className="fas fa-trash"></i>
       </button>

@@ -55,6 +55,8 @@ function SingleListPage(props) {
           data={props.data}
           currentListId={props.currentListId}
           onChangePage={props.onChangePage}
+          inMenuMode={props.inMenuMode}
+          menuModeType={props.menuModeType}
         />
       ) : tasksLoading && props.isLargeScreen ? null : (
         <div>

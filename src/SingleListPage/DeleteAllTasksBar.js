@@ -10,7 +10,7 @@ function DeleteAllTasksBar(props) {
       <button
         className="menu-icon-button delete-all-icon"
         onClick={handleClick}
-        aria-label={`Delete all tasks in current list: ${props.taskList.name}`}
+        tabIndex="-1"
       >
         <i className="fas fa-dumpster"></i>
       </button>

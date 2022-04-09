@@ -68,11 +68,7 @@ function SortByFieldBar(props) {
       <button
         className={`menu-icon-button sort-by-${props.barSortFieldAbbrev}-icon`}
         onClick={handleClick}
-        aria-label={
-          props.listTasksPrimarySortField === props.barSortField
-            ? selectedSortFieldAriaLabel
-            : notSelectedSortFieldAriaLabel
-        }
+        tabIndex="-1"
       >
         <i className={props.barSortIcon}></i>
       </button>

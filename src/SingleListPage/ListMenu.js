@@ -40,15 +40,15 @@ function ListMenu(props) {
               taskList={taskList}
               onChangeMenuModeType={props.onChangeMenuModeType}
             />
-            <DeleteCompletedBar
-              taskList={taskList}
-              onDeleteCompleted={props.onDeleteCompleted}
-              onToggleDeleteCompletedAlert={props.onToggleDeleteCompletedAlert}
-            />
             <DeleteOverdueBar
               taskList={taskList}
               onDeleteOverdue={props.onDeleteOverdue}
               onToggleDeleteOverdueAlert={props.onToggleDeleteOverdueAlert}
+            />
+            <DeleteCompletedBar
+              taskList={taskList}
+              onDeleteCompleted={props.onDeleteCompleted}
+              onToggleDeleteCompletedAlert={props.onToggleDeleteCompletedAlert}
             />
             <DeleteAllTasksBar
               taskList={taskList}

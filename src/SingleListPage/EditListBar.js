@@ -11,7 +11,7 @@ function EditListBar(props) {
       <button
         className="menu-icon-button customize-list-icon"
         onClick={handleClick}
-        aria-label={`Customize current list: ${props.taskList.name}`}
+        tabIndex="-1"
       >
         <i className="fas fa-palette"></i>
       </button>

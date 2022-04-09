@@ -19,7 +19,7 @@ function HideCompletedBar(props) {
       <button
         className="menu-icon-button hide-icon"
         onClick={changeListHideCompletedState}
-        aria-label={`${hideShowVerb} completed tasks in current list: ${props.taskList.name}`}
+        tabIndex="-1"
       >
         <i className={hideShowIconClassName}></i>
       </button>

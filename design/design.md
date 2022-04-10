@@ -230,6 +230,15 @@ Alerts still display properly on large screens. An example delete alert is shown
 
 <img src="large_screen_delete_alert_lab_4.png" alt="Large Screen Delete Alert Lab 4" width="650px">
 
+We also added loading screens when lists and their respective tasks are loading. These screens are designed to make the transition from one page to another as smooth as possible by not including distracting images or text. The list and task loading pages are shown below, respectively.
+
+<img src="large_screen_data_loading_lab_4.png" alt="Large Screen Lists Loading Lab 4" width="650px">
+
+<img src="large_screen_tasks_loading_lab_4.png" alt="Large Screen Tasks Loading Lab 4" width="650px">
+
+
+
+
 ## Final App: Accessibility
 
 In Lab 4, we introduced accessibility features to our app.

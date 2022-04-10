@@ -68,7 +68,7 @@ We also restyled checkboxes to match the color of the corresponding task's prior
 
 In Lab 4, we wanted to further distinguish between completed and uncompleted tasks. To do this, we made all text in a completed task bar grey. This matches the design of the checkbox. Additionally, during user testing, users mentioned they'd like overdue tasks to be differentiated in some way. In response, we made the font color red for the deadlines of all overdue tasks. 
 
-<img src="single_list_page_final_lab_3.png" alt="Single List Page Lab 3 Final Version" width="200px">
+<img src="single_list_page_final_lab_4.png" alt="Single List Page Lab 3 Final Version" width="200px">
 
 Users can tap the 3 horizontal dots in the top right corner of the Single List Page to enter the Single List Page's Menu Mode, where they can customize the list appearance by going to the Edit List Page (which is basically the same as the Create List Page), hide / show completed tasks, delete completed tasks, delete all tasks, or delete the list.
 

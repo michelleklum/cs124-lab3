@@ -346,6 +346,30 @@ Below is the Edit Task Page that we turned in for Lab 2. In Lab 3, we added the 
 
 <img src="edit_task_page_final_lab_2_time_picker.png" alt="Edit Task Page Lab 2 Final Version Time Picker" width="200px">
 
+## Alternate Designs: Large Screen UI Design (Responsiveness)
+
+When making our app responsive for Lab 4, we first started by just making our app usable on screens of all sizes. At this stage in our process, the large screen version of our app (for screens of minimum width 769px and minimum height 690px) was just a bigger version of the small screen app. However, we decided that all that extra whitespace wasn't the most efficient use of space, so we ultimately created a new layout for large screens that allows users to simultaneously see all their lists and the tasks in their current list, which you can see in the Final App: Large Screen UI Design (Responsiveness) section of our design doc above.
+
+<img src="large_screen_welcome_v1_lab_4.png" alt="Large Screen Welcome Page V1 Lab 4" width="650px">
+
+<img src="large_screen_single_list_page_v1_lab_4.png" alt="Large Screen Single List Page V1 Lab 4" width="650px">
+
+<img src="large_screen_single_list_page_search_v1_lab_4.png" alt="Large Screen Single List Page Search V1 Lab 4" width="650px">
+
+<img src="large_screen_single_list_page_menu_v1_lab_4.png" alt="Large Screen Single List Page Menu V1 Lab 4" width="650px">
+
+<img src="large_screen_single_list_page_menu_sorting_v1_lab_4.png" alt="Large Screen Single List Page Sorting Menu V1 Lab 4" width="650px">
+
+<img src="large_screen_create_list_page_v1_lab_4.png" alt="Large Screen Create List Page V1 Lab 4" width="650px">
+
+<img src="large_screen_view_task_page_v1_lab_4.png" alt="Large Screen View Task Page V1 Lab 4" width="650px">
+
+<img src="large_screen_edit_task_page_v1_lab_4.png" alt="Large Screen Edit Task Page V1 Lab 4" width="650px">
+
+This is what the large screen version of our app looked like after our initial attempt to make more use of the increased space on large screens. You can see that the basic structure of the final iteration of our large screen app is here, with all the lists in the side bar on the left and the tasks in the current list on the right. However, we ultimately got rid of the cards on large screens after researching what other to-do apps like Todoist look like on large screens, and also because cards are more for tapping on phones and tablets and wouldn't make as much sense for interactions on laptops and desktops with large screens.
+
+<img src="large_screen_single_list_page_v2_lab_4.png" alt="Large Screen Single List Page V2 Lab 4" width="650px">
+
 ## Usability Testing: Lab 1
 
 We conducted usability testing with four Mudd friends, asking them to tell us about their impressions of our app and how they would navigate from page to page to perform certain tasks.

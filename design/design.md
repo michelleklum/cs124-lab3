@@ -84,13 +84,15 @@ In Lab 3, we added task sorting options, so we expanded the Single List Page Men
 
 In Lab 4, we added the option to delete all overdue tasks. We thought this could be useful for users who only care about tasks due in the future but don't want to individually find and delete all their overdue tasks. We chose a different trashcan icon to represent this delete option. 
 
-We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu. Clicking either the icon or the sort option description changes the sorting method to the one selected. The checkmark indicates the current sorting method. Clicking the back arrow takes users back to the general Single List Page Menu.
+We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu. Clicking either the icon or the sort option description changes the sorting method to the one selected. The arrow indicates the direction of sorting, and this direction can be otggled by clicking either the icon or the sort option again. Clicking the back arrow takes users back to the general Single List Page Menu.
 
 However, unlike with the sorting options, we decided not to add a separate delete options menu. That's because, during usability testing, users said a separate delete options menu wasn’t necessary, and also indicated that they wanted to be able to delete tasks quickly. Adding a separate delete options menu would have meant that users would have had to make another click in order to perform a delete action. In future labs, we hope to see if more user testing confirms our findings from this round of user testing.
 
 <img src="single_list_page_menu_sorting_final_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Final Version" width="200px">
 
 By default, tasks are sorted by priority. For sorting by priority, we used a Firebase compound index so that the tasks would primarily be sorted by priority and then secondarily sorted by deadline, since we didn't want the tasks to be disorganized within each priority level. Our reasoning was also that if a user is sorting by priority, they probably care more about the task's deadline than its name, creation time, or modification time.
+
+In Lab 4, we added the ability to sort in either ascending or descending order for all sorting fields. This order can be toggled by clicking the appropriate sorting field. 
 
 Here are what the Single List Page looks like using the other sorting methods: deadline, name, creation time, modification time — in that order. Notice that completed tasks always remain at the bottom, no matter what. However, completed tasks are also sorted by the selected sorting method.
 

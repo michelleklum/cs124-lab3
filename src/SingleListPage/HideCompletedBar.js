@@ -9,29 +9,27 @@ function HideCompletedBar(props) {
     );
   }
 
+  const hideShowVerb = props.hideCompletedTasks ? "Show" : "Hide";
+  const hideShowIconClassName = props.hideCompletedTasks
+    ? "fas fa-eye"
+    : "fas fa-eye-slash";
+
   return (
     <Fragment>
-      {props.hideCompletedTasks ? (
-        <Fragment>
-          <i
-            className="fas fa-eye hide-icon"
-            onClick={changeListHideCompletedState}
-          ></i>
-          <h2 className="hide-desc" onClick={changeListHideCompletedState}>
-            Show completed tasks
-          </h2>
-        </Fragment>
-      ) : (
-        <Fragment>
-          <i
-            className="fas fa-eye-slash hide-icon"
-            onClick={changeListHideCompletedState}
-          ></i>
-          <h2 className="hide-desc" onClick={changeListHideCompletedState}>
-            Hide completed tasks
-          </h2>
-        </Fragment>
-      )}
+      <button
+        className="menu-icon-button hide-icon"
+        onClick={changeListHideCompletedState}
+        tabIndex="-1"
+      >
+        <i className={hideShowIconClassName}></i>
+      </button>
+      <button
+        className="hide-desc"
+        onClick={changeListHideCompletedState}
+        aria-label={`${hideShowVerb} completed tasks in current list: ${props.taskList.name}`}
+      >
+        <h2>{hideShowVerb} completed tasks</h2>
+      </button>
     </Fragment>
   );
 }

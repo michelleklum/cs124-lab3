@@ -2,6 +2,12 @@
   color: #feffff;
 }
 
+/* For large screens: */
+#single-list-page .large-screen-header i {
+  color: #172528;
+  font-size: 21px;
+}
+
 /* top bar icons change color to Azure X 11 Web Color when pressed */
 #single-list-page i:active {
   color: #def2f1;

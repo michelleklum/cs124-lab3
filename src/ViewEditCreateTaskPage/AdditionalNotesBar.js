@@ -17,7 +17,7 @@ function AdditionalNotesBar(props) {
           ].join(" ")}
         ></i>
       </div>
-      {((props.inEditTaskMode || props.inCreateTaskMode) && notesEdited ? (
+      {(props.inEditTaskMode || props.inCreateTaskMode) && notesEdited ? (
         <AdditionalNotesEditor
           currentListId={props.currentListId}
           tempTaskNotes={props.tempTaskNotes}
@@ -25,41 +25,44 @@ function AdditionalNotesBar(props) {
           openDatePicker={props.openDatePicker}
           openTimePicker={props.openTimePicker}
         />
-      ) : (props.inEditTaskMode || props.inCreateTaskMode) ?
-        <div className={[
-          "set-note",
-          "set-note-before-edit",
-          props.openDatePicker || props.openTimePicker
-            ? "set-note-picker-open"
-            : "set-note-picker-closed",
-        ].join(" ")}>
+      ) : props.inEditTaskMode || props.inCreateTaskMode ? (
+        <button
+          className={[
+            "set-note",
+            "set-note-before-edit",
+            props.openDatePicker || props.openTimePicker
+              ? "set-note-picker-open"
+              : "set-note-picker-closed",
+          ].join(" ")}
+          onClick={() => setNotesEdited(true)}
+          aria-label={`Edit additional notes for ${props.task.name}`}
+        >
           <p
             className={[
               "set-note-text note-text-before-edit",
               props.openDatePicker || props.openTimePicker
                 ? "set-note-picker-open"
                 : "set-note-picker-closed",
-              !props.tempTaskNotes ? "no-notes" : null
+              !props.tempTaskNotes ? "no-notes" : null,
             ].join(" ")}
-            onClick={() => setNotesEdited(true)}
           >
             {props.tempTaskNotes || "Enter additional notes"}
           </p>
+        </button>
+      ) : (
+        <div
+          className={[
+            "set-note",
+            props.openDatePicker || props.openTimePicker
+              ? "set-note-picker-open"
+              : "set-note-picker-closed",
+          ].join(" ")}
+        >
+          <p className="set-note-text">
+            {props.tempTaskNotes || "No additional notes"}
+          </p>
         </div>
-        : (
-          <div className={[
-                "set-note",
-                props.openDatePicker || props.openTimePicker
-                  ? "set-note-picker-open"
-                  : "set-note-picker-closed",
-              ].join(" ")}>
-            <p
-              className="set-note-text"
-            >
-              {props.tempTaskNotes || "No additional notes"}
-            </p>
-          </div>
-        ))}
+      )}
     </Fragment>
   );
 }

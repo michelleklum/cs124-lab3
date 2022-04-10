@@ -197,26 +197,35 @@ function TimePicker(props) {
     }
   }
 
+  const prevHour = getPrevHour(selectedHour);
+  const prevMinute = getPrevMinute(selectedMinute);
+
+  const nextHour = getNextHour(selectedHour);
+  const nextMinute = getNextMinute(selectedMinute);
+  const unselectedAmPm = selectedAmPm === "AM" ? "PM" : "AM";
+
   return (
     <div className="time-picker">
-      <p
+      <button
         className="prev-hour"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToPrev}
+        aria-label={`Set task deadline hour to one hour earlier: ${prevHour}`}
       >
-        {getPrevHour(selectedHour)}
-      </p>
-      <p
+        <p className="prev-hour">{prevHour}</p>
+      </button>
+      <button
         className="prev-minute"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToPrev}
+        aria-label={`Set task deadline minute to 5 minutes earlier: ${prevMinute}`}
       >
-        {getPrevMinute(selectedMinute)}
-      </p>
+        <p className="prev-minute">{prevMinute}</p>
+      </button>
 
       <p
         className="selected-hour"
@@ -243,33 +252,36 @@ function TimePicker(props) {
         {selectedAmPm}
       </p>
 
-      <p
+      <button
         className="next-hour"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToNext}
+        aria-label={`Set task deadline hour to one hour later: ${nextHour}`}
       >
-        {getNextHour(selectedHour)}
-      </p>
-      <p
+        <p className="next-hour">{nextHour}</p>
+      </button>
+      <button
         className="next-minute"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToNext}
+        aria-label={`Set task deadline minute to 5 minutes later: ${nextMinute}`}
       >
-        {getNextMinute(selectedMinute)}
-      </p>
-      <p
+        <p className="next-minute">{nextMinute}</p>
+      </button>
+      <button
         className="not-selected-am-pm"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
         onClick={handleMoveToNext}
+        aria-label={`Set task deadline time to ${unselectedAmPm}`}
       >
-        {selectedAmPm === "AM" ? "PM" : "AM"}
-      </p>
+        <p className="not-selected-am-pm">{unselectedAmPm}</p>
+      </button>
     </div>
   );
 }

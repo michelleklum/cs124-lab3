@@ -8,20 +8,27 @@ function ListTopBar(props) {
 
   return (
     <div className="top-bar">
-      <div className="top-bar-content">
+      <div className="list-top-bar-content">
         <div className="left-aligned">
-          <ListBackButton onChangePage={props.onChangePage} />
+          <ListBackButton
+            onChangePage={props.onChangePage}
+            inMenuMode={props.inMenuMode}
+          />
           <h2>{taskList.name}</h2>
         </div>
-        <div className="right-aligned">
+        <div className="right-aligned list-icons">
           {props.inMenuMode || props.isLoading ? null : (
             <ListSearchButton
+              taskList={taskList}
               onChangePage={props.onChangePage}
-              onChangeList={props.onChangeList}
             />
           )}
           {!props.isLoading && (
-            <ListMenuButton onChangeMenuMode={props.onChangeMenuMode} />
+            <ListMenuButton
+              taskList={taskList}
+              inMenuMode={props.inMenuMode}
+              onChangeMenuMode={props.onChangeMenuMode}
+            />
           )}
         </div>
       </div>

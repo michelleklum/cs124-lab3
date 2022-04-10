@@ -7,10 +7,10 @@
   - Opal (#91C6C3) - edit task header icons and horizontal line
   - Verdigris (#33AAAA) - add button
   - Myrtle Green (#2B7A78)- top bar header background, icon color when pressed
-  - Yellow (#ebc323) - edit pencil icon
-  - Red (#ed554a) - delete trashcan icon
-  - Purple/blue (#979DC7) - low priority
-  - Orange/yellow (#FFBD52) - medium priority
+  - Yellow (#EBC323) - edit pencil icon
+  - Red (#ED554A) - delete trashcan icon
+  - Purple-blue (#979DC7) - low priority
+  - Orange-yellow (#FFBD52) - medium priority
 */
 
 /* Global Styles */
@@ -18,13 +18,13 @@ i {
   color: #bab2b5;
 }
 
-/* all icons should slightly decrease in size when clicked to look like they're being pressed */
+/* All icons should slightly decrease in size when clicked, so that they look like they're being pressed */
 i:active {
   transform: scale(0.98);
 }
 
-/* set margin of html, body, h1 to 0 so top bar extends to top of page,
-  and also so there isn't extra margin on left and right for top bar and bottom toolbar. */
+/* Set margin of html, body, h1 to 0 so Top Bar extends to top of page,
+  and also so there isn't extra margin on left and right for Top Bar and Delete Bar. */
 html,
 body {
   background: #eae8e8;
@@ -32,8 +32,12 @@ body {
   margin: 0;
 }
 
-.top-bar i {
-  font-size: 26px !important;
+/* For large screens, background should be white */
+@media screen and (min-width: 769px) and (min-height: 690px) {
+  html,
+  body {
+    background: #feffff;
+  }
 }
 
 h1 {
@@ -51,7 +55,23 @@ p {
   color: #172528;
 }
 
-/* margin-right auto makes single list icon + list name flush to left */
+/* Override default styling for natvie HTML buttons */
+button {
+  font-family: "Open Sans", Calibri, sans-serif;
+  padding: 0;
+  margin: 0;
+  border: hidden;
+  text-align: left;
+  width: 100%;
+  background: none;
+}
+
+.top-bar i {
+  font-size: 26px;
+}
+
+/* A global class for left-aligning elements within a row */
+/* margin-right auto makes elements flush to left */
 .left-aligned {
   margin-right: auto;
   display: flex;
@@ -62,7 +82,8 @@ p {
   padding-right: 0.5em;
 }
 
-/* margin-left auto makes three dots icon flush to right */
+/* A global class for right-aligning elements within a row */
+/* margin-left auto makes elements icon flush to right */
 .right-aligned {
   margin-left: auto;
 }
@@ -71,35 +92,19 @@ p {
   padding-left: 0.5em;
 }
 
-/* Delete toolbar for deleting on Edit Task Page  + Edit List Page */
-/* first three styles are for sticky toolbar */
-.delete-toolbar {
-  bottom: 0;
-  position: fixed; /* use fixed instead of sticky so toolbar is at bottom even if we don't have that many lists */
-  width: 100%;
-  height: 10%;
-  background: #ed554a;
-  color: #feffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.delete-toolbar:active {
-  color: #eae8e8;
-}
-
-.delete-toolbar i {
-  font-size: 23pt !important;
-  color: #feffff;
-}
-
-.delete-toolbar h2 {
-  margin-left: 0.5em;
-}
-
+/* Grayed-out styling for disabled buttons */
+/* For example, this is used for the checkmark on EditTaskPage and CreateTaskPage, when user has not yet entered all required info  */
 #no-info {
   color: #bab2b5 !important;
+}
+
+/* Hide accessibility Skip to Content link */
+.skip-to-content {
+  left: -999px;
+  position: absolute;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: -999;
 }

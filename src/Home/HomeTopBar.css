@@ -7,13 +7,20 @@
   z-index: 1; /* set z-index: 1 so checkboxes don't overlap with top bar */
 }
 
+/* On very short screens, don't want sticky navbar */
+@media screen and (max-height: 550px) {
+  .top-bar {
+    position: static;
+  }
+}
+
 /* margin: 0 auto; and width: 90%; are to center top bar content, leaving 5% width on each side */
 /* but to do that, we really just need margin-left: auto and margin-right: auto */
 .top-bar-content {
   display: flex;
   align-items: center;
   margin: 0 auto;
-  width: 90%;
+  width: 100% !important;
   height: 60px;
 }
 
@@ -26,4 +33,13 @@
 .logo {
   padding-top: 10px;
   padding-left: 2px;
+}
+
+.small-screen-logo {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+.narrow-logo {
+  padding-bottom: 6px;
 }

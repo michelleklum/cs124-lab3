@@ -1,6 +1,6 @@
 import "./ListSearchPage.css";
 import React, { Fragment, useState } from "react";
-import ListSearchBar from "./ListSearchBar";
+import SearchBar from "../Global/SearchBar";
 import TaskCard from "../SingleListPage/TaskCard";
 
 const filterTasksBySearch = (tasks, query) => {
@@ -39,12 +39,12 @@ function ListSearchPage(props) {
 
   return (
     <Fragment>
-      <ListSearchBar
+      <SearchBar
         onChangePage={props.onChangePage}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        id={list.id}
         prevPage={props.prevPage}
+        searchLabel={list.name}
       />
       <div id="filtered-tasks">
         {searchFilteredTasksToShow.map((task) => (

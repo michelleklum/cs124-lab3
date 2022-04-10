@@ -1,18 +1,26 @@
 import React, { Fragment } from "react";
 
 function DeleteListBar(props) {
+  function handleClick() {
+    props.onToggleDeleteListAlert();
+  }
+
   return (
     <Fragment>
-      <i
-        className="fas fa-dumpster-fire delete-list-icon"
-        onClick={() => props.onToggleDeleteListAlert()}
-      ></i>
-      <h2
-        className="delete-list-desc"
-        onClick={() => props.onToggleDeleteListAlert()}
+      <button
+        className="menu-icon-button delete-list-icon"
+        onClick={handleClick}
+        tabIndex="-1"
       >
-        Delete list
-      </h2>
+        <i className="fas fa-dumpster-fire"></i>
+      </button>
+      <button
+        className="delete-list-desc"
+        onClick={handleClick}
+        aria-label={`Delete current list: ${props.taskList.name}`}
+      >
+        <h2>Delete list</h2>
+      </button>
     </Fragment>
   );
 }

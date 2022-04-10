@@ -1,20 +1,28 @@
 import React, { Fragment } from "react";
 
-function DeleteAllTasks(props) {
+function DeleteAllTasksBar(props) {
+  function handleClick() {
+    props.onToggleDeleteTasksAlert();
+  }
+
   return (
     <Fragment>
-      <i
-        className="fas fa-dumpster delete-all-icon"
-        onClick={() => props.onToggleDeleteTasksAlert()}
-      ></i>
-      <h2
-        className="delete-all-desc"
-        onClick={() => props.onToggleDeleteTasksAlert()}
+      <button
+        className="menu-icon-button delete-all-icon"
+        onClick={handleClick}
+        tabIndex="-1"
       >
-        Delete all tasks
-      </h2>
+        <i className="fas fa-dumpster"></i>
+      </button>
+      <button
+        className="delete-all-desc"
+        onClick={handleClick}
+        aria-label={`Delete all tasks in current list: ${props.taskList.name}`}
+      >
+        <h2>Delete all tasks</h2>
+      </button>
     </Fragment>
   );
 }
 
-export default DeleteAllTasks;
+export default DeleteAllTasksBar;

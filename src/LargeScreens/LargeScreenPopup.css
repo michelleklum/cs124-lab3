@@ -1,0 +1,29 @@
+.large-screen-popup-page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+
+.overlay {
+  margin-top: 0;
+  padding-top: 0;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(9, 15, 16, 0.4);
+  height: 100%;
+}
+
+/* LargeScreenPopup has fixed height and width */
+.popup {
+  border-radius: 7pt;
+  position: relative;
+  top: 45px; /* to position vertically */
+  margin: 0 auto; /* to center horizontally, set margin-left auto and margin-right auto */
+  width: 500px;
+  height: 640px;
+  overflow: hidden; /* without this, the popup will have excees whitespace on the bottom */
+  z-index: 1; /* set z-index: 1 so popup appears in front of everything else */
+}

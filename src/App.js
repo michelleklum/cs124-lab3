@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { generateUniqueID } from "web-vitals/dist/modules/lib/generateUniqueID";
 import "./App.css";
+import { useMediaQuery } from "react-responsive";
 import Home from "./Home/Home";
 import HomeSearchPage from "./HomeSearchPage/HomeSearchPage";
 import ListSearchPage from "./ListSearchPage/ListSearchPage";
@@ -9,6 +10,7 @@ import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskP
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
 import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
 import ErrorAlert from "./Global/ErrorAlert";
+import LargeScreenContent from "./LargeScreens/LargeScreenContent";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -39,7 +41,28 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 function App() {
-  // Code below changes current/previous page, current list, and current task
+  // react-responsive media query for responsive design
+  // Large Screens will be defined as having a minWidth of 769px and a minHeight of 690px
+  const isLargeScreen = useMediaQuery({ minWidth: 769, minHeight: 690 });
+  const isNarrowScreen = useMediaQuery({ maxWidth: 290 });
+
+  // Code below tracks state of large screen popup (open or closed)
+  const [showLargeScreenPopup, setShowLargeScreenPopup] = useState(false);
+
+  function toggleLargeScreenPopup() {
+    setShowLargeScreenPopup(!showLargeScreenPopup);
+  }
+
+  // Code below tracks state of menu (open or closed; type of menu)
+  const [inMenuMode, setMenuMode] = useState(false);
+  const [menuModeType, setMenuModeType] = useState("general");
+
+  function toggleMenuMode() {
+    setMenuMode(!inMenuMode);
+    setMenuModeType("general"); // so that next time menu is opened, it will be the general menu
+  }
+
+  // Code below changes current page, previous page, current list, and current task
   const [currentPage, setCurrentPage] = useState("Home");
   const [prevPage, setPrevPage] = useState("Home");
   const [currentListId, setCurrentListId] = useState();
@@ -53,6 +76,22 @@ function App() {
     } else if (newPage === "SingleListPage") {
       handleChangeTask(null);
     }
+
+    switch (newPage) {
+      case "ViewTaskPage":
+      case "EditTaskPage":
+      case "CreateTaskPage":
+      case "EditListPage":
+      case "CreateListPage":
+        setShowLargeScreenPopup(true);
+        break;
+      default:
+        setShowLargeScreenPopup(false);
+        break;
+    }
+
+    // If menu is open, close it
+    inMenuMode && toggleMenuMode();
   }
 
   function handleChangeList(newListId) {
@@ -92,25 +131,41 @@ function App() {
     useState("asc"); // by default, sort current list's tasks ascending by listTasksPrimarySortField
 
   function handleChangeSort(newListTasksPrimarySortField) {
-    setListTasksPrimarySortField(newListTasksPrimarySortField);
-    // eslint-disable-next-line default-case
-    switch (newListTasksPrimarySortField) {
-      case "deadline":
-      case "nameLowercasedForSorting":
-        setListTasksPrimarySortDirection("asc");
-        break;
-      case "creationTime":
-      case "modificationTime":
-      case "priority":
-        // sort by last created and last modified
-        setListTasksPrimarySortDirection("desc");
-        break;
-    }
+    // If user clicked on the already-selected sort field, just toggle sort direction
+    if (listTasksPrimarySortField === newListTasksPrimarySortField) {
+      // if sorting tasks by priority, sort tasks primarily by priority, and then secondarily by deadline
+      if (newListTasksPrimarySortField === "priority") {
+        // if we were previously sorting tasks by priority ascending, now sort primarily by priority descending and secondarily by deadline ascending
+        // else if we were previously sorting tasks by priority descending, now sort primarily by priority ascending and secondarily by deadline descending
+        listTasksPrimarySortDirection === "asc"
+          ? setListTasksSecondarySortDirection("asc")
+          : setListTasksSecondarySortDirection("desc");
+      }
 
-    // if sorting tasks by priority, sort tasks primarily by descending priority, and then secondarily by ascending deadline
-    if (newListTasksPrimarySortField === "priority") {
-      setListTasksSecondarySortField("deadline");
-      setListTasksSecondarySortDirection("asc");
+      listTasksPrimarySortDirection === "asc"
+        ? setListTasksPrimarySortDirection("desc")
+        : setListTasksPrimarySortDirection("asc");
+    } else {
+      setListTasksPrimarySortField(newListTasksPrimarySortField);
+      // eslint-disable-next-line default-case
+      switch (newListTasksPrimarySortField) {
+        case "deadline":
+        case "nameLowercasedForSorting":
+          setListTasksPrimarySortDirection("asc");
+          break;
+        case "creationTime":
+        case "modifiedTime":
+        case "priority":
+          // sort by last created, last modified, and highest priority (with secondary sort of deadline)
+          setListTasksPrimarySortDirection("desc");
+          break;
+      }
+
+      // if sorting tasks by priority, sort tasks primarily by descending priority, and then secondarily by ascending deadline
+      if (newListTasksPrimarySortField === "priority") {
+        setListTasksSecondarySortField("deadline");
+        setListTasksSecondarySortDirection("asc");
+      }
     }
   }
 
@@ -175,7 +230,9 @@ function App() {
       notes: taskNotes,
       isCompleted: taskStatus,
       priority: taskPriority,
-    }).then(() => handleChangePage(prevPage));
+    }).then(() => handleChangePage("SingleListPage"));
+    // when user cancels changes to task on CreateTaskPage but especially EditTaskPage, they should return to SingleListPage,
+    // not the EditTaskPage's prevPage (which would be ViewTaskPage)
   }
 
   function handleDeleteTask(taskId) {
@@ -228,6 +285,23 @@ function App() {
       );
   }
 
+  function handleDeleteOverdueTasks() {
+    // Remove tasks whose deadlines are before current time
+    tasks
+      .filter((task) => task.deadline.toDate() < new Date())
+      .map((task) =>
+        deleteDoc(
+          doc(
+            db,
+            listCollectionName,
+            currentListId,
+            taskSubcollectionName,
+            task.id
+          )
+        )
+      );
+  }
+
   function handleDeleteAllTasks() {
     tasks.map((task) =>
       deleteDoc(
@@ -244,6 +318,7 @@ function App() {
 
   function handleDeleteList() {
     setCurrentPage("Home"); // Change page first to avoid error where no tasks are found
+    setCurrentListId(null);
     deleteDoc(doc(db, listCollectionName, currentListId));
   }
 
@@ -258,9 +333,10 @@ function App() {
       icon: icon,
       hideCompletedTasks: false,
     };
-    setDoc(doc(db, listCollectionName, listId), newList).then(() =>
-      handleChangePage("Home")
-    );
+    setDoc(doc(db, listCollectionName, listId), newList).then(() => {
+      handleChangePage("Home");
+      handleChangeList(listId);
+    });
   }
 
   function handleCreateTask(
@@ -289,7 +365,7 @@ function App() {
       taskSubcollectionName,
       taskId
     );
-    setDoc(docRef, newTask).then(() => handleChangePage(prevPage));
+    setDoc(docRef, newTask).then(() => handleChangePage("SingleListPage"));
   }
 
   function handleCreateErrorReport() {
@@ -309,7 +385,46 @@ function App() {
     setShowDeleteAlert(!showDeleteAlert);
   }
 
-  return (
+  return isLargeScreen ? (
+    <Fragment>
+      <LargeScreenContent
+        isLargeScreen={isLargeScreen}
+        showLargeScreenPopup={showLargeScreenPopup}
+        onToggleLargeScreenPopup={toggleLargeScreenPopup}
+        inMenuMode={inMenuMode}
+        menuModeType={menuModeType}
+        setMenuModeType={setMenuModeType}
+        onChangeMenuMode={toggleMenuMode}
+        data={data}
+        dataLoading={dataLoading}
+        currentListId={currentListId}
+        currentTaskId={currentTaskId}
+        currentPage={currentPage}
+        onDeleteList={handleDeleteList}
+        onChangePage={handleChangePage}
+        onChangeList={handleChangeList}
+        onToggleDeleteAlert={handleToggleDeleteAlert}
+        showDeleteAlert={showDeleteAlert}
+        db={db}
+        tasksQuery={tasksQuery}
+        prevPage={prevPage}
+        onChangeTask={handleChangeTask}
+        onCreateTask={handleCreateTask}
+        onEditTask={handleEditTask}
+        onEditAllTaskFields={handleEditTaskAllFields}
+        onDeleteTask={handleDeleteTask}
+        onCreateList={handleCreateList}
+        onEditList={handleEditList}
+        onEditListAppearance={handleEditListAppearance}
+        onDeleteCompleted={handleDeleteCompletedTasks}
+        onDeleteOverdue={handleDeleteOverdueTasks}
+        onDeleteAllTasks={handleDeleteAllTasks}
+        listTasksPrimarySortField={listTasksPrimarySortField}
+        listTasksPrimarySortDirection={listTasksPrimarySortDirection}
+        onChangeSort={handleChangeSort}
+      />
+    </Fragment>
+  ) : (
     <Fragment>
       {dataError ? (
         <Fragment>
@@ -317,17 +432,19 @@ function App() {
           <ErrorAlert onCreateErrorReport={handleCreateErrorReport} />
         </Fragment>
       ) : null}
-      {currentPage === "Home" && dataLoading ? <HomeLoadingPage /> : null}
+      {!isLargeScreen && currentPage === "Home" && dataLoading ? (
+        <HomeLoadingPage />
+      ) : null}
       {currentPage === "Home" && !dataLoading ? (
         <Home
           data={data}
+          isNarrowScreen={isNarrowScreen}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           currentPage={currentPage}
           onDeleteList={handleDeleteList}
           onChangePage={handleChangePage}
           onChangeList={handleChangeList}
-          onCreateTask={handleCreateList}
           onToggleDeleteAlert={handleToggleDeleteAlert}
           showDeleteAlert={showDeleteAlert}
         />
@@ -348,6 +465,10 @@ function App() {
       ) : null}
       {currentPage === "SingleListPage" ? (
         <SingleListPage
+          inMenuMode={inMenuMode}
+          menuModeType={menuModeType}
+          setMenuModeType={setMenuModeType}
+          onChangeMenuMode={toggleMenuMode}
           db={db}
           data={data}
           tasksQuery={tasksQuery}
@@ -360,11 +481,13 @@ function App() {
           onEditTask={handleEditTask}
           onEditList={handleEditList}
           onDeleteCompleted={handleDeleteCompletedTasks}
+          onDeleteOverdue={handleDeleteOverdueTasks}
           onDeleteAllTasks={handleDeleteAllTasks}
           onDeleteList={handleDeleteList}
           onCreateTask={handleChangeTask}
           onToggleDeleteAlert={handleToggleDeleteAlert}
           listTasksPrimarySortField={listTasksPrimarySortField}
+          listTasksPrimarySortDirection={listTasksPrimarySortDirection}
           onChangeSort={handleChangeSort}
         />
       ) : null}
@@ -383,6 +506,7 @@ function App() {
         <ViewEditCreateTaskPage
           tasks={tasks}
           prevPage={prevPage}
+          data={data}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}
@@ -394,6 +518,7 @@ function App() {
         <ViewEditCreateTaskPage
           tasks={tasks}
           prevPage={prevPage}
+          data={data}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}
@@ -410,6 +535,7 @@ function App() {
         <ViewEditCreateTaskPage
           tasks={tasks}
           prevPage={prevPage}
+          data={data}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}
@@ -425,7 +551,7 @@ function App() {
           data={data}
           prevPage={prevPage}
           currentListId={currentListId}
-          onEditList={handleEditListAppearance}
+          onEditListAppearance={handleEditListAppearance}
           onChangePage={handleChangePage}
           onChangeList={handleChangeList}
           onDeleteList={handleDeleteList}
@@ -441,7 +567,7 @@ function App() {
           data={data}
           prevPage={prevPage}
           currentListId={currentListId}
-          onEditList={handleEditListAppearance}
+          onEditListAppearance={handleEditListAppearance}
           onCreateList={handleCreateList}
           onChangeList={handleChangeList}
           onChangePage={handleChangePage}

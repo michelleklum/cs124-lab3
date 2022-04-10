@@ -1,16 +1,39 @@
 /* margin-left: auto and margin-right: auto and width: 90% are to center list of tasks, leaving 5% width on each side */
-#list-of-tasks {
+.list-of-tasks {
   margin-left: auto;
   margin-right: auto;
   width: 90%;
-  margin-top: 1.4em;
+  margin-top: 1em;
   margin-bottom: 50px; /* so that plus button doesn't cover edit task icon */
+}
+
+.large-screen-list-of-tasks {
+  width: calc(100vw - 342px);
+  margin-left: 26px;
+  margin-top: 0.4em;
+  padding-bottom: 30px; /* so that plus button doesn't cover edit task icon */
+}
+
+/* For large screens */
+@media screen and (min-width: 769px) and (min-height: 690px) {
+  #list-of-tasks {
+    width: max(90%, calc(100% - 100px));
+    height: auto;
+    margin-top: 2px;
+  }
 }
 
 .completed-tasks-header {
   font-weight: 500;
   margin-left: 5px;
   color: #172528;
+}
+
+.large-screen-completed-tasks-header {
+  padding-top: 20px;
+  margin-top: -5px;
+  margin-bottom: 5px;
+  font-weight: 700;
 }
 
 .empty-message {
@@ -30,4 +53,10 @@
   margin-right: auto;
   color: grey;
   text-align: center;
+}
+
+.large-screen-completed-message {
+  margin-top: 25px;
+  font-size: 13pt;
+  font-weight: 500;
 }

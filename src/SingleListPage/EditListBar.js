@@ -1,18 +1,27 @@
 import React, { Fragment } from "react";
 
 function EditListBar(props) {
+  function handleClick() {
+    props.onChangePage("EditListPage");
+    props.isLargeScreen && props.onToggleLargeScreenPopup();
+  }
+
   return (
     <Fragment>
-      <i
-        className="fas fa-palette customize-list-icon"
-        onClick={() => props.onChangePage("EditListPage")}
-      ></i>
-      <h2
-        className="customize-list-desc"
-        onClick={() => props.onChangePage("EditListPage")}
+      <button
+        className="menu-icon-button customize-list-icon"
+        onClick={handleClick}
+        tabIndex="-1"
       >
-        Customize list
-      </h2>
+        <i className="fas fa-palette"></i>
+      </button>
+      <button
+        className="customize-list-desc"
+        onClick={handleClick}
+        aria-label={`Customize current list: ${props.taskList.name}`}
+      >
+        <h2>Customize list</h2>
+      </button>
     </Fragment>
   );
 }

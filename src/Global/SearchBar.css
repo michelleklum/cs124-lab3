@@ -3,31 +3,30 @@
   position: sticky;
   top: 0;
   height: 60px;
-  width: 100%;
+  padding-left: 5%;
+  padding-right: 1%;
   padding-top: 0.1em;
   padding-bottom: 0.1em;
   margin-bottom: 0.2em;
+  z-index: 1; /* set z-index: 1 so checkboxes don't overlap with sticky search bar */
   background: #2b7a78;
-  display: flex;
   align-items: space-between;
   align-items: center;
-  z-index: 1; /* set z-index: 1 so checkboxes don't overlap with sticky search bar */
+  display: flex;
 }
 
 /* first two styles are for sticky searchbar */
 .search {
   position: sticky;
   top: 0;
+  flex-grow: 1; /* make search bar width responsive since it's within the search-background flexbox */
   border-radius: 20px;
   background: #eae8e8;
   color: #bab2b5;
-  display: flex;
-  align-items: center;
-  margin-right: auto;
-  margin-left: 5%;
-  width: 72%;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
+  display: flex;
+  align-items: center;
 }
 
 .search i {
@@ -41,10 +40,13 @@
   outline: none;
 }
 
+.search-label {
+  display: none;
+}
+
 /* first two styles are for sticky searchbar */
-.search input {
+.search input[type="text"] {
   position: sticky;
-  width: 72%;
   background: #eae8e8;
   color: #172528;
   line-height: 0.5em;
@@ -55,10 +57,26 @@
   border-left-style: hidden;
   border-bottom-style: hidden;
   margin-left: 1em;
-  border:none;
+  border: none;
   outline: none;
+  width: 72%;
 }
 
-.search-label {
-  display: none;
+/* For responsive design, make sure search bar input remains at a good relative width to the search bar */
+@media screen and (min-width: 400px) {
+  .search input[type="text"] {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 525px) {
+  .search input[type="text"] {
+    width: 85%;
+  }
+}
+
+@media screen and (min-width: 790px) {
+  .search input[type="text"] {
+    width: 90%;
+  }
 }

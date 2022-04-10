@@ -2,10 +2,13 @@ import "./HomeSearchButton.css";
 
 function HomeSearchButton(props) {
   return (
-    <i
-      className="search-button fas fa-search fa-4x"
+    <button
       onClick={() => props.onChangePage("HomeSearchPage")}
-    ></i>
+      aria-label="Search for List">
+      <i
+        className="search-button fas fa-search fa-4x"
+      ></i>
+    </button>
   );
 }
 

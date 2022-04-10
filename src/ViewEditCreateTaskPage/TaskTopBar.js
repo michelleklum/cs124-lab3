@@ -10,12 +10,20 @@ function TaskTopBar(props) {
     <div className="task-header">
       {props.inEditTaskMode || props.inCreateTaskMode ? (
         <CancelEditTaskButton
+          tempTaskName={props.tempTaskName}
+          isLargeScreen={props.isLargeScreen}
+          onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
           onChangePage={props.onChangePage}
           prevPage={props.prevPage}
-          initialData={props.initialData}
         />
       ) : (
-        <TaskBackButton onChangePage={props.onChangePage} />
+        <TaskBackButton
+          data={props.data}
+          currentListId={props.currentListId}
+          isLargeScreen={props.isLargeScreen}
+          onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+          onChangePage={props.onChangePage}
+        />
       )}
       {props.inEditTaskMode || props.inCreateTaskMode ? (
         <EditTaskNameInput
@@ -28,6 +36,8 @@ function TaskTopBar(props) {
       )}
       {props.inEditTaskMode || props.inCreateTaskMode ? (
         <SaveTaskButton
+          isLargeScreen={props.isLargeScreen}
+          onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
           currentListId={props.currentListId}
           currentTaskId={props.currentTaskId}
           prevPage={props.prevPage}
@@ -36,14 +46,17 @@ function TaskTopBar(props) {
           onChangePage={props.onChangePage}
           onEditAllTaskFields={props.onEditAllTaskFields}
           onCreateTask={props.onCreateTask}
-          taskName={props.tempTaskName}
-          taskDeadline={props.tempTaskDeadline}
-          taskNotes={props.tempTaskNotes}
-          taskStatus={props.tempTaskStatus}
-          taskPriority={props.tempTaskPriority}
+          tempTaskName={props.tempTaskName}
+          tempTaskDeadline={props.tempTaskDeadline}
+          tempTaskNotes={props.tempTaskNotes}
+          tempTaskStatus={props.tempTaskStatus}
+          tempTaskPriority={props.tempTaskPriority}
         />
       ) : (
-        <EditTaskButton onChangePage={props.onChangePage} />
+        <EditTaskButton
+          tempTaskName={props.tempTaskName}
+          onChangePage={props.onChangePage}
+        />
       )}
     </div>
   );

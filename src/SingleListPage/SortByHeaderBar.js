@@ -1,16 +1,19 @@
 import React, { Fragment } from "react";
 
 function SortByHeaderBar(props) {
+  function handleClick() {
+    props.onChangeMenuModeType("general");
+  }
+
   return (
     <Fragment>
-      {/* <i
-        className="fas fa-calendar-plus sort-by-creation-time-icon"
-        onClick={() => props.onChangeSort("creationTime")}
-      ></i> */}
-      <i
-        className="fas fa-chevron-left fa-4x sort-by-header-back-icon"
-        onClick={() => props.onChangeMenuModeType("general")}
-      ></i>
+      <button
+        className="sort-by-header-back-icon"
+        onClick={handleClick}
+        aria-label={`Return to general options menu for current list: ${props.taskList.name}`}
+      >
+        <i className="fas fa-chevron-left fa-4x"></i>
+      </button>
       <h2 className="sort-by-header-desc">Sort tasks by...</h2>
     </Fragment>
   );

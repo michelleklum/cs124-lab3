@@ -1,7 +1,6 @@
-.priority-options { /* creating icon outline */
+.priority-options {
+  /* creating icon outline */
   margin-left: 0%;
-  width: 99%;
-  height: 33px;
   display: flex; /* bottom three styles center the plus icon in the .add-button div */
   align-items: center;
   justify-content: space-between;
@@ -9,35 +8,66 @@
 
 .priority-option {
   font-size: 15px;
+  width: auto;
+}
+
+.selected-priority,
+.unselected-priority {
+  border-radius: 0.75em;
+  padding: 0px 1px 0px 1px;
+  text-align: center;
 }
 
 .selected-priority {
   background: #eae8e8;
-  border-radius: 0.75em;
-  padding: 11px 11px 11px 11px;
-  text-align: center;
 }
 
 .unselected-priority {
-  background: #FEFFFF;
-  border-radius: 0.75em;
-  padding: 11px 11px 11px 11px;
-  text-align: center;
-  border: #FEFFFF 2px solid;
+  background: #feffff;
+  border: #feffff 2px solid;
 }
 
-.selected-None {
-  border: #91C6C3 2px solid;
+/* For wider screens, make priority option buttons wider */
+@media screen and (min-width: 295px) {
+  .selected-priority,
+  .unselected-priority {
+    padding: 0px 3px 0px 3px;
+  }
 }
 
-.selected-Low {
-  border: #979DC7 2px solid;
+@media screen and (min-width: 310px) {
+  .selected-priority,
+  .unselected-priority {
+    padding: 0px 5px 0px 5px;
+  }
 }
 
-.selected-Medium {
-  border: #FFBD52 2px solid;
+@media screen and (min-width: 360px) {
+  .selected-priority,
+  .unselected-priority {
+    padding: 0px 10px 0px 10px;
+  }
 }
 
-.selected-High {
+@media screen and (min-width: 450px) {
+  .selected-priority,
+  .unselected-priority {
+    padding: 0px 20px 0px 20px;
+  }
+}
+
+.selected-none {
+  border: #91c6c3 2px solid;
+}
+
+.selected-low {
+  border: #979dc7 2px solid;
+}
+
+.selected-medium {
+  border: #ffbd52 2px solid;
+}
+
+.selected-high {
   border: #ed554a 2px solid;
 }

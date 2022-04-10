@@ -5,13 +5,25 @@ function HomeTopBar(props) {
   return (
     <div className="top-bar" id="home-top-bar">
       <div className="top-bar-content">
-        <div className="logo">
+        <div className="logo small-screen-logo">
+          {!props.isNarrowScreen &&
           <img
-            src={require("./header_task_monster.png")}
+            src={require("../Global/header_task_monster.png")}
             width="210"
             height="55"
             alt="Task Monster"
-          />
+            aria-label="Task Monster Logo"
+            
+          />}
+          {props.isNarrowScreen &&
+          <img
+            src={require("../Global/logo_task_monster.png")}
+            width="34"
+            height="42"
+            alt="Task Monster"
+            className="narrow-logo"
+            aria-label="Task Monster Logo"
+          />}
         </div>
         <div className="right-aligned">
           {!props.isLoading && (

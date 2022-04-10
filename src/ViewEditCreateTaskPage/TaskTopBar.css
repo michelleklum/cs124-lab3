@@ -27,3 +27,9 @@
   inline-size: 225px;
   overflow-wrap: break-word;
 }
+
+.task-back-button,
+.edit-task-button,
+.cancel-edit-task-button {
+  width: auto;
+}

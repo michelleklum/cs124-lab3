@@ -21,5 +21,19 @@
   padding: 1em;
   border-radius: 0.75em;
   inline-size: 232px;
-  writing-mode: horizontal-tb; 
+  writing-mode: horizontal-tb;
+}
+
+/* For wide screens that don't qualify as isLargeScreen, make AdditionalNotesEditor textarea wider */
+@media screen and (min-width: 361px) {
+  .edit-task-notes textarea {
+    inline-size: 1000px;
+  }
+}
+
+/* For isLargeScreen screens, make AdditionalNotesEditor textarea wider (with fixed width since popup has fixed width) */
+@media screen and (min-width: 769px) and (min-height: 690px) {
+  .edit-task-notes textarea {
+    inline-size: 420px;
+  }
 }

@@ -29,18 +29,34 @@ function TaskCard(props) {
     initialAmPm = "AM";
   }
 
+  // Check if task is overdue and incomplete; overdue tasks that are not yet completed will have deadline shown in red
+  const isOverdue = taskDeadlineJSDate < new Date();
+  const overdueIncompleteClassName =
+    isOverdue && !props.task.isCompleted ? "overdue-and-incomplete" : null;
+
   const numTaskCharsToShow = 30;
   function handleTaskCardClick() {
     props.onChangePage("ViewTaskPage");
     props.onChangeTask(props.task.id);
+    props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
 
   const completedTaskClassName = props.task.isCompleted
     ? "task-card-completed"
     : null;
 
+  const largeScreenTaskClassName = props.isLargeScreen
+    ? "large-screen-task-card"
+    : null;
+
   return (
-    <div className={["task", completedTaskClassName].join(" ")}>
+    <div
+      className={[
+        "task",
+        completedTaskClassName,
+        largeScreenTaskClassName,
+      ].join(" ")}
+    >
       <div className="left-aligned">
         <Checkbox
           className="checkbox"
@@ -56,7 +72,24 @@ function TaskCard(props) {
 
       <div
         className="task-and-date"
-        onClick={props.inMenuMode ? null : handleTaskCardClick}
+        onClick={
+          !(props.inMenuMode || props.isLargeScreen)
+            ? handleTaskCardClick
+            : undefined
+        }
+        role={!(props.inMenuMode || props.isLargeScreen) ? `button` : ""}
+        tabIndex={!(props.inMenuMode || props.isLargeScreen) ? `0` : ""}
+        aria-label={
+          !(props.inMenuMode || props.isLargeScreen)
+            ? `View details for task: ${props.task.name}`
+            : ""
+        }
+        onKeyDown={(e) =>
+          e.code === "Enter" || e.code === "Space"
+            ? !(props.inMenuMode || props.isLargeScreen) &&
+              handleTaskCardClick()
+            : null
+        }
       >
         <label htmlFor={`task-${props.task.id}`}>
           <h2>
@@ -65,7 +98,7 @@ function TaskCard(props) {
               : props.task.name}
           </h2>
         </label>
-        <p className="date">
+        <p className={`date ${overdueIncompleteClassName}`}>
           {`${String(initialMonth).padStart(2, "0")}/${String(
             initialDay
           ).padStart(2, "0")}/${initialYear}`}
@@ -74,6 +107,16 @@ function TaskCard(props) {
             initialMinute
           ).padStart(2, "0")} ${initialAmPm}`}
         </p>
+      </div>
+      <div className="right-aligned">
+        {props.isLargeScreen && (
+          <button
+            onClick={handleTaskCardClick}
+            aria-label={`View details for task: ${props.task.name}`}
+          >
+            <i className="fas fa-info-circle fa-4x info-task"></i>
+          </button>
+        )}
       </div>
     </div>
   );

@@ -8,11 +8,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 0; /* z-index of ListMenu is 1, so we need to make TaskCard have z-index of 0 so that ListMenu hides TaskCard */
 }
 
 .task-card-completed h2,
 .task-card-completed p {
   text-decoration: #172528 1.6px line-through;
+  color: #172528;
+  opacity: 72%;
 }
 
 .task i {
@@ -29,7 +32,7 @@
 .task-and-date h2 {
   font-size: 16px;
   margin-bottom: 0; /* to make task and date flush next to each other vertically */
-  inline-size: 245px;
+  inline-size: min(auto, 245px);
   overflow-wrap: break-word;
 }
 
@@ -37,4 +40,35 @@
   margin-top: 0; /* to make task and date flush next to each other vertically */
   font-size: 14px;
   color: #2b7a78;
+}
+
+/* For overdue tasks that are not yet completed, display deadline in red */
+.overdue-and-incomplete {
+  color: #ed554a;
+}
+
+.large-screen-task-card {
+  border-radius: 0px;
+  background: #feffff;
+  box-shadow: 0 0 0 0;
+  border-bottom: 1px #bab2b5 solid;
+  color: #17252a;
+  margin-bottom: 0.25em;
+  margin-top: 0.25em;
+  padding: 0.2em 1.5em 0.2em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-task {
+  color: #91c6c3 !important;
+  font-size: 24pt;
+  margin-right: 0px !important;
+}
+
+.info-task:hover {
+  color: #33aaaa !important;
+  font-size: 24pt;
+  margin-right: 0px !important;
 }

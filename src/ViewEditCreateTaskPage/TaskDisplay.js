@@ -53,7 +53,21 @@ function TaskDisplay(props) {
             ? toggleTimePicker
             : null
         }
+        openDatePicker={openDatePicker}
+        openTimePicker={openTimePicker}
       />
+      {openDatePicker ? (
+        <DatePicker
+          tempTaskDeadline={props.tempTaskDeadline}
+          onChangeTaskDeadline={props.onChangeTaskDeadline}
+        />
+      ) : null}
+      {openTimePicker ? (
+        <TimePicker
+          tempTaskDeadline={props.tempTaskDeadline}
+          onChangeTaskDeadline={props.onChangeTaskDeadline}
+        />
+      ) : null}
       <PriorityBar
         currentListId={props.currentListId}
         task={props.task}
@@ -74,18 +88,6 @@ function TaskDisplay(props) {
         openDatePicker={openDatePicker}
         openTimePicker={openTimePicker}
       />
-      {openDatePicker ? (
-        <DatePicker
-          tempTaskDeadline={props.tempTaskDeadline}
-          onChangeTaskDeadline={props.onChangeTaskDeadline}
-        />
-      ) : null}
-      {openTimePicker ? (
-        <TimePicker
-          tempTaskDeadline={props.tempTaskDeadline}
-          onChangeTaskDeadline={props.onChangeTaskDeadline}
-        />
-      ) : null}
       {!props.inCreateTaskMode && (
         <CompletionBar
           currentListId={props.currentListId}

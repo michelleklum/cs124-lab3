@@ -6,22 +6,36 @@ import DeleteAlert from "../Global/DeleteAlert";
 function Home(props) {
   return (
     <div>
-      <HomeTopBar
-        onChangePage={props.onChangePage}
-        onChangeList={props.onChangeList}
-        isLoading={false}
-      />
+      {!props.isLargeScreen && (
+        <HomeTopBar
+          isNarrowScreen={props.isNarrowScreen}
+          onChangePage={props.onChangePage}
+          onChangeList={props.onChangeList}
+          isLoading={false}
+        />
+      )}
+      {props.isLargeScreen && (
+        <a className="skip-to-content" href="#main-content">
+          Skip to content
+        </a>
+      )}
       <ListOfLists
+        isLargeScreen={props.isLargeScreen}
         data={props.data}
+        currentListId={props.currentListId}
         onChangePage={props.onChangePage}
         onChangeList={props.onChangeList}
         onDeleteList={props.onDeleteList}
         onToggleDeleteAlert={props.onToggleDeleteAlert}
+        setSearchQuery={props.setSearchQuery}
       />
-      <AddButton
-        onChangePage={props.onChangePage}
-        currentPage={props.currentPage}
-      />
+      {!props.isLargeScreen && (
+        <AddButton
+          onChangePage={props.onChangePage}
+          currentPage={props.currentPage}
+          addLabel="Add New List"
+        />
+      )}
       {props.showDeleteAlert && (
         <DeleteAlert
           type="this list"

@@ -1,8 +1,8 @@
-# CS 124 Lab 3 Design Document
+# CS 124 Lab 4 Design Document
 
-CS 124 Interaction Design Lab 3: To-do App UI Design (Cloud Storage, Priority, Sorting)
+CS 124 Interaction Design Lab 4: To-do App UI Design (Multiple Lists, Accessible, Responsive)
 
-Link to app: [https://cs124-lab3-9c4c8--pr1-lab3-gdlyir33.web.app](https://cs124-lab3-9c4c8--pr1-lab3-gdlyir33.web.app)
+Link to app: [https://cs124-lab3-9c4c8--pr2-lab4-vmue0zo5.web.app](https://cs124-lab3-9c4c8--pr2-lab4-vmue0zo5.web.app)
 
 ## Final App: Home Page
 
@@ -66,7 +66,9 @@ In Lab 3, to better distinguish completed tasks from tasks to be done, we grayed
 
 We also restyled checkboxes to match the color of the corresponding task's priority. This choice was based on researching how other apps (Todoist, Microsoft's To Do app, Apple's Reminders app) style checkboxes.
 
-<img src="single_list_page_final_lab_3.png" alt="Single List Page Lab 3 Final Version" width="200px">
+In Lab 4, we wanted to further distinguish between completed and uncompleted tasks. To do this, we made all text in a completed task bar grey. This matches the design of the checkbox. Additionally, during user testing, users mentioned they'd like overdue tasks to be differentiated in some way. In response, we made the font color red for the deadlines of all overdue tasks.
+
+<img src="single_list_page_lab_4.png" alt="Single List Page Lab 4 Final Version" width="200px">
 
 Users can tap the 3 horizontal dots in the top right corner of the Single List Page to enter the Single List Page's Menu Mode, where they can customize the list appearance by going to the Edit List Page (which is basically the same as the Create List Page), hide / show completed tasks, delete completed tasks, delete all tasks, or delete the list.
 
@@ -78,25 +80,31 @@ In Lab 1, we had the same trash can icon for all three delete actions in the Sin
 
 In Lab 3, we added task sorting options, so we expanded the Single List Page Menu to contain a "Sort" row.
 
-<img src="single_list_page_menu_mode_final_lab_3.png" alt="Single List Page Menu Mode Lab 3 Final Version" width="200px">
+In Lab 4, we added the option to delete all overdue tasks. We thought this could be useful for users who only care about tasks due in the future but don't want to individually find and delete all their overdue tasks. We chose a different trashcan icon to represent this delete option.
 
-We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu. Clicking either the icon or the sort option description changes the sorting method to the one selected. The checkmark indicates the current sorting method. Clicking the back arrow takes users back to the general Single List Page Menu.
+<img src="single_list_page_menu_mode_final_lab_4.png" alt="Single List Page Menu Mode Lab 4 Final Version" width="200px">
+
+We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu. Clicking either the icon or the sort option description changes the sorting method to the one selected. The arrow indicates the direction of sorting, and this direction can be toggled by clicking either the icon or the sort option again. Clicking the back arrow takes users back to the general Single List Page Menu.
 
 However, unlike with the sorting options, we decided not to add a separate delete options menu. That's because, during usability testing, users said a separate delete options menu wasn’t necessary, and also indicated that they wanted to be able to delete tasks quickly. Adding a separate delete options menu would have meant that users would have had to make another click in order to perform a delete action. In future labs, we hope to see if more user testing confirms our findings from this round of user testing.
 
-<img src="single_list_page_menu_sorting_final_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Final Version" width="200px">
+<img src="single_list_page_menu_sorting_final_lab_4.png" alt="Single List Page Sorting Menu Lab 4 Final Version" width="200px">
 
 By default, tasks are sorted by priority. For sorting by priority, we used a Firebase compound index so that the tasks would primarily be sorted by priority and then secondarily sorted by deadline, since we didn't want the tasks to be disorganized within each priority level. Our reasoning was also that if a user is sorting by priority, they probably care more about the task's deadline than its name, creation time, or modification time.
 
-Here are what the Single List Page looks like using the other sorting methods: deadline, name, creation time, modification time — in that order. Notice that completed tasks always remain at the bottom, no matter what. However, completed tasks are also sorted by the selected sorting method.
+In Lab 4, we added the ability to sort in either ascending or descending order for all sorting fields. This order can be toggled by clicking the appropriate sorting field.
 
-<img src="single_list_page_sort_by_deadline_final_lab_3.png" alt="Single List Page Sort By Deadline Lab 3 Final Version" width="200px">
+Here are what the Single List Page looks like using all sorting methods: priority, deadline, name, creation time, modification time — in that order. Notice that completed tasks always remain at the bottom, no matter what. However, completed tasks are also sorted by the selected sorting method.
 
-<img src="single_list_page_sort_by_name_final_lab_3.png" alt="Single List Page Sort By Name Lab 3 Final Version" width="200px">
+<img src="single_list_page_sort_by_priority_final_lab_4.png" alt="Single List Page Sort By Deadline Lab 4 Final Version" width="200px">
 
-<img src="single_list_page_sort_by_creation_time_final_lab_3.png" alt="Single List Page Sort By Creation Time Lab 3 Final Version" width="200px">
+<img src="single_list_page_sort_by_deadline_final_lab_4.png" alt="Single List Page Sort By Deadline Lab 4 Final Version" width="200px">
 
-<img src="single_list_page_sort_by_modification_time_final_lab_3.png" alt="Single List Page Sort By Modification Time Lab 3 Final Version" width="200px">
+<img src="single_list_page_sort_by_name_final_lab_4.png" alt="Single List Page Sort By Name Lab 4 Final Version" width="200px">
+
+<img src="single_list_page_sort_by_creation_time_final_lab_4.png" alt="Single List Page Sort By Creation Time Lab 4 Final Version" width="200px">
+
+<img src="single_list_page_sort_by_modification_time_final_lab_4.png" alt="Single List Page Sort By Modification Time Lab 4 Final Version" width="200px">
 
 In Lab 3, we also added a message when no tasks are present or when all tasks are completed. When a list has no tasks, the message "No Tasks" will appear on the list page. In user testing, participants said they'd like to have messages like these. As with the "No Lists" message on the home page when no lists are present, this message makes it clear than an empty list is the result of having no tasks, not an error loading data.
 
@@ -104,7 +112,7 @@ In Lab 3, we also added a message when no tasks are present or when all tasks ar
 
 When a list has completed tasks but no incomplete tasks, a message will appear that confims the user has completed all their tasks.
 
-<img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Tasks" width="200px">
+<img src="single_list_page_no_incomplete_tasks_lab_4.png" alt="Single List Page No Tasks" width="200px">
   
 When opening the Single List Page, it takes a moment for data from Firebase to be fetched. Therefore, for Lab 3, we added a loading screen while task data is loading in. This screen is simply a screen showing an empty list, and it typically only flashes for a brief moment before tasks load in. Because the screen has the same background and top bar as the Single List Page with tasks, the loading is almost imperceptible when opening this page. This is a good thing, since we want opening a page to appear fluid and clean.
 
@@ -152,11 +160,11 @@ For Lab 2, we introduced confirmation messages that would pop up when a user cli
 
 <img src="alert_edit_list_page_delete_list.png" alt="Alert Edit List Page Delete List Lab 2 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_completed.png" alt="Single List Page Menu Mode Delete Completed Alert Lab 2 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_completed_lab_4.png" alt="Single List Page Menu Mode Delete Completed Alert Lab 4 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_all.png" alt="Single List Page Menu Mode Delete All Alert Lab 2 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_all_lab_4.png" alt="Single List Page Menu Mode Delete All Alert Lab 4 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_list.png" alt="Single List Page Menu Mode Delete List Alert Lab 2 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_list_lab_4.png" alt="Single List Page Menu Mode Delete List Alert Lab 4 Final Version" width="200px">
 
 <img src="alert_edit_task_page_delete_task.png" alt="Edit Task Page Delete Task Alert Lab 2 Final Version" width="200px">
 
@@ -167,6 +175,85 @@ For Lab 3, we introduced a Report Error Pop-up whenever Firebase reports an erro
 <img src="error_message_before_submitting_lab_3.png" alt="Error Message Before Submitting" width="200px">
 
 <img src="error_message_after_submitting_lab_3.png" alt="Error Message After Submitting" width="200px">
+
+## Final App: Large Screen UI Design (Responsiveness)
+
+In Lab 4, we made our app responsive, providing support for phones, laptops, and desktops of all sizes, as well as portrait and landscape modes. To take advantage of the increased space on devices with larger screens, we created a new UI for screens with a minimum width of 769px (a common lower breakpoint for laptop screen widths) and a minimum height of 690px.
+
+Here is the welcome page of our app on large screens.
+
+<img src="large_screen_welcome_lab_4.png" alt="Large Screen Welcome Page Lab 4" width="650px">
+
+When a user hovers over a list name, a gray background and an arrow will appear to indicated that the list can be clicked.
+
+On smaller phone-sized screens, users can swipe left on list cards to reveal pencil and trash can icons that allow them to edit and delete the list in question. However, we decided to remove that functionality on large screens because the swiping action is much more typical for phones and tablets, rather than for laptops or desktops, which are the devices that our large screen design targets. Furthermore, the list card swiping action was always more of a power user feature for expert users of our app, since there have always been other ways for users to edit and delete lists.
+
+<img src="large_screen_welcome_hover_lab_4.png" alt="Large Screen Welcome Page List Card Hover Lab 4" width="650px">
+
+Larger screens have more space, so we decided to use that extra space to allow users to view both their lists and the tasks in their currently selected list, at the same time. This cannot be done on the mobile version of our app. We took inspiration from Todoist for our large screen layout.
+
+<img src="large_screen_single_list_page_lab_4.png" alt="Large Screen Single List Page Lab 4" width="650px">
+
+Users can type in the search bar to filter through tasks in the currently selected list. Hitting Cancel will take the user back to the view with all the tasks in the current list. We decided that, for large screens, it wasn't necessary to include a search bar that filters a user's lists, since taller screens are already able to display more lists than mobile screens.
+
+<img src="large_screen_single_list_page_search_lab_4.png" alt="Large Screen Single List Page Search Lab 4" width="650px">
+
+On large screens, hovering over a button will make its background turn gray to indicate that it can be pressed.
+
+<img src="large_screen_single_list_page_hover_lab_4.png" alt="Large Screen Single List Page Button Hover Lab 4" width="650px">
+
+Since large screens are so wide, we decided to attach the list options menu to the toggle menu button (the three dots in the top right corner), instead of having the list options menu stretch all the way across the bottom of the screen (as it does in the smaller version of our app).
+
+<img src="large_screen_single_list_page_menu_lab_4.png" alt="Large Screen Single List Page General Menu Lab 4" width="650px">
+
+<img src="large_screen_single_list_page_menu_sorting_lab_4.png" alt="Large Screen Single List Page Sorting Menu Lab 4" width="650px">
+
+Clicking the plus button in the side bar on the left next to the "Your Lists" heading allows users to create a new list. The plus button on the right side of the screen, shown inside the content for the current list when the list options menu is not open, allows users to create a new task.
+
+Clicking the info button in a task's row will allow users to view more details about that particular task. We decided not to use cards to display tasks on large screens, since cards are more often found on mobile apps. We added a info button for each task because, otherwise, it would be unintuitive for users to click on a task to view more details about it. That was an observation we made during user testing.
+
+On large screens, when a user clicks the respective button to create a new list, create a new task, edit an existing list, or view an existing task, a popup will appear.
+
+<img src="large_screen_create_list_popup_lab_4.png" alt="Large Screen Create List Popup Lab 4" width="650px">
+
+<img src="large_screen_create_task_popup_lab_4.png" alt="Large Screen Create Task Popup Lab 4" width="650px">
+
+<img src="large_screen_edit_list_popup_lab_4.png" alt="Large Screen Edit List Popup Lab 4" width="650px">
+
+From the view task popup, the user can navigate to the edit task popup, just like in the smaller version of our app.
+
+<img src="large_screen_view_task_popup_lab_4.png" alt="Large Screen View Task Popup Lab 4" width="650px">
+
+<img src="large_screen_edit_task_popup_lab_4.png" alt="Large Screen Edit Task Popup Lab 4" width="650px">
+
+Alerts still display properly on large screens. An example delete alert is shown below.
+
+<img src="large_screen_delete_alert_lab_4.png" alt="Large Screen Delete Alert Lab 4" width="650px">
+
+We also added loading screens when lists and their respective tasks are loading. These screens are designed to make the transition from one page to another as smooth as possible by not including distracting images or text. The list and task loading pages are shown below, respectively.
+
+<img src="large_screen_data_loading_lab_4.png" alt="Large Screen Lists Loading Lab 4" width="650px">
+
+<img src="large_screen_tasks_loading_lab_4.png" alt="Large Screen Tasks Loading Lab 4" width="650px">
+
+
+
+
+## Final App: Accessibility
+
+In Lab 4, we introduced accessibility features to our app.
+
+Here is a video demonstrating use of our app entirely through keyboard navigation: [https://youtu.be/5oS1HX_Raz4](https://youtu.be/5oS1HX_Raz4)
+
+Here is a video demonstrating use of our app with a screenreader: [https://youtu.be/g1pGbToIMoU](https://youtu.be/g1pGbToIMoU)
+
+To provide support to users with low vision (trouble seeing small print or objects), we made sure that our text resizes as users zoom in. We also made sure that the colors we used had sufficient contrast for icons and text to be legible, checking color contrast with [https://webaim.org/resources/contrastchecker/](https://webaim.org/resources/contrastchecker/) in order to ensure that our color decisions aligned with WCAG AA guidelines.
+
+To make our app usable for users who can't use a mouse and users who can't see at all, we made all interactive elements navigable by keyboard, so that users can easily tab back and forth through buttons and links.
+
+For screenreader compatibility, we made sure to properly use heading tags for title text. This allows screenreader users to navigate through just the headings on any given page, in case they wish to do so. We also added aria-labels to all interactive elements so screenreaders are able to describe things like the name of the list or task a certain button is for, or the current state of a button.
+
+For Large Screens, we also implemented a Skip to Content link. If users have a list open, they can use that Skip to Content link to tell the screenreader to skip reading the names of the other lists and go directly to the content for the currently selected list.
 
 ## Alternate Designs: Home Page and Single List Page Initial Brainstorming
 
@@ -276,6 +363,32 @@ Below is the Edit Task Page that we turned in for Lab 2. In Lab 3, we added the 
 
 <img src="edit_task_page_final_lab_2_time_picker.png" alt="Edit Task Page Lab 2 Final Version Time Picker" width="200px">
 
+## Alternate Designs: Large Screen UI Design (Responsiveness)
+
+When making our app responsive for Lab 4, we first started by just making our app usable on screens of all sizes. At this stage in our process, the large screen version of our app (for screens of minimum width 769px and minimum height 690px) was just a bigger version of the small screen app. However, we decided that all that extra whitespace wasn't the most efficient use of space, so we ultimately created a new layout for large screens that allows users to simultaneously see all their lists and the tasks in their current list, which you can see in the Final App: Large Screen UI Design (Responsiveness) section of our design doc above.
+
+<img src="large_screen_welcome_v1_lab_4.png" alt="Large Screen Welcome Page V1 Lab 4" width="650px">
+
+<img src="large_screen_single_list_page_v1_lab_4.png" alt="Large Screen Single List Page V1 Lab 4" width="650px">
+
+<img src="large_screen_single_list_page_search_v1_lab_4.png" alt="Large Screen Single List Page Search V1 Lab 4" width="650px">
+
+<img src="large_screen_single_list_page_menu_v1_lab_4.png" alt="Large Screen Single List Page Menu V1 Lab 4" width="650px">
+
+<img src="large_screen_single_list_page_menu_sorting_v1_lab_4.png" alt="Large Screen Single List Page Sorting Menu V1 Lab 4" width="650px">
+
+<img src="large_screen_create_list_page_v1_lab_4.png" alt="Large Screen Create List Page V1 Lab 4" width="650px">
+
+<img src="large_screen_view_task_page_v1_lab_4.png" alt="Large Screen View Task Page V1 Lab 4" width="650px">
+
+<img src="large_screen_edit_task_page_v1_lab_4.png" alt="Large Screen Edit Task Page V1 Lab 4" width="650px">
+
+The screenshot below shows what the large screen version of our app looked like after our initial attempt to make use of the increased space on large screens. You can see the basic structure of the final version of our large screen app, with all the lists in the side bar on the left and the tasks in the current list on the right.
+
+However, we ultimately got rid of the cards on large screens after researching what other to-do apps like Todoist look like on large screens, and also because cards are more for tapping on phones and tablets and wouldn't make as much sense for interactions on laptops and desktops with large screens. We also added a "Your Lists" heading to explain thes side bar, added a create list plus button to the side bar, and moved the create task plus button to the top right, to the header for the current list.
+
+<img src="large_screen_single_list_page_v2_lab_4.png" alt="Large Screen Single List Page V2 Lab 4" width="650px">
+
 ## Usability Testing: Lab 1
 
 We conducted usability testing with four Mudd friends, asking them to tell us about their impressions of our app and how they would navigate from page to page to perform certain tasks.
@@ -383,6 +496,36 @@ During usability testing, all users either explicitly requested or said they'd a
 <img src="single_list_page_no_tasks_lab_3.png" alt="Single List Page No Tasks Lab 3" width="200px">
 
 <img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Incomplete Tasks Lab 3" width="200px">
+
+## Usability Testing: Lab 4
+
+For Lab 4, we conducted usability testing in-person with three Mudd students. In previous labs, we've tested users individually. For this lab, following the recommendation of Don Norman in Chapter 6 of _The Design of Everyday Things_, we decided to try testing one pair of user in addition to an individual. Because our design changes this lab were centered on making our app responsive (we implemented multiple lists in an earlier lab and making our app accessible didn't impact the design much) and we'd previously done testing with the small screen version of our app, we had users test our large screen version.
+
+As we've done in previous usability testing, we started by asking participants to share their impressions of our app based only on the home screen. For the large-screen version of our app, this was the main page without any list opened. We asked what they believed our app did and what actions they thought they could perform based on the home page's appearance. We continued by asking participants to perform a series of tasks while thinking out loud. These tasks included creating, deleting, and editing lists and tasks, as well as sorting tasks and assigning priority levels to tasks. For instance, we asked each user testing participant to create a list, add several tasks to that list, and try to change the sorting method of their list to "name" and "creation time."
+
+### Large Screen - Initial Impressions of Home Page
+
+All users determined our app was a to-do app, primarily citing our app's name and the "Lists" heading in the sidebar. Users also said they enjoyed the design of our app, specifically noting the color palette, the logo, and the large-screen layout. One user noticed the vertical line separating the sidebar from the main content of the page did not extend to the bottom of the page, so we fixed this issue in our final app.
+
+### Large Screen - Single List Page (subpage of main page with list opened)
+
+Users noticed that the three horizontal dots that open up the menu were not lined up with the task cards, and they said this bothered them. They also felt like the "Add Task" button on the single list page was too small. We fixed both of these issues.
+
+A couple users had trouble figuring out how to view more details about a task on the large screen. Previously, we'd thought users might know to click on a task to view more info, since this had worked on the small screen. We found it interesting that clicking on a task seemed less intuitive on the large screen. To address this feedback, we added a task info icon on the left of each task row. Users can click on this button (instead of clicking anywhere on the task) to get more info about their task.
+
+Users also wanted some indication of when they were hovering over a task. We thought this was an excellent idea, and we added a color change indicator when a user hovers over the task info icon (since this is the clickable portion of the task).
+
+Additionally, users wished they could more easily identify which tasks were overdue. In response, we made the deadline text red for all uncompleted, overdue tasks. We also added the option to delete all overdue tasks, since we thought users may appreciate this feature. While we were changing the font color for overdue tasks, we also remembered previous feedback about wanting completed tasks to be more differentiated from uncompleted ones. So we also made all text gray for completed tasks.
+
+### Large Screen - Single List Page Menu
+
+Some users struggled to leave the list options menu on the large-screen version of our app. They were unaware that the menu button could be pressed again to leave the menu. We added a gray background to the dots when a user hovers over them to make it clearer that the dots both open and close the menu. We also added this gray background to other buttons in our large-screen app to make it clearer what can and cannot be clicked.
+
+Users also wanted to sort tasks in both ascending and descending order, especially when sorting alphabetically. In response, we added the option to sort in both directions for all of our different sorting fields, and we exchanged the checkmark that originally indicated a selected sorting option for up and down arrows that indicate the current direction of sorting. We added the ability to easily toggle between sort directions simply by clicking the appropriate sorting field.
+
+### Delete Alert
+
+All users felt as if there was too much unused whitespace on the delete alert, so we reduced the margins to better fit the text on the alert.
 
 ## Challenges
 

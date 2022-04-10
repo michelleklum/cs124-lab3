@@ -4,7 +4,7 @@
 
 /* Single List Page Menu Mode Styles */
 /* place overlay of black background with lightened opacity over rest of page */
-#single-list-menu-mode-overlay {
+.single-list-menu-mode-overlay {
   margin-top: 0;
   padding-top: 0;
   width: 100%;
@@ -12,4 +12,13 @@
   background: black;
   opacity: 12%;
   height: 100%;
+}
+
+/* For large screens */
+@media screen and (min-width: 769px) and (min-height: 690px) {
+  #single-list-page {
+    /* Vertical divider between LargeScreenSideBar and LargeScreenSubpage */
+    border-left: #bab2b5 1.5px solid;
+    min-height: calc(100vh - 61px);
+  }
 }

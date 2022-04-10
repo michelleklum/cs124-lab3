@@ -1,0 +1,85 @@
+.large-screen-header {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+  margin-bottom: 1px;
+  border-bottom: 1.5px solid #bab2b5;
+}
+
+.single-list-name {
+  margin-left: 26px;
+  margin-right: 2%;
+  font-size: 18px;
+  width: 140px;
+  overflow-wrap: break-word;
+}
+
+/* For responsive design, make sure everything in large screen header still fits into width of screen */
+/* But can allow list taks name to be wider as screen gets wider */
+@media screen and (min-width: 768px) {
+  .single-list-name {
+    width: 130px;
+  }
+}
+
+@media screen and (min-width: 845px) {
+  .single-list-name {
+    width: 140px;
+  }
+}
+
+@media screen and (min-width: 855px) {
+  .single-list-name {
+    width: 180px;
+  }
+}
+
+@media screen and (min-width: 865px) {
+  .single-list-name {
+    width: 190px;
+  }
+}
+
+@media screen and (min-width: 885px) {
+  .single-list-name {
+    width: 220px;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .single-list-name {
+    width: calc(100vw - 770px);
+  }
+}
+
+.large-screen-icons {
+  position: relative; /* in order to position single list page menu absolute to this */
+  display: flex;
+  align-items: center;
+  margin-right: 53px;
+  justify-content: space-between;
+}
+
+.large-screen-icons i:hover {
+  color: #172528 !important;
+}
+
+.large-screen-header i {
+  font-size: 25px !important;
+}
+
+@media screen and (min-width: 769px) and (min-height: 690px) {
+  .list-menu-button:hover {
+    background: #eae8e8;
+    padding: 7px 7px 7px 7px;
+    margin-left: 5.5px;
+    border-radius: 8px;
+    margin-right: -5px;
+  }
+
+  .list-menu-button {
+    background: #feffff;
+    padding: 6px 7px 6px 7px;
+    margin-right: -5px;
+  }
+}

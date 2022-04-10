@@ -1,13 +1,25 @@
 function PriorityOption(props) {
-    return (
-        <p className={props.selectedTaskPriority ===
-            props.taskPriorityLevel ?
-            "selected-priority priority-option selected-" 
-            + props.priorityLevels.get(props.taskPriorityLevel)
-            : "unselected-priority priority-option"}
-            onClick={() =>
-                props.onChangeTaskPriority(props.taskPriorityLevel)}>
-            {props.priorityLevels.get(props.taskPriorityLevel)}</p>
-    )
+  function handleClick() {
+    props.onChangeTaskPriority(props.taskPriorityLevel);
+  }
+
+  return (
+    <button
+      className={
+        props.selectedTaskPriority === props.taskPriorityLevel
+          ? "priority-option selected-priority selected-" +
+            props.priorityLevels.get(props.taskPriorityLevel).toLowerCase()
+          : "priority-option unselected-priority"
+      }
+      onClick={handleClick}
+      aria-label={`Task is currently set to priority level ${props.priorityLevels.get(
+        props.selectedTaskPriority
+      )}. Set priority level to ${props.priorityLevels.get(
+        props.taskPriorityLevel
+      )}`}
+    >
+      <p>{props.priorityLevels.get(props.taskPriorityLevel)}</p>
+    </button>
+  );
 }
-export default PriorityOption 
+export default PriorityOption;

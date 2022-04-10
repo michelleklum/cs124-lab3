@@ -1,56 +1,61 @@
 .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 360px;
-    background-color: rgba(9, 15, 16, .4);
-    z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(9, 15, 16, 0.4);
+  z-index: 10;
 }
 
 .error-alert {
-    background-color: #feffff;
-    color: #17252a;
-    border-radius: 7pt;
-    margin: 0 auto;
-    top: 35%;
-    height: 160px;
-    width: 200px;
-    position: relative;
-    padding: 3%;
+  background-color: #feffff;
+  color: #17252a;
+  border-radius: 7pt;
+  margin: 0 auto;
+  top: 35%;
+  height: 170px;
+  width: 200px;
+  position: relative;
+  padding: 3%;
 }
 
 .alert-description {
-    margin-top: 2px;
-    font-weight: 600;
-    text-align: center;
+  margin-top: 2px;
+  font-weight: 600;
+  text-align: center;
 }
 
 .alert-buttons {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .alert-button {
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 35%;
-    height: 25px;
-    border-radius: 5px;
-    text-align: center;
-    color: #feffff;
-    font-size: 12pt;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 35%;
+  height: 25px;
+  border-radius: 5px;
+  text-align: center;
+  color: #feffff;
+  font-size: 12pt;
 }
 
 .alert-report {
-    background: #2b7a78;
+  background: #2b7a78;
 }
 
 .error-reported {
-    background: #EAE8E8;
-    width: 80%;
-    color: #172528;
-    font-size: 12pt;
+  background: #eae8e8;
+  width: 80% !important;
+  color: #172528;
+}
+
+.error-reported p {
+  position: relative;
+  top: -27%;
+  font-size: 12pt !important;
 }

@@ -1,6 +1,6 @@
 import "./HomeSearchPage.css";
 import React, { Fragment, useState } from "react";
-import HomeSearchBar from "./HomeSearchBar";
+import SearchBar from "../Global/SearchBar";
 import ListCard from "../Home/ListCard";
 import DeleteAlert from "../Global/DeleteAlert";
 
@@ -21,12 +21,12 @@ function HomeSearchPage(props) {
 
   return (
     <Fragment>
-      <HomeSearchBar
+      <SearchBar
         onChangePage={props.onChangePage}
-        onChangeList={props.onChangeList}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         prevPage={props.prevPage}
+        searchLabel="All lists"
       />
       <div id="filtered-lists">
         {filteredLists.map((list) => (

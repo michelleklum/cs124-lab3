@@ -1,0 +1,100 @@
+.main-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: flex;
+}
+
+.side-bar {
+  width: 220px;
+  padding-right: 2.5em;
+  padding-left: 0.7em;
+  height: calc(100vh - 60px); /* Top Bar is 60px */
+}
+
+.large-screen-subpage {
+  /* background: #feffff; */
+  height: calc(100vh - 60px); /* Top Bar is 60px */
+  flex-grow: 1;
+}
+
+/* Header for filtered tasks view (when user has entered a search query) */
+.large-screen-filtered-tasks-header {
+  display: flex;
+  align-items: center;
+  padding-top: 18px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.large-screen-filtered-tasks-header i {
+  color: #172528 !important;
+  margin-left: 0.8em;
+}
+
+.large-screen-filtered-tasks-header .large-screen-search {
+  flex-grow: 1;
+}
+
+/* When LargeScreenPopup is open, make all of MainContent unscrollable */
+.unscrollable {
+  overflow: hidden;
+}
+
+.sidebar-header-text {
+  font-size: 13pt;
+  margin-left: 7px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  color: #172528;
+  margin-top: 20px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 246px;
+}
+
+.large-screen-add-button i {
+  color: #172528 !important;
+  margin-left: 8px;
+  padding: 6px 7px 6px 7px;
+}
+
+.large-screen-add-button:hover i {
+  background: #eae8e8;
+  border-radius: 8px;
+  padding: 6px 7px 6px 7px;
+}
+
+.large-screen-add-button {
+  width: auto;
+  font-size: 6px !important;
+  color: #172528 !important;
+}
+
+.large-screen-cancel-search-button {
+  width: auto;
+}
+
+.welcome {
+  display: flex;
+  align-items: center; /* center Flexbox items with each other vertically */
+}
+
+.welcome-logo {
+  margin: 0 auto; /* center horizontally */
+  width: min(15%, 140px);
+  margin-top: -200px;
+}
+
+/* Vertical divider between LargeScreenSideBar and LargeScreenSubpage */
+/* This styling is only used for the Welcome page */
+/* The vertical divider for when Large Screen SingleListPage is shown is styled in SingleListPage.css */
+.welcome-vertical-divider {
+  border-left: #bab2b5 1.5px solid;
+  height: calc(100vh - 61px);
+}

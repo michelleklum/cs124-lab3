@@ -1,14 +1,20 @@
 import "./DeleteListButton.css";
 
 function DeleteListButton(props) {
+  function handleDeleteList() {
+    props.onChangeList(props.id);
+    props.onToggleDeleteAlert();
+  }
+
   return (
-    <i
-      className="fas fa-trash-alt fa-4x delete-list"
-      onClick={() => {
-        props.onChangeList(props.id);
-        props.onToggleDeleteAlert()
-      }}
-    ></i>
+    <button
+      className="delete-list-button"
+      aria-label="Delete list"
+      onClick={handleDeleteList}>
+      <i
+        className="fas fa-trash-alt fa-4x delete-list right-aligned"
+      ></i>
+    </button>
   );
 }
 

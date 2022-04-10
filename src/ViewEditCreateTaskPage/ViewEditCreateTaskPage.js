@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./ViewEditCreateTaskPage.css";
 import TaskTopBar from "./TaskTopBar";
 import TaskDisplay from "./TaskDisplay";
-import DeleteTaskBar from "./DeleteTaskBar";
+import DeleteTaskListBar from "../Global/DeleteTaskListBar";
 import DeleteAlert from "../Global/DeleteAlert";
 import { Timestamp } from "firebase/firestore";
 
@@ -40,7 +40,7 @@ function ViewEditCreateTaskPage(props) {
     priority: 0,
     isCompleted: false,
   };
-  
+
   const currentTask = props.tasks.find(
     (task) => task.id === props.currentTaskId
   );
@@ -61,8 +61,11 @@ function ViewEditCreateTaskPage(props) {
   return (
     <div id="task-page">
       <TaskTopBar
+        isLargeScreen={props.isLargeScreen}
+        onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
         task={task}
         prevPage={props.prevPage}
+        data={props.data}
         currentListId={props.currentListId}
         currentTaskId={props.currentTaskId}
         onChangePage={props.onChangePage}
@@ -97,16 +100,16 @@ function ViewEditCreateTaskPage(props) {
         onChangeTaskPriority={setTempTaskPriority}
       />
       {props.inEditTaskMode ? (
-        <DeleteTaskBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
-      ) : null}
-      {props.inEditTaskMode ? (
-        <DeleteTaskBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
+        <DeleteTaskListBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
       ) : null}
       {props.showDeleteAlert && (
         <DeleteAlert
           type="this task"
           onToggleDeleteAlert={props.onToggleDeleteAlert}
-          onDelete={() => props.onDeleteTask(props.currentTaskId)}
+          onDelete={function () {
+            props.onDeleteTask(props.currentTaskId);
+            props.isLargeScreen && props.onToggleLargeScreenPopup();
+          }}
         />
       )}
     </div>

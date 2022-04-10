@@ -1,10 +1,12 @@
 function ListIcon(props) {
     return (
-        <div className={props.tempSelectedIcon === props.iconName ?
-            "selected"
-            : "unselected"} onClick ={() => props.onChangeListIcon(props.iconName)}>
+        <button className={props.tempSelectedIcon === props.iconName ?
+            "icon selected"
+            : "icon unselected"}
+            onClick={() => props.onChangeListIcon(props.iconName)}
+            aria-label={props.iconName + ", icon option"}>
             <i className={`fas fa-${props.iconName} fa-4x list-icon`}></i>
-        </div>
+        </button>
     )
 }
 export default ListIcon 

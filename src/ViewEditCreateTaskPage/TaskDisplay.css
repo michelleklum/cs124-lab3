@@ -9,23 +9,22 @@
 #task-display {
   display: grid;
   align-items: center;
-  grid-template-columns: 60px 2fr 1fr;
+  grid-template-columns: 60px 2fr 85px;
   margin: 0 auto;
   width: 91%;
   margin-bottom: 65px;
 }
 
+#task-display p {
+  font-size: 12pt !important;
+}
+
 .task-display-picker-open {
-  grid-template-rows: 70px 140px 70px 1fr 70px;
+  grid-template-rows: 65px 130px 65px 1fr 65px;
 }
 
 .task-display-picker-closed {
-  grid-template-rows: 70px 70px 1fr 70px;
-}
-
-.completed-icon-view-page {
-  font-size: 25pt !important;
-  grid-row: 4 / span 1;
+  grid-template-rows: 65px 65px 1fr 65px;
 }
 
 .set-date-icon {
@@ -33,19 +32,16 @@
   grid-row: 1 / span 1;
   justify-self: start;
   font-size: 25pt !important;
-  /* padding-top: 10px; */
 }
 
 .set-date {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
-  font-size: 12pt;
 }
 
 .set-time {
   grid-column: 3 / span 1;
   grid-row: 1 / span 1;
-  font-size: 12pt;
 }
 
 .date-picker,
@@ -53,7 +49,37 @@
   grid-column: 1 / span 3;
   grid-row: 2 / span 1;
   justify-self: center;
-  font-size: 12pt;
+}
+
+.set-priority-icon {
+  font-size: 20px;
+  color: #feffff !important;
+}
+
+.set-priority-icon-circle {
+  /* creating icon outline */
+  background: #91c6c3;
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  display: flex; /* bottom three styles center the plus icon in the .add-button div */
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+}
+
+.set-priority {
+  grid-column: 2 / span 2;
+}
+
+.set-priority-icon-picker-open,
+.set-priority-picker-open {
+  grid-row: 3 / span 1;
+}
+
+.set-priority-icon-picker-closed,
+.set-priority-picker-closed {
+  grid-row: 2 / span 1;
 }
 
 .set-note-icon {
@@ -79,10 +105,6 @@
   align-items: center;
 }
 
-.set-note-text {
-  font-size: 12pt;
-}
-
 .set-note-icon-picker-closed,
 .set-note-picker-closed {
   grid-row: 3 / span 1;
@@ -98,9 +120,13 @@
   justify-self: start;
 }
 
+.completed-icon-view-page {
+  font-size: 25pt !important;
+  grid-row: 4 / span 1;
+}
+
 .set-completed {
   grid-column: 2 / span 2;
-  font-size: 12pt;
 }
 
 .set-completed-icon-picker-closed,
@@ -111,36 +137,4 @@
 .set-completed-icon-picker-open,
 .set-completed-picker-open {
   grid-row: 5 / span 1;
-}
-
-.set-priority-icon-picker-open,
-.set-priority-picker-open {
-  grid-row: 3 / span 1;
-}
-
-.set-priority-icon-picker-closed,
-.set-priority-picker-closed {
-  grid-row: 2 / span 1;
-}
-
-.set-priority-icon {
-  font-size: 20px;
-  color: #feffff !important;
-}
-
-.set-priority-icon-circle {
-  /* creating icon outline */
-  background: #91c6c3;
-  border-radius: 50%;
-  width: 33px;
-  height: 33px;
-  display: flex; /* bottom three styles center the plus icon in the .add-button div */
-  align-items: center;
-  justify-content: center;
-  justify-self: start;
-}
-
-.set-priority {
-  font-size: 12pt;
-  grid-column: 2 / span 2;
 }

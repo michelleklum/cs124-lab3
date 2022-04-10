@@ -1,0 +1,49 @@
+/* Delete bar for deleting task on Edit Task Page + list on Edit List Page */
+/* first four styles are for sticky toolbar */
+.delete-bar {
+  /* need margin-top auto so that delete bar is always at the very bottom */
+  /* relies on each delete bar instance's respective parent (#task-page or #edit-list-page) being a CSS Flexbox */
+  margin-top: auto;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background: #ed554a;
+  color: #feffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* For small screens, delete bar should be fixed at bottom of webpage */
+@media screen and (max-width: 768px), (max-height: 689px) {
+  .delete-bar {
+    position: fixed; /* use fixed instead of sticky so bar is at bottom even if we don't have that many lists */
+  }
+}
+
+/* On very short screens, don't want delete bar to stick to bottom of screen */
+@media screen and (max-height: 550px) {
+  .delete-bar {
+    position: static;
+  }
+}
+
+/* For large screens, delete bar needs extra padding on bottom */
+@media screen and (min-width: 769px) and (min-height: 690px) {
+  .delete-bar {
+    padding-bottom: 4px;
+  }
+}
+
+.delete-bar:active {
+  color: #eae8e8;
+}
+
+.delete-bar i {
+  font-size: 23pt !important;
+  color: #feffff;
+}
+
+.delete-bar h2 {
+  margin-left: 0.5em;
+}

@@ -1,18 +1,26 @@
 import React, { Fragment } from "react";
 
 function DeleteCompletedBar(props) {
+  function handleClick() {
+    props.onToggleDeleteCompletedAlert();
+  }
+
   return (
     <Fragment>
-      <i
-        className="fas fa-trash-alt delete-completed-icon"
-        onClick={() => props.onToggleDeleteCompletedAlert()}
-      ></i>
-      <h2
-        className="delete-completed-desc"
-        onClick={() => props.onToggleDeleteCompletedAlert()}
+      <button
+        className="menu-icon-button delete-completed-icon"
+        onClick={handleClick}
+        tabIndex="-1"
       >
-        Delete completed tasks
-      </h2>
+        <i className="fas fa-trash-alt"></i>
+      </button>
+      <button
+        className="delete-completed-desc"
+        onClick={handleClick}
+        aria-label={`Delete all completed tasks in current list: ${props.taskList.name}`}
+      >
+        <h2>Delete completed tasks</h2>
+      </button>
     </Fragment>
   );
 }

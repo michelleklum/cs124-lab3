@@ -1,9 +1,16 @@
 function ListBackButton(props) {
+  function handleClick() {
+    props.onChangePage("Home");
+  }
+
   return (
-    <i
-      className="fas fa-chevron-left fa-4x"
-      onClick={() => props.onChangePage("Home")}
-    ></i>
+    <button
+      className="list-back-button"
+      onClick={handleClick}
+      aria-label={"Exit current list and return to home page"}
+    >
+      <i className="fas fa-chevron-left fa-4x"></i>
+    </button>
   );
 }
 

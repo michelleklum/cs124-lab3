@@ -1,8 +1,8 @@
-# CS 124 Lab 3 Design Document
+# CS 124 Lab 4 Design Document
 
-CS 124 Interaction Design Lab 3: To-do App UI Design (Cloud Storage, Priority, Sorting)
+CS 124 Interaction Design Lab 4: To-do App UI Design (Multiple Lists, Accessible, Responsive)
 
-Link to app: [https://cs124-lab3-9c4c8--pr1-lab3-gdlyir33.web.app](https://cs124-lab3-9c4c8--pr1-lab3-gdlyir33.web.app)
+Link to app: [https://cs124-lab3-9c4c8--pr2-lab4-vmue0zo5.web.app](https://cs124-lab3-9c4c8--pr2-lab4-vmue0zo5.web.app)
 
 ## Final App: Home Page
 
@@ -167,6 +167,14 @@ For Lab 3, we introduced a Report Error Pop-up whenever Firebase reports an erro
 <img src="error_message_before_submitting_lab_3.png" alt="Error Message Before Submitting" width="200px">
 
 <img src="error_message_after_submitting_lab_3.png" alt="Error Message After Submitting" width="200px">
+
+## Final App: Large Screen UI Design (Responsiveness)
+
+In Lab 4, we made our app responsive, providing support for phones, laptops, and desktops of all sizes, as well as portrait and landscape modes. To take advantage of the increased space on devices with larger screens, we created a new UI for screens with a minimum width of 769px and a minimum height of 690px.
+
+Here is the welcome page of our app on large screens.
+
+<img src="large_screen_welcome_lab_4.png" alt="Large Screen Welcome Page Lab 4" width="600px">
 
 ## Alternate Designs: Home Page and Single List Page Initial Brainstorming
 

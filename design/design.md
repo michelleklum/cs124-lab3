@@ -174,7 +174,53 @@ In Lab 4, we made our app responsive, providing support for phones, laptops, and
 
 Here is the welcome page of our app on large screens.
 
-<img src="large_screen_welcome_lab_4.png" alt="Large Screen Welcome Page Lab 4" width="600px">
+<img src="large_screen_welcome_lab_4.png" alt="Large Screen Welcome Page Lab 4" width="650px">
+
+When a user hovers over a list name, a gray background and an arrow will appear to indicated that the list can be clicked.
+
+On smaller phone-sized screens, users can swipe left on list cards to reveal pencil and trash can icons that allow them to edit and delete the list in question. However, we decided to remove that functionality on large screens because the swiping action is much more typical for phones and tablets, rather than for laptops or desktops, which are the devices that our large screen design targets. Furthermore, the list card swiping action was always more of a power user feature for expert users of our app, since there have always been other ways for users to edit and delete lists.
+
+<img src="large_screen_welcome_hover_lab_4.png" alt="Large Screen Welcome Page List Card Hover Lab 4" width="650px">
+
+Larger screens have more space, so we decided to use that extra space to allow users to view both their lists and the tasks in their currently selected list, at the same time. This cannot be done on the mobile version of our app. We took inspiration from Todoist for our large screen layout.
+
+<img src="large_screen_single_list_page_lab_4.png" alt="Large Screen Single List Page Lab 4" width="650px">
+
+Users can type in the search bar to filter through tasks in the currently selected list. Hitting Cancel will take the user back to the view with all the tasks in the current list. We decided that, for large screens, it wasn't necessary to include a search bar that filters a user's lists, since taller screens are already able to display more lists than mobile screens.
+
+<img src="large_screen_single_list_page_search_lab_4.png" alt="Large Screen Single List Page Search Lab 4" width="650px">
+
+On large screens, hovering over a button will make its background turn gray to indicate that it can be pressed.
+
+<img src="large_screen_single_list_page_hover_lab_4.png" alt="Large Screen Single List Page Button Hover Lab 4" width="650px">
+
+Since large screens are so wide, we decided to attach the list options menu to the toggle menu button (the three dots in the top right corner), instead of having the list options menu stretch all the way across the screen, at the bottom of the screen (as it does in the smaller version of our app).
+
+<img src="large_screen_single_list_page_menu_lab_4.png" alt="Large Screen Single List Page General Menu Lab 4" width="650px">
+
+<img src="large_screen_single_list_page_menu_sorting_lab_4.png" alt="Large Screen Single List Page Sorting Menu Lab 4" width="650px">
+
+Clicking the plus button in the side bar on the left next to the "Your Lists" heading allows users to create a new list. The plus button on the right side of the screen, inside the content for the current list, allows users to create a new task.
+
+Clicking the info button in a task's row will allow users to view more details about that particular task. We decided not to use cards to display tasks on large screens, since cards are more for mobile apps. We added a info button for each task because, otherwise, it would be unintuitive for users to click on a task to view more details about it. We observed that during user testing.
+
+When a user clicks the proper button to create a new list, create a new task, edit an existing list, or view an existing task, a popup will appear.
+
+<img src="large_screen_create_list_popup_lab_4.png" alt="Large Screen Create List Popup Lab 4" width="650px">
+
+<img src="large_screen_create_task_popup_lab_4.png" alt="Large Screen Create Task Popup Lab 4" width="650px">
+
+<img src="large_screen_edit_list_popup_lab_4.png" alt="Large Screen Edit List Popup Lab 4" width="650px">
+
+From the view task popup, the user can navigate to the edit task popup, just like in the smaller version of our app.
+
+<img src="large_screen_view_task_popup_lab_4.png" alt="Large Screen View Task Popup Lab 4" width="650px">
+
+<img src="large_screen_edit_task_popup_lab_4.png" alt="Large Screen Edit Task Popup Lab 4" width="650px">
+
+Alerts still display properly on large screens. An example delete alert is shown below.
+
+<img src="large_screen_delete_alert_lab_4.png" alt="Large Screen Delete Alert Lab 4" width="650px">
 
 ## Alternate Designs: Home Page and Single List Page Initial Brainstorming
 

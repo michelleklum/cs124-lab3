@@ -272,7 +272,7 @@ function DatePicker(props) {
         onClick={handleMoveToPrev}
         aria-label={`Set task deadline month to one month earlier: ${prevMonth}`}
       >
-        <p>{prevMonth}</p>
+        <p className="prev-month">{prevMonth}</p>
       </button>
       <button
         className="prev-day"
@@ -282,7 +282,7 @@ function DatePicker(props) {
         onClick={handleMoveToPrev}
         aria-label={`Set task deadline date to one day earlier: ${prevDay}`}
       >
-        <p>{prevDay}</p>
+        <p className="prev-day">{prevDay}</p>
       </button>
       <button
         className="prev-year"
@@ -292,7 +292,7 @@ function DatePicker(props) {
         onClick={handleMoveToPrev}
         aria-label={`Set task deadline date to one year earlier: ${prevYear}`}
       >
-        <p>{prevYear}</p>
+        <p className="prev-year">{prevYear}</p>
       </button>
 
       <p
@@ -328,7 +328,7 @@ function DatePicker(props) {
         onClick={handleMoveToNext}
         aria-label={`Set task deadline date to one month later: ${nextMonth}`}
       >
-        <p>{nextMonth}</p>
+        <p className="next-month">{nextMonth}</p>
       </button>
       <button
         className="next-day"
@@ -338,7 +338,7 @@ function DatePicker(props) {
         onClick={handleMoveToNext}
         aria-label={`Set task deadline date to one day later: ${nextDay}`}
       >
-        <p>{nextDay}</p>
+        <p className="next-day">{nextDay}</p>
       </button>
       <button
         className="next-year"
@@ -348,7 +348,7 @@ function DatePicker(props) {
         onClick={handleMoveToNext}
         aria-label={`Set task deadline date to one year later: ${nextYear}`}
       >
-        <p>{nextYear}</p>
+        <p className="next-year">{nextYear}</p>
       </button>
     </div>
   );

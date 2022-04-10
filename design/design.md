@@ -480,6 +480,29 @@ During usability testing, all users either explicitly requested or said they'd a
 
 <img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Incomplete Tasks Lab 3" width="200px">
 
+
+## Usability Testing: Lab 4
+
+For Lab 4, we conducted usability testing in-person with three Mudd students. In previous labs, we've tested users individually. For this lab, following the recommendation of Don Norman in Chapter 6 of _The Design of Everyday Things_, we decided to try testing one pair of user in addition to an individual. Because our design changes this lab were centered on making our app responsive (we implemented multiple lists in an earlier lab and making our app accessible didn't impact the design much) and we'd previously done testing with the small screen version of our app, we had users test our large screen version. As we've done in previous usability testing, we started by asking participants to share their impressions of our app based only on the home screen. For the large-screen version of our app, this was the main page without any list opened. We asked what they believed our app did and what actions they thought they could perform based on the home page's appearance. We continued by asking participants to perform a series of tasks while thinking out loud. These tasks included creating, deleting, and editing lists and tasks, as well as sorting tasks and assigning priority levels to tasks. For instance, we asked each user testing participant to create a list, add several tasks to that list, and try to change the sorting method of their list to "name" and "creation time."
+
+### Large Screen - Initial Impressions of Home Page
+
+All users determined our app was a to-do app, primarily citing our app's name and the "Lists" heading in the sidebar. Users also said they enjoyed the design of our app, specifically noting the color palette, the logo, and the large-screen layout. One user noticed the vertical line separating the sidebar from the main content of the page did not extend to the bottom of the page, so we fixed this issue for our completed lab.
+
+### Large Screen - Single List Page (subpage of main page with list opened)
+
+Users noticed that the three horizontal dots that open up the menu were not lined up with task cars, and they said this bothered them. They also felt like the "Add Task" button on the single list page was too small. We fixed both of these issues. A couple users had trouble figuring out how to view more details about a task on the large screen. Previously, we'd thought users might know to click on a task to view more info, since this had worked on the small screen. We found it interesting that clicking on a task seemed less intuitive on the large screen. To address this feedback, we added a task info icon on the left of each task row. Users can click on this button (instead of clicking anywhere on the task) to get more info about their task. Users also wanted some indication of when they were hovering over a task. We thought this was an excellent idea, and we added a color change indicator when a user hovers over the task info icon (since this is the clickable portion of the task). Additionally, users wished they could more easily identify which tasks were overdue. In response, we made the deadline text red for all uncompleted, overdue tasks. We also added the option to delete all overdue tasks, since we thought users may appreciate this feature. While we were changing the font color for overdue tasks, we also remembered previous feedback about wanting completed tasks to be more differentiated from uncompleted ones. So we also made all text gray for completed tasks. 
+
+### Large Screen - Single List Page Menu
+
+Some users struggled to leave the list options menu on the large-screen version of our app. They were unaware that the menu button could be pressed again to leave the menu. We added a gray background to the dots when a user hovers over them to make it clearer that the dots both open and close the menu. We also added this gray background to other buttons in our large-screen app to make it clearer what can and cannot be clicked. Users also wanted to sort tasks in both ascending and descending order, especially when sorting alphabetically. In response, we added the option to sort in both directions for all of our different sorting fields, and we exchanged the checkmark that originally indicated a selected sorting option for up and down arrows that indicate the direction of sorting. We added the ability to easily toggle between sort directions simply by clicking the appropriate sorting field. 
+
+
+### Delete Alert
+
+All users felt as if there was too much unused whitespace on the delete alert, so we reduced the margins to better fit the text on the alert.
+
+
 ## Challenges
 
 Here are some challenges we faced:

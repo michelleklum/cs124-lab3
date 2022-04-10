@@ -14,9 +14,11 @@ function Home(props) {
           isLoading={false}
         />
       )}
-      <a className="skip-to-content" href="#main-content">
-        Skip to content
-      </a>
+      {props.isLargeScreen && (
+        <a className="skip-to-content" href="#main-content">
+          Skip to content
+        </a>
+      )}
       <ListOfLists
         isLargeScreen={props.isLargeScreen}
         data={props.data}

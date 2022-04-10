@@ -174,7 +174,7 @@ In Lab 4, we made our app responsive, providing support for phones, laptops, and
 
 Here is the welcome page of our app on large screens.
 
-<img src="large_screen_welcome_lab_4.png" alt="Large Screen Welcome Page Lab 4" width="700px">
+<img src="large_screen_welcome_lab_4.png" alt="Large Screen Welcome Page Lab 4" width="800px">
 
 ## Alternate Designs: Home Page and Single List Page Initial Brainstorming
 

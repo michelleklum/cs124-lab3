@@ -170,7 +170,7 @@ For Lab 3, we introduced a Report Error Pop-up whenever Firebase reports an erro
 
 ## Final App: Large Screen UI Design (Responsiveness)
 
-In Lab 4, we made our app responsive, providing support for phones, laptops, and desktops of all sizes, as well as portrait and landscape modes. To take advantage of the increased space on devices with larger screens, we created a new UI for screens with a minimum width of 769px and a minimum height of 690px.
+In Lab 4, we made our app responsive, providing support for phones, laptops, and desktops of all sizes, as well as portrait and landscape modes. To take advantage of the increased space on devices with larger screens, we created a new UI for screens with a minimum width of 769px (a common lower breakpoint for laptop screen widths) and a minimum height of 690px.
 
 Here is the welcome page of our app on large screens.
 

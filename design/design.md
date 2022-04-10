@@ -160,11 +160,11 @@ For Lab 2, we introduced confirmation messages that would pop up when a user cli
 
 <img src="alert_edit_list_page_delete_list.png" alt="Alert Edit List Page Delete List Lab 2 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_completed.png" alt="Single List Page Menu Mode Delete Completed Alert Lab 2 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_completed_lab_4.png" alt="Single List Page Menu Mode Delete Completed Alert Lab 4 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_all.png" alt="Single List Page Menu Mode Delete All Alert Lab 2 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_all_lab_4.png" alt="Single List Page Menu Mode Delete All Alert Lab 4 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_list.png" alt="Single List Page Menu Mode Delete List Alert Lab 2 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_list_lab_4.png" alt="Single List Page Menu Mode Delete List Alert Lab 4 Final Version" width="200px">
 
 <img src="alert_edit_task_page_delete_task.png" alt="Edit Task Page Delete Task Alert Lab 2 Final Version" width="200px">
 

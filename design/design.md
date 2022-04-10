@@ -230,11 +230,13 @@ Here is a video demonstrating use of our app entirely through keyboard navigatio
 
 Here is a video demonstrating use of our app with a screenreader: [https://youtu.be/g1pGbToIMoU](https://youtu.be/g1pGbToIMoU)
 
-To provide support to users with low vision (trouble seeing small print or objects), we made sure that our text resizes as users zoom in. We also made sure that the colors we used had sufficient contrast for icons and text to be legible, using [https://webaim.org/resources/contrastchecker/](https://webaim.org/resources/contrastchecker/) to ensure that our color decisions aligned with WCAG AA guidelines.
+To provide support to users with low vision (trouble seeing small print or objects), we made sure that our text resizes as users zoom in. We also made sure that the colors we used had sufficient contrast for icons and text to be legible, checking color contrast with [https://webaim.org/resources/contrastchecker/](https://webaim.org/resources/contrastchecker/) in order to ensure that our color decisions aligned with WCAG AA guidelines.
 
-To make our app usable for users who can't use a mouse and users who can't see at all, we made all interactive elements navigable by keyboard (so users can easily tab back and forth through buttons and links). We also added aria-labels to all interactive elements so screenreaders are able to describe things like the name of the list or task a certain button is for, or the current state of a button.
+To make our app usable for users who can't use a mouse and users who can't see at all, we made all interactive elements navigable by keyboard, so that users can easily tab back and forth through buttons and links.
 
-For Large Screens, we implemented a Skip to Content link. If users have a list open, they can use that Skip to Content link to tell the screenreader to skip reading the names of the other lists and go directly to the content for the currently selected list.
+For screenreader compatibility, we made sure to properly use heading tags for title text. This allows screenreader users to navigate through just the headings on any given page, in case they wish to do so. We also added aria-labels to all interactive elements so screenreaders are able to describe things like the name of the list or task a certain button is for, or the current state of a button.
+
+For Large Screens, we also implemented a Skip to Content link. If users have a list open, they can use that Skip to Content link to tell the screenreader to skip reading the names of the other lists and go directly to the content for the currently selected list.
 
 ## Alternate Designs: Home Page and Single List Page Initial Brainstorming
 

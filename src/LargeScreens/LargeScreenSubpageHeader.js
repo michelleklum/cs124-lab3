@@ -3,8 +3,7 @@ import "./LargeScreenSubpageHeader.css";
 import FocusTrap from "focus-trap-react";
 import LargeScreenSearchBar from "./LargeScreenSearchBar";
 import LargeScreenAddButton from "./LargeScreenAddButton";
-import ListMenuButton from "../SingleListPage/ListMenuButton";
-import ListMenu from "../SingleListPage/ListMenu";
+import LargeScreenMenuWithButton from "./LargeScreenMenuWithButton";
 
 function LargeScreenSubpageHeader(props) {
   return (
@@ -30,68 +29,17 @@ function LargeScreenSubpageHeader(props) {
         {props.inMenuMode ? (
           <FocusTrap>
             <div>
-              <ListMenuButton
-                isLargeScreen={props.isLargeScreen}
-                taskList={props.list}
-                inMenuMode={props.inMenuMode}
-                onChangeMenuMode={props.onChangeMenuMode}
-              />
-              {props.inMenuMode && props.menuModeType === "general" ? (
-                <ListMenu
-                  isLargeScreen={props.isLargeScreen}
-                  onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
-                  tasks={props.tasks}
-                  listMenuType="general"
-                  onChangeMenuModeType={props.onChangeMenuModeType}
-                  data={props.data}
-                  currentListId={props.currentListId}
-                  onEditList={props.onEditList}
-                  onDeleteCompleted={props.onDeleteCompleted}
-                  onDeleteOverdue={props.onDeleteOverdue}
-                  onDeleteAllTasks={props.onDeleteAllTasks}
-                  onDeleteList={props.onDeleteList}
-                  onChangePage={props.onChangePage}
-                  onToggleDeleteListAlert={props.onToggleDeleteListAlert}
-                  onToggleDeleteTasksAlert={props.onToggleDeleteTasksAlert}
-                  onToggleDeleteCompletedAlert={
-                    props.onToggleDeleteCompletedAlert
-                  }
-                  onToggleDeleteOverdueAlert={props.onToggleDeleteOverdueAlert}
-                />
-              ) : null}
-              {props.inMenuMode && props.menuModeType === "sorting" ? (
-                <ListMenu
-                  isLargeScreen={props.isLargeScreen}
-                  listMenuType="sorting"
-                  onChangeMenuModeType={props.onChangeMenuModeType}
-                  data={props.data}
-                  currentListId={props.currentListId}
-                  listTasksPrimarySortField={props.listTasksPrimarySortField}
-                  listTasksPrimarySortDirection={
-                    props.listTasksPrimarySortDirection
-                  }
-                  onChangeSort={props.onChangeSort}
-                />
-              ) : null}
-            </div>
-          </FocusTrap>
-        ) : (
-          <div>
-            <ListMenuButton
-              isLargeScreen={props.isLargeScreen}
-              taskList={props.list}
-              inMenuMode={props.inMenuMode}
-              onChangeMenuMode={props.onChangeMenuMode}
-            />
-            {props.inMenuMode && props.menuModeType === "general" ? (
-              <ListMenu
+              <LargeScreenMenuWithButton
                 isLargeScreen={props.isLargeScreen}
                 onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
-                tasks={props.tasks}
-                listMenuType="general"
-                onChangeMenuModeType={props.onChangeMenuModeType}
                 data={props.data}
                 currentListId={props.currentListId}
+                taskList={props.list}
+                tasks={props.tasks}
+                inMenuMode={props.inMenuMode}
+                onChangeMenuMode={props.onChangeMenuMode}
+                menuModeType={props.menuModeType}
+                onChangeMenuModeType={props.onChangeMenuModeType}
                 onEditList={props.onEditList}
                 onDeleteCompleted={props.onDeleteCompleted}
                 onDeleteOverdue={props.onDeleteOverdue}
@@ -104,23 +52,39 @@ function LargeScreenSubpageHeader(props) {
                   props.onToggleDeleteCompletedAlert
                 }
                 onToggleDeleteOverdueAlert={props.onToggleDeleteOverdueAlert}
-              />
-            ) : null}
-            {props.inMenuMode && props.menuModeType === "sorting" ? (
-              <ListMenu
-                isLargeScreen={props.isLargeScreen}
-                listMenuType="sorting"
-                onChangeMenuModeType={props.onChangeMenuModeType}
-                data={props.data}
-                currentListId={props.currentListId}
                 listTasksPrimarySortField={props.listTasksPrimarySortField}
                 listTasksPrimarySortDirection={
                   props.listTasksPrimarySortDirection
                 }
                 onChangeSort={props.onChangeSort}
               />
-            ) : null}
-          </div>
+            </div>
+          </FocusTrap>
+        ) : (
+          <LargeScreenMenuWithButton
+            isLargeScreen={props.isLargeScreen}
+            onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+            data={props.data}
+            currentListId={props.currentListId}
+            taskList={props.list}
+            tasks={props.tasks}
+            inMenuMode={props.inMenuMode}
+            onChangeMenuMode={props.onChangeMenuMode}
+            onChangeMenuModeType={props.onChangeMenuModeType}
+            onEditList={props.onEditList}
+            onDeleteCompleted={props.onDeleteCompleted}
+            onDeleteOverdue={props.onDeleteOverdue}
+            onDeleteAllTasks={props.onDeleteAllTasks}
+            onDeleteList={props.onDeleteList}
+            onChangePage={props.onChangePage}
+            onToggleDeleteListAlert={props.onToggleDeleteListAlert}
+            onToggleDeleteTasksAlert={props.onToggleDeleteTasksAlert}
+            onToggleDeleteCompletedAlert={props.onToggleDeleteCompletedAlert}
+            onToggleDeleteOverdueAlert={props.onToggleDeleteOverdueAlert}
+            listTasksPrimarySortField={props.listTasksPrimarySortField}
+            listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
+            onChangeSort={props.onChangeSort}
+          />
         )}
       </div>
     </div>

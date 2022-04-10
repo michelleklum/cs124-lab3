@@ -68,7 +68,7 @@ We also restyled checkboxes to match the color of the corresponding task's prior
 
 In Lab 4, we wanted to further distinguish between completed and uncompleted tasks. To do this, we made all text in a completed task bar grey. This matches the design of the checkbox. Additionally, during user testing, users mentioned they'd like overdue tasks to be differentiated in some way. In response, we made the font color red for the deadlines of all overdue tasks. 
 
-<img src="single_list_page_final_lab_4.png" alt="Single List Page Lab 3 Final Version" width="200px">
+<img src="single_list_page_lab_4.png" alt="Single List Page Lab 4 Final Version" width="200px">
 
 Users can tap the 3 horizontal dots in the top right corner of the Single List Page to enter the Single List Page's Menu Mode, where they can customize the list appearance by going to the Edit List Page (which is basically the same as the Create List Page), hide / show completed tasks, delete completed tasks, delete all tasks, or delete the list.
 
@@ -80,29 +80,31 @@ In Lab 1, we had the same trash can icon for all three delete actions in the Sin
 
 In Lab 3, we added task sorting options, so we expanded the Single List Page Menu to contain a "Sort" row.
 
-<img src="single_list_page_menu_mode_final_lab_3.png" alt="Single List Page Menu Mode Lab 3 Final Version" width="200px">
-
 In Lab 4, we added the option to delete all overdue tasks. We thought this could be useful for users who only care about tasks due in the future but don't want to individually find and delete all their overdue tasks. We chose a different trashcan icon to represent this delete option. 
+
+<img src="single_list_page_menu_mode_final_lab_4.png" alt="Single List Page Menu Mode Lab 4 Final Version" width="200px">
 
 We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu. Clicking either the icon or the sort option description changes the sorting method to the one selected. The arrow indicates the direction of sorting, and this direction can be otggled by clicking either the icon or the sort option again. Clicking the back arrow takes users back to the general Single List Page Menu.
 
 However, unlike with the sorting options, we decided not to add a separate delete options menu. That's because, during usability testing, users said a separate delete options menu wasn’t necessary, and also indicated that they wanted to be able to delete tasks quickly. Adding a separate delete options menu would have meant that users would have had to make another click in order to perform a delete action. In future labs, we hope to see if more user testing confirms our findings from this round of user testing.
 
-<img src="single_list_page_menu_sorting_final_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Final Version" width="200px">
+<img src="single_list_page_menu_sorting_final_lab_4.png" alt="Single List Page Sorting Menu Lab 4 Final Version" width="200px">
 
 By default, tasks are sorted by priority. For sorting by priority, we used a Firebase compound index so that the tasks would primarily be sorted by priority and then secondarily sorted by deadline, since we didn't want the tasks to be disorganized within each priority level. Our reasoning was also that if a user is sorting by priority, they probably care more about the task's deadline than its name, creation time, or modification time.
 
 In Lab 4, we added the ability to sort in either ascending or descending order for all sorting fields. This order can be toggled by clicking the appropriate sorting field. 
 
-Here are what the Single List Page looks like using the other sorting methods: deadline, name, creation time, modification time — in that order. Notice that completed tasks always remain at the bottom, no matter what. However, completed tasks are also sorted by the selected sorting method.
+Here are what the Single List Page looks like using all sorting methods: priority, deadline, name, creation time, modification time — in that order. Notice that completed tasks always remain at the bottom, no matter what. However, completed tasks are also sorted by the selected sorting method.
 
-<img src="single_list_page_sort_by_deadline_final_lab_3.png" alt="Single List Page Sort By Deadline Lab 3 Final Version" width="200px">
+<img src="single_list_page_sort_by_deadline_final_lab_4.png" alt="Single List Page Sort By Deadline Lab 4 Final Version" width="200px">
 
-<img src="single_list_page_sort_by_name_final_lab_3.png" alt="Single List Page Sort By Name Lab 3 Final Version" width="200px">
+<img src="single_list_page_sort_by_deadline_final_lab_4.png" alt="Single List Page Sort By Deadline Lab 4 Final Version" width="200px">
 
-<img src="single_list_page_sort_by_creation_time_final_lab_3.png" alt="Single List Page Sort By Creation Time Lab 3 Final Version" width="200px">
+<img src="single_list_page_sort_by_name_final_lab_4.png" alt="Single List Page Sort By Name Lab 4 Final Version" width="200px">
 
-<img src="single_list_page_sort_by_modification_time_final_lab_3.png" alt="Single List Page Sort By Modification Time Lab 3 Final Version" width="200px">
+<img src="single_list_page_sort_by_creation_time_final_lab_4.png" alt="Single List Page Sort By Creation Time Lab 4 Final Version" width="200px">
+
+<img src="single_list_page_sort_by_modification_time_final_lab_4.png" alt="Single List Page Sort By Modification Time Lab 4 Final Version" width="200px">
 
 
 In Lab 3, we also added a message when no tasks are present or when all tasks are completed. When a list has no tasks, the message "No Tasks" will appear on the list page. In user testing, participants said they'd like to have messages like these. As with the "No Lists" message on the home page when no lists are present, this message makes it clear than an empty list is the result of having no tasks, not an error loading data.
@@ -111,7 +113,7 @@ In Lab 3, we also added a message when no tasks are present or when all tasks ar
 
 When a list has completed tasks but no incomplete tasks, a message will appear that confims the user has completed all their tasks.
 
-<img src="single_list_page_no_incomplete_tasks_lab_3.png" alt="Single List Page No Tasks" width="200px">
+<img src="single_list_page_no_incomplete_tasks_lab_4.png" alt="Single List Page No Tasks" width="200px">
   
 When opening the Single List Page, it takes a moment for data from Firebase to be fetched. Therefore, for Lab 3, we added a loading screen while task data is loading in. This screen is simply a screen showing an empty list, and it typically only flashes for a brief moment before tasks load in. Because the screen has the same background and top bar as the Single List Page with tasks, the loading is almost imperceptible when opening this page. This is a good thing, since we want opening a page to appear fluid and clean.
 

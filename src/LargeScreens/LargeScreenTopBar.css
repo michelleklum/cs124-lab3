@@ -1,10 +1,12 @@
 /* first two styles are for sticky navbar */
+/* set z-index: 2 so checkboxes don't overlap with top bar */
+/* z-index of ListMenu is 1, so we need to make TopBar have z-index of 2 so that TopBar hides ListMenu */
 .top-bar {
   position: sticky;
   top: 0;
   width: 100%;
   background: #2b7a78;
-  z-index: 1; /* set z-index: 1 so checkboxes don't overlap with top bar */
+  z-index: 2;
 }
 
 /* On very short screens, don't want sticky navbar */

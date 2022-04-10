@@ -11,6 +11,7 @@
     display: flex; /* bottom three styles center the plus icon in the .add-button div */
     align-items: center;
     justify-content: center;
+    z-index: 3;
   }
   
   .add-button i {

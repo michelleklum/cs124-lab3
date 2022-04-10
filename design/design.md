@@ -194,17 +194,17 @@ On large screens, hovering over a button will make its background turn gray to i
 
 <img src="large_screen_single_list_page_hover_lab_4.png" alt="Large Screen Single List Page Button Hover Lab 4" width="650px">
 
-Since large screens are so wide, we decided to attach the list options menu to the toggle menu button (the three dots in the top right corner), instead of having the list options menu stretch all the way across the screen, at the bottom of the screen (as it does in the smaller version of our app).
+Since large screens are so wide, we decided to attach the list options menu to the toggle menu button (the three dots in the top right corner), instead of having the list options menu stretch all the way across the bottom of the screen (as it does in the smaller version of our app).
 
 <img src="large_screen_single_list_page_menu_lab_4.png" alt="Large Screen Single List Page General Menu Lab 4" width="650px">
 
 <img src="large_screen_single_list_page_menu_sorting_lab_4.png" alt="Large Screen Single List Page Sorting Menu Lab 4" width="650px">
 
-Clicking the plus button in the side bar on the left next to the "Your Lists" heading allows users to create a new list. The plus button on the right side of the screen, inside the content for the current list, allows users to create a new task.
+Clicking the plus button in the side bar on the left next to the "Your Lists" heading allows users to create a new list. The plus button on the right side of the screen, shown inside the content for the current list when the list options menu is not open, allows users to create a new task.
 
-Clicking the info button in a task's row will allow users to view more details about that particular task. We decided not to use cards to display tasks on large screens, since cards are more for mobile apps. We added a info button for each task because, otherwise, it would be unintuitive for users to click on a task to view more details about it. We observed that during user testing.
+Clicking the info button in a task's row will allow users to view more details about that particular task. We decided not to use cards to display tasks on large screens, since cards are more often found on mobile apps. We added a info button for each task because, otherwise, it would be unintuitive for users to click on a task to view more details about it. That was an observation we made during user testing.
 
-When a user clicks the proper button to create a new list, create a new task, edit an existing list, or view an existing task, a popup will appear.
+On large screens, when a user clicks the respective button to create a new list, create a new task, edit an existing list, or view an existing task, a popup will appear.
 
 <img src="large_screen_create_list_popup_lab_4.png" alt="Large Screen Create List Popup Lab 4" width="650px">
 

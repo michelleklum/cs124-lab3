@@ -366,7 +366,9 @@ When making our app responsive for Lab 4, we first started by just making our ap
 
 <img src="large_screen_edit_task_page_v1_lab_4.png" alt="Large Screen Edit Task Page V1 Lab 4" width="650px">
 
-This is what the large screen version of our app looked like after our initial attempt to make more use of the increased space on large screens. You can see that the basic structure of the final iteration of our large screen app is here, with all the lists in the side bar on the left and the tasks in the current list on the right. However, we ultimately got rid of the cards on large screens after researching what other to-do apps like Todoist look like on large screens, and also because cards are more for tapping on phones and tablets and wouldn't make as much sense for interactions on laptops and desktops with large screens.
+The screenshot below shows what the large screen version of our app looked like after our initial attempt to make use of the increased space on large screens. You can see the basic structure of the final version of our large screen app, with all the lists in the side bar on the left and the tasks in the current list on the right.
+
+However, we ultimately got rid of the cards on large screens after researching what other to-do apps like Todoist look like on large screens, and also because cards are more for tapping on phones and tablets and wouldn't make as much sense for interactions on laptops and desktops with large screens. We also added a "Your Lists" heading to explain thes side bar, added a create list plus button to the side bar, and moved the create task plus button to the top right, to the header for the current list.
 
 <img src="large_screen_single_list_page_v2_lab_4.png" alt="Large Screen Single List Page V2 Lab 4" width="650px">
 

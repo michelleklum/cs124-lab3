@@ -52,7 +52,7 @@ function EditCreateListPage(props) {
         <DeleteAlert
           type="this list"
           onToggleDeleteAlert={props.onToggleDeleteAlert}
-          onDelete={function () {
+          onDelete={() => {
             props.onDeleteList(props.currentListId);
             props.isLargeScreen && props.onToggleLargeScreenPopup();
           }}

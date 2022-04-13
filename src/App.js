@@ -235,10 +235,14 @@ function App() {
     // not the EditTaskPage's prevPage (which would be ViewTaskPage)
   }
 
-  function handleDeleteTask(taskId) {
+  function handleDeleteTaskWithPageChange(taskId) {
     setCurrentPage(
       "SingleListPage"
     ); /* before deleting task in db, redirect to Single List Page */
+    handleDeleteTask(taskId)
+  }
+
+  function handleDeleteTask(taskId) {
     const taskDocRef = doc(
       db,
       listCollectionName,
@@ -272,7 +276,7 @@ function App() {
   function handleDeleteCompletedTasks() {
     tasks
       .filter((task) => task.isCompleted)
-      .map((task) =>
+      .forEach((task) =>
         deleteDoc(
           doc(
             db,
@@ -289,7 +293,7 @@ function App() {
     // Remove tasks whose deadlines are before current time
     tasks
       .filter((task) => task.deadline.toDate() < new Date())
-      .map((task) =>
+      .forEach((task) =>
         deleteDoc(
           doc(
             db,
@@ -318,8 +322,10 @@ function App() {
 
   function handleDeleteList() {
     setCurrentPage("Home"); // Change page first to avoid error where no tasks are found
+    const listId = currentListId;
+    handleDeleteAllTasks();
     setCurrentListId(null);
-    deleteDoc(doc(db, listCollectionName, currentListId));
+    deleteDoc(doc(db, listCollectionName, listId));
   }
 
   // Functions below handle list, task, and error creation
@@ -412,7 +418,7 @@ function App() {
         onCreateTask={handleCreateTask}
         onEditTask={handleEditTask}
         onEditAllTaskFields={handleEditTaskAllFields}
-        onDeleteTask={handleDeleteTask}
+        onDeleteTask={handleDeleteTaskWithPageChange}
         onCreateList={handleCreateList}
         onEditList={handleEditList}
         onEditListAppearance={handleEditListAppearance}
@@ -523,7 +529,7 @@ function App() {
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}
           onCreateTask={handleCreateTask}
-          onDeleteTask={handleDeleteTask}
+          onDeleteTask={handleDeleteTaskWithPageChange}
           onEditAllTaskFields={handleEditTaskAllFields}
           inEditTaskMode={true}
           inCreateTaskMode={false}
@@ -539,7 +545,7 @@ function App() {
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           onChangePage={handleChangePage}
-          onDeleteTask={handleDeleteTask}
+          onDeleteTask={handleDeleteTaskWithPageChange}
           onCreateTask={handleCreateTask}
           onEditAllTaskFields={handleEditTaskAllFields}
           inEditTaskMode={false}

@@ -22,9 +22,11 @@ const filterTasksBySearch = (tasks, query) => {
 };
 
 function LargeScreenContent(props) {
-  // Get tasks (current list's tasks) from Firebase
+  // Get tasks (current list's tasks) from Firebase.
+  // Need currentPage to not be Home so that we don't query Firebase for tasks when we're on large screen welcome page and there is no list open.
+  // That would cause an error with Firebase security rules for tasks.
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(
-    props.tasksQuery
+    props.currentPage !== "Home" && props.tasksQuery
   );
   const tasks = dbTasks ? dbTasks : [];
 

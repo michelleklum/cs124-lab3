@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { generateUniqueID } from "web-vitals/dist/modules/lib/generateUniqueID";
 import "./App.css";
 import { useMediaQuery } from "react-responsive";
@@ -11,11 +11,14 @@ import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
 import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
 import ErrorAlert from "./Global/ErrorAlert";
 import LargeScreenContent from "./LargeScreens/LargeScreenContent";
+import AuthenticationPage from "./Authentication/AuthenticationPage";
+import SignUpPage from "./Authentication/SignUpPage";
 
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
   query,
+  where,
   collection,
   orderBy,
   doc,
@@ -25,6 +28,8 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { getAuth } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -40,7 +45,25 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
+// Initialize Firebase authentication state
+const auth = getAuth();
+
 function App() {
+  // Get user from Firestore
+  const [user, loading, error] = useAuthState(auth);
+
+  // Code below gets data (lists) and tasks from database using Firebase queries
+  const listCollectionName = "lists";
+  const errorCollectionName = "errors";
+  const taskSubcollectionName = "tasks";
+
+  // Get data (lists) from Firebase
+  const listsCollectionRef = collection(db, listCollectionName);
+  const listsQuery =
+    user && query(listsCollectionRef, where("owner", "==", user.uid)); // by default, sort lists alphabetically by name
+  const [dbData, dataLoading, dataError] = useCollectionData(listsQuery);
+  const data = dbData ? dbData : [];
+
   // react-responsive media query for responsive design
   // Large Screens will be defined as having a minWidth of 769px and a minHeight of 690px
   const isLargeScreen = useMediaQuery({ minWidth: 769, minHeight: 690 });
@@ -63,7 +86,16 @@ function App() {
   }
 
   // Code below changes current page, previous page, current list, and current task
-  const [currentPage, setCurrentPage] = useState("Home");
+  const [currentPage, setCurrentPage] = useState(
+    user ? "Home" : "AuthenticationPage"
+  );
+
+  // user is initially null when app first loads, even if user is signed in.
+  // This ensures that the Home page (not an empty AuthenticationPage) shows when user is signed in and refreshes the page.
+  useEffect(() => {
+    user ? setCurrentPage("Home") : setCurrentPage("AuthenticationPage");
+  }, [user]);
+
   const [prevPage, setPrevPage] = useState("Home");
   const [currentListId, setCurrentListId] = useState();
   const [currentTaskId, setCurrentTaskId] = useState();
@@ -101,17 +133,6 @@ function App() {
   function handleChangeTask(newTaskId) {
     setCurrentTaskId(newTaskId);
   }
-
-  // Code below gets data (lists) and tasks from database using Firebase queries
-  const listCollectionName = "lists";
-  const errorCollectionName = "errors";
-  const taskSubcollectionName = "tasks";
-
-  // Get data (lists) from Firebase
-  const listsCollectionRef = collection(db, listCollectionName);
-  const listsQuery = query(listsCollectionRef, orderBy("name")); // by default, sort lists alphabetically by name
-  const [dbData, dataLoading, dataError] = useCollectionData(listsQuery);
-  const data = dbData ? dbData : [];
 
   // Get tasks (current list's tasks) from Firebase
   const currentListIdWithDefault = currentListId ? currentListId : "none";
@@ -239,7 +260,7 @@ function App() {
     setCurrentPage(
       "SingleListPage"
     ); /* before deleting task in db, redirect to Single List Page */
-    handleDeleteTask(taskId)
+    handleDeleteTask(taskId);
   }
 
   function handleDeleteTask(taskId) {
@@ -333,6 +354,8 @@ function App() {
     const listId = generateUniqueID();
     const newList = {
       id: listId,
+      owner: user.uid,
+      sharedWith: [],
       creationTime: serverTimestamp(),
       modifiedTime: serverTimestamp(),
       name: name,
@@ -391,196 +414,211 @@ function App() {
     setShowDeleteAlert(!showDeleteAlert);
   }
 
-  return isLargeScreen ? (
-    <Fragment>
-      <LargeScreenContent
-        isLargeScreen={isLargeScreen}
-        showLargeScreenPopup={showLargeScreenPopup}
-        onToggleLargeScreenPopup={toggleLargeScreenPopup}
-        inMenuMode={inMenuMode}
-        menuModeType={menuModeType}
-        setMenuModeType={setMenuModeType}
-        onChangeMenuMode={toggleMenuMode}
-        data={data}
-        dataLoading={dataLoading}
-        currentListId={currentListId}
-        currentTaskId={currentTaskId}
-        currentPage={currentPage}
-        onDeleteList={handleDeleteList}
-        onChangePage={handleChangePage}
-        onChangeList={handleChangeList}
-        onToggleDeleteAlert={handleToggleDeleteAlert}
-        showDeleteAlert={showDeleteAlert}
-        db={db}
-        tasksQuery={tasksQuery}
-        prevPage={prevPage}
-        onChangeTask={handleChangeTask}
-        onCreateTask={handleCreateTask}
-        onEditTask={handleEditTask}
-        onEditAllTaskFields={handleEditTaskAllFields}
-        onDeleteTask={handleDeleteTaskWithPageChange}
-        onCreateList={handleCreateList}
-        onEditList={handleEditList}
-        onEditListAppearance={handleEditListAppearance}
-        onDeleteCompleted={handleDeleteCompletedTasks}
-        onDeleteOverdue={handleDeleteOverdueTasks}
-        onDeleteAllTasks={handleDeleteAllTasks}
-        listTasksPrimarySortField={listTasksPrimarySortField}
-        listTasksPrimarySortDirection={listTasksPrimarySortDirection}
-        onChangeSort={handleChangeSort}
-      />
-    </Fragment>
-  ) : (
-    <Fragment>
-      {dataError ? (
-        <Fragment>
-          <HomeLoadingPage />
-          <ErrorAlert onCreateErrorReport={handleCreateErrorReport} />
-        </Fragment>
-      ) : null}
-      {!isLargeScreen && currentPage === "Home" && dataLoading ? (
-        <HomeLoadingPage />
-      ) : null}
-      {currentPage === "Home" && !dataLoading ? (
-        <Home
-          data={data}
-          isNarrowScreen={isNarrowScreen}
-          currentListId={currentListId}
-          currentTaskId={currentTaskId}
-          currentPage={currentPage}
-          onDeleteList={handleDeleteList}
-          onChangePage={handleChangePage}
-          onChangeList={handleChangeList}
-          onToggleDeleteAlert={handleToggleDeleteAlert}
-          showDeleteAlert={showDeleteAlert}
-        />
-      ) : null}
-      {currentPage === "HomeSearchPage" ? (
-        <HomeSearchPage
-          data={data}
-          prevPage={prevPage}
-          currentListId={currentListId}
-          currentTaskId={currentTaskId}
-          onChangePage={handleChangePage}
-          onChangeList={handleChangeList}
-          onChangeTask={handleChangeTask}
-          onDeleteList={handleDeleteList}
-          onToggleDeleteAlert={handleToggleDeleteAlert}
-          showDeleteAlert={showDeleteAlert}
-        />
-      ) : null}
-      {currentPage === "SingleListPage" ? (
-        <SingleListPage
+  return user ? (
+    isLargeScreen ? (
+      <Fragment>
+        <LargeScreenContent
+          auth={auth}
+          isLargeScreen={isLargeScreen}
+          showLargeScreenPopup={showLargeScreenPopup}
+          onToggleLargeScreenPopup={toggleLargeScreenPopup}
           inMenuMode={inMenuMode}
           menuModeType={menuModeType}
           setMenuModeType={setMenuModeType}
           onChangeMenuMode={toggleMenuMode}
-          db={db}
           data={data}
-          tasksQuery={tasksQuery}
-          prevPage={prevPage}
+          dataLoading={dataLoading}
           currentListId={currentListId}
           currentTaskId={currentTaskId}
           currentPage={currentPage}
+          onDeleteList={handleDeleteList}
           onChangePage={handleChangePage}
+          onChangeList={handleChangeList}
+          onToggleDeleteAlert={handleToggleDeleteAlert}
+          showDeleteAlert={showDeleteAlert}
+          db={db}
+          tasksQuery={tasksQuery}
+          prevPage={prevPage}
           onChangeTask={handleChangeTask}
+          onCreateTask={handleCreateTask}
           onEditTask={handleEditTask}
+          onEditAllTaskFields={handleEditTaskAllFields}
+          onDeleteTask={handleDeleteTaskWithPageChange}
+          onCreateList={handleCreateList}
           onEditList={handleEditList}
+          onEditListAppearance={handleEditListAppearance}
           onDeleteCompleted={handleDeleteCompletedTasks}
           onDeleteOverdue={handleDeleteOverdueTasks}
           onDeleteAllTasks={handleDeleteAllTasks}
-          onDeleteList={handleDeleteList}
-          onCreateTask={handleChangeTask}
-          onToggleDeleteAlert={handleToggleDeleteAlert}
           listTasksPrimarySortField={listTasksPrimarySortField}
           listTasksPrimarySortDirection={listTasksPrimarySortDirection}
           onChangeSort={handleChangeSort}
+          onCreateErrorReport={handleCreateErrorReport}
         />
+      </Fragment>
+    ) : (
+      <Fragment>
+        {dataError ? (
+          <Fragment>
+            <HomeLoadingPage />
+            <ErrorAlert onCreateErrorReport={handleCreateErrorReport} />
+          </Fragment>
+        ) : null}
+        {!isLargeScreen && currentPage === "Home" && dataLoading ? (
+          <HomeLoadingPage />
+        ) : null}
+        {currentPage === "Home" && !dataLoading ? (
+          <Home
+            auth={auth}
+            data={data}
+            isNarrowScreen={isNarrowScreen}
+            currentListId={currentListId}
+            currentTaskId={currentTaskId}
+            currentPage={currentPage}
+            onDeleteList={handleDeleteList}
+            onChangePage={handleChangePage}
+            onChangeList={handleChangeList}
+            onToggleDeleteAlert={handleToggleDeleteAlert}
+            showDeleteAlert={showDeleteAlert}
+          />
+        ) : null}
+        {currentPage === "HomeSearchPage" ? (
+          <HomeSearchPage
+            data={data}
+            prevPage={prevPage}
+            currentListId={currentListId}
+            currentTaskId={currentTaskId}
+            onChangePage={handleChangePage}
+            onChangeList={handleChangeList}
+            onChangeTask={handleChangeTask}
+            onDeleteList={handleDeleteList}
+            onToggleDeleteAlert={handleToggleDeleteAlert}
+            showDeleteAlert={showDeleteAlert}
+          />
+        ) : null}
+        {currentPage === "SingleListPage" ? (
+          <SingleListPage
+            inMenuMode={inMenuMode}
+            menuModeType={menuModeType}
+            setMenuModeType={setMenuModeType}
+            onChangeMenuMode={toggleMenuMode}
+            db={db}
+            data={data}
+            tasksQuery={tasksQuery}
+            prevPage={prevPage}
+            currentListId={currentListId}
+            currentTaskId={currentTaskId}
+            currentPage={currentPage}
+            onChangePage={handleChangePage}
+            onChangeTask={handleChangeTask}
+            onEditTask={handleEditTask}
+            onEditList={handleEditList}
+            onDeleteCompleted={handleDeleteCompletedTasks}
+            onDeleteOverdue={handleDeleteOverdueTasks}
+            onDeleteAllTasks={handleDeleteAllTasks}
+            onDeleteList={handleDeleteList}
+            onCreateTask={handleChangeTask}
+            onToggleDeleteAlert={handleToggleDeleteAlert}
+            listTasksPrimarySortField={listTasksPrimarySortField}
+            listTasksPrimarySortDirection={listTasksPrimarySortDirection}
+            onChangeSort={handleChangeSort}
+            onCreateErrorReport={handleCreateErrorReport}
+          />
+        ) : null}
+        {currentPage === "ListSearchPage" ? (
+          <ListSearchPage
+            data={data}
+            tasks={tasks}
+            prevPage={prevPage}
+            currentListId={currentListId}
+            currentTaskId={currentTaskId}
+            onChangePage={handleChangePage}
+            onChangeTask={handleChangeTask}
+          />
+        ) : null}
+        {currentPage === "ViewTaskPage" ? (
+          <ViewEditCreateTaskPage
+            tasks={tasks}
+            prevPage={prevPage}
+            data={data}
+            currentListId={currentListId}
+            currentTaskId={currentTaskId}
+            onChangePage={handleChangePage}
+            inEditTaskMode={false}
+            inCreateTaskMode={false}
+          />
+        ) : null}
+        {currentPage === "EditTaskPage" ? (
+          <ViewEditCreateTaskPage
+            tasks={tasks}
+            prevPage={prevPage}
+            data={data}
+            currentListId={currentListId}
+            currentTaskId={currentTaskId}
+            onChangePage={handleChangePage}
+            onCreateTask={handleCreateTask}
+            onDeleteTask={handleDeleteTaskWithPageChange}
+            onEditAllTaskFields={handleEditTaskAllFields}
+            inEditTaskMode={true}
+            inCreateTaskMode={false}
+            onToggleDeleteAlert={handleToggleDeleteAlert}
+            showDeleteAlert={showDeleteAlert}
+          />
+        ) : null}
+        {currentPage === "CreateTaskPage" ? (
+          <ViewEditCreateTaskPage
+            tasks={tasks}
+            prevPage={prevPage}
+            data={data}
+            currentListId={currentListId}
+            currentTaskId={currentTaskId}
+            onChangePage={handleChangePage}
+            onDeleteTask={handleDeleteTaskWithPageChange}
+            onCreateTask={handleCreateTask}
+            onEditAllTaskFields={handleEditTaskAllFields}
+            inEditTaskMode={false}
+            inCreateTaskMode={true}
+          />
+        ) : null}
+        {currentPage === "EditListPage" ? (
+          <EditCreateListPage
+            data={data}
+            prevPage={prevPage}
+            currentListId={currentListId}
+            onEditListAppearance={handleEditListAppearance}
+            onChangePage={handleChangePage}
+            onChangeList={handleChangeList}
+            onDeleteList={handleDeleteList}
+            onCreateList={handleCreateList}
+            inEditListMode={true}
+            inCreateListMode={false}
+            onToggleDeleteAlert={handleToggleDeleteAlert}
+            showDeleteAlert={showDeleteAlert}
+          />
+        ) : null}
+        {currentPage === "CreateListPage" ? (
+          <EditCreateListPage
+            data={data}
+            prevPage={prevPage}
+            currentListId={currentListId}
+            onEditListAppearance={handleEditListAppearance}
+            onCreateList={handleCreateList}
+            onChangeList={handleChangeList}
+            onChangePage={handleChangePage}
+            onDeleteList={handleDeleteList}
+            inEditListMode={false}
+            inCreateListMode={true}
+          />
+        ) : null}
+      </Fragment>
+    )
+  ) : (
+    <Fragment>
+      {currentPage === "AuthenticationPage" ? (
+        <AuthenticationPage auth={auth} onChangePage={handleChangePage} />
       ) : null}
-      {currentPage === "ListSearchPage" ? (
-        <ListSearchPage
-          data={data}
-          tasks={tasks}
-          prevPage={prevPage}
-          currentListId={currentListId}
-          currentTaskId={currentTaskId}
-          onChangePage={handleChangePage}
-          onChangeTask={handleChangeTask}
-        />
-      ) : null}
-      {currentPage === "ViewTaskPage" ? (
-        <ViewEditCreateTaskPage
-          tasks={tasks}
-          prevPage={prevPage}
-          data={data}
-          currentListId={currentListId}
-          currentTaskId={currentTaskId}
-          onChangePage={handleChangePage}
-          inEditTaskMode={false}
-          inCreateTaskMode={false}
-        />
-      ) : null}
-      {currentPage === "EditTaskPage" ? (
-        <ViewEditCreateTaskPage
-          tasks={tasks}
-          prevPage={prevPage}
-          data={data}
-          currentListId={currentListId}
-          currentTaskId={currentTaskId}
-          onChangePage={handleChangePage}
-          onCreateTask={handleCreateTask}
-          onDeleteTask={handleDeleteTaskWithPageChange}
-          onEditAllTaskFields={handleEditTaskAllFields}
-          inEditTaskMode={true}
-          inCreateTaskMode={false}
-          onToggleDeleteAlert={handleToggleDeleteAlert}
-          showDeleteAlert={showDeleteAlert}
-        />
-      ) : null}
-      {currentPage === "CreateTaskPage" ? (
-        <ViewEditCreateTaskPage
-          tasks={tasks}
-          prevPage={prevPage}
-          data={data}
-          currentListId={currentListId}
-          currentTaskId={currentTaskId}
-          onChangePage={handleChangePage}
-          onDeleteTask={handleDeleteTaskWithPageChange}
-          onCreateTask={handleCreateTask}
-          onEditAllTaskFields={handleEditTaskAllFields}
-          inEditTaskMode={false}
-          inCreateTaskMode={true}
-        />
-      ) : null}
-      {currentPage === "EditListPage" ? (
-        <EditCreateListPage
-          data={data}
-          prevPage={prevPage}
-          currentListId={currentListId}
-          onEditListAppearance={handleEditListAppearance}
-          onChangePage={handleChangePage}
-          onChangeList={handleChangeList}
-          onDeleteList={handleDeleteList}
-          onCreateList={handleCreateList}
-          inEditListMode={true}
-          inCreateListMode={false}
-          onToggleDeleteAlert={handleToggleDeleteAlert}
-          showDeleteAlert={showDeleteAlert}
-        />
-      ) : null}
-      {currentPage === "CreateListPage" ? (
-        <EditCreateListPage
-          data={data}
-          prevPage={prevPage}
-          currentListId={currentListId}
-          onEditListAppearance={handleEditListAppearance}
-          onCreateList={handleCreateList}
-          onChangeList={handleChangeList}
-          onChangePage={handleChangePage}
-          onDeleteList={handleDeleteList}
-          inEditListMode={false}
-          inCreateListMode={true}
-        />
+      {currentPage === "SignUpPage" ? (
+        <SignUpPage auth={auth} onChangePage={handleChangePage} />
       ) : null}
     </Fragment>
   );

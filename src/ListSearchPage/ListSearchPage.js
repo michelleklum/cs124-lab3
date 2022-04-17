@@ -17,9 +17,10 @@ const filterTasksBySearch = (tasks, query) => {
 function ListSearchPage(props) {
   const list = props.data.find((list) => list.id === props.currentListId);
 
-  const tasksToShow = list.hideCompletedTasks
-    ? props.tasks.filter((task) => !task.isCompleted)
-    : props.tasks;
+  const tasksToShow =
+    list.hideCompletedTasks && props.tasks
+      ? props.tasks.filter((task) => !task.isCompleted)
+      : props.tasks;
 
   const completedTasks = tasksToShow.filter((task) => task.isCompleted);
   const incompleteTasks = tasksToShow.filter((task) => !task.isCompleted);

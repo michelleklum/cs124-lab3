@@ -34,6 +34,7 @@ function LargeScreenSubpage(props) {
       onChangeSort={props.onChangeSort}
       searchQuery={props.searchQuery}
       setSearchQuery={props.setSearchQuery}
+      onCreateErrorReport={props.onCreateErrorReport}
     />
   ) : !props.loading ? (
     <div className="welcome">

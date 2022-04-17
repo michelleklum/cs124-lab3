@@ -8,6 +8,7 @@ function Home(props) {
     <div>
       {!props.isLargeScreen && (
         <HomeTopBar
+          auth={props.auth}
           isNarrowScreen={props.isNarrowScreen}
           onChangePage={props.onChangePage}
           onChangeList={props.onChangeList}

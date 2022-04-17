@@ -8,12 +8,12 @@ import LargeScreenMenuWithButton from "./LargeScreenMenuWithButton";
 function LargeScreenSubpageHeader(props) {
   return (
     <div className="large-screen-header">
-      <h3 className="single-list-name">{props.list.name}</h3>
+      <h3 className="single-list-name">{props.list && props.list.name}</h3>
       <div className="large-screen-icons right-aligned">
         {props.inMenuMode ? null : (
           <Fragment>
             <LargeScreenSearchBar
-              listName={props.list.name}
+              listName={props.list && props.list.name}
               onChangePage={props.onChangePage}
               searchQuery={props.searchQuery}
               setSearchQuery={props.setSearchQuery}

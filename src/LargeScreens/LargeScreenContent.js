@@ -57,14 +57,17 @@ function LargeScreenContent(props) {
 
   return (
     <Fragment>
-      <LargeScreenTopBar />
+      <LargeScreenTopBar auth={props.auth} onChangePage={props.onChangePage} />
       {props.dataLoading && (
         <div className="main-content">
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar loading={props.dataLoading} />
           </div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
-            <LargeScreenSubpage loading={props.dataLoading} />
+            <LargeScreenSubpage
+              loading={props.dataLoading}
+              onCreateErrorReport={props.onCreateErrorReport}
+            />
           </div>
         </div>
       )}
@@ -83,7 +86,10 @@ function LargeScreenContent(props) {
             />
           </div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
-            <LargeScreenSubpage loading={tasksLoading} />
+            <LargeScreenSubpage
+              loading={tasksLoading}
+              onCreateErrorReport={props.onCreateErrorReport}
+            />
           </div>
         </div>
       )}
@@ -159,6 +165,7 @@ function LargeScreenContent(props) {
                 onChangeSort={props.onChangeSort}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
+                onCreateErrorReport={props.onCreateErrorReport}
               />
             )}
           </div>

@@ -1,6 +1,7 @@
 import "./LargeScreenTopBar.css";
+import SignOutButton from "../Authentication/SignOutButton";
 
-function LargeScreenTopBar() {
+function LargeScreenTopBar(props) {
   return (
     <div className="top-bar" id="home-top-bar-large-screen">
       <div className="top-bar-content">
@@ -13,6 +14,7 @@ function LargeScreenTopBar() {
           />
         </div>
       </div>
+      <SignOutButton auth={props.auth} onChangePage={props.onChangePage} />
     </div>
   );
 }

@@ -60,7 +60,8 @@ function App() {
   // Get data (lists) from Firebase
   const listsCollectionRef = collection(db, listCollectionName);
   const listsQuery =
-    user && query(listsCollectionRef, where("owner", "==", user.uid)); // by default, sort lists alphabetically by name
+    user &&
+    query(listsCollectionRef, where("owner", "==", user.uid), orderBy("name")); // by default, sort lists alphabetically by name
   const [dbData, dataLoading, dataError] = useCollectionData(listsQuery);
   const data = dbData ? dbData : [];
 

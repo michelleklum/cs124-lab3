@@ -48,7 +48,10 @@ function SingleListPage(props) {
             data={props.data}
             currentListId={props.currentListId}
           />
-          <ErrorAlert onCreateErrorReport={props.onCreateErrorReport} />
+          <ErrorAlert
+            error={tasksError}
+            onCreateErrorReport={props.onCreateErrorReport}
+          />
         </Fragment>
       ) : tasksLoading && !props.isLargeScreen ? (
         <SingleListLoadingPage

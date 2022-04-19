@@ -412,11 +412,12 @@ function App() {
     setDoc(docRef, newTask).then(() => handleChangePage("SingleListPage"));
   }
 
-  function handleCreateErrorReport() {
+  function handleCreateErrorReport(error) {
     const errorId = generateUniqueID();
     const newError = {
       id: errorId,
       errorTime: serverTimestamp(),
+      errorMessage: error.message,
     };
     const docRef = doc(db, errorCollectionName, errorId);
     setDoc(docRef, newError);
@@ -476,7 +477,10 @@ function App() {
         {dataError ? (
           <Fragment>
             <HomeLoadingPage />
-            <ErrorAlert onCreateErrorReport={handleCreateErrorReport} />
+            <ErrorAlert
+              error={dataError}
+              onCreateErrorReport={handleCreateErrorReport}
+            />
           </Fragment>
         ) : null}
         {!isLargeScreen && currentPage === "Home" && dataLoading ? (

@@ -6,13 +6,9 @@ import DeleteTaskListBar from "../Global/DeleteTaskListBar";
 import DeleteAlert from "../Global/DeleteAlert";
 
 function EditCreateListPage(props) {
-  const currentList = props.data.find(
-    (list) => list.id === props.currentListId
-  );
-  const list =
-    currentList && !props.inCreateListMode
-      ? currentList
-      : { name: "", icon: "" };
+  const list = !props.inCreateListMode
+    ? props.data.find((list) => list.id === props.currentListId)
+    : { name: "", icon: "" };
 
   const [tempListName, setTempListName] = useState(list.name);
   const [tempSelectedIcon, setTempSelectedIcon] = useState(list.icon);

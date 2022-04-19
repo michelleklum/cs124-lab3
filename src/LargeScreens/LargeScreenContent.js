@@ -73,7 +73,7 @@ function LargeScreenContent(props) {
           </div>
         </div>
       )}
-      {!props.dataLoading && tasksLoading && (
+      {!props.dataLoading && (tasksLoading || tasksError) && (
         <div className="main-content">
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar
@@ -95,7 +95,7 @@ function LargeScreenContent(props) {
           </div>
         </div>
       )}
-      {!tasksLoading && !tasksError && (
+      {!tasksLoading && (
         <div className="main-content">
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar

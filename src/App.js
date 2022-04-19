@@ -61,7 +61,11 @@ function App() {
   const listsCollectionRef = collection(db, listCollectionName);
   const listsQuery =
     user &&
-    query(listsCollectionRef, where("owner", "==", user.uid), orderBy("name")); // by default, sort lists alphabetically by name
+    query(
+      listsCollectionRef,
+      where("owner", "==", user.uid),
+      orderBy("nameLowercasedForSorting")
+    ); // by default, sort lists alphabetically by name
   const [dbData, dataLoading, dataError] = useCollectionData(listsQuery);
   const data = dbData ? dbData : [];
 
@@ -282,6 +286,14 @@ function App() {
       modifiedTime: serverTimestamp(),
       [listField]: newValue,
     });
+
+    if (listField === "name") {
+      updateDoc(listDocRef, {
+        modifiedTime: serverTimestamp(),
+        nameLowercasedForSorting: newValue.toLowerCase(),
+      });
+    }
+
     // don't change page because handleEditList is used when SingleListPage is in Menu Mode
     // which is not actually a different page from the SingleListPage not in Menu Mode
   }
@@ -291,6 +303,7 @@ function App() {
     updateDoc(listDocRef, {
       modifiedTime: serverTimestamp(),
       name: newName,
+      nameLowercasedForSorting: newName.toLowerCase(),
       icon: newIcon,
     }).then(() => handleChangePage(prevPage));
   }
@@ -360,6 +373,7 @@ function App() {
       creationTime: serverTimestamp(),
       modifiedTime: serverTimestamp(),
       name: name,
+      nameLowercasedForSorting: name.toLowerCase(),
       icon: icon,
       hideCompletedTasks: false,
     };

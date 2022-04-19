@@ -1,6 +1,7 @@
 import { React, Fragment } from "react";
 import "./ListMenu.css";
 import EditListBar from "./EditListBar";
+import SharingBar from "./SharingBar";
 import HideCompletedBar from "./HideCompletedBar";
 import SortBar from "./SortBar";
 import SortByFieldBar from "./SortByFieldBar";
@@ -23,6 +24,12 @@ function ListMenu(props) {
           className={`single-list-page-menu general-menu ${screenSizeClassName}`}
         >
           <EditListBar
+            taskList={taskList}
+            onChangePage={props.onChangePage}
+            isLargeScreen={props.isLargeScreen}
+            onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+          />
+          <SharingBar
             taskList={taskList}
             onChangePage={props.onChangePage}
             isLargeScreen={props.isLargeScreen}

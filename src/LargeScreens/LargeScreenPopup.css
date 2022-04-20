@@ -25,6 +25,6 @@
   width: 500px;
   height: 640px;
   overflow: hidden; /* without this, the popup will have excees whitespace on the bottom */
-  overflow-y: scroll;
+  overflow-y: scroll; /* make popup scrollable if any content exceeds its height */
   z-index: 1; /* set z-index: 1 so popup appears in front of everything else */
 }

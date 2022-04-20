@@ -34,6 +34,8 @@ function HomeTopBar(props) {
               <HomeAccountButton
                 auth={props.auth}
                 onChangePage={props.onChangePage}
+                onChangeList={props.onChangeList}
+                onChangeTask={props.onChangeTask}
               />
               <HomeSearchButton onChangePage={props.onChangePage} />
             </div>

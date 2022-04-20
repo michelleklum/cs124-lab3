@@ -4,11 +4,12 @@ import "./App.css";
 import { useMediaQuery } from "react-responsive";
 import Home from "./Home/Home";
 import HomeSearchPage from "./HomeSearchPage/HomeSearchPage";
+import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
 import ListSearchPage from "./ListSearchPage/ListSearchPage";
 import SingleListPage from "./SingleListPage/SingleListPage";
 import ViewEditCreateTaskPage from "./ViewEditCreateTaskPage/ViewEditCreateTaskPage";
 import EditCreateListPage from "./EditCreateListPage/EditCreateListPage";
-import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
+import SharingPage from "./Sharing/SharingPage";
 import ErrorAlert from "./Global/ErrorAlert";
 import LargeScreenContent from "./LargeScreens/LargeScreenContent";
 import AuthenticationPage from "./Authentication/AuthenticationPage";
@@ -63,7 +64,7 @@ function App() {
     user &&
     query(
       listsCollectionRef,
-      where("owner", "==", user.uid),
+      where("sharedWith", "array-contains", user.email),
       orderBy("nameLowercasedForSorting")
     ); // by default, sort lists alphabetically by name
   const [dbData, dataLoading, dataError] = useCollectionData(listsQuery);
@@ -369,7 +370,8 @@ function App() {
     const newList = {
       id: listId,
       owner: user.uid,
-      sharedWith: [],
+      ownerEmail: user.email,
+      sharedWith: [user.email],
       creationTime: serverTimestamp(),
       modifiedTime: serverTimestamp(),
       name: name,
@@ -435,6 +437,7 @@ function App() {
       <Fragment>
         <LargeScreenContent
           auth={auth}
+          user={user}
           isLargeScreen={isLargeScreen}
           showLargeScreenPopup={showLargeScreenPopup}
           onToggleLargeScreenPopup={toggleLargeScreenPopup}
@@ -470,7 +473,6 @@ function App() {
           listTasksPrimarySortDirection={listTasksPrimarySortDirection}
           onChangeSort={handleChangeSort}
           onCreateErrorReport={handleCreateErrorReport}
-          user={user}
         />
       </Fragment>
     ) : (
@@ -490,6 +492,7 @@ function App() {
         {currentPage === "Home" && !dataLoading ? (
           <Home
             auth={auth}
+            user={user}
             data={data}
             isNarrowScreen={isNarrowScreen}
             currentListId={currentListId}
@@ -498,12 +501,14 @@ function App() {
             onDeleteList={handleDeleteList}
             onChangePage={handleChangePage}
             onChangeList={handleChangeList}
+            onChangeTask={handleChangeTask}
             onToggleDeleteAlert={handleToggleDeleteAlert}
             showDeleteAlert={showDeleteAlert}
           />
         ) : null}
         {currentPage === "HomeSearchPage" ? (
           <HomeSearchPage
+            user={user}
             data={data}
             prevPage={prevPage}
             currentListId={currentListId}
@@ -602,6 +607,7 @@ function App() {
         ) : null}
         {currentPage === "EditListPage" ? (
           <EditCreateListPage
+            user={user}
             data={data}
             prevPage={prevPage}
             currentListId={currentListId}
@@ -618,6 +624,7 @@ function App() {
         ) : null}
         {currentPage === "CreateListPage" ? (
           <EditCreateListPage
+            user={user}
             data={data}
             prevPage={prevPage}
             currentListId={currentListId}
@@ -628,6 +635,16 @@ function App() {
             onDeleteList={handleDeleteList}
             inEditListMode={false}
             inCreateListMode={true}
+          />
+        ) : null}
+        {currentPage === "SharingPage" ? (
+          <SharingPage
+            user={user}
+            data={data}
+            prevPage={prevPage}
+            currentListId={currentListId}
+            onChangePage={handleChangePage}
+            onEditList={handleEditList}
           />
         ) : null}
         {currentPage === "UserAccountPage" ? (

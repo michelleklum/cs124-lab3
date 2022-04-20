@@ -6,8 +6,9 @@ function SharingBar(props) {
     props.isLargeScreen && props.onToggleLargeScreenPopup();
   }
 
+  // Owner's email will always be in sharedWith, so list is really only shared with others if length of sharedWith array is > 1
   const sharingIconClassName =
-    props.taskList.sharedWith.length > 0 ? "fa-users" : "fa-user-lock";
+    props.taskList.sharedWith.length > 1 ? "fa-users" : "fa-user-lock";
 
   return (
     <Fragment>

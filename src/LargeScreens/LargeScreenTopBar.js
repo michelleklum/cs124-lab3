@@ -17,7 +17,8 @@ function LargeScreenTopBar(props) {
           <HomeAccountButton
             onChangePage={props.onChangePage}
             isLargeScreen={props.isLargeScreen}
-            onToggleLargeScreenPopup={props.onToggleLargeScreenPopup} />
+            onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+          />
         </div>
       </div>
     </div>

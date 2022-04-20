@@ -7,6 +7,8 @@ function SignOutButton(props) {
       aria-label="Sign Out"
       onClick={() => {
         props.onChangePage("SignInPage");
+        props.onChangeList(null);
+        props.onChangeTask(null);
         signOut(props.auth);
       }}
     >

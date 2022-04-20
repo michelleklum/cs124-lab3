@@ -1,7 +1,8 @@
 import "./LargeScreenPopup.css";
 import ViewEditCreateTaskPage from "../ViewEditCreateTaskPage/ViewEditCreateTaskPage";
 import EditCreateListPage from "../EditCreateListPage/EditCreateListPage";
-import UserAccountPage from "../UserAccountPage/UserAccountPage"
+import SharingPage from "../Sharing/SharingPage";
+import UserAccountPage from "../UserAccountPage/UserAccountPage";
 import FocusTrap from "focus-trap-react";
 
 function LargeScreenPopup(props) {
@@ -65,6 +66,7 @@ function LargeScreenPopup(props) {
             <EditCreateListPage
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               prevPage={props.prevPage}
               currentListId={props.currentListId}
@@ -83,6 +85,7 @@ function LargeScreenPopup(props) {
             <EditCreateListPage
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               prevPage={props.prevPage}
               currentListId={props.currentListId}
@@ -93,6 +96,16 @@ function LargeScreenPopup(props) {
               onDeleteList={props.onDeleteList}
               inEditListMode={false}
               inCreateListMode={true}
+            />
+          ) : null}
+          {props.currentPage === "SharingPage" ? (
+            <SharingPage
+              user={props.user}
+              data={props.data}
+              prevPage={props.prevPage}
+              currentListId={props.currentListId}
+              onChangePage={props.onChangePage}
+              onEditList={props.onEditList}
             />
           ) : null}
           {props.currentPage === "UserAccountPage" ? (

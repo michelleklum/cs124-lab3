@@ -62,8 +62,11 @@ function LargeScreenContent(props) {
       <LargeScreenTopBar
         auth={props.auth}
         onChangePage={props.onChangePage}
+        onChangeList={props.onChangeList}
+        onChangeTask={props.onChangeTask}
         isLargeScreen={props.isLargeScreen}
-        onToggleLargeScreenPopup={props.onToggleLargeScreenPopup} />
+        onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+      />
       {props.dataLoading && (
         <div className="main-content">
           <div className={`side-bar ${unscrollableClassName}`}>
@@ -83,10 +86,12 @@ function LargeScreenContent(props) {
             <LargeScreenSideBar
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
               onChangeList={props.onChangeList}
+              onChangeTask={props.onChangeTask}
               onDeleteList={props.onDeleteList}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
             />
@@ -105,10 +110,12 @@ function LargeScreenContent(props) {
             <LargeScreenSideBar
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
               onChangeList={props.onChangeList}
+              onChangeTask={props.onChangeTask}
               onDeleteList={props.onDeleteList}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
               setSearchQuery={setSearchQuery}
@@ -179,6 +186,7 @@ function LargeScreenContent(props) {
             <LargeScreenPopup
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               tasks={tasks}
               currentPage={props.currentPage}
@@ -193,6 +201,7 @@ function LargeScreenContent(props) {
               onDeleteTask={props.onDeleteTask}
               onEditAllTaskFields={props.onEditAllTaskFields}
               onEditListAppearance={props.onEditListAppearance}
+              onEditList={props.onEditList}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
               showDeleteAlert={props.showDeleteAlert}
               user={props.user}

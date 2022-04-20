@@ -14,7 +14,12 @@ function LargeScreenTopBar(props) {
           />
         </div>
       </div>
-      <SignOutButton auth={props.auth} onChangePage={props.onChangePage} />
+      <SignOutButton
+        auth={props.auth}
+        onChangePage={props.onChangePage}
+        onChangeList={props.onChangeList}
+        onChangeTask={props.onChangeTask}
+      />
     </div>
   );
 }

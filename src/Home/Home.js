@@ -12,6 +12,7 @@ function Home(props) {
           isNarrowScreen={props.isNarrowScreen}
           onChangePage={props.onChangePage}
           onChangeList={props.onChangeList}
+          onChangeTask={props.onChangeTask}
           isLoading={false}
         />
       )}
@@ -22,6 +23,7 @@ function Home(props) {
       )}
       <ListOfLists
         isLargeScreen={props.isLargeScreen}
+        user={props.user}
         data={props.data}
         currentListId={props.currentListId}
         onChangePage={props.onChangePage}

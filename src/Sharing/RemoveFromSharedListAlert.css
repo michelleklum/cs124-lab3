@@ -1,0 +1,49 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(9, 15, 16, 0.4);
+  z-index: 10;
+}
+
+.alert {
+  background-color: #feffff;
+  color: #17252a;
+  border-radius: 7pt;
+  margin: 0 auto;
+  top: 35%;
+  height: 100px;
+  width: 200px;
+  position: relative;
+  padding: min(20px, 4%);
+}
+
+.alert-description {
+  margin-top: 2px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.alert-buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.alert-button {
+  width: 40% !important;
+  height: 35px !important;
+  border-radius: 5px;
+  text-align: center;
+  color: #feffff;
+}
+
+.alert-cancel {
+  background: #2b7a78;
+}
+
+.alert-yes {
+  background: #ed554a;
+}

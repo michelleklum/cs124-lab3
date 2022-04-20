@@ -1,6 +1,7 @@
 import "./LargeScreenPopup.css";
 import ViewEditCreateTaskPage from "../ViewEditCreateTaskPage/ViewEditCreateTaskPage";
 import EditCreateListPage from "../EditCreateListPage/EditCreateListPage";
+import SharingPage from "../Sharing/SharingPage";
 import FocusTrap from "focus-trap-react";
 
 function LargeScreenPopup(props) {
@@ -92,6 +93,16 @@ function LargeScreenPopup(props) {
               onDeleteList={props.onDeleteList}
               inEditListMode={false}
               inCreateListMode={true}
+            />
+          ) : null}
+          {props.currentPage === "SharingPage" ? (
+            <SharingPage
+              user={props.user}
+              data={props.data}
+              prevPage={props.prevPage}
+              currentListId={props.currentListId}
+              onChangePage={props.onChangePage}
+              onEditList={props.onEditList}
             />
           ) : null}
         </div>

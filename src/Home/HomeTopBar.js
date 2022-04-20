@@ -34,6 +34,8 @@ function HomeTopBar(props) {
               <SignOutButton
                 auth={props.auth}
                 onChangePage={props.onChangePage}
+                onChangeList={props.onChangeList}
+                onChangeTask={props.onChangeTask}
               />
               <HomeSearchButton onChangePage={props.onChangePage} />
             </Fragment>

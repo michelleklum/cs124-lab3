@@ -1,0 +1,34 @@
+#sharing-page {
+  display: flex;
+  flex-direction: column;
+  background: #feffff;
+  min-height: 640px; /* to make white background extend at least 640px for large screens */
+}
+
+/* margin-left: auto and margin-right: auto and width: 90% are to center list of tasks, leaving 5% width on each side */
+.sharing-page-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.sharing-page-content i {
+  color: #91c6c3;
+  font-size: 25px;
+}
+
+p {
+  font-size: 12pt;
+}
+
+.sharing-button {
+  font-size: 11pt;
+  font-weight: 600;
+  margin-top: 10px;
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  text-align: center;
+  color: #ed554a;
+  border: #ed554a 2px solid;
+}

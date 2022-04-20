@@ -1,7 +1,7 @@
 import { React, Fragment } from "react";
 import "./HomeTopBar.css";
 import HomeSearchButton from "./HomeSearchButton";
-import SignOutButton from "../Authentication/SignOutButton";
+import HomeAccountButton from "./HomeAccountButton";
 
 function HomeTopBar(props) {
   return (
@@ -30,13 +30,13 @@ function HomeTopBar(props) {
         </div>
         <div className="right-aligned">
           {!props.isLoading && (
-            <Fragment>
-              <SignOutButton
+            <div className = "top-bar-buttons">
+              <HomeAccountButton
                 auth={props.auth}
                 onChangePage={props.onChangePage}
               />
               <HomeSearchButton onChangePage={props.onChangePage} />
-            </Fragment>
+            </div>
           )}
         </div>
       </div>

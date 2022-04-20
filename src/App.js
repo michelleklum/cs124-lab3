@@ -13,6 +13,7 @@ import ErrorAlert from "./Global/ErrorAlert";
 import LargeScreenContent from "./LargeScreens/LargeScreenContent";
 import AuthenticationPage from "./Authentication/AuthenticationPage";
 import SignUpPage from "./Authentication/SignUpPage";
+import UserAccountPage from "./UserAccountPage/UserAccountPage"
 
 import { initializeApp } from "firebase/app";
 import {
@@ -430,6 +431,7 @@ function App() {
     setShowDeleteAlert(!showDeleteAlert);
   }
 
+  console.log(currentPage)
   return user ? (
     isLargeScreen ? (
       <Fragment>
@@ -470,6 +472,7 @@ function App() {
           listTasksPrimarySortDirection={listTasksPrimarySortDirection}
           onChangeSort={handleChangeSort}
           onCreateErrorReport={handleCreateErrorReport}
+          user={user}
         />
       </Fragment>
     ) : (
@@ -627,6 +630,13 @@ function App() {
             onDeleteList={handleDeleteList}
             inEditListMode={false}
             inCreateListMode={true}
+          />
+        ) : null}
+        {currentPage === "UserAccountPage" ? (
+          <UserAccountPage
+            onChangePage={handleChangePage}
+            user={user}
+            auth={auth}
           />
         ) : null}
       </Fragment>

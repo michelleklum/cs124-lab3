@@ -1,6 +1,7 @@
 import "./LargeScreenPopup.css";
 import ViewEditCreateTaskPage from "../ViewEditCreateTaskPage/ViewEditCreateTaskPage";
 import EditCreateListPage from "../EditCreateListPage/EditCreateListPage";
+import UserAccountPage from "../UserAccountPage/UserAccountPage"
 import FocusTrap from "focus-trap-react";
 
 function LargeScreenPopup(props) {
@@ -92,6 +93,15 @@ function LargeScreenPopup(props) {
               onDeleteList={props.onDeleteList}
               inEditListMode={false}
               inCreateListMode={true}
+            />
+          ) : null}
+          {props.currentPage === "UserAccountPage" ? (
+            <UserAccountPage
+              isLargeScreen={props.isLargeScreen}
+              onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              onChangePage={props.onChangePage}
+              user={props.user}
+              auth={props.auth}
             />
           ) : null}
         </div>

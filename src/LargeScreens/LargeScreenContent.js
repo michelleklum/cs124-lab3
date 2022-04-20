@@ -59,7 +59,11 @@ function LargeScreenContent(props) {
 
   return (
     <Fragment>
-      <LargeScreenTopBar auth={props.auth} onChangePage={props.onChangePage} />
+      <LargeScreenTopBar
+        auth={props.auth}
+        onChangePage={props.onChangePage}
+        isLargeScreen={props.isLargeScreen}
+        onToggleLargeScreenPopup={props.onToggleLargeScreenPopup} />
       {props.dataLoading && (
         <div className="main-content">
           <div className={`side-bar ${unscrollableClassName}`}>
@@ -191,6 +195,8 @@ function LargeScreenContent(props) {
               onEditListAppearance={props.onEditListAppearance}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
               showDeleteAlert={props.showDeleteAlert}
+              user={props.user}
+              auth={props.auth}
             />
           )}
         </div>

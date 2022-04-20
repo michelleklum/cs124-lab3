@@ -1,4 +1,4 @@
-import { React, Fragment } from "react";
+import { React } from "react";
 import "./HomeTopBar.css";
 import HomeSearchButton from "./HomeSearchButton";
 import HomeAccountButton from "./HomeAccountButton";
@@ -30,7 +30,7 @@ function HomeTopBar(props) {
         </div>
         <div className="right-aligned">
           {!props.isLoading && (
-            <div className = "top-bar-buttons">
+            <div className="top-bar-buttons">
               <HomeAccountButton
                 auth={props.auth}
                 onChangePage={props.onChangePage}

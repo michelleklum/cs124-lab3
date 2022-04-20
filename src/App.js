@@ -428,7 +428,7 @@ function App() {
   function handleToggleDeleteAlert() {
     setShowDeleteAlert(!showDeleteAlert);
   }
-
+  
   return user ? (
     isLargeScreen ? (
       <Fragment>

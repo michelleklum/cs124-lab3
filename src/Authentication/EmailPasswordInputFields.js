@@ -3,7 +3,7 @@ function EmailPasswordInputFields(props) {
         <div className="email-password">
             <div className="auth-input">
                 <input
-                    type="text"
+                    type="email"
                     id="email"
                     name="email"
                     placeholder="Email Address"
@@ -14,7 +14,7 @@ function EmailPasswordInputFields(props) {
             </div>
             <div className="auth-input">
                 <input
-                    type="text"
+                    type="password"
                     id="password"
                     name="password"
                     aria-label="Password"

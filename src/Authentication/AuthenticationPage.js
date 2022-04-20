@@ -8,19 +8,32 @@ function AuthenticationPage(props) {
         {props.isLargeScreen ? (
             <div id="large-screen-authentication">
                 {props.currentPage === "SignInPage" ? (
-                    <SignInPage auth={props.auth} onChangePage={props.onChangePage} />
+                    <SignInPage
+                        auth={props.auth}
+                        user={props.user}
+                        onChangePage={props.onChangePage} />
                 ) : null}
                 {props.currentPage === "SignUpPage" ? (
-                    <SignUpPage auth={props.auth} onChangePage={props.onChangePage} />
+                    <SignUpPage
+                        auth={props.auth}
+                        user={props.user}
+                        onChangePage={props.onChangePage} />
                 ) : null}
             </div>
         ) :
             <div>
                 {props.currentPage === "SignInPage" ? (
-                    <SignInPage auth={props.auth} onChangePage={props.onChangePage} />
+                    <SignInPage
+                        auth={props.auth}
+                        user={props.user}
+                        onChangePage={props.onChangePage}
+                    />
                 ) : null}
                 {props.currentPage === "SignUpPage" ? (
-                    <SignUpPage auth={props.auth} onChangePage={props.onChangePage} />
+                    <SignUpPage
+                        auth={props.auth}
+                        user={props.user}
+                        onChangePage={props.onChangePage} />
                 ) : null}
             </div>}
     </Fragment>

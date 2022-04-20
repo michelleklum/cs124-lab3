@@ -1,7 +1,23 @@
 import { React, useState } from "react";
 import SignInOptions from "./SignInOptions";
+import UsageAlert from "../Global/UsageAlert";
+import {
+  useSignInWithGoogle,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 
 function SignInPage(props) {
+  // State and functions below handle alerts and warnings
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(props.auth);
+  const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
+    useSignInWithEmailAndPassword(props.auth);
+  const [showUsageAlert, setShowUsageAlert] = useState(false);
+
+  function handleToggleUsageAlert() {
+    setShowUsageAlert(!showUsageAlert);
+  }
+
   return (
     <div id="authentication-page">
       <img
@@ -13,7 +29,13 @@ function SignInPage(props) {
       <h2 className="authentication-header">Sign In</h2>
       <SignInOptions
         onChangePage={props.onChangePage}
-        auth={props.auth} />
+        auth={props.auth}
+        user={props.user}
+        signInWithGoogle={signInWithGoogle}
+        signInWithEmailAndPassword={signInWithEmailAndPassword}
+        emailError={emailError}
+        googleError={googleError} 
+        onToggleUsageAlert={handleToggleUsageAlert}/>
       <hr className="auth-line" />
       <div className="sign-up-text">
         <div>
@@ -21,13 +43,22 @@ function SignInPage(props) {
         </div>
         <div>
           <button
-          onClick={() => props.onChangePage("SignUpPage")}>
-          <h3>
-            Sign Up
-          </h3>
-        </button>
+            onClick={() => props.onChangePage("SignUpPage")}>
+            <h3>
+              Sign Up
+            </h3>
+          </button>
         </div>
       </div>
+      {emailError && showUsageAlert ? (<UsageAlert
+        usageErrorMessage={emailError.message}
+        onToggleUsageAlert={handleToggleUsageAlert} />)
+        : googleError && showUsageAlert ? (
+          <UsageAlert
+            usageErrorMessage={emailError.message}
+            onToggleUsageAlert={handleToggleUsageAlert} />)
+          : null
+      }
     </div>
   );
 }

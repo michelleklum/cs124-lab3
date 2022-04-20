@@ -655,6 +655,7 @@ function App() {
             onChangeTask={handleChangeTask}
             user={user}
             auth={auth}
+            prevPage={prevPage}
           />
         ) : null}
       </Fragment>

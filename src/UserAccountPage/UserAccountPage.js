@@ -3,12 +3,12 @@ import UserAccountPageTopBar from "./UserAccountPageTopBar";
 import SignOutButton from "./SignOutButton";
 
 function UserAccountPage(props) {
-  console.log(props.auth)
   return (
     <div id="user-account-page">
       <div className="top-bar">
         <UserAccountPageTopBar
           onChangePage={props.onChangePage}
+          prevPage={props.prevPage}
         />
       </div>
       <h3>Email:

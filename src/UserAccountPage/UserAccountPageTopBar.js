@@ -1,4 +1,4 @@
-import { React, Fragment } from "react";
+import { React } from "react";
 import LeaveAccountPage from "./LeaveAccountPage";
 
 function UserAccountPageTopBar(props) {
@@ -7,6 +7,7 @@ function UserAccountPageTopBar(props) {
             <div className="top-bar-content">
                 <LeaveAccountPage
                     onChangePage={props.onChangePage}
+                    prevPage={props.prevPage}
                 />
                 <h2>Your Account</h2>
             </div>

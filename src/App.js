@@ -13,7 +13,7 @@ import SharingPage from "./Sharing/SharingPage";
 import ErrorAlert from "./Global/ErrorAlert";
 import LargeScreenContent from "./LargeScreens/LargeScreenContent";
 import AuthenticationPage from "./Authentication/AuthenticationPage";
-import UserAccountPage from "./UserAccountPage/UserAccountPage"
+import UserAccountPage from "./UserAccountPage/UserAccountPage";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -92,10 +92,7 @@ function App() {
   }
 
   // Code below changes current page, previous page, current list, and current task
-  const [currentPage, setCurrentPage] = useState(
-    user ? "Home" : "SignInPage"
-  );
-
+  const [currentPage, setCurrentPage] = useState(user ? "Home" : "SignInPage");
   // user is initially null when app first loads, even if user is signed in.
   // This ensures that the Home page (not an empty SignInPage) shows when user is signed in and refreshes the page.
   useEffect(() => {
@@ -486,14 +483,18 @@ function App() {
             />
           </Fragment>
         ) : null}
-        {!isLargeScreen && currentPage === "Home" && dataLoading ? (
+        {!isLargeScreen &&
+        !dataError &&
+        currentPage === "Home" &&
+        dataLoading ? (
           <HomeLoadingPage />
         ) : null}
-        {currentPage === "Home" && !dataLoading ? (
+        {currentPage === "Home" && !dataError && !dataLoading ? (
           <Home
             auth={auth}
             user={user}
             data={data}
+            isLargeScreen={isLargeScreen}
             isNarrowScreen={isNarrowScreen}
             currentListId={currentListId}
             currentTaskId={currentTaskId}
@@ -665,7 +666,8 @@ function App() {
         user={user}
         currentPage={currentPage}
         onChangePage={handleChangePage}
-        isLargeScreen={isLargeScreen} />
+        isLargeScreen={isLargeScreen}
+      />
     </Fragment>
   );
 }

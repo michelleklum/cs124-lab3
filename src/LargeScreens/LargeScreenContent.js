@@ -195,6 +195,7 @@ function LargeScreenContent(props) {
               currentTaskId={props.currentTaskId}
               onChangePage={props.onChangePage}
               onChangeList={props.onChangeList}
+              onChangeTask={props.onChangeTask}
               onCreateList={props.onCreateList}
               onDeleteList={props.onDeleteList}
               onCreateTask={props.onCreateTask}

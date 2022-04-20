@@ -1,0 +1,73 @@
+#user-account-page {
+    display: flex;
+    flex-direction: column;
+    background: #feffff;
+    min-height: 640px; /* to make white background extend at least 640px for large screens */
+  }
+  
+/* For small screens, background should be white */
+@media screen and (max-width: 768px), (max-height: 689px) {
+  #user-account-page {
+    height: 100%; /* need this so #feffff background color extends entire screen */
+    min-height: 100vh; /* need this so #feffff background color extends entire screen, even if content doesn't extend entire screen  */
+  }
+}
+
+#user-account-page h2 {
+    font-size: 18px !important;
+    margin-right: 16px !important;
+    width: 200%;
+    text-align: right;
+    margin-top: -8px;
+    font-weight: 700;
+    color: #172528;
+}
+
+.leave-account-page-button {
+    margin-left: 15px;
+    margin-top: -8px;
+}
+
+.leave-account-page-button i {
+    font-size: 23px !important;
+    color: #172528;
+}
+
+#user-account-top-bar {
+    height: 50px;
+    background-color: #91C6C3;
+}
+
+.sign-out-button {
+    border: solid 2px #BAB2B5;
+    width: min(70vw, 250px);
+    text-align: center;
+    border-radius: 10px;
+    background-color: #EAE8E8;
+    position:absolute; 
+    margin-left:calc(max(-70vw/2, -250px/2));
+    left: 50%;
+    bottom: 30px;
+}
+ 
+
+#user-account-page h3 {
+    font-size: 18px;
+    margin-left: 16px;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+
+.sign-out-button h3 {
+    font-size: 16px !important;
+    margin-bottom: 8px;
+    font-weight: 500;
+    margin-left: 0px !important;
+    margin-top: 8px !important;
+}
+
+.user-email {
+    font-size: 18px;
+    font-weight: 700;
+}

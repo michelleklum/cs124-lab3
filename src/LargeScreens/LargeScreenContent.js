@@ -64,6 +64,8 @@ function LargeScreenContent(props) {
         onChangePage={props.onChangePage}
         onChangeList={props.onChangeList}
         onChangeTask={props.onChangeTask}
+        isLargeScreen={props.isLargeScreen}
+        onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
       />
       {props.dataLoading && (
         <div className="main-content">
@@ -202,6 +204,8 @@ function LargeScreenContent(props) {
               onEditList={props.onEditList}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
               showDeleteAlert={props.showDeleteAlert}
+              user={props.user}
+              auth={props.auth}
             />
           )}
         </div>

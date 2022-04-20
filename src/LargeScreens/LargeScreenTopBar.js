@@ -1,5 +1,5 @@
 import "./LargeScreenTopBar.css";
-import SignOutButton from "../Authentication/SignOutButton";
+import HomeAccountButton from "../Home/HomeAccountButton";
 
 function LargeScreenTopBar(props) {
   return (
@@ -13,13 +13,14 @@ function LargeScreenTopBar(props) {
             alt="Task Monster"
           />
         </div>
+        <div className="right-aligned">
+          <HomeAccountButton
+            onChangePage={props.onChangePage}
+            isLargeScreen={props.isLargeScreen}
+            onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+          />
+        </div>
       </div>
-      <SignOutButton
-        auth={props.auth}
-        onChangePage={props.onChangePage}
-        onChangeList={props.onChangeList}
-        onChangeTask={props.onChangeTask}
-      />
     </div>
   );
 }

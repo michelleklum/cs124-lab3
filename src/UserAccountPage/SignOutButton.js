@@ -3,7 +3,7 @@ import { signOut } from "firebase/auth";
 function SignOutButton(props) {
   return (
     <button
-      className="confirm-sign-out-button"
+      className="sign-out-button"
       aria-label="Sign Out"
       onClick={() => {
         props.onChangePage("AuthenticationPage");

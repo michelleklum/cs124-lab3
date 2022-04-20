@@ -2,12 +2,13 @@
 /* but to do that, we really just need margin-left: auto and margin-right: auto */
 .sharing-header-content {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   width: 90%;
   height: 60px;
 }
 
-.sharing-header-content h2 {
-  border: red medium solid;
+.sharing-back-button {
+  width: auto;
 }

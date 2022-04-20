@@ -8,7 +8,7 @@ function SharingBackButton(props) {
 
   return (
     <button
-      className="sharing-back-button left-aligned"
+      className="sharing-back-button"
       onClick={handleOnClick}
       aria-label={"Exit list sharing settings"}
     >

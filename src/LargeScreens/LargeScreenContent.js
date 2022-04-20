@@ -204,7 +204,6 @@ function LargeScreenContent(props) {
               onEditList={props.onEditList}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
               showDeleteAlert={props.showDeleteAlert}
-              user={props.user}
               auth={props.auth}
             />
           )}

@@ -115,6 +115,8 @@ function LargeScreenPopup(props) {
               onChangePage={props.onChangePage}
               user={props.user}
               auth={props.auth}
+              onChangeList={props.onChangeList}
+              onChangeTask={props.onChangeTask}
             />
           ) : null}
         </div>

@@ -650,6 +650,8 @@ function App() {
         {currentPage === "UserAccountPage" ? (
           <UserAccountPage
             onChangePage={handleChangePage}
+            onChangeList={handleChangeList}
+            onChangeTask={handleChangeTask}
             user={user}
             auth={auth}
           />

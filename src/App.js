@@ -51,7 +51,7 @@ const auth = getAuth();
 
 function App() {
   // Get user from Firestore
-  const [user, loading, error] = useAuthState(auth);
+  const [user, userLoading, userError] = useAuthState(auth);
 
   // Code below gets data (lists) and tasks from database using Firebase queries
   const listCollectionName = "lists";
@@ -474,7 +474,7 @@ function App() {
       </Fragment>
     ) : (
       <Fragment>
-        {dataError ? (
+        {dataError || userError ? (
           <Fragment>
             <HomeLoadingPage />
             <ErrorAlert
@@ -485,11 +485,16 @@ function App() {
         ) : null}
         {!isLargeScreen &&
         !dataError &&
+        !userError &&
         currentPage === "Home" &&
-        dataLoading ? (
+        (dataLoading || userLoading) ? (
           <HomeLoadingPage />
         ) : null}
-        {currentPage === "Home" && !dataError && !dataLoading ? (
+        {currentPage === "Home" &&
+        !dataError &&
+        !userError &&
+        !dataLoading &&
+        !userLoading ? (
           <Home
             auth={auth}
             user={user}

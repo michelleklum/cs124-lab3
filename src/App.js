@@ -12,7 +12,6 @@ import HomeLoadingPage from "./HomeLoadingPage/HomeLoadingPage";
 import ErrorAlert from "./Global/ErrorAlert";
 import LargeScreenContent from "./LargeScreens/LargeScreenContent";
 import AuthenticationPage from "./Authentication/AuthenticationPage";
-import SignUpPage from "./Authentication/SignUpPage";
 import UserAccountPage from "./UserAccountPage/UserAccountPage"
 
 import { initializeApp } from "firebase/app";
@@ -93,13 +92,13 @@ function App() {
 
   // Code below changes current page, previous page, current list, and current task
   const [currentPage, setCurrentPage] = useState(
-    user ? "Home" : "AuthenticationPage"
+    user ? "Home" : "SignInPage"
   );
 
   // user is initially null when app first loads, even if user is signed in.
-  // This ensures that the Home page (not an empty AuthenticationPage) shows when user is signed in and refreshes the page.
+  // This ensures that the Home page (not an empty SignInPage) shows when user is signed in and refreshes the page.
   useEffect(() => {
-    user ? setCurrentPage("Home") : setCurrentPage("AuthenticationPage");
+    user ? setCurrentPage("Home") : setCurrentPage("SignInPage");
   }, [user]);
 
   const [prevPage, setPrevPage] = useState("Home");
@@ -431,7 +430,6 @@ function App() {
     setShowDeleteAlert(!showDeleteAlert);
   }
 
-  console.log(currentPage)
   return user ? (
     isLargeScreen ? (
       <Fragment>
@@ -643,12 +641,12 @@ function App() {
     )
   ) : (
     <Fragment>
-      {currentPage === "AuthenticationPage" ? (
-        <AuthenticationPage auth={auth} onChangePage={handleChangePage} />
-      ) : null}
-      {currentPage === "SignUpPage" ? (
-        <SignUpPage auth={auth} onChangePage={handleChangePage} />
-      ) : null}
+      <AuthenticationPage
+        auth={auth}
+        user={user}
+        currentPage={currentPage}
+        onChangePage={handleChangePage}
+        isLargeScreen={isLargeScreen} />
     </Fragment>
   );
 }

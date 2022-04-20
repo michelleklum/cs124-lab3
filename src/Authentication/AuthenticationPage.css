@@ -1,0 +1,152 @@
+#large-screen-authentication {
+    background-color: #2B7A78;
+    height: 100%;
+    /* need this so #feffff background color extends entire screen */
+    min-height: 100vh;
+    /* need this so #feffff background color extends entire screen, even if content doesn't extend entire screen  */
+}
+
+#authentication-page {
+    display: flex;
+    flex-direction: column;
+    background: #Feffff;
+    min-height: 540px;
+    /* to make white background extend at least 540px for large screens */
+    border-radius: 15pt;
+    position: relative;
+    top: 10vh;
+    /* to position vertically */
+    margin: 0 auto;
+    /* to center horizontally, set margin-left auto and margin-right auto */
+    width: 450px;
+    height: 540px;
+    overflow: hidden;
+    /* without this, the popup will have excees whitespace on the bottom */
+    z-index: 1;
+    /* set z-index: 1 so popup appears in front of everything else */
+}
+
+.welcome-logo-log-in {
+    width: min(15%, 90px);
+    align-self: center;
+    position: relative;
+    top: 5%;
+    margin-left: 7px;
+}
+
+.authentication-header {
+    text-align: center;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+}
+
+/* For small screens, background should be white */
+@media screen and (max-width: 768px),
+(max-height: 689px) {
+    #authentication-page {
+        height: 100%;
+        /* need this so #feffff background color extends entire screen */
+        min-height: 100vh;
+        /* need this so #feffff background color extends entire screen, even if content doesn't extend entire screen  */
+        width: 100%;
+        border: none;
+        border-radius: 0pt;
+        top: 0;
+    }
+
+    .welcome-logo-log-in {
+        position: relative;
+        margin-top: 7vh;
+        margin-left: 7px;
+    }
+
+    .authentication-header {
+        margin-top: 0px;    
+    }
+}
+
+.auth-line {
+    border: 1px solid #172528 !important;
+    width: 91%;
+}
+
+.auth-input {
+    display: block;
+    height: 35px;
+    font-size: 15px;
+    font-family: "Open Sans", Calibri, sans-serif;
+    margin: 0 auto;
+    width: 60%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: #DEF2F1;
+    border: #2B7A78 solid 2px;
+}
+
+.email-password {
+    margin-bottom: 23px;
+}
+
+.email-password input {
+    display: block;
+    height: 33px;
+    font-size: 15px;
+    font-family: "Open Sans", Calibri, sans-serif;
+    margin: 0 auto;
+    width: 90%;
+    border: none;
+    margin-bottom: 15px;
+    background: #DEF2F1;
+    color: #172528;
+}
+
+.email-password input::placeholder {
+    color: #172528;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+.sign-in-sign-up-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    border: #BAB2B5 2px solid;
+    margin: 0 auto;
+    height: 47px;
+    margin-bottom: 15px;
+}
+
+.main-auth-button {
+    background: #2B7A78;
+    color: white;
+    border: #2B7A78 2px solid;
+}
+
+.sign-up-button {
+    margin-top: -10px;
+}
+
+.google-icon {
+    font-size: 22px;
+    margin-right: 22px;
+}
+
+.sign-up-text {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.sign-up-text h3 {
+    text-decoration: underline;
+}
+
+.sign-up-text p {
+    font-size: 15px !important;
+}

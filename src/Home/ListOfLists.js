@@ -31,6 +31,8 @@ function ListOfLists(props) {
           isLargeScreen={props.isLargeScreen}
           key={list.id}
           id={list.id}
+          user={props.user}
+          listOwner={list.owner}
           listName={list.name}
           listIcon={list.icon}
           currentListId={props.currentListId}
@@ -59,6 +61,8 @@ function ListOfLists(props) {
           isLargeScreen={props.isLargeScreen}
           key={list.id}
           id={list.id}
+          user={props.user}
+          listOwner={list.owner}
           listName={list.name}
           listIcon={list.icon}
           currentListId={props.currentListId}

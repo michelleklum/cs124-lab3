@@ -66,6 +66,7 @@ function LargeScreenPopup(props) {
             <EditCreateListPage
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               prevPage={props.prevPage}
               currentListId={props.currentListId}
@@ -84,6 +85,7 @@ function LargeScreenPopup(props) {
             <EditCreateListPage
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               prevPage={props.prevPage}
               currentListId={props.currentListId}

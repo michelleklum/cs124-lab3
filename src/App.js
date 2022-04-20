@@ -475,7 +475,6 @@ function App() {
           listTasksPrimarySortDirection={listTasksPrimarySortDirection}
           onChangeSort={handleChangeSort}
           onCreateErrorReport={handleCreateErrorReport}
-          user={user}
         />
       </Fragment>
     ) : (
@@ -511,6 +510,7 @@ function App() {
         ) : null}
         {currentPage === "HomeSearchPage" ? (
           <HomeSearchPage
+            user={user}
             data={data}
             prevPage={prevPage}
             currentListId={currentListId}
@@ -609,6 +609,7 @@ function App() {
         ) : null}
         {currentPage === "EditListPage" ? (
           <EditCreateListPage
+            user={user}
             data={data}
             prevPage={prevPage}
             currentListId={currentListId}
@@ -625,6 +626,7 @@ function App() {
         ) : null}
         {currentPage === "CreateListPage" ? (
           <EditCreateListPage
+            user={user}
             data={data}
             prevPage={prevPage}
             currentListId={currentListId}

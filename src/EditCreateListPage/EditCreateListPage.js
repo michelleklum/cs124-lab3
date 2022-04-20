@@ -9,6 +9,7 @@ function EditCreateListPage(props) {
   const list = !props.inCreateListMode
     ? props.data.find((list) => list.id === props.currentListId)
     : { name: "", icon: "" };
+  const isOwner = list.owner === props.user.uid;
 
   const [tempListName, setTempListName] = useState(list.name);
   const [tempSelectedIcon, setTempSelectedIcon] = useState(list.icon);
@@ -41,7 +42,7 @@ function EditCreateListPage(props) {
           onChangePage={props.onChangePage}
         />
       </div>
-      {props.inEditListMode ? (
+      {isOwner && props.inEditListMode ? (
         <DeleteTaskListBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
       ) : null}
       {props.showDeleteAlert && (

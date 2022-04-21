@@ -7,3 +7,9 @@
 .remove-shared-person-button {
   width: auto;
 }
+
+.remove-shared-person-button i {
+  font-size: 25px;
+  color: #ed554a;
+  opacity: 95%;
+}

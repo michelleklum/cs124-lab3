@@ -66,6 +66,11 @@ button {
   background: none;
 }
 
+button:hover,
+button:focus {
+  outline: none;
+}
+
 .top-bar i {
   font-size: 26px;
 }

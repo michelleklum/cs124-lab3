@@ -645,6 +645,7 @@ function App() {
         ) : null}
         {currentPage === "SharingPage" ? (
           <SharingPage
+            isLargeScreen={isLargeScreen}
             user={user}
             data={data}
             prevPage={prevPage}

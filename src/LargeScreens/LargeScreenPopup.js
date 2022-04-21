@@ -100,6 +100,7 @@ function LargeScreenPopup(props) {
           ) : null}
           {props.currentPage === "SharingPage" ? (
             <SharingPage
+              isLargeScreen={props.isLargeScreen}
               user={props.user}
               data={props.data}
               prevPage={props.prevPage}

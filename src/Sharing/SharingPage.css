@@ -1,8 +1,15 @@
-#sharing-page {
+.sharing-page {
   display: flex;
   flex-direction: column;
   background: #feffff;
-  min-height: 640px; /* to make white background extend at least 640px for large screens */
+}
+
+#large-screen-sharing-page {
+  min-height: 640px; /* to make white background extend the whole height of sharing page */
+}
+
+#small-screen-sharing-page {
+  min-height: 100vh; /* to make white background extend the whole height of sharing page */
 }
 
 /* margin-left: auto and margin-right: auto and width: 90% are to center list of tasks, leaving 5% width on each side */
@@ -21,15 +28,77 @@ p {
   font-size: 12pt;
 }
 
+.shared-people {
+  margin-top: 2px;
+  overflow-y: scroll; /* allow scroll when shared people emails overflow */
+}
+
+/* Hide scrollbar on Safari and Chrome while still allowing scroll */
+.shared-people::-webkit-scrollbar {
+  display: none;
+}
+
+/* In LargeScreenPopup, stop sharing and remove me from shared list buttons are always sticky. */
+/* This styling is so that emails of shared people don't overlap with the sticky sharing button. */
+.large-screen-shared-people {
+  max-height: 320px;
+}
+
+/* On small screens, stop sharing and remove me from shared list buttons are sticky only when screen is at least 400px tall. */
+/* Media queries are for when stop sharing and remove me from shared list buttons are sticky. */
+/* So that emails of shared people don't overlap with the sticky sharing button. */
+@media screen and (min-height: 400px) {
+  .small-screen-shared-people {
+    max-height: calc(100vh * 3 / 10);
+  }
+}
+
+@media screen and (min-height: 500px) {
+  .small-screen-shared-people {
+    max-height: calc(100vh * 2 / 5);
+  }
+}
+
+@media screen and (min-height: 600px) {
+  .small-screen-shared-people {
+    max-height: calc(100vh * 2.5 / 5);
+  }
+}
+
+@media screen and (min-height: 690px) {
+  .small-screen-shared-people {
+    max-height: calc(100vh * 3 / 5);
+  }
+}
+
+@media screen and (min-height: 750px) {
+  .small-screen-shared-people {
+    max-height: calc(100vh * 6.2 / 10);
+  }
+}
+
+@media screen and (min-height: 900px) {
+  .small-screen-shared-people {
+    max-height: calc(100vh * 6.8 / 10);
+  }
+}
+
 .sharing-button {
   font-size: 11pt;
   font-weight: 600;
   margin-top: 15px;
   margin-bottom: 20px;
-  width: 100%;
   height: 35px;
   border-radius: 5px;
   text-align: center;
   color: #ed554a;
   border: #ed554a 2px solid;
+}
+
+/* When screen is tall enough (at least 400px), make stop sharing and remove me from shared list buttons sticky. */
+/* So that user doesn't have to scroll that much to reach them. */
+@media screen and (min-height: 400px) {
+  .sharing-button {
+    position: sticky;
+  }
 }

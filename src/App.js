@@ -51,7 +51,7 @@ const auth = getAuth();
 
 function App() {
   // Get user from Firestore
-  const [user, loading, error] = useAuthState(auth);
+  const user = useAuthState(auth)[0];
 
   // Code below gets data (lists) and tasks from database using Firebase queries
   const listCollectionName = "lists";

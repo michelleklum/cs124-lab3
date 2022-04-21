@@ -8,10 +8,10 @@ import {
 
 function SignInPage(props) {
   // State and functions below handle alerts and warnings
-  const [signInWithGoogle, googleUser, googleLoading, googleError] =
-    useSignInWithGoogle(props.auth);
-  const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
-    useSignInWithEmailAndPassword(props.auth);
+  const [signInWithGoogle, googleError] =
+    [useSignInWithGoogle(props.auth)[0], useSignInWithGoogle(props.auth)[3]];
+  const [signInWithEmailAndPassword, emailError] =
+    [useSignInWithEmailAndPassword(props.auth)[0], useSignInWithEmailAndPassword(props.auth)[3]];
   const [showUsageAlert, setShowUsageAlert] = useState(false);
 
   function handleToggleUsageAlert() {

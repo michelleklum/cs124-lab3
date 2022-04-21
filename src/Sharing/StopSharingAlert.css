@@ -8,7 +8,7 @@
   z-index: 10;
 }
 
-.alert {
+.stop-sharing-alert {
   background-color: #feffff;
   color: #17252a;
   border-radius: 7pt;
@@ -20,19 +20,19 @@
   padding: min(20px, 4%);
 }
 
-.alert-description {
+.stop-sharing-alert-description {
   margin-top: 2px;
   font-weight: 600;
   text-align: center;
 }
 
-.alert-buttons {
+.stop-sharing-alert-buttons {
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
 
-.alert-button {
+.stop-sharing-alert-button {
   width: 40% !important;
   height: 35px !important;
   border-radius: 5px;
@@ -40,10 +40,10 @@
   color: #feffff;
 }
 
-.alert-cancel {
+.stop-sharing-alert-cancel {
   background: #2b7a78;
 }
 
-.alert-yes {
+.stop-sharing-alert-yes {
   background: #ed554a;
 }

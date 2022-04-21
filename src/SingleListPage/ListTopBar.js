@@ -16,7 +16,7 @@ function ListTopBar(props) {
           />
           <h2>{taskList.name}</h2>
         </div>
-        <div className="right-aligned list-icons">
+        <div className="list-icons">
           {props.inMenuMode || props.isLoading ? null : (
             <ListSearchButton
               taskList={taskList}

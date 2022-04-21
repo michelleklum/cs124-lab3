@@ -13,15 +13,13 @@ function SharedPerson(props) {
   return (
     <div className="shared-person">
       <p>{props.email}</p>
-      {props.isOwner && (
-        <button
-          className="remove-shared-person-button"
-          onClick={handleRemovePerson}
-          aria-label={`Remove list access from ${props.email}`}
-        >
-          <i className="fas fa-minus-circle"></i>
-        </button>
-      )}
+      <button
+        className="remove-shared-person-button"
+        onClick={handleRemovePerson}
+        aria-label={`Remove list access from ${props.email}`}
+      >
+        <i className="fas fa-minus-circle"></i>
+      </button>
     </div>
   );
 }

@@ -44,7 +44,7 @@ function SharingPage(props) {
         <h3>Owner:</h3>
         <p>{list.ownerEmail}</p>
         <hr />
-        <h3>Shared with:</h3>
+        <h3>{isOwner ? "Shared" : "Also shared"} with:</h3>
         <AddSharedPersonInput
           currentListId={props.currentListId}
           sharedWith={sharedWith}

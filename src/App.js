@@ -474,7 +474,7 @@ function App() {
       </Fragment>
     ) : (
       <Fragment>
-        {dataError ? (
+        {dataError || userError ? (
           <Fragment>
             <HomeLoadingPage />
             <ErrorAlert
@@ -485,11 +485,16 @@ function App() {
         ) : null}
         {!isLargeScreen &&
         !dataError &&
+        !userError &&
         currentPage === "Home" &&
-        dataLoading ? (
+        (dataLoading || userLoading) ? (
           <HomeLoadingPage />
         ) : null}
-        {currentPage === "Home" && !dataError && !dataLoading ? (
+        {currentPage === "Home" &&
+        !dataError &&
+        !userError &&
+        !dataLoading &&
+        !userLoading ? (
           <Home
             auth={auth}
             user={user}

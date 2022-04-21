@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import EmailPasswordInputFields from "./EmailPasswordInputFields";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGoogle } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 function SignInOptions(props) {
     const [email, setEmail] = useState("");

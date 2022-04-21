@@ -37,7 +37,7 @@ function AuthenticationPage(props) {
                 ) : null}
             </div>}
     </Fragment>
-    );
+  );
 }
 
 export default AuthenticationPage;

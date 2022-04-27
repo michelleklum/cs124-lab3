@@ -4,9 +4,9 @@ import EmailPasswordInputFields from "./EmailPasswordInputFields";
 import UsageAlert from "../Global/UsageAlert";
 
 function SignUpPage(props) {
-  const [createUserWithEmailAndPassword, error] =
-    [useCreateUserWithEmailAndPassword(props.auth)[0],
-     useCreateUserWithEmailAndPassword(props.auth)[3]];
+  const useCreateUserEmail = useCreateUserWithEmailAndPassword(props.auth);
+  const createUserWithEmailAndPassword = useCreateUserEmail[0];
+  const error = useCreateUserEmail[3];
   const [showUsageAlert, setShowUsageAlert] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +25,7 @@ function SignUpPage(props) {
       handleToggleUsageAlert()
     }
   }
+  console.log(error)
 
   return (
     <div id="authentication-page">

@@ -26,6 +26,16 @@ function SignUpPage(props) {
     }
   }
 
+  const errorMessage = error ?
+  (error.message.includes("internal-error") ? "Please enter a valid email and password." :
+  (error.message.includes("invalid-email") ? 
+  "Please enter a valid email." :
+  (error.message.includes("weak-password") ? 
+  "Password must be at least 6 characters." : 
+  (error.message.includes("email-already-in-use") ? 
+  "You already have an account with this email! Sign in instead." :
+  "We've encountered an error logging you in. Try again.")))) : ""
+
   return (
     <div id="authentication-page">
       <img
@@ -65,7 +75,7 @@ function SignUpPage(props) {
         </div>
       </div>
       {error && showUsageAlert ? (<UsageAlert
-        usageErrorMessage={error.message}
+        usageErrorMessage={errorMessage}
         onToggleUsageAlert={handleToggleUsageAlert} />)
         : null
       }

@@ -32,8 +32,16 @@ function SharingPage(props) {
     setShowRemoveFromSharedListAlert(!showRemoveFromSharedListAlert);
   }
 
+  const sharingPageId = props.isLargeScreen
+    ? "large-screen-sharing-page"
+    : "small-screen-sharing-page";
+
+  const sharedPeopleClassName = props.isLargeScreen
+    ? "large-screen-shared-people"
+    : "small-screen-shared-people";
+
   return (
-    <div id="sharing-page">
+    <div className="sharing-page" id={sharingPageId}>
       <SharingTopBar
         data={props.data}
         prevPage={props.prevPage}
@@ -53,22 +61,24 @@ function SharingPage(props) {
           setUsageErrorMessage={setUsageErrorMessage}
           onToggleUsageAlert={handleToggleUsageAlert}
         />
-        {sharedWith
-          .filter(
-            (email) => email !== list.ownerEmail && email !== props.user.email
-          )
-          .sort()
-          .map((email) => (
-            <SharedPerson
-              key={email}
-              email={email}
-              isOwner={isOwner}
-              currentListId={props.currentListId}
-              sharedWith={sharedWith}
-              setSharedWith={setSharedWith}
-              onEditList={props.onEditList}
-            />
-          ))}
+        <div className={`shared-people ${sharedPeopleClassName}`}>
+          {sharedWith
+            .filter(
+              (email) => email !== list.ownerEmail && email !== props.user.email
+            )
+            .sort()
+            .map((email) => (
+              <SharedPerson
+                key={email}
+                email={email}
+                isOwner={isOwner}
+                currentListId={props.currentListId}
+                sharedWith={sharedWith}
+                setSharedWith={setSharedWith}
+                onEditList={props.onEditList}
+              />
+            ))}
+        </div>
         {isOwner &&
           sharedWith.filter((email) => email !== list.ownerEmail).length >
             0 && (

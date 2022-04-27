@@ -118,6 +118,7 @@ function App() {
       case "CreateTaskPage":
       case "EditListPage":
       case "CreateListPage":
+      case "SharingPage":
         setShowLargeScreenPopup(true);
         break;
       default:
@@ -428,7 +429,7 @@ function App() {
   function handleToggleDeleteAlert() {
     setShowDeleteAlert(!showDeleteAlert);
   }
-  
+
   return user ? (
     isLargeScreen ? (
       <Fragment>
@@ -645,6 +646,7 @@ function App() {
         ) : null}
         {currentPage === "SharingPage" ? (
           <SharingPage
+            isLargeScreen={isLargeScreen}
             user={user}
             data={data}
             prevPage={prevPage}

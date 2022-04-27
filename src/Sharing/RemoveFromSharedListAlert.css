@@ -8,31 +8,31 @@
   z-index: 10;
 }
 
-.alert {
+.remove-from-shared-list-alert {
   background-color: #feffff;
   color: #17252a;
   border-radius: 7pt;
   margin: 0 auto;
   top: 35%;
-  height: 100px;
+  height: 120px;
   width: 200px;
   position: relative;
   padding: min(20px, 4%);
 }
 
-.alert-description {
+.remove-from-shared-list-alert-description {
   margin-top: 2px;
   font-weight: 600;
   text-align: center;
 }
 
-.alert-buttons {
+.remove-from-shared-list-alert-buttons {
   display: flex;
   justify-content: space-around;
   width: 100%;
 }
 
-.alert-button {
+.remove-from-shared-list-alert-button {
   width: 40% !important;
   height: 35px !important;
   border-radius: 5px;
@@ -40,10 +40,10 @@
   color: #feffff;
 }
 
-.alert-cancel {
+.remove-from-shared-list-alert-cancel {
   background: #2b7a78;
 }
 
-.alert-yes {
+.remove-from-shared-list-alert-yes {
   background: #ed554a;
 }

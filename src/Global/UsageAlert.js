@@ -5,11 +5,11 @@ function UsageAlert(props) {
   return (
     <FocusTrap>
       <div className="backdrop">
-        <div className="alert">
-          <h3 className="alert-description">{props.usageErrorMessage}</h3>
-          <div className="alert-buttons">
+        <div className="usage-alert">
+          <h3 className="usage-alert-description">{props.usageErrorMessage}</h3>
+          <div className="usage-alert-buttons">
             <button
-              className="alert-button alert-cancel"
+              className="usage-alert-button usage-alert-cancel"
               type="button"
               onClick={() => props.onToggleUsageAlert()}
               aria-label="Got it"

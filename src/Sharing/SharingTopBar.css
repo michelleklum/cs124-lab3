@@ -9,6 +9,12 @@
   height: 60px;
 }
 
+/* Center Sharing Page header text */
+.sharing-header-content h2 {
+  flex-grow: 1;
+  text-align: center;
+}
+
 .sharing-back-button {
   width: auto;
 }

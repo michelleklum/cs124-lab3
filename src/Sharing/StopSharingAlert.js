@@ -12,13 +12,13 @@ function StopSharingAlert(props) {
   return (
     <FocusTrap>
       <div className="backdrop">
-        <div className="alert">
-          <h3 className="alert-description">
+        <div className="stop-sharing-alert">
+          <h3 className="stop-sharing-alert-description">
             Are you sure you want to stop sharing this list?
           </h3>
-          <div className="alert-buttons">
+          <div className="stop-sharing-alert-buttons">
             <button
-              className="alert-button alert-cancel"
+              className="stop-sharing-alert-button stop-sharing-alert-cancel"
               type="button"
               onClick={() => props.onToggleStopSharingAlert()}
               aria-label="Cancel stop sharing"
@@ -26,8 +26,8 @@ function StopSharingAlert(props) {
               Cancel
             </button>
             <button
-              className={"alert-button alert-yes"}
-              type={"button"}
+              className="stop-sharing-alert-button stop-sharing-alert-yes"
+              type="button"
               onClick={handleStopSharing}
               aria-label="Confirm stop sharing"
             >

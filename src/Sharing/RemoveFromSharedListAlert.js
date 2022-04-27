@@ -15,13 +15,13 @@ function RemoveFromSharedListAlert(props) {
   return (
     <FocusTrap>
       <div className="backdrop">
-        <div className="alert">
-          <h3 className="alert-description">
+        <div className="remove-from-shared-list-alert">
+          <h3 className="remove-from-shared-list-alert-description">
             Are you sure you want to remove yourself from this shared list?
           </h3>
-          <div className="alert-buttons">
+          <div className="remove-from-shared-list-alert-buttons">
             <button
-              className="alert-button alert-cancel"
+              className="remove-from-shared-list-alert-button remove-from-shared-list-alert-cancel"
               type="button"
               onClick={() => props.onToggleRemoveFromSharedListAlert()}
               aria-label="Cancel remove from shared list"
@@ -29,7 +29,9 @@ function RemoveFromSharedListAlert(props) {
               Cancel
             </button>
             <button
-              className={"alert-button alert-yes"}
+              className={
+                "remove-from-shared-list-alert-button remove-from-shared-list-alert-yes"
+              }
               type={"button"}
               onClick={handleRemoveFromSharedList}
               aria-label="Confirm remove from shared list"

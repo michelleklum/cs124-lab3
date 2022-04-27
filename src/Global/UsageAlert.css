@@ -14,7 +14,7 @@
   border-radius: 7pt;
   margin: 0 auto;
   top: 35%;
-  height: 120px;
+  height: auto;
   width: 200px;
   position: relative;
   padding: min(20px, 4%);

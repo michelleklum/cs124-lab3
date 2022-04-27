@@ -15,7 +15,18 @@ function SignInPage(props) {
   const useEmailSignIn = useSignInWithEmailAndPassword(props.auth);
   const signInWithEmailAndPassword = useEmailSignIn[0];
   const emailError = useEmailSignIn[3];
-  
+
+  const errorMessage = emailError ?
+       (emailError.message.includes("invalid-email") ? "Please enter a valid email." :
+       (emailError.message.includes("user-not-found") ? 
+       "It doesn't look like you have an account! Sign up instead." :
+       (emailError.message.includes("wrong-password") ? 
+       "Incorrect password." : 
+       (emailError.message.includes("too-many-requests") ? 
+       "Too many login attempts. Your account has been temporarily disabled. \
+       Reset your password or try again later." :
+       "We've encountered an error logging you in. Try again.")))) : ""
+
   const [showUsageAlert, setShowUsageAlert] = useState(false);
 
   function handleToggleUsageAlert() {
@@ -56,7 +67,7 @@ function SignInPage(props) {
         </div>
       </div>
       {emailError && showUsageAlert ? (<UsageAlert
-        usageErrorMessage={emailError.message}
+        usageErrorMessage={errorMessage}
         onToggleUsageAlert={handleToggleUsageAlert} />)
         : googleError && showUsageAlert ? (
           <UsageAlert

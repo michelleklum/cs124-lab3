@@ -25,7 +25,8 @@ function SignInPage(props) {
        (emailError.message.includes("too-many-requests") ? 
        "Too many login attempts. Your account has been temporarily disabled. \
        Reset your password or try again later." :
-       "We've encountered an error logging you in. Try again.")))) : ""
+       "We've encountered an error logging you in. Try again.")))) : 
+       (googleError ? "We've encountered an error logging you in. Try again." : "")
 
   const [showUsageAlert, setShowUsageAlert] = useState(false);
 

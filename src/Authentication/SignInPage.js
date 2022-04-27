@@ -33,7 +33,6 @@ function SignInPage(props) {
     setShowUsageAlert(!showUsageAlert);
   }
 
-  console.log(emailError)
   return (
     <div id="authentication-page">
       <img

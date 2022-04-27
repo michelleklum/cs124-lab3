@@ -25,7 +25,6 @@ function SignUpPage(props) {
       handleToggleUsageAlert()
     }
   }
-  console.log(error)
 
   return (
     <div id="authentication-page">

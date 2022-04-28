@@ -56,8 +56,15 @@ function AddSharedPersonInput(props) {
         onKeyDown={(e) =>
           (e.code === "Enter" || e.code === "Space") && handleAddPerson()
         }
-        aria-label={"Enter email to share list"}
+        aria-label="Enter email to share list"
       />
+      <button
+        className="add-shared-person-button right-aligned"
+        aria-label="Enter email to share list"
+        onClick={handleAddPerson}
+      >
+        <i className="fas fa-plus fa-3x"></i>
+      </button>
     </div>
   );
 }

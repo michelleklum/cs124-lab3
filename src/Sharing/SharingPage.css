@@ -24,6 +24,8 @@ p {
 }
 
 .shared-people {
+  margin-left: 16px;
+  margin-right: 16px;
   margin-top: 2px;
   overflow-y: scroll; /* allow scroll when shared people emails overflow */
 }

@@ -14,6 +14,7 @@ import ErrorAlert from "./Global/ErrorAlert";
 import LargeScreenContent from "./LargeScreens/LargeScreenContent";
 import AuthenticationPage from "./Authentication/AuthenticationPage";
 import UserAccountPage from "./UserAccountPage/UserAccountPage";
+import EmailVerificationAlert from "./Authentication/EmailVerificationAlert";
 
 import { initializeApp } from "firebase/app";
 import {
@@ -97,6 +98,17 @@ function App() {
   // This ensures that the Home page (not an empty SignInPage) shows when user is signed in and refreshes the page.
   useEffect(() => {
     user ? setCurrentPage("Home") : setCurrentPage("SignInPage");
+  }, [user]);
+
+  // Code below tracks state of email verification alert (open or closed)
+  const [showEmailVerificationAlert, setShowEmailVerificationAlert] =
+    useState(false);
+  // user is initially null when app first loads, even if user is signed in.
+  // This ensures that we eventually see the proper value of user.emailVerified.
+  useEffect(() => {
+    user && !user.emailVerified
+      ? setShowEmailVerificationAlert(true)
+      : setShowEmailVerificationAlert(false);
   }, [user]);
 
   const [prevPage, setPrevPage] = useState("Home");
@@ -430,7 +442,9 @@ function App() {
     setShowDeleteAlert(!showDeleteAlert);
   }
 
-  return user ? (
+  return showEmailVerificationAlert ? (
+    <EmailVerificationAlert auth={auth} user={user} />
+  ) : user ? (
     isLargeScreen ? (
       <Fragment>
         <LargeScreenContent

@@ -20,21 +20,22 @@ function SignUpPage(props) {
       setEmail("");
       setPassword("");
       props.onChangePage("Home");
-    }
-    else {
-      handleToggleUsageAlert()
+    } else {
+      handleToggleUsageAlert();
     }
   }
 
-  const errorMessage = error ?
-  (error.message.includes("internal-error") ? "Please enter a valid email and password." :
-  (error.message.includes("invalid-email") ? 
-  "Please enter a valid email." :
-  (error.message.includes("weak-password") ? 
-  "Password must be at least 6 characters." : 
-  (error.message.includes("email-already-in-use") ? 
-  "You already have an account with this email! Sign in instead." :
-  "We've encountered an error logging you in. Try again.")))) : ""
+  const errorMessage = error
+    ? error.message.includes("internal-error")
+      ? "Please enter a valid email and password."
+      : error.message.includes("invalid-email")
+      ? "Please enter a valid email."
+      : error.message.includes("weak-password")
+      ? "Password must be at least 6 characters."
+      : error.message.includes("email-already-in-use")
+      ? "You already have an account with this email! Sign in instead."
+      : "We've encountered an error logging you in. Try again."
+    : "";
 
   return (
     <div id="authentication-page">
@@ -49,13 +50,15 @@ function SignUpPage(props) {
         email={email}
         password={password}
         onChangeEmail={setEmail}
-        onChangePassword={setPassword} />
+        onChangePassword={setPassword}
+      />
       <button
         className="sign-in-sign-up-button main-auth-button sign-up-button"
         aria-label="Sign Up"
         onClick={() => {
-          createUserWithEmailAndPassword(email, password)
-            .then(handleChangePageAfterSignUp());
+          createUserWithEmailAndPassword(email, password).then(
+            handleChangePageAfterSignUp()
+          );
         }}
       >
         <h3>Sign Up!</h3>
@@ -66,19 +69,17 @@ function SignUpPage(props) {
           <p>Already have an account?&nbsp;</p>
         </div>
         <div>
-          <button
-            onClick={() => props.onChangePage("SignInPage")}>
-            <h3>
-              Sign In
-            </h3>
+          <button onClick={() => props.onChangePage("SignInPage")}>
+            <h3>Sign In</h3>
           </button>
         </div>
       </div>
-      {error && showUsageAlert ? (<UsageAlert
-        usageErrorMessage={errorMessage}
-        onToggleUsageAlert={handleToggleUsageAlert} />)
-        : null
-      }
+      {error && showUsageAlert ? (
+        <UsageAlert
+          usageErrorMessage={errorMessage}
+          onToggleUsageAlert={handleToggleUsageAlert}
+        />
+      ) : null}
     </div>
   );
 }

@@ -138,13 +138,9 @@ When opening the Single List Page, it takes a moment for data from Firebase to b
 
 ## Final App: Sharing Page
 
-In Lab 5, we introduced the ability for users to share lists with each other via email. A shared list is editable by the original owner and any users it is shared with. As part of this feature, we implemented a Sharing Page which is tailored to each list.
+In Lab 5, we introduced the ability for users to share lists with each other via email. A shared list is editable by the original owner and any users it is shared with. A shared user must have a verified email in order to see a list that has been shared with them, because all users must have verified emails in order to sign into the app in the first place. A user with whom a list has been shared does not need to accept the sharing; the list will simply show up under the "Shared With You" heading on the user's Home Page.
 
-This is the Sharing Page for a list owned by the current user (lilac327@gmail.com). When a user first enters the Sharing Page for one of their lists, they see a box in which they can input the email address of the user they wish to share the current list with. After typing the email, the user can either hit the Enter key or click the plus button to complete the sharing.
-
-If they try to sign in and email hasn’t been verified, show popup with option to re-send verification email.
-
-A shared user must have a verified email in order to see a list that has been shared with them, because all users must have verified emails in order to sign into the app in the first place. A user with whom a list has been shared does not need to accept the sharing; the list will simply show up under the "Shared With You" heading on the user's Home Page.
+As part of this feature, we implemented a Sharing Page which is tailored to each list. This is the Sharing Page for a list owned by the current user (lilac327@gmail.com). When a user first enters the Sharing Page for one of their lists, they see a box in which they can input the email address of the user they wish to share the current list with. After typing the email, the user can either hit the Enter key or click the plus button to complete the sharing.
 
 <img src="sharing_page.png" alt="Sharing Page" width="200px">
 
@@ -162,7 +158,7 @@ A user cannot share a list with a duplicate email.
 
 <img src="sharing_page_duplicate_email.png" alt="Sharing Page Duplicate Email Usage Alert" width="200px">
 
-We have a simple regex in place to check for valid email formatting. For example, a user cannot enter a string like "abc" as an email for the sharing field, since strings of that format are not valid emails.
+We have a simple regular expression in place to check for email formatting. For example, a user cannot enter a string like "abc" as an email for the sharing field, since strings of that format are not valid emails.
 
 <img src="sharing_page_invalid_email.png" alt="Sharing Page Invalid Email Usage Alert" width="200px">
 
@@ -174,13 +170,9 @@ When the shared emails list gets too long to fit completely onto the user's scre
 
 Only the list owner is able to remove all other users from a shared list with one click of the "Stop Sharing" button. When a user clicks on the "Stop Sharing" button, we show a confirmation alert to prevent the user from accidentally removing a large number of shared users.
 
-<img src="sharing_page.png" alt="Sharing Page After Stop Sharing" width="200px">
-
 <img src="sharing_page_stop_sharing_confirmation.png" alt="Sharing Page Stop Sharing Confirmation Alert" width="200px">
 
 Both the list owner and shared users can remove individual users from the list of shared users for a list. A user can remove another user from the shared user list by clicking the minus button next to that user's email. The list owner can never be removed from the list.
-
-<img src="sharing_page.png" alt="Sharing Page After Remove From Sharing" width="200px">
 
 This is the Sharing Page for a list that has been shared with the current user (michellelum123@gmail.com) but is not owned by the current user. On the Sharing Page for a shared user who is not the owner, the current user's email will not appear in the list of shared users, hence the change of header phrasing to "Also shared with" (instead of "Shared with"). Both the list owner and shared users are allowed to share a list with other users.
 

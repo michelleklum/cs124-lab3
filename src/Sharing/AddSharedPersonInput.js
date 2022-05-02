@@ -21,7 +21,7 @@ function AddSharedPersonInput(props) {
       // Display alert saying that user must enter a non-blank value in the email field
       props.onToggleUsageAlert();
       props.setUsageErrorMessage(
-        "Email field must not be blank in order for list to be shared."
+        "Email field blank. You must enter a valid email in order to share this list."
       );
     } else if (!validEmailRegex.test(newPersonEmail)) {
       // Don't allow invalid emails

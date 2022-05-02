@@ -8,8 +8,8 @@ function EmailVerificationAlert(props) {
       <div className="backdrop">
         <div className="verify-email-alert">
           <h3 className="verify-email-alert-description">
-            You must verify your email to use this app. Afterward, try signing
-            in again.
+            You must verify your email to use Task Monster. After verifying your email, sign in
+            with your account!
           </h3>
           <div className="verify-email-alert-buttons">
             <button

@@ -51,9 +51,10 @@ function SignUpPage(props) {
         password={password}
         onChangeEmail={setEmail}
         onChangePassword={setPassword}
+        signInPage={false}
       />
       <button
-        className="sign-in-sign-up-button main-auth-button sign-up-button"
+        className="auth-button main-auth-button sign-up-button"
         aria-label="Sign Up"
         onClick={() => {
           createUserWithEmailAndPassword(email, password).then(

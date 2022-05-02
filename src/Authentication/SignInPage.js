@@ -6,6 +6,7 @@ import {
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 
+
 function SignInPage(props) {
   // State and functions below handle alerts and warnings
   const useGoogleSignIn = useSignInWithGoogle(props.auth);
@@ -17,22 +18,28 @@ function SignInPage(props) {
   const emailError = useEmailSignIn[3];
 
   const errorMessage = emailError ?
-       (emailError.message.includes("invalid-email") ? "Please enter a valid email." :
-       (emailError.message.includes("user-not-found") ? 
-       "It doesn't look like you have an account! Sign up instead." :
-       (emailError.message.includes("wrong-password") ? 
-       "Incorrect password." : 
-       (emailError.message.includes("too-many-requests") ? 
-       "Too many login attempts. Your account has been temporarily disabled. \
-       Reset your password or try again later." :
-       "We've encountered an error logging you in. Try again.")))) : 
-       (googleError ? "We've encountered an error logging you in. Try again." : "")
+    (emailError.message.includes("invalid-email") ? "Please enter a valid email." :
+      (emailError.message.includes("user-not-found") ?
+        "It doesn't look like you have an account! Sign up instead." :
+        (emailError.message.includes("wrong-password") ?
+          "Incorrect password." :
+          (emailError.message.includes("too-many-requests") ?
+            "Too many login attempts. Your account has been temporarily disabled. " +
+            "Reset your password or try again later." :
+            "We've encountered an error logging you in. Try again.")))) :
+    (googleError ? "We've encountered an error logging you in. Try again." : "")
 
-  const [showUsageAlert, setShowUsageAlert] = useState(false);
+  const [showEmailUsageAlert, setShowEmailUsageAlert] = useState(false);
+  const [showGoogleUsageAlert, setShowGoogleUsageAlert] = useState(false);
 
-  function handleToggleUsageAlert() {
-    setShowUsageAlert(!showUsageAlert);
+  function handleToggleEmailUsageAlert() {
+    setShowEmailUsageAlert(!showEmailUsageAlert);
   }
+
+  function handleToggleGoogleUsageAlert() {
+    setShowGoogleUsageAlert(!showGoogleUsageAlert);
+  }
+
 
   return (
     <div id="authentication-page">
@@ -50,8 +57,9 @@ function SignInPage(props) {
         signInWithGoogle={signInWithGoogle}
         signInWithEmailAndPassword={signInWithEmailAndPassword}
         emailError={emailError}
-        googleError={googleError} 
-        onToggleUsageAlert={handleToggleUsageAlert}/>
+        googleError={googleError}
+        onToggleGoogleUsageAlert={handleToggleGoogleUsageAlert}
+        onToggleEmailUsageAlert={handleToggleEmailUsageAlert} />
       <hr className="auth-line" />
       <div className="sign-up-text">
         <div>
@@ -66,13 +74,13 @@ function SignInPage(props) {
           </button>
         </div>
       </div>
-      {emailError && showUsageAlert ? (<UsageAlert
+      {emailError && showEmailUsageAlert ? (<UsageAlert
         usageErrorMessage={errorMessage}
-        onToggleUsageAlert={handleToggleUsageAlert} />)
-        : googleError && showUsageAlert ? (
+        onToggleUsageAlert={handleToggleEmailUsageAlert} />)
+        : googleError && (!googleError.message.includes("popup-closed-by-user")) && showGoogleUsageAlert ? (
           <UsageAlert
-            usageErrorMessage={emailError.message}
-            onToggleUsageAlert={handleToggleUsageAlert} />)
+            usageErrorMessage={googleError.message}
+            onToggleUsageAlert={handleToggleGoogleUsageAlert} />)
           : null
       }
     </div>

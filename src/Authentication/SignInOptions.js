@@ -7,12 +7,21 @@ function SignInOptions(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function handleChangePageAfterSignIn() {
+    function handleChangePageAfterEmailSignIn() {
         if (props.user) {
             props.onChangePage("Home")
         }
         else {
-            props.onToggleUsageAlert()
+            props.onToggleEmailUsageAlert()
+        }
+    }
+
+    function handleChangePageAfterGoogleSignIn() {
+        if (props.user) {
+            props.onChangePage("Home")
+        }
+        else {
+            props.onToggleGoogleUsageAlert()
         }
     }
 
@@ -23,19 +32,21 @@ function SignInOptions(props) {
                 password={password}
                 onChangeEmail={setEmail}
                 onChangePassword={setPassword}
+                signInPage={true}
+                onChangePage={props.onChangePage}
             />
             <button
-                className="sign-in-sign-up-button main-auth-button"
+                className="auth-button main-auth-button"
                 aria-label="Sign In With Email and Password"
                 onClick={() => props.signInWithEmailAndPassword(email, password)
-                    .then(handleChangePageAfterSignIn())}
+                    .then(handleChangePageAfterEmailSignIn())}
             >
                 <h3 className="sign-in-text">Sign In</h3>
             </button>
             <button
-                className="sign-in-sign-up-button"
+                className="auth-button"
                 aria-label="Sign In With Google"
-                onClick={() => props.signInWithGoogle().then(handleChangePageAfterSignIn())}
+                onClick={() => props.signInWithGoogle().then(handleChangePageAfterGoogleSignIn())}
             >
                 <FontAwesomeIcon className="google-icon" icon={faGoogle} />
                 <h3 className="sign-in-text">Sign In With Google</h3>

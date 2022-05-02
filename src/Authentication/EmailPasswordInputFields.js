@@ -40,13 +40,13 @@ function EmailPasswordInputFields(props) {
                         onChange={() => setShowPassword(!showPassword)}/>
                     <p id="show-password-label">Show password</p>
                 </div>
-                <div>
+                {props.signInPage && <div>
                     <button
-                        onClick={() => props.onChangePage("SignUpPage")}
+                        onClick={() => props.onChangePage("ResetPasswordPage")}
                         aria-label="Forgot your password?">
                         <p id="forgot-password">Forgot password? </p>
                     </button>
-                </div>
+                </div>}
             </div>
         </div>
     );

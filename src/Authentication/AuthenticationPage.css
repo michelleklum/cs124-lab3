@@ -19,7 +19,7 @@
     margin: 0 auto;
     /* to center horizontally, set margin-left auto and margin-right auto */
     width: 450px;
-    height: 540px;
+    height: 560px;
     overflow: hidden;
     /* without this, the popup will have excees whitespace on the bottom */
     z-index: 1;
@@ -38,7 +38,7 @@
     text-align: center;
     font-weight: 500;
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
 }
 
@@ -63,7 +63,7 @@
     }
 
     .authentication-header {
-        margin-top: 0px;    
+        margin-top: 0px;
     }
 }
 
@@ -78,7 +78,7 @@
     font-size: 15px;
     font-family: "Open Sans", Calibri, sans-serif;
     margin: 0 auto;
-    width: 60%;
+    width: 66%;
     border-radius: 5px;
     margin-bottom: 15px;
     background: #DEF2F1;
@@ -86,7 +86,7 @@
 }
 
 .email-password {
-    margin-bottom: 23px;
+    margin-bottom: 0px !important;
 }
 
 .email-password input {
@@ -97,7 +97,7 @@
     margin: 0 auto;
     width: 90%;
     border: none;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     background: #DEF2F1;
     color: #172528;
 }
@@ -120,6 +120,7 @@ input:focus {
     margin: 0 auto;
     height: 47px;
     margin-bottom: 15px;
+    margin-top: 5px !important;
 }
 
 .main-auth-button {
@@ -149,4 +150,41 @@ input:focus {
 
 .sign-up-text p {
     font-size: 15px !important;
+}
+
+#forgot-password {
+    font-size: 13px !important;
+    text-align: right;
+    text-decoration: underline;
+}
+
+#show-password-label {
+    font-size: 13px !important;
+}
+
+.password-options {
+    margin-top: 0px;
+    position: relative;
+    top: -15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 66%;
+    margin: 0 auto;
+    height: 47px;
+    margin-bottom: -10px;
+}
+
+.show-password {
+    display: flex;
+    justify-content: space-between;
+}
+
+.show-password-checkbox {
+    accent-color: #2B7A78;
+    height: 15px !important;
+    width: 15px !important;
+    margin-top: 14px !important;
+    margin-right: 8px !important;
+    margin-left: 0.5px;
 }

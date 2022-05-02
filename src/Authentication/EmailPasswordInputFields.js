@@ -1,4 +1,9 @@
+import { React, useState } from "react";
+
 function EmailPasswordInputFields(props) {
+    const [showPassword, setShowPassword] = useState(false);
+    const passwordType = showPassword ? "do-not-show-password" : "password"
+
     return (
         <div className="email-password">
             <div className="auth-input">
@@ -14,14 +19,34 @@ function EmailPasswordInputFields(props) {
             </div>
             <div className="auth-input">
                 <input
-                    type="password"
+                    type={passwordType}
                     id="password"
                     name="password"
                     aria-label="Password"
                     placeholder="Password"
                     value={props.password}
                     onChange={(e) => props.onChangePassword(e.target.value)}
+                    autoComplete="off"
                 />
+            </div>
+            <div className="password-options">
+                <div className="show-password">
+                    <input type="checkbox"
+                        id="show-password"
+                        name="show-password" 
+                        className="show-password-checkbox" 
+                        aria-label="Show password?"
+                        checked={showPassword}
+                        onChange={() => setShowPassword(!showPassword)}/>
+                    <p id="show-password-label">Show password</p>
+                </div>
+                <div>
+                    <button
+                        onClick={() => props.onChangePage("SignUpPage")}
+                        aria-label="Forgot your password?">
+                        <p id="forgot-password">Forgot password? </p>
+                    </button>
+                </div>
             </div>
         </div>
     );

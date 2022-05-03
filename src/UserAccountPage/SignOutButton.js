@@ -5,12 +5,7 @@ function SignOutButton(props) {
     <button
       className="sign-out-button"
       aria-label="Sign Out"
-      onClick={() => {
-        props.onChangePage("SignInPage");
-        props.onChangeList(null);
-        props.onChangeTask(null);
-        signOut(props.auth);
-      }}
+      onClick={() => props.onToggleUsageAlert()}
     >
       <h3 className="confirm-sign-up-text">Sign Out</h3>
     </button>

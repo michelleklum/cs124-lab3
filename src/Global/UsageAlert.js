@@ -11,7 +11,7 @@ function UsageAlert(props) {
           <h3 className="usage-alert-description">{props.usageErrorMessage}</h3>
           <div className="usage-alert-buttons">
             {!(props.includeChangePassword | props.signInMessage
-              | props.confirmChangePassword) &&
+              | props.confirmChangePassword | props.confirmSignOut) &&
               <Fragment>
                 <button
                   className="usage-alert-button usage-alert-cancel"
@@ -65,6 +65,30 @@ function UsageAlert(props) {
                   aria-label="Change password"
                 >
                   Change password
+                </button>
+              </Fragment>}
+            {props.confirmSignOut &&
+              <Fragment>
+                <button
+                  className="usage-alert-button usage-alert-sign-in"
+                  type="button"
+                  onClick={() => props.onToggleUsageAlert()}
+                  aria-label="Cancel"
+                >
+                  Cancel
+                </button>
+                <button
+                  className="usage-alert-button usage-alert-change-password"
+                  type="button"
+                  onClick={() => {
+                    props.onChangePage("SignInPage");
+                    props.onChangeList(null);
+                    props.onChangeTask(null);
+                    signOut(props.auth);;
+                  }}
+                  aria-label="Sign Out"
+                >
+                  Sign Out
                 </button>
               </Fragment>}
           </div>

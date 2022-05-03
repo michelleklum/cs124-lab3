@@ -372,7 +372,7 @@ From the view task popup, the user can navigate to the edit task popup, just lik
 
 Alerts still display properly on large screens. An example delete alert is shown below.
 
-<img src="large_screen_delete_alert_lab_4.png" alt="Large Screen Delete Alert Lab 4" width="650px">
+<img src="large_screen_delete_alert_lab_5.png" alt="Large Screen Delete Alert Lab 5" width="650px">
 
 We also added loading screens when lists and their respective tasks are loading. These screens are designed to make the transition from one page to another as smooth as possible by not including distracting images or text. The list and task loading pages are shown below, respectively.
 

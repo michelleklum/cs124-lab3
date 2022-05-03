@@ -618,7 +618,7 @@ The second user told us that, in general, he prefers signing in via Google, so t
 
 One of our users helped us discover a Sign In Page bug. When the user clicked on the Sign In With Google button to open the Sign In With Google popup, but then closed the popup without actually signing in with Google, there was a TypeError (shown in the console in the screenshot below) that prevented the app from rendering. We were able to fix this bug after user testing.
 
-<img src="user_test_lab_5_sign_in_google_bug.png" alt="User Testing Lab 5 Sign In With Google Bug" width="200px">
+<img src="user_test_lab_5_sign_in_google_bug.png" alt="User Testing Lab 5 Sign In With Google Bug" width="650px">
 
 ### Account Page
 
@@ -628,11 +628,11 @@ In the version of our app that we used for user testing, there was no option for
 
 The image below shows what our Sharing Page looked like at the time of user testing.
 
-<img src="user_test_lab_5_sharing_page_v1.png" alt="User Testing Lab 5 Sharing Page Version 1" width="200px">
+<img src="user_test_lab_5_sharing_page_v1.png" alt="User Testing Lab 5 Sharing Page Version 1" width="650px">
 
 When attempting to share a list with another user on the Sharing Page, one of our user testing participants did not realize that she needed to hit the Enter key in order to actually share the list with the email she had typed into the input box. So, in the final version of our app, we added a plus button inside the email input box. The plus button acts as a visual cue telling users that they must take additional action (e.g. clicking the plus button) in order to finish sharing a list with someone. And users who realize they can hit the Enter key as a shortcut to sharing a list with a new email can still do that.
 
-<img src="user_test_lab_5_sharing_page_final.png" alt="User Testing Lab 5 Sharing Page Final Version" width="200px">
+<img src="user_test_lab_5_sharing_page_final.png" alt="User Testing Lab 5 Sharing Page Final Version" width="650px">
 
 ## Challenges
 

@@ -56,8 +56,15 @@
 
 /* Styling for the general Single List Page menu */
 .general-menu {
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 3em 1fr 6.5em;
+}
+
+.owner-menu-grid-template-rows {
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.non-owner-menu-grid-template-rows {
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 /* On very short screens, override even the styles from .small-screen-list-menu */

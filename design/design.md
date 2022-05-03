@@ -102,6 +102,10 @@ If the current list is shared, the button will have an icon showing a group of p
 
 <img src="single_list_page_menu_mode_final_lab_5_shared.png" alt="Single List Page Menu Mode Lab 5 Final Version Shared" width="200px">
 
+If the current user is on a shared list for which they are not the list owner, there will be no button for deleting the list in the general Single List Page Menu. Shared users who are not the list owner cannot delete the list.
+
+<img src="single_list_page_menu_mode_final_lab_5_not_list_owner.png" alt="Single List Page Menu Mode Lab 5 Final Version Not List Owner" width="200px">
+
 We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu. Clicking either the icon or the sort option description changes the sorting method to the one selected. The arrow indicates the direction of sorting, and this direction can be toggled by clicking either the icon or the sort option again. Clicking the back arrow takes users back to the general Single List Page Menu.
 
 However, unlike with the sorting options, we decided not to add a separate delete options menu. That's because, during usability testing, users said a separate delete options menu wasn’t necessary, and also indicated that they wanted to be able to delete tasks quickly. Adding a separate delete options menu would have meant that users would have had to make another click in order to perform a delete action. In future labs, we hope to see if more user testing confirms our findings from this round of user testing.
@@ -178,9 +182,7 @@ This is the Sharing Page for a list that has been shared with the current user (
 
 <img src="sharing_page_non_owner.png" alt="Sharing Page For Non-Owner" width="200px">
 
-Only shared users who are not the list owner see the "Remove Me From Shared List" button to remove themselves from the sharing for a particular list. This is helpful in case a user no longer wants a list to be shared with them. The list owner can never be removed from a list. When a user clicks on the "Remove Me From Shared List" button, we show a confirmation alert to prevent the user from accidentally removing themselves from a shared list.
-
-The design for the "Stop Sharing" and "Remove Me From Shared List" buttons was inspired by Mac iOS buttons, which are simple and intuitive in employing red for elements like "Stop Sharing" buttons.
+Only shared users who are not the list owner see the "Remove Me From Shared List" button to remove themselves from the sharing for a particular list. This is helpful in case a user no longer wants a list to be shared with them. The list owner can never be removed from a list. When a user clicks on the "Remove Me From Shared List" button, we show a confirmation alert to prevent the user from accidentally removing themselves from a shared list. The design for the "Stop Sharing" and "Remove Me From Shared List" buttons was inspired by Mac iOS buttons, which are simple and intuitive in employing red for elements like "Stop Sharing" buttons.
 
 <img src="sharing_page_remove_me_from_list.png" alt="Sharing Page Remove Me From Shared List Confirmation Alert" width="200px">
 

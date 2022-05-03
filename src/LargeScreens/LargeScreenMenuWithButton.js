@@ -18,6 +18,7 @@ function LargeScreenMenuWithButton(props) {
           tasks={props.tasks}
           listMenuType="general"
           onChangeMenuModeType={props.onChangeMenuModeType}
+          user={props.user}
           data={props.data}
           currentListId={props.currentListId}
           onEditList={props.onEditList}
@@ -37,6 +38,7 @@ function LargeScreenMenuWithButton(props) {
           isLargeScreen={props.isLargeScreen}
           listMenuType="sorting"
           onChangeMenuModeType={props.onChangeMenuModeType}
+          user={props.user}
           data={props.data}
           currentListId={props.currentListId}
           listTasksPrimarySortField={props.listTasksPrimarySortField}

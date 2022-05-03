@@ -549,6 +549,7 @@ function App() {
             setMenuModeType={setMenuModeType}
             onChangeMenuMode={toggleMenuMode}
             db={db}
+            user={user}
             data={data}
             tasksQuery={tasksQuery}
             prevPage={prevPage}

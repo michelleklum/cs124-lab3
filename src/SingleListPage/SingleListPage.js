@@ -84,6 +84,7 @@ function SingleListPage(props) {
                 onToggleDeleteTasksAlert={toggleDeleteTasksAlert}
                 onToggleDeleteCompletedAlert={toggleDeleteCompletedAlert}
                 onToggleDeleteOverdueAlert={toggleDeleteOverdueAlert}
+                user={props.user}
                 data={props.data}
                 list={taskList}
                 tasks={tasks}
@@ -141,6 +142,7 @@ function SingleListPage(props) {
           props.menuModeType === "general" ? (
             <ListMenu
               isLargeScreen={props.isLargeScreen}
+              user={props.user}
               tasks={tasks}
               listMenuType="general"
               onChangeMenuModeType={props.setMenuModeType}
@@ -164,6 +166,7 @@ function SingleListPage(props) {
             <ListMenu
               listMenuType="sorting"
               onChangeMenuModeType={props.setMenuModeType}
+              user={props.user}
               data={props.data}
               currentListId={props.currentListId}
               listTasksPrimarySortField={props.listTasksPrimarySortField}

@@ -682,7 +682,9 @@ function App() {
         ) : null}
       </Fragment>
     )
-  ) : (
+  ) : 
+  userLoading ? <div className="user-loading-screen"/>
+  : (
     <Fragment>
       <AuthenticationPage
         auth={auth}

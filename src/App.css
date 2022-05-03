@@ -127,3 +127,7 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #DEF2F1 inset !important;
   box-shadow: 0 0 0px 1000px #DEF2F1 inset !important;
 }
+
+.user-loading-screen {
+  background: #2B7A78;
+}

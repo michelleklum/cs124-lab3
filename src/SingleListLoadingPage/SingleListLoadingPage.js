@@ -13,39 +13,35 @@ function SingleListLoadingPage(props) {
           isLoading={true}
         />
         {!props.isLargeScreen &&
-          props.inMenuMode &&
-          props.menuModeType === "general" ? (
+        props.inMenuMode &&
+        props.menuModeType === "general" ? (
           <ListMenu
             isLargeScreen={props.isLargeScreen}
             tasks={[]}
             listMenuType="general"
             onChangeMenuModeType={props.setMenuModeType}
+            user={props.user}
             data={props.data}
             currentListId={props.currentListId}
             onEditList={props.onEditList}
           />
         ) : null}
         {!props.isLargeScreen &&
-          props.inMenuMode &&
-          props.menuModeType === "sorting" ? (
+        props.inMenuMode &&
+        props.menuModeType === "sorting" ? (
           <ListMenu
             listMenuType="sorting"
             onChangeMenuModeType={props.setMenuModeType}
+            user={props.user}
             data={props.data}
             currentListId={props.currentListId}
             listTasksPrimarySortField={props.listTasksPrimarySortField}
-            listTasksPrimarySortDirection={
-              props.listTasksPrimarySortDirection
-            }
+            listTasksPrimarySortDirection={props.listTasksPrimarySortDirection}
             onChangeSort={props.onChangeSort}
           />
         ) : null}
         <div
-          className={
-            props.inMenuMode
-              ? "single-list-menu-mode-overlay"
-              : null
-          }
+          className={props.inMenuMode ? "single-list-menu-mode-overlay" : null}
         ></div>
       </div>
     </Fragment>

@@ -74,6 +74,7 @@ function LargeScreenContent(props) {
           </div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
             <LargeScreenSubpage
+              user={props.user}
               loading={props.dataLoading}
               onCreateErrorReport={props.onCreateErrorReport}
             />
@@ -98,6 +99,7 @@ function LargeScreenContent(props) {
           </div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
             <LargeScreenSubpage
+              user={props.user}
               loading={tasksLoading}
               onCreateErrorReport={props.onCreateErrorReport}
             />
@@ -152,6 +154,7 @@ function LargeScreenContent(props) {
                 setMenuModeType={props.setMenuModeType}
                 onChangeMenuMode={props.onChangeMenuMode}
                 db={props.db}
+                user={props.user}
                 data={props.data}
                 tasksQuery={props.tasksQuery}
                 prevPage={props.prevPage}

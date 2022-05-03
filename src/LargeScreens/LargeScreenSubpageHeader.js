@@ -32,6 +32,7 @@ function LargeScreenSubpageHeader(props) {
               <LargeScreenMenuWithButton
                 isLargeScreen={props.isLargeScreen}
                 onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+                user={props.user}
                 data={props.data}
                 currentListId={props.currentListId}
                 taskList={props.list}
@@ -64,6 +65,7 @@ function LargeScreenSubpageHeader(props) {
           <LargeScreenMenuWithButton
             isLargeScreen={props.isLargeScreen}
             onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+            user={props.user}
             data={props.data}
             currentListId={props.currentListId}
             taskList={props.list}

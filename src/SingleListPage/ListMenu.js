@@ -13,6 +13,10 @@ import DeleteListBar from "./DeleteListBar";
 
 function ListMenu(props) {
   const taskList = props.data.find((list) => list.id === props.currentListId);
+  const isOwner = taskList.owner === props.user.uid;
+  const menuGridTemplateRowsClassName = isOwner
+    ? "owner-menu-grid-template-rows"
+    : "non-owner-menu-grid-template-rows";
   const screenSizeClassName = props.isLargeScreen
     ? "large-screen-list-menu"
     : "small-screen-list-menu";
@@ -21,7 +25,7 @@ function ListMenu(props) {
     <Fragment>
       {props.listMenuType === "general" && (
         <div
-          className={`single-list-page-menu general-menu ${screenSizeClassName}`}
+          className={`single-list-page-menu general-menu ${menuGridTemplateRowsClassName} ${screenSizeClassName}`}
         >
           <EditListBar
             taskList={taskList}
@@ -59,10 +63,12 @@ function ListMenu(props) {
             taskList={taskList}
             onToggleDeleteTasksAlert={props.onToggleDeleteTasksAlert}
           />
-          <DeleteListBar
-            taskList={taskList}
-            onToggleDeleteListAlert={props.onToggleDeleteListAlert}
-          />
+          {isOwner && (
+            <DeleteListBar
+              taskList={taskList}
+              onToggleDeleteListAlert={props.onToggleDeleteListAlert}
+            />
+          )}
         </div>
       )}
       {props.listMenuType === "sorting" && (

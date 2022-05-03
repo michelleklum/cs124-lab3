@@ -10,6 +10,7 @@ function LargeScreenSubpage(props) {
       setMenuModeType={props.setMenuModeType}
       onChangeMenuMode={props.onChangeMenuMode}
       db={props.db}
+      user={props.user}
       data={props.data}
       tasksQuery={props.tasksQuery}
       prevPage={props.prevPage}

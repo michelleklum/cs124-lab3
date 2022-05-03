@@ -74,7 +74,7 @@ function App() {
   // react-responsive media query for responsive design
   // Large Screens will be defined as having a minWidth of 769px and a minHeight of 690px
   const isLargeScreen = useMediaQuery({ minWidth: 769, minHeight: 690 });
-  const isNarrowScreen = useMediaQuery({ maxWidth: 290 });
+  const isNarrowScreen = useMediaQuery({ maxWidth: 329 });
 
   // Code below tracks state of large screen popup (open or closed)
   const [showLargeScreenPopup, setShowLargeScreenPopup] = useState(false);
@@ -97,7 +97,7 @@ function App() {
   // user is initially null when app first loads, even if user is signed in.
   // This ensures that the Home page (not an empty SignInPage) shows when user is signed in and refreshes the page.
   useEffect(() => {
-    user ? setCurrentPage("Home") : setCurrentPage("SignInPage");
+    user ? setCurrentPage("Home") : (currentPage ? setCurrentPage(currentPage) : setCurrentPage("SignInPage"));
   }, [user]);
 
   // Code below tracks state of email verification alert (open or closed)

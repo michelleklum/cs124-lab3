@@ -29,6 +29,12 @@ function SignInPage(props) {
             "We've encountered an error logging you in. Try again.")))) :
     (googleError ? "We've encountered an error logging you in. Try again." : "")
 
+  const includeChangePassword = emailError
+    ? (emailError.message.includes("too-many-requests")
+      ? true
+      : false) : false;
+
+
   const [showEmailUsageAlert, setShowEmailUsageAlert] = useState(false);
   const [showGoogleUsageAlert, setShowGoogleUsageAlert] = useState(false);
 
@@ -76,8 +82,12 @@ function SignInPage(props) {
       </div>
       {emailError && showEmailUsageAlert ? (<UsageAlert
         usageErrorMessage={errorMessage}
-        onToggleUsageAlert={handleToggleEmailUsageAlert} />)
-        : googleError && (!googleError.message.includes("popup-closed-by-user")) && showGoogleUsageAlert ? (
+        onToggleUsageAlert={handleToggleEmailUsageAlert}
+        includeChangePassword={includeChangePassword}
+        signInMessage="Got it" 
+        onChangePage={props.onChangePage} />)
+        : googleError && (!(googleError.message.includes("popup-closed-by-user")
+         | googleError.message.includes("cancelled-popup"))) && showGoogleUsageAlert ? (
           <UsageAlert
             usageErrorMessage={googleError.message}
             onToggleUsageAlert={handleToggleGoogleUsageAlert} />)

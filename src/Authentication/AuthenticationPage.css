@@ -180,6 +180,17 @@ input:focus {
     justify-content: space-between;
 }
 
+@media screen and (max-width: 385px) {
+    .show-password {
+        display: none;
+    }
+
+    .password-options {
+        justify-content: center;
+    }
+  }
+  
+
 .show-password-checkbox {
     accent-color: #2B7A78;
     height: 15px !important;

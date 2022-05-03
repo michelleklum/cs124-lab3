@@ -188,6 +188,11 @@ input:focus {
     .password-options {
         justify-content: center;
     }
+
+    .sign-up-button {
+        margin-top: -20px !important;
+    }
+    
   }
   
 

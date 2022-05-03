@@ -12,17 +12,10 @@ function ResetPasswordPage(props) {
   const [email, setEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
   const [emailSendAttempted, setEmailSendAttempted] = useState(false);
-  const [showUsageAlert, setShowUsageAlert] = useState(true);
+  const [showUsageAlert, setShowUsageAlert] = useState(false);
 
   function handleToggleUsageAlert() {
     setShowUsageAlert(!showUsageAlert);
-  }
-
-  function handleEmailSent() {
-    if (emailError && !showUsageAlert) {
-      handleToggleUsageAlert()
-    }
-    (!emailError) && setEmailSent(true);
   }
 
   const errorMessage = emailError
@@ -39,8 +32,11 @@ function ResetPasswordPage(props) {
   }, [sending]);
 
   useEffect(() => {
-    !sending && emailSendAttempted && handleEmailSent(true);
-  }, [sending]);
+    if (!sending && emailSendAttempted) {
+      (emailError && setShowUsageAlert(true));
+      (!emailError) && setEmailSent(true);
+    };
+  }, [sending, emailSendAttempted, emailError]);
 
 
   return (

@@ -94,10 +94,11 @@ function App() {
 
   // Code below changes current page, previous page, current list, and current task
   const [currentPage, setCurrentPage] = useState(user ? "Home" : "SignInPage");
+
   // user is initially null when app first loads, even if user is signed in.
   // This ensures that the Home page (not an empty SignInPage) shows when user is signed in and refreshes the page.
   useEffect(() => {
-    user ? setCurrentPage("Home") : (currentPage ? setCurrentPage(currentPage) : setCurrentPage("SignInPage"));
+    user ? setCurrentPage("Home") : setCurrentPage("SignInPage");
   }, [user]);
 
   // Code below tracks state of email verification alert (open or closed)

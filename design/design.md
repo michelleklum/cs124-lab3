@@ -604,6 +604,36 @@ Users also wanted to sort tasks in both ascending and descending order, especial
 
 All users felt as if there was too much unused whitespace on the delete alert, so we reduced the margins to better fit the text on the alert.
 
+## Usability Testing: Lab 5
+
+For Lab 5, we conducted usability testing in-person with three Mudd students. We started by asking participants to share their impressions of our app based only on the first screen. For Lab 5, this was the Sign In Page. We asked what they believed our app did and what actions they thought they could perform based on the page's appearance. We continued by asking participants to perform a series of tasks while thinking out loud. These tasks included signing up for an account, signing in via Google, and sharing lists with other users. For instance, we asked each user testing participant to sign up for an account, create a list, and share that list with another person.
+
+All three users said they had a great time using our app and would actually want to use it to organize tasks. One user even liked it so much that he continued to create tasks that he needed to accomplish before the end of the school year, after we had finished our user testing session with him!
+
+### Sign In Page
+
+We observed that two users tried to sign in on the Sign In Page even when they did not have accounts on our app. After seeing the alert that the email did not yet have an associated account, one user was able to immediately direct themselves to the Sign Up Page. After seeing the alert, the second user signed in via Google instead. Since both users were able to bounce back so quickly from their mistakes, we did not find it necessary to change the layouts of our Sign In and Sign Up pages.
+
+The second user told us that, in general, he prefers signing in via Google, so that he does not have to remember a bunch of passwords for different websites. That confirmed that our app should provide a sign in with Google option, in addition to the option to sign in with email and password.
+
+One of our users helped us discover a Sign In Page bug. When the user clicked on the Sign In With Google button to open the Sign In With Google popup, but then closed the popup without actually signing in with Google, there was a TypeError (shown in the console in the screenshot below) that prevented the app from rendering. We were able to fix this bug after user testing.
+
+<img src="user_test_lab_5_sign_in_google_bug.png" alt="User Testing Lab 5 Sign In With Google Bug" width="200px">
+
+### Account Page
+
+In the version of our app that we used for user testing, there was no option for a user to change their password anywhere in our app. All three of our users requested a change password option, stating that they forget passwords easily. So, in the final version of our app for Lab 5, we added a change password option to the Account Page, as well as the incorrect password popup on the Sign In Page.
+
+### Sharing Page
+
+The image below shows what our Sharing Page looked like at the time of user testing.
+
+<img src="user_test_lab_5_sharing_page_v1.png" alt="User Testing Lab 5 Sharing Page Version 1" width="200px">
+
+When attempting to share a list with another user on the Sharing Page, one of our user testing participants did not realize that she needed to hit the Enter key in order to actually share the list with the email she had typed into the input box. So, in the final version of our app, we added a plus button inside the email input box. The plus button acts as a visual cue telling users that they must take additional action (e.g. clicking the plus button) in order to finish sharing a list with someone. And users who realize they can hit the Enter key as a shortcut to sharing a list with a new email can still do that.
+
+<img src="user_test_lab_5_sharing_page_final.png" alt="User Testing Lab 5 Sharing Page Final Version" width="200px">
+
 ## Challenges
 
 Here are some challenges we faced:

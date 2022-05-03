@@ -502,9 +502,9 @@ Below is the general Single List Page Menu before we added the list sharing feat
 
 ## Alternate Designs: Sharing Page
 
-Below are images of the first version of our Sharing Page. Initially, the email input box did contain a plus button. However, during user testing, we observed that some users did not immediately understand that they needed to hit the Enter key in order to finish sharing a list with another user. Some users thought that typing the email into the input box was all they needed to do. So, in the final version of the Sharing Page, we added a plus button inside the input box as a visual indicator to users that they should either click the plus button or hit the Enter key in order to finish sharing a list with another user.
+Below are images of the first version of our Sharing Page. Initially, the email input box did contain a plus button. However, during user testing, we observed that some users did not immediately understand that they needed to hit the Enter key in order to finish sharing a list with another user. Some users thought that typing the email into the input box was all they needed to do, when this was in fact not the case. So, in the final version of the Sharing Page, we added a plus button inside the input box as a visual indicator to users that they should either click the plus button or hit the Enter key in order to finish sharing a list with another user.
 
-Also, notice that in the second image below, the shared user emails and minus buttons are not aligned well with the email input box since the input box has curved ends. In the final version of our Sharing Page, we made the input box more rectangular. We also aligned the shared user emails with the "Add Email" text inside the input box, bringing the minus buttons slightly in as well to keep things balanced.
+Also, notice that in the second image below, the shared user emails and minus buttons are not aligned well with the email input box since the input box has curved ends. In the final version of our Sharing Page, we made the input box more rectangular. We also aligned the shared user emails with the "Add Email" text inside the input box, bringing the minus buttons slightly in as well to keep things balanced overall.
 
 <img src="sharing_page_v1.png" alt="Sharing Page Lab 5 V1" width="200px">
 

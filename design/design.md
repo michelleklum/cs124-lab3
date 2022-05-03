@@ -196,7 +196,7 @@ When opening the Single List Page, it takes a moment for data from Firebase to b
 
 ## Final App: Sharing Page
 
-In Lab 5, we introduced the ability for users to share lists with each other via email. A shared list is editable by the original owner and any users it is shared with. A shared user must have a verified email in order to see a list that has been shared with them, because all users must have verified emails in order to sign into the app in the first place. A user with whom a list has been shared does not need to accept the sharing; the list will simply show up under the "Shared With You" heading on the user's Home Page.
+In Lab 5, we introduced the ability for users to share lists with each other via email. A shared list is editable by the original owner and any users it is shared with. A shared user must have a verified email in order to see a list that has been shared with them, because all users must have verified emails in order to sign into the app in the first place, as documented in the Sign Up Page section. A user with whom a list has been shared does not need to accept the sharing; the list will simply show up under the "Shared With You" heading on the user's Home Page.
 
 As part of this feature, we implemented a Sharing Page which is tailored to each list. This is the Sharing Page for a list owned by the current user (lilac327@gmail.com). When a user first enters the Sharing Page for one of their lists, they see a box in which they can input the email address of the user they wish to share the current list with. After typing the email, the user can either hit the Enter key or click the plus button to complete the sharing.
 

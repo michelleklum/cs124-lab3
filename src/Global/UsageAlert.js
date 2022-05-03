@@ -27,7 +27,7 @@ function UsageAlert(props) {
                 <button
                   className="usage-alert-button usage-alert-sign-in"
                   type="button"
-                  onClick={() => props.onToggleUsageAlert()}
+                  onClick={() => props.onChangePage("SignInPage")}
                   aria-label="Sign in"
                 >
                   {props.signInMessage}

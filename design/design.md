@@ -4,7 +4,7 @@ CS 124 Interaction Design Lab 5: To-do App UI Design (Authentication, Authorizat
 
 Link to app: [https://cs124-lab3-9c4c8--pr3-lab5-ron3g09m.web.app/](https://cs124-lab3-9c4c8--pr3-lab5-ron3g09m.web.app/)
 
-## Final App: Sign In / Sign Up / Reset Password Page
+## Final App: Sign In, Sign Up, Reset Password Pages
 
 When a user who doesn't have a Task Monster account or hasn't recently logged in tries to open our app, they will see the Sign In page, shown below. On this page, they can sign in using a verified email and password or through Google. If the user has forgotten their password, they can reset it on this page. Additionally, if the user does not yet have an account, they can create an account on the Sign Up page by clicking "Sign Up" at the bottom of the page.
 
@@ -24,7 +24,7 @@ Once the password reset email is successfully sent, the user will be redirected 
 
 <img src="reset_password_email_sent.png" alt="Reset Password Page - Email Sent" width="200px">
 
-## Final App: Sign In / Sign Up / Reset Password Page Alerts
+## Final App: Sign In, Sign Up, Reset Password Page Alerts
 
 We wanted to handle cases where users are locked out of their account, enter invalid email addresses/passwords, or otherwise encounter errors with authentication. We added alerts that appear when the user runs into errors like these. For instance, on the Sign Up, Sign In, and Reset Password pages, if the user enters an invalid email, the following alerts will appear:
 
@@ -408,6 +408,12 @@ For screenreader compatibility, we made sure to properly use heading tags for ti
 
 For Large Screens, we also implemented a Skip to Content link. If users have a list open, they can use that Skip to Content link to tell the screenreader to skip reading the names of the other lists and go directly to the content for the currently selected list.
 
+## Alternate Designs: Sign In Page
+
+Below is our initial Sign In page, which did not have a "Forgot password?" link that takes users to a page for changing their password. We added that link after user testing, when users told us that they would like the option to change their password in case they forgot it.
+
+<img src="sign_in_page_v1_lab_5.png" alt="Sign In Page Lab 5 V1" width="200px">
+
 ## Alternate Designs: Home Page and Single List Page Initial Brainstorming
 
 The drawing on the left shows our initial Single List Page design, and the drawing on the right is our initial Home Page design.
@@ -494,6 +500,16 @@ Below is the general Single List Page Menu before we added the list sharing feat
 
 <img src="single_list_page_menu_mode_final_lab_4.png" alt="Single List Page Menu Mode Lab 4 Final Version" width="200px">
 
+## Alternate Designs: Sharing Page
+
+Below are images of the first version of our Sharing Page. Initially, the email input box did contain a plus button. However, during user testing, we observed that some users did not immediately understand that they needed to hit the Enter key in order to finish sharing a list with another user. Some users thought that typing the email into the input box was all they needed to do. So, in the final version of the Sharing Page, we added a plus button inside the input box as a visual indicator to users that they should either click the plus button or hit the Enter key in order to finish sharing a list with another user.
+
+Also, notice that in the second image below, the shared user emails and minus buttons are not aligned well with the email input box since the input box has curved ends. In the final version of our Sharing Page, we made the input box more rectangular. We also aligned the shared user emails with the "Add Email" text inside the input box, bringing the minus buttons slightly in as well to keep things balanced.
+
+<img src="sharing_page_v1.png" alt="Sharing Page Lab 5 V1" width="200px">
+
+<img src="sharing_page_v1_alignment.png" alt="Sharing Page Lab 5 V1 Alignment" width="200px">
+
 ## Alternate Designs: View Task Page
 
 This is the version of our View Task Page that we turned in for Lab 1. For Lab 2, we changed the X icon for returning to the Single List Page from the View Task Page. We made that into a back arrow instead, since the X icon would be inappropriate in this situation; the X icon signifies the cancellation of current edits, but nothing is actually getting edited on the View Task Page.
@@ -519,6 +535,12 @@ Below is the Edit Task Page that we turned in for Lab 2. In Lab 3, we added the 
 <img src="edit_task_page_final_lab_2_date_picker.png" alt="Edit Task Page Lab 2 Final Version Date Picker" width="200px">
 
 <img src="edit_task_page_final_lab_2_time_picker.png" alt="Edit Task Page Lab 2 Final Version Time Picker" width="200px">
+
+## Alternate Designs: Account Page
+
+Below is the first version of our Account Page. Initially, our Account Page only displayed the current user's email and a button for signing out. During user testing, users requested the option to change their password, since that's something someone might do if they decide an old password is no longer secure, or if they just want to switch things up. So, the final version of our Account Page also has a "Change Password" button.
+
+<img src="account_page_v1_lab_5.png" alt="Account Page Lab 5 Version 1" width="200px">
 
 ## Alternate Designs: Large Screen UI Design (Responsiveness)
 

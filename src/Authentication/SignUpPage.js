@@ -26,9 +26,10 @@ function SignUpPage(props) {
   }
 
   const includeChangePassword = error
-  ? (error.message.includes("email-already-in-use")
-    ? true
-    : false) : false;
+    ? error.message.includes("email-already-in-use")
+      ? true
+      : false
+    : false;
 
   const errorMessage = error
     ? error.message.includes("internal-error")
@@ -38,8 +39,7 @@ function SignUpPage(props) {
       : error.message.includes("weak-password")
       ? "Password must be at least 6 characters."
       : error.message.includes("email-already-in-use")
-      ? "This account is already taken. If this is your account, "
-        + "sign in instead. Not your account? Reset your password."
+      ? "This account is already taken. Sign in or reset your password instead. "
       : "We've encountered an error logging you in. Try again."
     : "";
 
@@ -85,8 +85,8 @@ function SignUpPage(props) {
         <UsageAlert
           usageErrorMessage={errorMessage}
           onToggleUsageAlert={handleToggleUsageAlert}
-          includeChangePassword = {includeChangePassword}
-          signInMessage = "Sign in"
+          includeChangePassword={includeChangePassword}
+          signInMessage="Sign in"
           onChangePage={props.onChangePage}
         />
       ) : null}

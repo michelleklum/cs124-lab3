@@ -4,18 +4,17 @@ CS 124 Interaction Design Lab 5: To-do App UI Design (Authentication, Authorizat
 
 Link to app: [https://cs124-lab3-9c4c8--pr3-lab5-ron3g09m.web.app/](https://cs124-lab3-9c4c8--pr3-lab5-ron3g09m.web.app/)
 
-## Final App: Sign In / Sign Up / Change Password Page
+## Final App: Sign In / Sign Up / Reset Password Page
 
-When a user who doesn't have a Task Monster account or hasn't recently logged in tries to open our app, they will see the sign in page, shown below. On this page, they can sign in using a verified email and password or through Google. If the user has forgotten their password, they can reset it on this page. Additionally, if the user does not yet have an account, they can create an account on the Sign Up page by clicking "Sign Up" at the bottom of the page.
+When a user who doesn't have a Task Monster account or hasn't recently logged in tries to open our app, they will see the Sign In page, shown below. On this page, they can sign in using a verified email and password or through Google. If the user has forgotten their password, they can reset it on this page. Additionally, if the user does not yet have an account, they can create an account on the Sign Up page by clicking "Sign Up" at the bottom of the page.
 
 <img src="sign_in_page_final_lab_5.png" alt="Sign In Page Lab 5 Final Version" width="200px">
 
-If a user clicks "Sign Up", they are taken to the Sign Up page. On this page, they can enter a valid email and password to create their account. We require all users to have verified emails to use our app. As such, when a user signs up for a new account, a popup will appear that prompts the user to send a verification email so they can access their account.  When the user presses "Send verification email", an email will be sent to the address they registered with and they will be redirected to the Sign In page so they can sign in with their new account.
+If a user clicks "Sign Up", they are taken to the Sign Up page. On this page, they can enter a valid email and password to create their account. We require all users to have verified emails to use our app; this is enforced by our Firebase security rules. As such, when a user signs up for a new account, a popup will appear that prompts the user to send a verification email so they can access their account. When the user presses "Send verification email", an email will be sent to the address they registered with and they will be redirected to the Sign In page so they can sign in with their new account.
 
 <img src="sign_up_page_final_lab_5.png" alt="Sign Up Page Lab 5 Final Version" width="200px">
 
 <img src="email_verification.png" alt="Email Verification Lab 5 Final Version" width="200px">
-
 
 Finally, if a user chooses to reset their password, they are brought to the Reset Password page. If the user enters a valid email (an email with an account linked to it) and presses "Send me a password reset link!", a message will be sent to their email with a link to reset their password.
 
@@ -25,10 +24,9 @@ Once the password reset email is successfully sent, the user will be redirected 
 
 <img src="reset_password_email_sent.png" alt="Reset Password Page - Email Sent" width="200px">
 
+## Final App: Sign In / Sign Up / Reset Password Page Alerts
 
-## Final App: Sign In / Sign Up / Change Password Page Alerts
-
-We wanted to make to handle cases where users are locked out of their account, enter invalid email addresses/passwords, or otherwise encounter errors with authentication. We added alerts that appear when the user runs into errors like these. For instance, on the Sign Up, Sign In, and Reset Password pages, if the user enters an invalid email, the following alerts will appear:
+We wanted to handle cases where users are locked out of their account, enter invalid email addresses/passwords, or otherwise encounter errors with authentication. We added alerts that appear when the user runs into errors like these. For instance, on the Sign Up, Sign In, and Reset Password pages, if the user enters an invalid email, the following alerts will appear:
 
 <img src="sign_up_error_popup_3.png" alt="Sign Up Error Pop-Up - Invalid Email" width="200px">
 
@@ -48,7 +46,7 @@ When logging in, an alert will also pop up if a user enters the wrong password. 
 
 <img src="sign_in_error_popup_2.png" alt="Sign In Error Pop-Up - Wrong password" width="200px">
 
-If a user enters the wrong password too many times, their account will be temporarily disabled. They have the opportunity to reset their password to re-enable their account, or they can try signing in after a bit of time. The alert gives users both of these options.  
+If a user enters the wrong password too many times, their account will be temporarily disabled. They have the opportunity to reset their password to re-enable their account, or they can try signing in after a bit of time passes. The alert gives users both of these options.
 
 <img src="sign_in_error_popup_3.png" alt="Sign In Error Pop-Up - Disabled account" width="200px">
 
@@ -94,7 +92,7 @@ Shared users who are not the list owner cannot delete the list.
 
 In Lab 3, we added a message that appears on the Home Page when no lists are present. We saw this idea in the grading rubric for Lab 2 and thought it would be informative and useful for our users, since it would help users realize the screen is empty because they have no lists (as opposed to no lists being shown because data is being fetched). In user testing, participants also requested a message like this when there are no lists present.
 
-<img src="home_page_no_lists_lab_3.png" alt="Home Page Without Lists Lab 3" width="200px">
+<img src="home_page_no_lists.png" alt="Home Page Without Lists Lab 3" width="200px">
 
 Additionally, because we're using Firebase to store our data in Lab 3, it takes a bit of time to load data from the database. Thus, we wanted to make sure our app showed a loading screen while data was being fetched. We decided a screen with a spinning wheel or other icon would look too busy, especially because it typically would only be flashed on the screen of a brief moment. Thus, we created an empty version of the homescreen to display while data is loading. While this screen normally only appears for a fraction of a second, we still think it improves the experience of using the app while data is loading in.
 
@@ -286,7 +284,7 @@ In Lab 3, we added the option to include a priority with each task. To change th
 
 ## Final App: Account Page
 
-For Lab 5, we added an Account page where users can change their password, view their account email, and log out of their account. This page can be accessed by pressing the person icon at the top of the home page.
+For Lab 5, we added an Account page where users can view their account email, change their password, and log out of their account. This page can be accessed by pressing the person icon at the top of the home page.
 
 <img src="account_page_final_lab_5.png" alt="Account Page Lab 5" width="200px">
 
@@ -298,20 +296,19 @@ If they confirm that they would like to change their password, they will be sign
 
 <img src="account_page_sign_out_alert.png" alt="Account Page Lab 5" width="200px">
 
-
 ## Final App: Delete Pop-Up Confirmation Messages
 
 For Lab 2, we introduced confirmation messages that would pop up when a user clicks a delete button. During user testing, one of our participants accidentally deleted a task and remarked that it would have been nice to have an extra warning to prevent that from happening. We thought that was a great idea, and now have confirmation messages whenever a user clicks a button to delete a task, delete completed tasks in a list, delete all tasks in a list, and delete a list.
 
-<img src="alert_home_page_delete_list.png" alt="Home Page Delete List Alert Lab 2 Final Version" width="200px">
+<img src="alert_home_page_delete_list.png" alt="Home Page Delete List Alert Lab 5 Final Version" width="200px">
 
 <img src="alert_edit_list_page_delete_list.png" alt="Alert Edit List Page Delete List Lab 2 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_completed_lab_4.png" alt="Single List Page Menu Mode Delete Completed Alert Lab 4 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_completed_lab_5.png" alt="Single List Page Menu Mode Delete Completed Alert Lab 5 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_all_lab_4.png" alt="Single List Page Menu Mode Delete All Alert Lab 4 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_all_lab_5.png" alt="Single List Page Menu Mode Delete All Alert Lab 5 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_list_lab_4.png" alt="Single List Page Menu Mode Delete List Alert Lab 4 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_list_lab_5.png" alt="Single List Page Menu Mode Delete List Alert Lab 5 Final Version" width="200px">
 
 <img src="alert_edit_task_page_delete_task.png" alt="Edit Task Page Delete Task Alert Lab 2 Final Version" width="200px">
 
@@ -329,31 +326,31 @@ In Lab 4, we made our app responsive, providing support for phones, laptops, and
 
 Here is the welcome page of our app on large screens.
 
-<img src="large_screen_welcome_lab_4.png" alt="Large Screen Welcome Page Lab 4" width="650px">
+<img src="large_screen_welcome_lab_5.png" alt="Large Screen Welcome Page Lab 5" width="650px">
 
 When a user hovers over a list name, a gray background and an arrow will appear to indicated that the list can be clicked.
 
 On smaller phone-sized screens, users can swipe left on list cards to reveal pencil and trash can icons that allow them to edit and delete the list in question. However, we decided to remove that functionality on large screens because the swiping action is much more typical for phones and tablets, rather than for laptops or desktops, which are the devices that our large screen design targets. Furthermore, the list card swiping action was always more of a power user feature for expert users of our app, since there have always been other ways for users to edit and delete lists.
 
-<img src="large_screen_welcome_hover_lab_4.png" alt="Large Screen Welcome Page List Card Hover Lab 4" width="650px">
+<img src="large_screen_welcome_hover_lab_5.png" alt="Large Screen Welcome Page List Card Hover Lab 5" width="650px">
 
 Larger screens have more space, so we decided to use that extra space to allow users to view both their lists and the tasks in their currently selected list, at the same time. This cannot be done on the mobile version of our app. We took inspiration from Todoist for our large screen layout.
 
-<img src="large_screen_single_list_page_lab_4.png" alt="Large Screen Single List Page Lab 4" width="650px">
+<img src="large_screen_single_list_page_lab_5.png" alt="Large Screen Single List Page Lab 5" width="650px">
 
 Users can type in the search bar to filter through tasks in the currently selected list. Hitting Cancel will take the user back to the view with all the tasks in the current list. We decided that, for large screens, it wasn't necessary to include a search bar that filters a user's lists, since taller screens are already able to display more lists than mobile screens.
 
-<img src="large_screen_single_list_page_search_lab_4.png" alt="Large Screen Single List Page Search Lab 4" width="650px">
+<img src="large_screen_single_list_page_search_lab_5.png" alt="Large Screen Single List Page Search Lab 5" width="650px">
 
 On large screens, hovering over a button will make its background turn gray to indicate that it can be pressed.
 
-<img src="large_screen_single_list_page_hover_lab_4.png" alt="Large Screen Single List Page Button Hover Lab 4" width="650px">
+<img src="large_screen_single_list_page_hover_lab_5.png" alt="Large Screen Single List Page Button Hover Lab 5" width="650px">
 
 Since large screens are so wide, we decided to attach the list options menu to the toggle menu button (the three dots in the top right corner), instead of having the list options menu stretch all the way across the bottom of the screen (as it does in the smaller version of our app).
 
-<img src="large_screen_single_list_page_menu_lab_4.png" alt="Large Screen Single List Page General Menu Lab 4" width="650px">
+<img src="large_screen_single_list_page_menu_lab_5.png" alt="Large Screen Single List Page General Menu Lab 5" width="650px">
 
-<img src="large_screen_single_list_page_menu_sorting_lab_4.png" alt="Large Screen Single List Page Sorting Menu Lab 4" width="650px">
+<img src="large_screen_single_list_page_menu_sorting_lab_5.png" alt="Large Screen Single List Page Sorting Menu Lab 5" width="650px">
 
 Clicking the plus button in the side bar on the left next to the "Your Lists" heading allows users to create a new list. The plus button on the right side of the screen, shown inside the content for the current list when the list options menu is not open, allows users to create a new task.
 
@@ -361,17 +358,17 @@ Clicking the info button in a task's row will allow users to view more details a
 
 On large screens, when a user clicks the respective button to create a new list, create a new task, edit an existing list, or view an existing task, a popup will appear.
 
-<img src="large_screen_create_list_popup_lab_4.png" alt="Large Screen Create List Popup Lab 4" width="650px">
+<img src="large_screen_create_list_popup_lab_5.png" alt="Large Screen Create List Popup Lab 5" width="650px">
 
-<img src="large_screen_create_task_popup_lab_4.png" alt="Large Screen Create Task Popup Lab 4" width="650px">
+<img src="large_screen_create_task_popup_lab_5.png" alt="Large Screen Create Task Popup Lab 5" width="650px">
 
-<img src="large_screen_edit_list_popup_lab_4.png" alt="Large Screen Edit List Popup Lab 4" width="650px">
+<img src="large_screen_edit_list_popup_lab_5.png" alt="Large Screen Edit List Popup Lab 5" width="650px">
 
 From the view task popup, the user can navigate to the edit task popup, just like in the smaller version of our app.
 
-<img src="large_screen_view_task_popup_lab_4.png" alt="Large Screen View Task Popup Lab 4" width="650px">
+<img src="large_screen_view_task_popup_lab_5.png" alt="Large Screen View Task Popup Lab 5" width="650px">
 
-<img src="large_screen_edit_task_popup_lab_4.png" alt="Large Screen Edit Task Popup Lab 4" width="650px">
+<img src="large_screen_edit_task_popup_lab_5.png" alt="Large Screen Edit Task Popup Lab 5" width="650px">
 
 Alerts still display properly on large screens. An example delete alert is shown below.
 
@@ -391,7 +388,9 @@ In Lab 5, we made our new Sign In, Sign Up, and Reset Password pages responsive.
 
 <img src="large_screen_password_reset_page_lab_5.png" alt="Large Screen Password Reset Page Lab 5" width="650px">
 
+When introducing list sharing between users in Lab 5, we also made the sharing page responsive and accessible through a popup on large screens.
 
+<img src="large_screen_sharing_popup_lab_5.png" alt="Large Screen Sharing Page Lab 5" width="650px">
 
 ## Final App: Accessibility
 

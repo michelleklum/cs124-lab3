@@ -27,7 +27,10 @@ function UsageAlert(props) {
                 <button
                   className="usage-alert-button usage-alert-sign-in"
                   type="button"
-                  onClick={() => props.onChangePage("SignInPage")}
+                  onClick={() => {
+                    props.onChangePage("SignInPage");
+                    props.onToggleUsageAlert()
+                  }}
                   aria-label="Sign in"
                 >
                   {props.signInMessage}
@@ -41,7 +44,7 @@ function UsageAlert(props) {
                   Reset password
                 </button>
               </Fragment>}
-              {props.confirmChangePassword &&
+            {props.confirmChangePassword &&
               <Fragment>
                 <button
                   className="usage-alert-button usage-alert-sign-in"

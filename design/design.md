@@ -4,6 +4,62 @@ CS 124 Interaction Design Lab 5: To-do App UI Design (Authentication, Authorizat
 
 Link to app: [https://cs124-lab3-9c4c8--pr3-lab5-ron3g09m.web.app/](https://cs124-lab3-9c4c8--pr3-lab5-ron3g09m.web.app/)
 
+## Final App: Sign In / Sign Up / Change Password Page
+
+When a user who doesn't have a Task Monster account or hasn't recently logged in tries to open our app, they will see the sign in page, shown below. On this page, they can sign in using a verified email and password or through Google. If the user has forgotten their password, they can reset it on this page. Additionally, if the user does not yet have an account, they can create an account on the Sign Up page by clicking "Sign Up" at the bottom of the page.
+
+<img src="sign_in_page_final_lab_5.png" alt="Sign In Page Lab 5 Final Version" width="200px">
+
+If a user clicks "Sign Up", they are taken to the Sign Up page. On this page, they can enter a valid email and password to create their account. We require all users to have verified emails to use our app. As such, when a user signs up for a new account, a popup will appear that prompts the user to send a verification email so they can access their account.  When the user presses "Send verification email", an email will be sent to the address they registered with and they will be redirected to the Sign In page so they can sign in with their new account.
+
+<img src="sign_up_page_final_lab_5.png" alt="Sign Up Page Lab 5 Final Version" width="200px">
+
+<img src="email_verification.png" alt="Email Verification Lab 5 Final Version" width="200px">
+
+
+Finally, if a user chooses to reset their password, they are brought to the Reset Password page. If the user enters a valid email (an email with an account linked to it) and presses "Send me a password reset link!", a message will be sent to their email with a link to reset their password.
+
+<img src="reset_password_page_final_lab_5.png" alt="Reset Password Page Lab 5 Final Version" width="200px">
+
+Once the password reset email is successfully sent, the user will be redirected to a page where they can return to the Sign In page.
+
+<img src="reset_password_email_sent.png" alt="Reset Password Page - Email Sent" width="200px">
+
+
+## Final App: Sign In / Sign Up / Change Password Page Alerts
+
+We wanted to make to handle cases where users are locked out of their account, enter invalid email addresses/passwords, or otherwise encounter errors with authentication. We added alerts that appear when the user runs into errors like these. For instance, on the Sign Up, Sign In, and Reset Password pages, if the user enters an invalid email, the following alerts will appear:
+
+<img src="sign_up_error_popup_3.png" alt="Sign Up Error Pop-Up - Invalid Email" width="200px">
+
+<img src="sign_in_error_popup_1.png" alt="Sign In Error Pop-Up - Invalid Email" width="200px">
+
+<img src="reset_password_error_popup_1.png" alt="Reset Password Error Pop-Up - Invalid Email" width="200px">
+
+On the Sign Up page, if a user does not enter an email address or a password, an alert will inform them that they must enter both a valid email and a password.
+
+<img src="sign_up_error_popup_5.png" alt="Sign Up Error Pop-Up - Requires valid email and password" width="200px">
+
+If a user tries to create a password that doesn't meet security requirements (passwords must be at least 6 characters), an alert will tell them they must make their password longer.
+
+<img src="sign_up_error_popup_4.png" alt="Sign Up Error Pop-Up - Invalid password" width="200px">
+
+When logging in, an alert will also pop up if a user enters the wrong password. Note that the user has the opportunity to change thier password from the sign in screen.
+
+<img src="sign_in_error_popup_2.png" alt="Sign In Error Pop-Up - Wrong password" width="200px">
+
+If a user enters the wrong password too many times, their account will be temporarily disabled. They have the opportunity to reset their password to re-enable their account, or they can try signing in after a bit of time. The alert gives users both of these options.  
+
+<img src="sign_in_error_popup_3.png" alt="Sign In Error Pop-Up - Disabled account" width="200px">
+
+We also wanted to protect against Denial-of-Service (DOS) attacks, when a user tries to sign up with an email already in use by a nefarious person. If a user tries to create account with an email address already in use, they will have the option to sign in (if they simply forgot they had an acccount, for instance) or change their password (which would be helpful in the case of a DOS attack).
+
+<img src="sign_up_error_popup_1.png" alt="Sign Up Error Pop-Up - DOS attack" width="200px">
+
+If an error comes up that we don't recognize, we give a generic alert.
+
+<img src="sign_in_error_popup_4.png" alt="Sign Up Error Pop-Up - Generic" width="200px">
+
 ## Final App: Home Page
 
 As our app currently stands, this is how the Home Page for an existing user would look. We decided to give users the ability to create multiple lists, since users might want to sort tasks into separate lists based on what category of tasks they belong to (for example, Homework versus Shopping).
@@ -228,6 +284,18 @@ In Lab 3, we added the option to include a priority with each task. To change th
 
 <img src="edit_task_page_select_priority_lab_3.png" alt="Edit Task Page Lab 3 Select Priority" width="200px">
 
+## Final App: Account Page
+
+For Lab 5, we added an Account page where users can change their password, view their account email, and log out of their account. This page can be accessed by pressing the person icon at the top of the home page.
+
+<img src="account_page_final_lab_5.png" alt="Account Page Lab 5" width="200px">
+
+If a user tries to change their password, a confirm alert will pop up.
+
+<img src="account_page_change_password_alert.png" alt="Account Page Lab 5" width="200px">
+
+If they confirm that they would like to change their password, they will be signed out and brought to the Reset Password page. 
+
 ## Final App: Delete Pop-Up Confirmation Messages
 
 For Lab 2, we introduced confirmation messages that would pop up when a user clicks a delete button. During user testing, one of our participants accidentally deleted a task and remarked that it would have been nice to have an extra warning to prevent that from happening. We thought that was a great idea, and now have confirmation messages whenever a user clicks a button to delete a task, delete completed tasks in a list, delete all tasks in a list, and delete a list.
@@ -311,6 +379,16 @@ We also added loading screens when lists and their respective tasks are loading.
 <img src="large_screen_data_loading_lab_4.png" alt="Large Screen Lists Loading Lab 4" width="650px">
 
 <img src="large_screen_tasks_loading_lab_4.png" alt="Large Screen Tasks Loading Lab 4" width="650px">
+
+In Lab 5, we made our new Sign In, Sign Up, and Reset Password pages responsive. Below are the large-screen versions of these pages. Note that users have the option to view the password they're entering when using our app on a large screen.
+
+<img src="large_screen_sign_in_page_final_lab_5.png" alt="Large Screen Sign In Page Lab 5" width="650px">
+
+<img src="large_screen_sign_up_page_final_lab_5.png" alt="Large Screen Sign Up Page Lab 5" width="650px">
+
+<img src="large_screen_password_reset_page_lab_5.png" alt="Large Screen Password Reset Page Lab 5" width="650px">
+
+
 
 ## Final App: Accessibility
 

@@ -1,5 +1,3 @@
-import { signOut } from "firebase/auth";
-
 function SignOutButton(props) {
   return (
     <button

@@ -294,7 +294,10 @@ If a user tries to change their password, a confirm alert will pop up.
 
 <img src="account_page_change_password_alert.png" alt="Account Page Lab 5" width="200px">
 
-If they confirm that they would like to change their password, they will be signed out and brought to the Reset Password page. 
+If they confirm that they would like to change their password, they will be signed out and brought to the Reset Password page. Similarly, if a user tries to sign out, they will have to confirm that they'd sign out (since it could be frustrating if a user accidentally clicks "Sign Out" and is immediately logged out of their account).
+
+<img src="account_page_sign_out_alert.png" alt="Account Page Lab 5" width="200px">
+
 
 ## Final App: Delete Pop-Up Confirmation Messages
 

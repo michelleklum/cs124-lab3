@@ -8,11 +8,16 @@ import RemoveFromSharedListButton from "./RemoveFromSharedListButton";
 import StopSharingAlert from "./StopSharingAlert";
 import RemoveFromSharedListAlert from "./RemoveFromSharedListAlert";
 import UsageAlert from "../Global/UsageAlert";
+import ErrorAlert from "../Global/ErrorAlert";
+
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 function SharingPage(props) {
+  const tasksError = useCollectionData(props.tasksQuery)[2];
+
   const list = props.data.find((list) => list.id === props.currentListId);
-  const isOwner = list.owner === props.user.uid;
-  const [sharedWith, setSharedWith] = useState(list.sharedWith);
+  const isOwner = list && list.owner === props.user.uid;
+  const [sharedWith, setSharedWith] = useState(list && list.sharedWith);
 
   // State and functions below handle alerts and warnings
   const [usageErrorMessage, setUsageErrorMessage] = useState("");
@@ -40,7 +45,12 @@ function SharingPage(props) {
     ? "large-screen-shared-people"
     : "small-screen-shared-people";
 
-  return (
+  return tasksError ? (
+    <ErrorAlert
+      error={tasksError}
+      onCreateErrorReport={props.onCreateErrorReport}
+    />
+  ) : (
     <div className="sharing-page" id={sharingPageId}>
       <SharingTopBar
         data={props.data}

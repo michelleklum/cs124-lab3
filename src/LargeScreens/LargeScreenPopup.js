@@ -107,6 +107,7 @@ function LargeScreenPopup(props) {
           ) : null}
           {props.currentPage === "SharingPage" ? (
             <SharingPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               user={props.user}
               data={props.data}
@@ -114,6 +115,7 @@ function LargeScreenPopup(props) {
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
               onEditList={props.onEditList}
+              onCreateErrorReport={props.onCreateErrorReport}
             />
           ) : null}
           {props.currentPage === "UserAccountPage" ? (

@@ -672,6 +672,7 @@ function App() {
         ) : null}
         {currentPage === "SharingPage" ? (
           <SharingPage
+            tasksQuery={tasksQuery}
             isLargeScreen={isLargeScreen}
             user={user}
             data={data}
@@ -679,6 +680,7 @@ function App() {
             currentListId={currentListId}
             onChangePage={handleChangePage}
             onEditList={handleEditList}
+            onCreateErrorReport={handleCreateErrorReport}
           />
         ) : null}
         {currentPage === "UserAccountPage" ? (

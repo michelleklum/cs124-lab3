@@ -1,0 +1,79 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth.uid != null;
+    }
+    
+    function isEmailVerified() {
+      return request.auth.token.email_verified;
+    }
+    
+    // Ensures that user's uid corresponds to the owner of the database list being accessed.
+    function isDocOwner() {
+      return request.auth.uid == resource.data.owner;
+    }
+    
+    // Like isDocOwner, but checks owner field of a task's parent list.
+    function isListDocOwner(list) {
+      return request.auth.uid == get(/databases/$(database)/documents/lists/$(list)).data.owner;
+    }
+    
+    // Ensures that user's email is in sharedWith array of the database list being accessed.
+    function isSharedWithMe() {
+      return request.auth.token.email in resource.data.sharedWith;
+    }
+    
+    // Like isSharedWithMe, but checks sharedWith field of a task's parent list.
+    function isListDocSharedWithMe(list) {
+      return request.auth.token.email in get(/databases/$(database)/documents/lists/$(list)).data.sharedWith;
+    }
+    
+    // Ensures that the list doc an author wants to create in their request has owner field value corresponding to author's uid.
+    function updatedDocHasCorrectOwner() {
+      return request.auth.uid == request.resource.data.owner;
+    }
+    
+    // Ensures that the list doc an author wants to create in their request has ownerEmail field value corresponding to author's email.
+    function updatedDocHasCorrectOwnerEmail() {
+      return request.auth.token.email == request.resource.data.ownerEmail;
+    }
+    
+    // Ensures that the list doc an author wants to update in their request has owner field value corresponding to database list owner.
+    function updatedDocHasSameOwner() {
+      return resource.data.owner == request.resource.data.owner;
+    }
+    
+    // Ensures that the list doc an author wants to update in their request has ownerEmail field value corresponding to database list's ownerEmail.
+    function updatedDocHasSameOwnerEmail() {
+      return resource.data.ownerEmail == request.resource.data.ownerEmail;
+    }
+    
+    // Ensures that user can't take owner's email out of sharedWith array of the list doc.
+    function updateDocHasOwnerInSharedWith() {
+      return resource.data.ownerEmail in request.resource.data.sharedWith;
+    }
+    
+    match /lists/{list} {
+      allow read: if signedIn() && isEmailVerified() && (isDocOwner() || isSharedWithMe());
+	  allow create: if signedIn() && isEmailVerified() && updatedDocHasCorrectOwner() && updatedDocHasCorrectOwnerEmail();
+      
+	  // Ensures that user cannot transfer list ownership to themselves
+	  // by changing owner field of another user's list to their own user id during an update,
+      // and that another user cannot remove list owner from sharedWith array.
+	  allow update: if signedIn() && isEmailVerified() && (isDocOwner() || isSharedWithMe()) && updatedDocHasSameOwner() && updatedDocHasSameOwnerEmail() && updateDocHasOwnerInSharedWith();
+      
+      // Only the list owner can delete a list.
+	  allow delete: if signedIn() && isEmailVerified() && isDocOwner();
+
+      match /tasks/{task} {
+        // Tasks have no owner field. Ownership is determined at the list level.
+        allow read, create, update, delete: if signedIn() && isEmailVerified() && (isListDocOwner(list) || isListDocSharedWithMe(list));
+      }
+    }
+    
+    match /errors/{error} {
+      allow read, write: if true;
+    }
+  }
+}

@@ -62,7 +62,7 @@
 
 .google-sign-in {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     margin-top: 35px;
     margin-bottom: -50px;
 }

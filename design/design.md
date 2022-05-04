@@ -284,7 +284,7 @@ In Lab 3, we added the option to include a priority with each task. To change th
 
 ## Final App: Account Page
 
-For Lab 5, we added an Account page where users can view their account email, change their password, and log out of their account. This page can be accessed by pressing the person icon at the top of the home page.
+For Lab 5, we added an Account page where users can view their account email, change their password (if they did not sign in with Google), and log out of their account. This page can be accessed by pressing the person icon at the top of the home page.
 
 <img src="account_page_final_lab_5.png" alt="Account Page Lab 5" width="200px">
 
@@ -295,6 +295,10 @@ If a user tries to change their password, a confirm alert will pop up.
 If they confirm that they would like to change their password, they will be signed out and brought to the Reset Password page. Similarly, if a user tries to sign out, they will have to confirm that they'd sign out (since it could be frustrating if a user accidentally clicks "Sign Out" and is immediately logged out of their account).
 
 <img src="account_page_sign_out_alert.png" alt="Account Page Lab 5" width="200px">
+
+If a user signed in with Google, the page will look like this:
+
+<img src="account_page_google_sign_in.png" alt="Account Page Lab 5 - Signed in with Google" width="200px">
 
 ## Final App: Delete Pop-Up Confirmation Messages
 

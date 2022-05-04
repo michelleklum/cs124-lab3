@@ -636,6 +636,7 @@ function App() {
         ) : null}
         {currentPage === "EditListPage" ? (
           <EditCreateListPage
+            tasksQuery={tasksQuery}
             user={user}
             data={data}
             prevPage={prevPage}
@@ -649,10 +650,12 @@ function App() {
             inCreateListMode={false}
             onToggleDeleteAlert={handleToggleDeleteAlert}
             showDeleteAlert={showDeleteAlert}
+            onCreateErrorReport={handleCreateErrorReport}
           />
         ) : null}
         {currentPage === "CreateListPage" ? (
           <EditCreateListPage
+            tasksQuery={tasksQuery}
             user={user}
             data={data}
             prevPage={prevPage}
@@ -664,6 +667,7 @@ function App() {
             onDeleteList={handleDeleteList}
             inEditListMode={false}
             inCreateListMode={true}
+            onCreateErrorReport={handleCreateErrorReport}
           />
         ) : null}
         {currentPage === "SharingPage" ? (

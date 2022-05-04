@@ -67,6 +67,7 @@ function LargeScreenPopup(props) {
           ) : null}
           {props.currentPage === "EditListPage" ? (
             <EditCreateListPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               user={props.user}
@@ -82,10 +83,12 @@ function LargeScreenPopup(props) {
               inCreateListMode={false}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
               showDeleteAlert={props.showDeleteAlert}
+              onCreateErrorReport={props.onCreateErrorReport}
             />
           ) : null}
           {props.currentPage === "CreateListPage" ? (
             <EditCreateListPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               user={props.user}
@@ -99,6 +102,7 @@ function LargeScreenPopup(props) {
               onDeleteList={props.onDeleteList}
               inEditListMode={false}
               inCreateListMode={true}
+              onCreateErrorReport={props.onCreateErrorReport}
             />
           ) : null}
           {props.currentPage === "SharingPage" ? (

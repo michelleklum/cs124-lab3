@@ -187,6 +187,7 @@ function LargeScreenContent(props) {
           </div>
           {props.showLargeScreenPopup && props.isLargeScreen && (
             <LargeScreenPopup
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               user={props.user}

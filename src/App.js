@@ -449,6 +449,7 @@ function App() {
     isLargeScreen ? (
       <Fragment>
         <LargeScreenContent
+          tasksQuery={tasksQuery}
           auth={auth}
           user={user}
           isLargeScreen={isLargeScreen}
@@ -469,7 +470,6 @@ function App() {
           onToggleDeleteAlert={handleToggleDeleteAlert}
           showDeleteAlert={showDeleteAlert}
           db={db}
-          tasksQuery={tasksQuery}
           prevPage={prevPage}
           onChangeTask={handleChangeTask}
           onCreateTask={handleCreateTask}
@@ -586,18 +586,21 @@ function App() {
         ) : null}
         {currentPage === "ViewTaskPage" ? (
           <ViewEditCreateTaskPage
+            tasksQuery={tasksQuery}
             tasks={tasks}
             prevPage={prevPage}
             data={data}
             currentListId={currentListId}
             currentTaskId={currentTaskId}
             onChangePage={handleChangePage}
+            onCreateErrorReport={handleCreateErrorReport}
             inEditTaskMode={false}
             inCreateTaskMode={false}
           />
         ) : null}
         {currentPage === "EditTaskPage" ? (
           <ViewEditCreateTaskPage
+            tasksQuery={tasksQuery}
             tasks={tasks}
             prevPage={prevPage}
             data={data}
@@ -611,10 +614,12 @@ function App() {
             inCreateTaskMode={false}
             onToggleDeleteAlert={handleToggleDeleteAlert}
             showDeleteAlert={showDeleteAlert}
+            onCreateErrorReport={handleCreateErrorReport}
           />
         ) : null}
         {currentPage === "CreateTaskPage" ? (
           <ViewEditCreateTaskPage
+            tasksQuery={tasksQuery}
             tasks={tasks}
             prevPage={prevPage}
             data={data}
@@ -624,6 +629,7 @@ function App() {
             onDeleteTask={handleDeleteTaskWithPageChange}
             onCreateTask={handleCreateTask}
             onEditAllTaskFields={handleEditTaskAllFields}
+            onCreateErrorReport={handleCreateErrorReport}
             inEditTaskMode={false}
             inCreateTaskMode={true}
           />
@@ -683,9 +689,9 @@ function App() {
         ) : null}
       </Fragment>
     )
-  ) : 
-  userLoading ? <div className="user-loading-screen"/>
-  : (
+  ) : userLoading ? (
+    <div className="user-loading-screen" />
+  ) : (
     <Fragment>
       <AuthenticationPage
         auth={auth}

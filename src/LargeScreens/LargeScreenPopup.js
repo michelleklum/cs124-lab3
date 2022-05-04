@@ -13,6 +13,7 @@ function LargeScreenPopup(props) {
         <div className="popup">
           {props.currentPage === "ViewTaskPage" ? (
             <ViewEditCreateTaskPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               tasks={props.tasks}
@@ -27,6 +28,7 @@ function LargeScreenPopup(props) {
           ) : null}
           {props.currentPage === "EditTaskPage" ? (
             <ViewEditCreateTaskPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               tasks={props.tasks}
@@ -46,6 +48,7 @@ function LargeScreenPopup(props) {
           ) : null}
           {props.currentPage === "CreateTaskPage" ? (
             <ViewEditCreateTaskPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               tasks={props.tasks}

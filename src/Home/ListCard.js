@@ -48,7 +48,7 @@ function ListCard(props) {
     if (!inEditMode) {
       props.onChangePage("SingleListPage");
       props.onChangeList(props.id);
-      props.isLargeScreen && props.setSearchQuery("");
+      props.isLargeScreen && props.setSearchQuery && props.setSearchQuery("");
     }
   }
 

@@ -4,6 +4,9 @@ import UserAccountPageTopBar from "./UserAccountPageTopBar";
 import ChangePasswordButton from "./ChangePasswordButton";
 import SignOutButton from "./SignOutButton";
 import UsageAlert from "../Global/UsageAlert";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+
 
 function UserAccountPage(props) {
   const [showChangePasswordWarning, setShowChangePasswordWarning]
@@ -21,6 +24,8 @@ function UserAccountPage(props) {
     setShowSignOutWarning(!showSignOutWarning);
   }
 
+  const isPasswordUser = props.user.providerData[0].providerId === "password";
+  const isGoogleUser = props.user.providerData[0].providerId === "google.com";
 
   return (
     <div id="user-account-page">
@@ -36,10 +41,14 @@ function UserAccountPage(props) {
         <div className="account-content-box">
           <h3 className="account-header">Email</h3>
           <h3 className="user-email">{props.user.email}</h3>
-          <h3 className="account-header">Password</h3>
+          {isPasswordUser && <h3 className="account-header">Password</h3>}
         </div>
-        <ChangePasswordButton
-          onToggleUsageAlert={handleTogglePasswordUsageAlert} />
+        {isGoogleUser && <div className="google-sign-in">
+          <FontAwesomeIcon className="google-icon account-page-google-icon" icon={faGoogle} />
+          <h3 className="google-sign-in-text">Signed in with Google</h3>
+        </div>}
+        {isPasswordUser && <ChangePasswordButton
+          onToggleUsageAlert={handleTogglePasswordUsageAlert} />}
         <SignOutButton
           onToggleUsageAlert={handleToggleSignOutUsageAlert} />
       </div>

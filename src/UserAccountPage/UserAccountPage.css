@@ -60,9 +60,21 @@
     margin-top: 20px;
 }
 
+.google-sign-in {
+    display: flex;
+    justify-content: start;
+    margin-top: 35px;
+    margin-bottom: -50px;
+}
+
+.google-sign-in-text {
+    margin-top: 1px;
+    margin-left: -4px;
+    color: black;
+}
+
 
 /* Sign out button */
-
 .sign-out-button {
     border: solid 2px #BAB2B5;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
@@ -73,7 +85,7 @@
     position: absolute;
     margin-left: calc(max(-70vw/2, -250px/2));
     left: 50%;
-    margin-top: 100px;
+    margin-top: 80px;
     background: #feffff;
 }
 
@@ -86,7 +98,7 @@
     font-weight: 600 !important;
 }
 
-
+/* Change password button */
 .change-password-button {
     border: solid 2px #BAB2B5;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);

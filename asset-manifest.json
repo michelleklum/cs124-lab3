@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/cs124-lab3/static/css/main.cb4729dc.css",
+    "main.js": "/cs124-lab3/static/js/main.45eab013.js",
+    "static/js/787.71533ac2.chunk.js": "/cs124-lab3/static/js/787.71533ac2.chunk.js",
+    "static/media/header_task_monster.png": "/cs124-lab3/static/media/header_task_monster.d19f7810ef88adcc6833.png",
+    "static/media/logo_task_monster.png": "/cs124-lab3/static/media/logo_task_monster.1e8ffc723ff789deec04.png",
+    "index.html": "/cs124-lab3/index.html",
+    "main.cb4729dc.css.map": "/cs124-lab3/static/css/main.cb4729dc.css.map",
+    "main.45eab013.js.map": "/cs124-lab3/static/js/main.45eab013.js.map",
+    "787.71533ac2.chunk.js.map": "/cs124-lab3/static/js/787.71533ac2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb4729dc.css",
+    "static/js/main.45eab013.js"
+  ]
+}

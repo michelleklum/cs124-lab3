@@ -1,0 +1,40 @@
+.add-shared-person-input {
+  border-radius: 2px;
+  background: #eae8e8;
+  color: #bab2b5;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  display: flex;
+  align-items: center;
+}
+
+/* get rid of default input outline on hover and click */
+.add-shared-person-input input:hover,
+.add-shared-person-input input:active {
+  outline: none;
+}
+
+.add-shared-person-input input[type="text"] {
+  background: #eae8e8;
+  color: #172528;
+  line-height: 0.5em;
+  font-size: 15px;
+  font-family: "Open Sans", Calibri, sans-serif;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  margin-left: 1em;
+  border: none;
+  outline: none;
+  width: 72%;
+}
+
+.add-shared-person-button {
+  width: auto;
+  margin-right: 20px;
+}
+
+.add-shared-person-input i {
+  font-size: 19px !important;
+}

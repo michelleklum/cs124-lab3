@@ -10,6 +10,7 @@ function LargeScreenSubpage(props) {
       setMenuModeType={props.setMenuModeType}
       onChangeMenuMode={props.onChangeMenuMode}
       db={props.db}
+      user={props.user}
       data={props.data}
       tasksQuery={props.tasksQuery}
       prevPage={props.prevPage}
@@ -34,6 +35,7 @@ function LargeScreenSubpage(props) {
       onChangeSort={props.onChangeSort}
       searchQuery={props.searchQuery}
       setSearchQuery={props.setSearchQuery}
+      onCreateErrorReport={props.onCreateErrorReport}
     />
   ) : !props.loading ? (
     <div className="welcome">

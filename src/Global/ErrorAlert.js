@@ -7,7 +7,7 @@ function ErrorAlert(props) {
 
   function submitError() {
     setReportSubmitted(true);
-    props.onCreateErrorReport();
+    props.onCreateErrorReport(props.error);
   }
 
   return (

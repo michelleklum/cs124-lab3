@@ -24,6 +24,11 @@
   height: 60px;
 }
 
+.top-bar-buttons {
+  display: flex;
+  align-items: center;
+}
+
 .top-bar h2 {
   font-size: 24px;
   color: #feffff;

@@ -1,0 +1,11 @@
+.account-button {
+  color: #feffff;
+  margin-right: 3vw;
+}
+
+/* For large screens, background should be white */
+@media screen and (min-width: 769px) and (min-height: 690px) {
+  .account-button {
+    margin-right: 53px;
+  }
+}

@@ -13,7 +13,9 @@ function ListMenuButton(props) {
       onClick={handleClick}
       role="button"
       tabIndex="0"
-      aria-label={`${closeEnterVerb} options menu for current list: ${props.taskList.name}`}
+      aria-label={`${closeEnterVerb} options menu for current list: ${
+        props.taskList && props.taskList.name
+      }`}
       onKeyDown={(e) =>
         e.code === "Enter" || e.code === "Space" ? handleClick() : null
       }

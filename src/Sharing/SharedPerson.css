@@ -1,0 +1,15 @@
+.shared-person {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.remove-shared-person-button {
+  width: auto;
+}
+
+.remove-shared-person-button i {
+  font-size: 23px;
+  color: #ed554a;
+  opacity: 95%;
+}

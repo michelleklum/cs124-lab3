@@ -1,0 +1,57 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(9, 15, 16, 0.4);
+  z-index: 10;
+}
+
+.usage-alert {
+  background-color: #feffff;
+  color: #17252a;
+  border-radius: 7pt;
+  margin: 0 auto;
+  top: calc(27%);
+  height: auto;
+  width: 200px;
+  position: relative;
+  padding: min(20px, 4%);
+}
+
+.usage-alert-description {
+  margin-top: 2px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.usage-alert-buttons {
+  width: 100%;
+}
+
+.usage-alert-button {
+  display: block;
+  width: 40% !important;
+  height: 35px !important;
+  border-radius: 5px;
+  text-align: center;
+  color: #feffff;
+  font-size: 11pt;
+  margin: 0 auto;
+}
+
+.usage-alert-cancel {
+  background: #2b7a78;
+}
+
+.usage-alert-change-password {
+  margin-top: 13px !important;
+  background: #ED554A;
+  width: 80% !important; 
+}
+
+.usage-alert-sign-in {
+  width: 80% !important; 
+  background: #2b7a78;
+}

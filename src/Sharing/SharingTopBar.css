@@ -1,0 +1,21 @@
+/* margin: 0 auto; and width: 90%; are to center top bar content, leaving 5% width on each side */
+/* but to do that, we really just need margin-left: auto and margin-right: auto */
+.sharing-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  width: 90%;
+  height: 60px;
+}
+
+/* Center Sharing Page header text */
+.sharing-header-content h2 {
+  flex-grow: 1;
+  text-align: center;
+  margin-left: -10px;
+}
+
+.sharing-back-button {
+  width: 30px;
+}

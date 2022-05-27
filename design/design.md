@@ -1,8 +1,62 @@
-# CS 124 Lab 4 Design Document
+# CS 124 Lab 5 Design Document
 
-CS 124 Interaction Design Lab 4: To-do App UI Design (Multiple Lists, Accessible, Responsive)
+CS 124 Interaction Design Lab 5: To-do App UI Design (Authentication, Authorization)
 
-Link to app: [https://cs124-lab3-9c4c8--pr2-lab4-vmue0zo5.web.app](https://cs124-lab3-9c4c8--pr2-lab4-vmue0zo5.web.app)
+Link to app: [https://cs124-lab3-9c4c8--pr3-lab5-ron3g09m.web.app/](https://cs124-lab3-9c4c8--pr3-lab5-ron3g09m.web.app/)
+
+## Final App: Sign In, Sign Up, Reset Password Pages
+
+When a user who doesn't have a Task Monster account or hasn't recently logged in tries to open our app, they will see the Sign In page, shown below. On this page, they can sign in using a verified email and password or through Google. If the user has forgotten their password, they can reset it on this page. Additionally, if the user does not yet have an account, they can create an account on the Sign Up page by clicking "Sign Up" at the bottom of the page.
+
+<img src="sign_in_page_final_lab_5.png" alt="Sign In Page Lab 5 Final Version" width="200px">
+
+If a user clicks "Sign Up", they are taken to the Sign Up page. On this page, they can enter a valid email and password to create their account. We require all users to have verified emails to use our app; this is enforced by our Firebase security rules. As such, when a user signs up for a new account, a popup will appear that prompts the user to send a verification email so they can access their account. When the user presses "Send verification email", an email will be sent to the address they registered with and they will be redirected to the Sign In page so they can sign in with their new account.
+
+<img src="sign_up_page_final_lab_5.png" alt="Sign Up Page Lab 5 Final Version" width="200px">
+
+<img src="email_verification.png" alt="Email Verification Lab 5 Final Version" width="200px">
+
+Finally, if a user chooses to reset their password, they are brought to the Reset Password page. If the user enters a valid email (an email with an account linked to it) and presses "Send me a password reset link!", a message will be sent to their email with a link to reset their password.
+
+<img src="reset_password_page_final_lab_5.png" alt="Reset Password Page Lab 5 Final Version" width="200px">
+
+Once the password reset email is successfully sent, the user will be redirected to a page where they can return to the Sign In page.
+
+<img src="reset_password_email_sent.png" alt="Reset Password Page - Email Sent" width="200px">
+
+## Final App: Sign In, Sign Up, Reset Password Page Alerts
+
+We wanted to handle cases where users are locked out of their account, enter invalid email addresses/passwords, or otherwise encounter errors with authentication. We added alerts that appear when the user runs into errors like these. For instance, on the Sign Up, Sign In, and Reset Password pages, if the user enters an invalid email, the following alerts will appear:
+
+<img src="sign_up_error_popup_3.png" alt="Sign Up Error Pop-Up - Invalid Email" width="200px">
+
+<img src="sign_in_error_popup_1.png" alt="Sign In Error Pop-Up - Invalid Email" width="200px">
+
+<img src="reset_password_error_popup_1.png" alt="Reset Password Error Pop-Up - Invalid Email" width="200px">
+
+On the Sign Up page, if a user does not enter an email address or a password, an alert will inform them that they must enter both a valid email and a password.
+
+<img src="sign_up_error_popup_5.png" alt="Sign Up Error Pop-Up - Requires valid email and password" width="200px">
+
+If a user tries to create a password that doesn't meet security requirements (passwords must be at least 6 characters), an alert will tell them they must make their password longer.
+
+<img src="sign_up_error_popup_4.png" alt="Sign Up Error Pop-Up - Invalid password" width="200px">
+
+When logging in, an alert will also pop up if a user enters the wrong password. Note that the user has the opportunity to change thier password from the sign in screen.
+
+<img src="sign_in_error_popup_2.png" alt="Sign In Error Pop-Up - Wrong password" width="200px">
+
+If a user enters the wrong password too many times, their account will be temporarily disabled. They have the opportunity to reset their password to re-enable their account, or they can try signing in after a bit of time passes. The alert gives users both of these options.
+
+<img src="sign_in_error_popup_3.png" alt="Sign In Error Pop-Up - Disabled account" width="200px">
+
+We also wanted to protect against Denial-of-Service (DOS) attacks, when a user tries to sign up with an email already in use by a nefarious person. If a user tries to create account with an email address already in use, they will have the option to sign in (if they simply forgot they had an acccount, for instance) or change their password (which would be helpful in the case of a DOS attack).
+
+<img src="sign_up_error_popup_1.png" alt="Sign Up Error Pop-Up - DOS attack" width="200px">
+
+If an error comes up that we don't recognize, we give a generic alert.
+
+<img src="sign_in_error_popup_4.png" alt="Sign Up Error Pop-Up - Generic" width="200px">
 
 ## Final App: Home Page
 
@@ -14,11 +68,13 @@ In order to save space, we decided not to display the search bar in a fixed posi
 
 In Lab 2, we added an app icon and logo to our Home Page. This was to give our app more brand identity, and also to distinguish our Home Page from other pages of the app.
 
-<img src="home_page_final_lab_2.png" alt="Home Page Lab 2 Final Version" width="200px">
+Once we implemented list sharing in Lab 5, we added a "Shared With You" heading for users who have had lists shared with them. All of a user's shared lists fall under that heading, while the lists that the user owns remain above. A user with whom a list has been shared does not need to accept the sharing; the list will simply show up under the "Shared With You" heading on the user's Home Page.
 
-<img src="home_page_search_final.png" alt="Home Page Search Lab 1 Final Version" width="200px">
+<img src="home_page_final_lab_5.png" alt="Home Page Lab 5 Final Version" width="200px">
 
-<img src="home_page_search_in_progress_final.png" alt="Home Page Search In Progress Lab 1 Final Version" width="200px">
+<img src="home_page_search_final_lab_5.png" alt="Home Page Search Lab 5 Final Version" width="200px">
+
+<img src="home_page_search_in_progress_final_lab_5.png" alt="Home Page Search In Progress Lab 5 Final Version" width="200px">
 
 Users should tap a card for an individual list in order to get to the Single List Page, which will display all the tasks for that list.
 
@@ -28,11 +84,15 @@ After Lab 2 user testing, we also decided that at most one list should be in edi
 
 In Lab 2, we also decided to add a deeper shadow to a task card when it has its edit and delete icons revealed. That deeper shadow distinguishes that particular task card from all the others. This conforms with a lesson from Chapter 5 of The Design of Everyday Things: “Make the item being acted upon more prominent. That is, change the appearance of the actual object being acted upon to be more visible: enlarge it, or perhaps change its color” (205).
 
-<img src="home_page_edit_icons_final_lab_2.png" alt="Home Page Edit Icons Lab 2 Final Version" width="200px">
+<img src="home_page_edit_icons_final_lab_5.png" alt="Home Page Edit Icons Lab 5 Final Version" width="200px">
+
+Shared users who are not the list owner cannot delete the list.
+
+<img src="home_page_edit_icons_final_lab_5_shared_list.png" alt="Home Page Edit Icons Lab 5 Shared List Final Version" width="200px">
 
 In Lab 3, we added a message that appears on the Home Page when no lists are present. We saw this idea in the grading rubric for Lab 2 and thought it would be informative and useful for our users, since it would help users realize the screen is empty because they have no lists (as opposed to no lists being shown because data is being fetched). In user testing, participants also requested a message like this when there are no lists present.
 
-<img src="home_page_no_lists_lab_3.png" alt="Home Page Without Lists Lab 3" width="200px">
+<img src="home_page_no_lists.png" alt="Home Page Without Lists Lab 3" width="200px">
 
 Additionally, because we're using Firebase to store our data in Lab 3, it takes a bit of time to load data from the database. Thus, we wanted to make sure our app showed a loading screen while data was being fetched. We decided a screen with a spinning wheel or other icon would look too busy, especially because it typically would only be flashed on the screen of a brief moment. Thus, we created an empty version of the homescreen to display while data is loading. While this screen normally only appears for a fraction of a second, we still think it improves the experience of using the app while data is loading in.
 
@@ -47,6 +107,10 @@ During usability testing for Lab 3, we noticed that there was no autofocus on th
 <img src="user_test_lab_3_create_list_page_autofocus.png" alt="User Testing Lab 3 Edit Create List Page Autofocus" width="200px">
 
 <img src="create_list_page_in_progress_final_lab_2.png" alt="Create List Page In Progress Lab 2 Final Version" width="200px">
+
+The Edit List Page is exactly the same as the Create List Page, except that it has the list's saved name and icon pre-selected, as well as a delete list button for list owners. Shared users who are not the list owner cannot delete the list, so they do not see the delete list button.
+
+<img src="edit_list_page.png" alt="Edit List Page" width="200px">
 
 ## Final App: Single List Page
 
@@ -82,7 +146,19 @@ In Lab 3, we added task sorting options, so we expanded the Single List Page Men
 
 In Lab 4, we added the option to delete all overdue tasks. We thought this could be useful for users who only care about tasks due in the future but don't want to individually find and delete all their overdue tasks. We chose a different trashcan icon to represent this delete option.
 
-<img src="single_list_page_menu_mode_final_lab_4.png" alt="Single List Page Menu Mode Lab 4 Final Version" width="200px">
+In Lab 5, we introduced the ability for users to share lists, so we added a button that takes the user to the Sharing Page for the current list.
+
+If the current list is not shared with anyone, the button will have an icon showing a single person with a lock, meaning that the list is private.
+
+<img src="single_list_page_menu_mode_final_lab_5.png" alt="Single List Page Menu Mode Lab 5 Final Version Not Shared" width="200px">
+
+If the current list is shared, the button will have an icon showing a group of people, meaning that the list is shared.
+
+<img src="single_list_page_menu_mode_final_lab_5_shared.png" alt="Single List Page Menu Mode Lab 5 Final Version Shared" width="200px">
+
+If the current user is on a shared list for which they are not the list owner, there will be no button for deleting the list in the general Single List Page Menu. Shared users who are not the list owner cannot delete the list.
+
+<img src="single_list_page_menu_mode_final_lab_5_not_list_owner.png" alt="Single List Page Menu Mode Lab 5 Final Version Not List Owner" width="200px">
 
 We initially put all our task sorting options in the general Single List Page Menu, but soon realized that made the menu too cluttered (see Alternate Designs below). So, we ultimately decided to create a separate sorting menu for the Single List Page that could be easily accessed from the general Single List Page Menu. Clicking either the icon or the sort option description changes the sorting method to the one selected. The arrow indicates the direction of sorting, and this direction can be toggled by clicking either the icon or the sort option again. Clicking the back arrow takes users back to the general Single List Page Menu.
 
@@ -118,6 +194,60 @@ When opening the Single List Page, it takes a moment for data from Firebase to b
 
 <img src="single_list_loading_page_lab_3.png" alt="Single List Loading Page" width="200px">
 
+## Final App: Sharing Page
+
+In Lab 5, we introduced the ability for users to share lists with each other via email. A shared list is editable by the original owner and any users it is shared with. A shared user must have a verified email in order to see a list that has been shared with them, because all users must have verified emails in order to sign into the app in the first place, as documented in the Sign Up Page section. A user with whom a list has been shared does not need to accept the sharing; the list will simply show up under the "Shared With You" heading on the user's Home Page.
+
+As part of this feature, we implemented a Sharing Page which is tailored to each list. This is the Sharing Page for a list owned by the current user (lilac327@gmail.com). When a user first enters the Sharing Page for one of their lists, they see a box in which they can input the email address of the user they wish to share the current list with. After typing the email, the user can either hit the Enter key or click the plus button to complete the sharing.
+
+<img src="sharing_page.png" alt="Sharing Page" width="200px">
+
+<img src="sharing_page_email_input.png" alt="Sharing Page Email Input" width="200px">
+
+<img src="sharing_page_after_sharing.png" alt="Sharing Page After Sharing" width="200px">
+
+The Sharing Page has a few checks in place in order to ensure that users are sharing lists with valid emails. These checks will catch invalid emails and bring up usage alerts to provide feedback to users.
+
+A user cannot share a list with an empty email.
+
+<img src="sharing_page_blank_email.png" alt="Sharing Page Blank Email Usage Alert" width="200px">
+
+A user cannot share a list with a duplicate email.
+
+<img src="sharing_page_duplicate_email.png" alt="Sharing Page Duplicate Email Usage Alert" width="200px">
+
+We have a simple regular expression in place to check for email formatting. For example, a user cannot enter a string like "abc" as an email for the sharing field, since strings of that format are not valid emails.
+
+<img src="sharing_page_invalid_email.png" alt="Sharing Page Invalid Email Usage Alert" width="200px">
+
+When the shared emails list gets too long to fit completely onto the user's screen, the shared emails section becomes scrollable.
+
+<img src="sharing_page_scrollable_part_1.png" alt="Sharing Page Scrollable Part 1" width="200px">
+
+<img src="sharing_page_scrollable_part_2.png" alt="Sharing Page Scrollable Part 2" width="200px">
+
+Only the list owner is able to remove all other users from a shared list with one click of the "Stop Sharing" button. When a user clicks on the "Stop Sharing" button, we show a confirmation alert to prevent the user from accidentally removing a large number of shared users.
+
+<img src="sharing_page_stop_sharing_confirmation.png" alt="Sharing Page Stop Sharing Confirmation Alert" width="200px">
+
+Both the list owner and shared users can remove individual users from the list of shared users for a list. A user can remove another user from the shared user list by clicking the minus button next to that user's email. The list owner can never be removed from the list.
+
+This is the Sharing Page for a list that has been shared with the current user (michellelum123@gmail.com) but is not owned by the current user. On the Sharing Page for a shared user who is not the owner, the current user's email will not appear in the list of shared users, hence the change of header phrasing to "Also shared with" (instead of "Shared with"). Both the list owner and shared users are allowed to share a list with other users.
+
+<img src="sharing_page_non_owner.png" alt="Sharing Page For Non-Owner" width="200px">
+
+Only shared users who are not the list owner see the "Remove Me From Shared List" button to remove themselves from the sharing for a particular list. This is helpful in case a user no longer wants a list to be shared with them. The list owner can never be removed from a list. When a user clicks on the "Remove Me From Shared List" button, we show a confirmation alert to prevent the user from accidentally removing themselves from a shared list. The design for the "Stop Sharing" and "Remove Me From Shared List" buttons was inspired by Mac iOS buttons, which are simple and intuitive in employing red for elements like "Stop Sharing" buttons.
+
+<img src="sharing_page_remove_me_from_list.png" alt="Sharing Page Remove Me From Shared List Confirmation Alert" width="200px">
+
+After a user removes themselves from a shared list, they no longer have access to the list and are thus brought back to the Home Page, where the list from which they have removed themselves is no longer present.
+
+<img src="sharing_page_after_remove_me_from_list.png" alt="Sharing Page After Remove Me From Shared List" width="200px">
+
+Shared users who are not the list owner cannot delete the list, as seen in other parts of our app's interface (e.g. the Home Page List Card edit and delete buttons, the Edit List Page, the general Single List Page Menu.)
+
+Our app's sharing rules are enforced by Firebase security rules.
+
 ## Final App: View Task Page
 
 When a user taps the card for a task on the Single List Page, they are brought to the View Task Page, where they can view more details about that task, such as additional notes, which aren't visible on the Single List Page of all tasks.
@@ -152,19 +282,37 @@ In Lab 3, we added the option to include a priority with each task. To change th
 
 <img src="edit_task_page_select_priority_lab_3.png" alt="Edit Task Page Lab 3 Select Priority" width="200px">
 
+## Final App: Account Page
+
+For Lab 5, we added an Account page where users can view their account email, change their password (if they did not sign in with Google), and log out of their account. This page can be accessed by pressing the person icon at the top of the home page.
+
+<img src="account_page_final_lab_5.png" alt="Account Page Lab 5" width="200px">
+
+If a user tries to change their password, a confirm alert will pop up.
+
+<img src="account_page_change_password_alert.png" alt="Account Page Lab 5" width="200px">
+
+If they confirm that they would like to change their password, they will be signed out and brought to the Reset Password page. Similarly, if a user tries to sign out, they will have to confirm that they'd sign out (since it could be frustrating if a user accidentally clicks "Sign Out" and is immediately logged out of their account).
+
+<img src="account_page_sign_out_alert.png" alt="Account Page Lab 5" width="200px">
+
+If a user signed in with Google, the page will look like this:
+
+<img src="account_page_google_sign_in.png" alt="Account Page Lab 5 - Signed in with Google" width="200px">
+
 ## Final App: Delete Pop-Up Confirmation Messages
 
 For Lab 2, we introduced confirmation messages that would pop up when a user clicks a delete button. During user testing, one of our participants accidentally deleted a task and remarked that it would have been nice to have an extra warning to prevent that from happening. We thought that was a great idea, and now have confirmation messages whenever a user clicks a button to delete a task, delete completed tasks in a list, delete all tasks in a list, and delete a list.
 
-<img src="alert_home_page_delete_list.png" alt="Home Page Delete List Alert Lab 2 Final Version" width="200px">
+<img src="alert_home_page_delete_list.png" alt="Home Page Delete List Alert Lab 5 Final Version" width="200px">
 
 <img src="alert_edit_list_page_delete_list.png" alt="Alert Edit List Page Delete List Lab 2 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_completed_lab_4.png" alt="Single List Page Menu Mode Delete Completed Alert Lab 4 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_completed_lab_5.png" alt="Single List Page Menu Mode Delete Completed Alert Lab 5 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_all_lab_4.png" alt="Single List Page Menu Mode Delete All Alert Lab 4 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_all_lab_5.png" alt="Single List Page Menu Mode Delete All Alert Lab 5 Final Version" width="200px">
 
-<img src="alert_single_list_page_menu_mode_delete_list_lab_4.png" alt="Single List Page Menu Mode Delete List Alert Lab 4 Final Version" width="200px">
+<img src="alert_single_list_page_menu_mode_delete_list_lab_5.png" alt="Single List Page Menu Mode Delete List Alert Lab 5 Final Version" width="200px">
 
 <img src="alert_edit_task_page_delete_task.png" alt="Edit Task Page Delete Task Alert Lab 2 Final Version" width="200px">
 
@@ -182,31 +330,31 @@ In Lab 4, we made our app responsive, providing support for phones, laptops, and
 
 Here is the welcome page of our app on large screens.
 
-<img src="large_screen_welcome_lab_4.png" alt="Large Screen Welcome Page Lab 4" width="650px">
+<img src="large_screen_welcome_lab_5.png" alt="Large Screen Welcome Page Lab 5" width="650px">
 
 When a user hovers over a list name, a gray background and an arrow will appear to indicated that the list can be clicked.
 
 On smaller phone-sized screens, users can swipe left on list cards to reveal pencil and trash can icons that allow them to edit and delete the list in question. However, we decided to remove that functionality on large screens because the swiping action is much more typical for phones and tablets, rather than for laptops or desktops, which are the devices that our large screen design targets. Furthermore, the list card swiping action was always more of a power user feature for expert users of our app, since there have always been other ways for users to edit and delete lists.
 
-<img src="large_screen_welcome_hover_lab_4.png" alt="Large Screen Welcome Page List Card Hover Lab 4" width="650px">
+<img src="large_screen_welcome_hover_lab_5.png" alt="Large Screen Welcome Page List Card Hover Lab 5" width="650px">
 
 Larger screens have more space, so we decided to use that extra space to allow users to view both their lists and the tasks in their currently selected list, at the same time. This cannot be done on the mobile version of our app. We took inspiration from Todoist for our large screen layout.
 
-<img src="large_screen_single_list_page_lab_4.png" alt="Large Screen Single List Page Lab 4" width="650px">
+<img src="large_screen_single_list_page_lab_5.png" alt="Large Screen Single List Page Lab 5" width="650px">
 
 Users can type in the search bar to filter through tasks in the currently selected list. Hitting Cancel will take the user back to the view with all the tasks in the current list. We decided that, for large screens, it wasn't necessary to include a search bar that filters a user's lists, since taller screens are already able to display more lists than mobile screens.
 
-<img src="large_screen_single_list_page_search_lab_4.png" alt="Large Screen Single List Page Search Lab 4" width="650px">
+<img src="large_screen_single_list_page_search_lab_5.png" alt="Large Screen Single List Page Search Lab 5" width="650px">
 
 On large screens, hovering over a button will make its background turn gray to indicate that it can be pressed.
 
-<img src="large_screen_single_list_page_hover_lab_4.png" alt="Large Screen Single List Page Button Hover Lab 4" width="650px">
+<img src="large_screen_single_list_page_hover_lab_5.png" alt="Large Screen Single List Page Button Hover Lab 5" width="650px">
 
 Since large screens are so wide, we decided to attach the list options menu to the toggle menu button (the three dots in the top right corner), instead of having the list options menu stretch all the way across the bottom of the screen (as it does in the smaller version of our app).
 
-<img src="large_screen_single_list_page_menu_lab_4.png" alt="Large Screen Single List Page General Menu Lab 4" width="650px">
+<img src="large_screen_single_list_page_menu_lab_5.png" alt="Large Screen Single List Page General Menu Lab 5" width="650px">
 
-<img src="large_screen_single_list_page_menu_sorting_lab_4.png" alt="Large Screen Single List Page Sorting Menu Lab 4" width="650px">
+<img src="large_screen_single_list_page_menu_sorting_lab_5.png" alt="Large Screen Single List Page Sorting Menu Lab 5" width="650px">
 
 Clicking the plus button in the side bar on the left next to the "Your Lists" heading allows users to create a new list. The plus button on the right side of the screen, shown inside the content for the current list when the list options menu is not open, allows users to create a new task.
 
@@ -214,21 +362,21 @@ Clicking the info button in a task's row will allow users to view more details a
 
 On large screens, when a user clicks the respective button to create a new list, create a new task, edit an existing list, or view an existing task, a popup will appear.
 
-<img src="large_screen_create_list_popup_lab_4.png" alt="Large Screen Create List Popup Lab 4" width="650px">
+<img src="large_screen_create_list_popup_lab_5.png" alt="Large Screen Create List Popup Lab 5" width="650px">
 
-<img src="large_screen_create_task_popup_lab_4.png" alt="Large Screen Create Task Popup Lab 4" width="650px">
+<img src="large_screen_create_task_popup_lab_5.png" alt="Large Screen Create Task Popup Lab 5" width="650px">
 
-<img src="large_screen_edit_list_popup_lab_4.png" alt="Large Screen Edit List Popup Lab 4" width="650px">
+<img src="large_screen_edit_list_popup_lab_5.png" alt="Large Screen Edit List Popup Lab 5" width="650px">
 
 From the view task popup, the user can navigate to the edit task popup, just like in the smaller version of our app.
 
-<img src="large_screen_view_task_popup_lab_4.png" alt="Large Screen View Task Popup Lab 4" width="650px">
+<img src="large_screen_view_task_popup_lab_5.png" alt="Large Screen View Task Popup Lab 5" width="650px">
 
-<img src="large_screen_edit_task_popup_lab_4.png" alt="Large Screen Edit Task Popup Lab 4" width="650px">
+<img src="large_screen_edit_task_popup_lab_5.png" alt="Large Screen Edit Task Popup Lab 5" width="650px">
 
 Alerts still display properly on large screens. An example delete alert is shown below.
 
-<img src="large_screen_delete_alert_lab_4.png" alt="Large Screen Delete Alert Lab 4" width="650px">
+<img src="large_screen_delete_alert_lab_5.png" alt="Large Screen Delete Alert Lab 5" width="650px">
 
 We also added loading screens when lists and their respective tasks are loading. These screens are designed to make the transition from one page to another as smooth as possible by not including distracting images or text. The list and task loading pages are shown below, respectively.
 
@@ -236,8 +384,17 @@ We also added loading screens when lists and their respective tasks are loading.
 
 <img src="large_screen_tasks_loading_lab_4.png" alt="Large Screen Tasks Loading Lab 4" width="650px">
 
+In Lab 5, we made our new Sign In, Sign Up, and Reset Password pages responsive. Below are the large-screen versions of these pages. Note that users have the option to view the password they're entering when using our app on a large screen.
 
+<img src="large_screen_sign_in_page_final_lab_5.png" alt="Large Screen Sign In Page Lab 5" width="650px">
 
+<img src="large_screen_sign_up_page_final_lab_5.png" alt="Large Screen Sign Up Page Lab 5" width="650px">
+
+<img src="large_screen_password_reset_page_lab_5.png" alt="Large Screen Password Reset Page Lab 5" width="650px">
+
+When introducing list sharing between users in Lab 5, we also made the sharing page responsive and accessible through a popup on large screens.
+
+<img src="large_screen_sharing_popup_lab_5.png" alt="Large Screen Sharing Page Lab 5" width="650px">
 
 ## Final App: Accessibility
 
@@ -254,6 +411,12 @@ To make our app usable for users who can't use a mouse and users who can't see a
 For screenreader compatibility, we made sure to properly use heading tags for title text. This allows screenreader users to navigate through just the headings on any given page, in case they wish to do so. We also added aria-labels to all interactive elements so screenreaders are able to describe things like the name of the list or task a certain button is for, or the current state of a button.
 
 For Large Screens, we also implemented a Skip to Content link. If users have a list open, they can use that Skip to Content link to tell the screenreader to skip reading the names of the other lists and go directly to the content for the currently selected list.
+
+## Alternate Designs: Sign In Page
+
+Below is our initial Sign In page, which did not have a "Forgot password?" link that takes users to a page for changing their password. We added that link after user testing, when users told us that they would like the option to change their password in case they forgot it.
+
+<img src="sign_in_page_v1_lab_5.png" alt="Sign In Page Lab 5 V1" width="200px">
 
 ## Alternate Designs: Home Page and Single List Page Initial Brainstorming
 
@@ -337,6 +500,20 @@ When we first implemented a separate task sort options menu in Lab 3, it looked 
 
 <img src="single_list_page_menu_sorting_v1_lab_3.png" alt="Single List Page Sorting Menu Lab 3 Version 1" width="200px">
 
+Below is the general Single List Page Menu before we added the list sharing feature.
+
+<img src="single_list_page_menu_mode_final_lab_4.png" alt="Single List Page Menu Mode Lab 4 Final Version" width="200px">
+
+## Alternate Designs: Sharing Page
+
+Below are images of the first version of our Sharing Page. Initially, the email input box did contain a plus button. However, during user testing, we observed that some users did not immediately understand that they needed to hit the Enter key in order to finish sharing a list with another user. Some users thought that typing the email into the input box was all they needed to do, when this was in fact not the case. So, in the final version of the Sharing Page, we added a plus button inside the input box as a visual indicator to users that they should either click the plus button or hit the Enter key in order to finish sharing a list with another user.
+
+Also, notice that in the second image below, the shared user emails and minus buttons are not aligned well with the email input box since the input box has curved ends. In the final version of our Sharing Page, we made the input box more rectangular. We also aligned the shared user emails with the "Add Email" text inside the input box, bringing the minus buttons slightly in as well to keep things balanced overall.
+
+<img src="sharing_page_v1.png" alt="Sharing Page Lab 5 V1" width="200px">
+
+<img src="sharing_page_v1_alignment.png" alt="Sharing Page Lab 5 V1 Alignment" width="200px">
+
 ## Alternate Designs: View Task Page
 
 This is the version of our View Task Page that we turned in for Lab 1. For Lab 2, we changed the X icon for returning to the Single List Page from the View Task Page. We made that into a back arrow instead, since the X icon would be inappropriate in this situation; the X icon signifies the cancellation of current edits, but nothing is actually getting edited on the View Task Page.
@@ -362,6 +539,12 @@ Below is the Edit Task Page that we turned in for Lab 2. In Lab 3, we added the 
 <img src="edit_task_page_final_lab_2_date_picker.png" alt="Edit Task Page Lab 2 Final Version Date Picker" width="200px">
 
 <img src="edit_task_page_final_lab_2_time_picker.png" alt="Edit Task Page Lab 2 Final Version Time Picker" width="200px">
+
+## Alternate Designs: Account Page
+
+Below is the first version of our Account Page. Initially, our Account Page only displayed the current user's email and a button for signing out. During user testing, users requested the option to change their password, since that's something someone might do if they decide an old password is no longer secure, or if they just want to switch things up. So, the final version of our Account Page also has a "Change Password" button.
+
+<img src="account_page_v1_lab_5.png" alt="Account Page Lab 5 Version 1" width="200px">
 
 ## Alternate Designs: Large Screen UI Design (Responsiveness)
 
@@ -526,6 +709,36 @@ Users also wanted to sort tasks in both ascending and descending order, especial
 ### Delete Alert
 
 All users felt as if there was too much unused whitespace on the delete alert, so we reduced the margins to better fit the text on the alert.
+
+## Usability Testing: Lab 5
+
+For Lab 5, we conducted usability testing in-person with three Mudd students. We started by asking participants to share their impressions of our app based only on the first screen. For Lab 5, this was the Sign In Page. We asked what they believed our app did and what actions they thought they could perform based on the page's appearance. We continued by asking participants to perform a series of tasks while thinking out loud. These tasks included signing up for an account, signing in via Google, and sharing lists with other users. For instance, we asked each user testing participant to sign up for an account, create a list, and share that list with another person.
+
+All three users said they had a great time using our app and would actually want to use it to organize tasks. One user even liked it so much that he continued to create tasks that he needed to accomplish before the end of the school year, after we had finished our user testing session with him!
+
+### Sign In Page
+
+We observed that two users tried to sign in on the Sign In Page even when they did not have accounts on our app. After seeing the alert that the email did not yet have an associated account, one user was able to immediately direct themselves to the Sign Up Page. After seeing the alert, the second user signed in via Google instead. Since both users were able to bounce back so quickly from their mistakes, we did not find it necessary to change the layouts of our Sign In and Sign Up pages.
+
+The second user told us that, in general, he prefers signing in via Google, so that he does not have to remember a bunch of passwords for different websites. That confirmed that our app should provide a sign in with Google option, in addition to the option to sign in with email and password.
+
+One of our users helped us discover a Sign In Page bug. When the user clicked on the Sign In With Google button to open the Sign In With Google popup, but then closed the popup without actually signing in with Google, there was a TypeError (shown in the console in the screenshot below) that prevented the app from rendering. We were able to fix this bug after user testing.
+
+<img src="user_test_lab_5_sign_in_google_bug.png" alt="User Testing Lab 5 Sign In With Google Bug" width="650px">
+
+### Account Page
+
+In the version of our app that we used for user testing, there was no option for a user to change their password anywhere in our app. All three of our users requested a change password option, stating that they forget passwords easily. So, in the final version of our app for Lab 5, we added a change password option to the Account Page, as well as the incorrect password popup on the Sign In Page.
+
+### Sharing Page
+
+The image below shows what our Sharing Page looked like at the time of user testing.
+
+<img src="user_test_lab_5_sharing_page_v1.png" alt="User Testing Lab 5 Sharing Page Version 1" width="650px">
+
+When attempting to share a list with another user on the Sharing Page, one of our user testing participants did not realize that she needed to hit the Enter key in order to actually share the list with the email she had typed into the input box. So, in the final version of our app, we added a plus button inside the email input box. The plus button acts as a visual cue telling users that they must take additional action (e.g. clicking the plus button) in order to finish sharing a list with someone. And users who realize they can hit the Enter key as a shortcut to sharing a list with a new email can still do that.
+
+<img src="user_test_lab_5_sharing_page_final.png" alt="User Testing Lab 5 Sharing Page Final Version" width="650px">
 
 ## Challenges
 

@@ -5,6 +5,9 @@ import TaskDisplay from "./TaskDisplay";
 import DeleteTaskListBar from "../Global/DeleteTaskListBar";
 import DeleteAlert from "../Global/DeleteAlert";
 import { Timestamp } from "firebase/firestore";
+import ErrorAlert from "../Global/ErrorAlert";
+
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 function getCurrentDate() {
   // Get JavaScript Date object for current date and time
@@ -33,6 +36,9 @@ function getCurrentDate() {
 function ViewEditCreateTaskPage(props) {
   // TODO: In the future, give users option to not assign a deadline to a task?
   // By default, this assumes the current time for the task deadline
+
+  const tasksError = useCollectionData(props.tasksQuery)[2];
+
   const newTask = {
     name: "",
     deadline: getCurrentDate(),
@@ -51,54 +57,69 @@ function ViewEditCreateTaskPage(props) {
   // As a workaround, we put all of users' tasks in these state variables,
   // and then only when the user clicks the SaveTaskButton do we call onEditAllTaskFields
   // or onCreateTask to actually update the data in the App component's state.
-  const [tempTaskName, setTempTaskName] = useState(task.name);
-  const [tempTaskDeadline, setTempTaskDeadline] = useState(task.deadline);
-  const [tempTaskPriority, setTempTaskPriority] = useState(
-    task.priority ? task.priority : 0
+  const [tempTaskName, setTempTaskName] = useState(task && task.name);
+  const [tempTaskDeadline, setTempTaskDeadline] = useState(
+    task && task.deadline
   );
-  const [tempTaskNotes, setTempTaskNotes] = useState(task.notes);
-  const [tempTaskStatus, setTempTaskStatus] = useState(task.isCompleted);
+  const [tempTaskPriority, setTempTaskPriority] = useState(
+    task && task.priority ? task.priority : 0
+  );
+  const [tempTaskNotes, setTempTaskNotes] = useState(task && task.notes);
+  const [tempTaskStatus, setTempTaskStatus] = useState(
+    task && task.isCompleted
+  );
+
   return (
     <div id="task-page">
-      <TaskTopBar
-        isLargeScreen={props.isLargeScreen}
-        onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
-        task={task}
-        prevPage={props.prevPage}
-        data={props.data}
-        currentListId={props.currentListId}
-        currentTaskId={props.currentTaskId}
-        onChangePage={props.onChangePage}
-        inEditTaskMode={props.inEditTaskMode}
-        inCreateTaskMode={props.inCreateTaskMode}
-        onCreateTask={props.onCreateTask}
-        tempTaskName={tempTaskName}
-        onChangeTaskName={setTempTaskName}
-        tempTaskDeadline={tempTaskDeadline}
-        onChangeTaskDeadline={setTempTaskDeadline}
-        tempTaskNotes={tempTaskNotes}
-        onChangeTaskNotes={setTempTaskNotes}
-        tempTaskStatus={tempTaskStatus}
-        onEditAllTaskFields={props.onEditAllTaskFields}
-        tempTaskPriority={tempTaskPriority}
-        onChangeTaskPriority={setTempTaskPriority}
-      />
-      <hr />
-      <TaskDisplay
-        task={task}
-        currentListId={props.currentListId}
-        currentTaskId={props.currentTaskId}
-        inEditTaskMode={props.inEditTaskMode}
-        inCreateTaskMode={props.inCreateTaskMode}
-        tempTaskDeadline={tempTaskDeadline}
-        onChangeTaskDeadline={setTempTaskDeadline}
-        tempTaskNotes={tempTaskNotes}
-        onChangeTaskNotes={setTempTaskNotes}
-        tempTaskStatus={tempTaskStatus}
-        onChangeTaskStatus={setTempTaskStatus}
-        tempTaskPriority={tempTaskPriority}
-        onChangeTaskPriority={setTempTaskPriority}
-      />
+      {(tasksError || task === undefined) && (
+        <ErrorAlert
+          error={tasksError}
+          onCreateErrorReport={props.onCreateErrorReport}
+        />
+      )}
+      {task && (
+        <TaskTopBar
+          isLargeScreen={props.isLargeScreen}
+          onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+          task={task}
+          prevPage={props.prevPage}
+          data={props.data}
+          currentListId={props.currentListId}
+          currentTaskId={props.currentTaskId}
+          onChangePage={props.onChangePage}
+          inEditTaskMode={props.inEditTaskMode}
+          inCreateTaskMode={props.inCreateTaskMode}
+          onCreateTask={props.onCreateTask}
+          tempTaskName={tempTaskName}
+          onChangeTaskName={setTempTaskName}
+          tempTaskDeadline={tempTaskDeadline}
+          onChangeTaskDeadline={setTempTaskDeadline}
+          tempTaskNotes={tempTaskNotes}
+          onChangeTaskNotes={setTempTaskNotes}
+          tempTaskStatus={tempTaskStatus}
+          onEditAllTaskFields={props.onEditAllTaskFields}
+          tempTaskPriority={tempTaskPriority}
+          onChangeTaskPriority={setTempTaskPriority}
+        />
+      )}
+      {task && <hr />}
+      {task && (
+        <TaskDisplay
+          task={task}
+          currentListId={props.currentListId}
+          currentTaskId={props.currentTaskId}
+          inEditTaskMode={props.inEditTaskMode}
+          inCreateTaskMode={props.inCreateTaskMode}
+          tempTaskDeadline={tempTaskDeadline}
+          onChangeTaskDeadline={setTempTaskDeadline}
+          tempTaskNotes={tempTaskNotes}
+          onChangeTaskNotes={setTempTaskNotes}
+          tempTaskStatus={tempTaskStatus}
+          onChangeTaskStatus={setTempTaskStatus}
+          tempTaskPriority={tempTaskPriority}
+          onChangeTaskPriority={setTempTaskPriority}
+        />
+      )}
       {props.inEditTaskMode ? (
         <DeleteTaskListBar onToggleDeleteAlert={props.onToggleDeleteAlert} />
       ) : null}

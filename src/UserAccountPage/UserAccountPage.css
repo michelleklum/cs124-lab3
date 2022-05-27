@@ -1,0 +1,126 @@
+#user-account-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 640px;
+    background: #feffff;
+}
+
+/* For small screens, background should be white */
+@media screen and (max-width: 768px),
+(max-height: 689px) {
+    #user-account-page {
+        height: 100%;
+        min-height: 100vh;
+    }
+}
+
+.user-account-top-bar-content {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 90% !important;
+    height: 60px;
+}
+
+.user-account-top-bar-content h2 {
+    text-align: center;
+    width: 90%;
+    margin-right: 30px !important;
+}
+
+.leave-account-page-button {
+    width: 40px;
+}
+
+
+.account-page-content {
+    width: 90% !important;
+    margin: 0 auto;
+}
+
+#user-account-page h3 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.user-email {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 0px !important;
+}
+
+.account-header {
+    font-weight: 700 !important;
+    margin-top: 0px !important;
+    margin-bottom: 4px !important
+}
+
+
+.account-content-box {
+    margin-top: 20px;
+}
+
+.google-sign-in {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 35px;
+    margin-bottom: -50px;
+}
+
+.google-sign-in-text {
+    margin-top: 1px;
+    margin-left: -4px;
+    color: black;
+}
+
+
+/* Sign out button */
+.sign-out-button {
+    border: solid 2px #BAB2B5;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+    width: min(70vw, 250px);
+    text-align: center;
+    border-radius: 10px;
+    background-color: #DEF2F1 !important;
+    position: absolute;
+    margin-left: calc(max(-70vw/2, -250px/2));
+    left: 50%;
+    margin-top: 80px;
+    background: #feffff;
+}
+
+
+.sign-out-button h3 {
+    font-size: 16px !important;
+    margin-bottom: 8px;
+    margin-left: 0px !important;
+    margin-top: 8px !important;
+    font-weight: 600 !important;
+}
+
+/* Change password button */
+.change-password-button {
+    border: solid 2px #BAB2B5;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+    width: auto;
+    text-align: left;
+    border-radius: 10px;
+    background-color: #EAE8E8 !important;
+    position: absolute;
+    margin-top: 4px;
+    margin-left: -2px;
+    background: #feffff;
+}
+
+.change-password-button:active {
+    box-shadow: none;
+}
+
+
+.change-password-button h3 {
+    font-size: 16px !important;
+    margin-bottom: 8px;
+    margin-left: 10px !important;
+    margin-top: 8px !important;
+    margin-right: 10px;
+}

@@ -42,7 +42,7 @@ function ListOfTasks(props) {
           onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
         />
       ))}
-      {!list.hideCompletedTasks && completedTasks.length > 0 && (
+      {list && !list.hideCompletedTasks && completedTasks.length > 0 && (
         <div>
           {!props.isLargeScreen && <hr />}
           <h3

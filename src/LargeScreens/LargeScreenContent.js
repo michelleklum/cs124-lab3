@@ -22,9 +22,11 @@ const filterTasksBySearch = (tasks, query) => {
 };
 
 function LargeScreenContent(props) {
-  // Get tasks (current list's tasks) from Firebase
+  // Get tasks (current list's tasks) from Firebase.
+  // Need currentPage to not be Home so that we don't query Firebase for tasks when we're on large screen welcome page and there is no list open.
+  // That would cause an error with Firebase security rules for tasks.
   const [dbTasks, tasksLoading, tasksError] = useCollectionData(
-    props.tasksQuery
+    props.currentPage !== "Home" && props.tasksQuery
   );
   const tasks = dbTasks ? dbTasks : [];
 
@@ -57,46 +59,65 @@ function LargeScreenContent(props) {
 
   return (
     <Fragment>
-      <LargeScreenTopBar />
+      <LargeScreenTopBar
+        auth={props.auth}
+        onChangePage={props.onChangePage}
+        onChangeList={props.onChangeList}
+        onChangeTask={props.onChangeTask}
+        isLargeScreen={props.isLargeScreen}
+        onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+      />
       {props.dataLoading && (
         <div className="main-content">
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar loading={props.dataLoading} />
           </div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
-            <LargeScreenSubpage loading={props.dataLoading} />
+            <LargeScreenSubpage
+              user={props.user}
+              loading={props.dataLoading}
+              onCreateErrorReport={props.onCreateErrorReport}
+            />
           </div>
         </div>
       )}
-      {!props.dataLoading && tasksLoading && (
+      {!props.dataLoading && (tasksLoading || tasksError) && (
         <div className="main-content">
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
               onChangeList={props.onChangeList}
+              onChangeTask={props.onChangeTask}
               onDeleteList={props.onDeleteList}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
             />
           </div>
           <div className={`large-screen-subpage ${unscrollableClassName}`}>
-            <LargeScreenSubpage loading={tasksLoading} />
+            <LargeScreenSubpage
+              user={props.user}
+              loading={tasksLoading}
+              onCreateErrorReport={props.onCreateErrorReport}
+            />
           </div>
         </div>
       )}
-      {!tasksLoading && !tasksError && (
+      {!tasksLoading && (
         <div className="main-content">
           <div className={`side-bar ${unscrollableClassName}`}>
             <LargeScreenSideBar
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               currentListId={props.currentListId}
               onChangePage={props.onChangePage}
               onChangeList={props.onChangeList}
+              onChangeTask={props.onChangeTask}
               onDeleteList={props.onDeleteList}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
               setSearchQuery={setSearchQuery}
@@ -133,6 +154,7 @@ function LargeScreenContent(props) {
                 setMenuModeType={props.setMenuModeType}
                 onChangeMenuMode={props.onChangeMenuMode}
                 db={props.db}
+                user={props.user}
                 data={props.data}
                 tasksQuery={props.tasksQuery}
                 prevPage={props.prevPage}
@@ -159,13 +181,16 @@ function LargeScreenContent(props) {
                 onChangeSort={props.onChangeSort}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
+                onCreateErrorReport={props.onCreateErrorReport}
               />
             )}
           </div>
           {props.showLargeScreenPopup && props.isLargeScreen && (
             <LargeScreenPopup
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               tasks={tasks}
               currentPage={props.currentPage}
@@ -174,14 +199,17 @@ function LargeScreenContent(props) {
               currentTaskId={props.currentTaskId}
               onChangePage={props.onChangePage}
               onChangeList={props.onChangeList}
+              onChangeTask={props.onChangeTask}
               onCreateList={props.onCreateList}
               onDeleteList={props.onDeleteList}
               onCreateTask={props.onCreateTask}
               onDeleteTask={props.onDeleteTask}
               onEditAllTaskFields={props.onEditAllTaskFields}
               onEditListAppearance={props.onEditListAppearance}
+              onEditList={props.onEditList}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
               showDeleteAlert={props.showDeleteAlert}
+              auth={props.auth}
             />
           )}
         </div>

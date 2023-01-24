@@ -12,10 +12,12 @@ function LargeScreenSideBar(props) {
       {!props.loading && (
         <Home
           isLargeScreen={props.isLargeScreen}
+          user={props.user}
           data={props.data}
           currentListId={props.currentListId}
           onChangePage={props.onChangePage}
           onChangeList={props.onChangeList}
+          onChangeTask={props.onChangeTask}
           onDeleteList={props.onDeleteList}
           onToggleDeleteAlert={props.onToggleDeleteAlert}
           setSearchQuery={props.setSearchQuery}

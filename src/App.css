@@ -64,6 +64,12 @@ button {
   text-align: left;
   width: 100%;
   background: none;
+  outline: none;
+}
+
+button:hover,
+button:focus {
+  outline: none;
 }
 
 .top-bar i {
@@ -107,4 +113,21 @@ button {
   height: 1px;
   overflow: hidden;
   z-index: -999;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #DEF2F1 inset !important;
+  box-shadow: 0 0 0px 1000px #DEF2F1 inset !important;
+}
+
+.user-loading-screen {
+  background: #2B7A78;
 }

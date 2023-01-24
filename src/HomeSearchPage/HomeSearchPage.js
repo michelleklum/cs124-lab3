@@ -33,6 +33,8 @@ function HomeSearchPage(props) {
           <ListCard
             key={list.id}
             id={list.id}
+            user={props.user}
+            listOwner={list.owner}
             listName={list.name}
             listIcon={list.icon}
             onChangePage={props.onChangePage}

@@ -5,10 +5,11 @@ import EditListButton from "./EditListButton";
 import DeleteListButton from "./DeleteListButton";
 
 function ListCard(props) {
+  const inEditMode = props.listInEditMode === props.id;
+  const isOwner = props.listOwner === props.user.uid;
+
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-
-  const inEditMode = props.listInEditMode === props.id;
 
   /* The three functions below handle user swiping left or right on ListCard to reveal / hide edit and delete icons */
   function handleTouchStart(e) {
@@ -47,7 +48,7 @@ function ListCard(props) {
     if (!inEditMode) {
       props.onChangePage("SingleListPage");
       props.onChangeList(props.id);
-      props.isLargeScreen && props.setSearchQuery("");
+      props.isLargeScreen && props.setSearchQuery && props.setSearchQuery("");
     }
   }
 
@@ -72,19 +73,30 @@ function ListCard(props) {
       <i className={`fas fa-${props.listIcon} fa-4x list-icon`}></i>
       <h2>{props.listName}</h2>
       {inEditMode ? (
-        <Fragment>
-          <EditListButton
-            onChangePage={props.onChangePage}
-            id={props.id}
-            onChangeList={props.onChangeList}
-          />
-          <DeleteListButton
-            onToggleDeleteAlert={props.onToggleDeleteAlert}
-            onChangeList={props.onChangeList}
-            id={props.id}
-            className="right-list-icon"
-          />
-        </Fragment>
+        isOwner ? (
+          <Fragment>
+            <EditListButton
+              onChangePage={props.onChangePage}
+              id={props.id}
+              onChangeList={props.onChangeList}
+            />
+            <DeleteListButton
+              onToggleDeleteAlert={props.onToggleDeleteAlert}
+              onChangeList={props.onChangeList}
+              id={props.id}
+              className="right-list-icon"
+            />
+          </Fragment>
+        ) : (
+          <Fragment>
+            <div></div>
+            <EditListButton
+              onChangePage={props.onChangePage}
+              id={props.id}
+              onChangeList={props.onChangeList}
+            />
+          </Fragment>
+        )
       ) : (
         <EnterListArrow
           onListIconClick={() => props.onEditList(null)}

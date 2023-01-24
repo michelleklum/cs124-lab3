@@ -1,3 +1,5 @@
-# CS 124 Lab 4 To-do App (Multiple Lists, Accessible, Responsive )
+# CS 124 Lab 5 To-do App (Authentication, Authorization)
 
-## App: [https://cs124-lab3-9c4c8--pr2-lab4-vmue0zo5.web.app/](https://cs124-lab3-9c4c8--pr2-lab4-vmue0zo5.web.app/)
+[https://michelleklum.github.io/cs124-lab3/](https://michelleklum.github.io/cs124-lab3/)
+
+Task manager web app, created as part of Harvey Mudd College's CS 124 Interaction Design course.

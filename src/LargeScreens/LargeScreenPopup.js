@@ -1,6 +1,8 @@
 import "./LargeScreenPopup.css";
 import ViewEditCreateTaskPage from "../ViewEditCreateTaskPage/ViewEditCreateTaskPage";
 import EditCreateListPage from "../EditCreateListPage/EditCreateListPage";
+import SharingPage from "../Sharing/SharingPage";
+import UserAccountPage from "../UserAccountPage/UserAccountPage";
 import FocusTrap from "focus-trap-react";
 
 function LargeScreenPopup(props) {
@@ -11,6 +13,7 @@ function LargeScreenPopup(props) {
         <div className="popup">
           {props.currentPage === "ViewTaskPage" ? (
             <ViewEditCreateTaskPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               tasks={props.tasks}
@@ -25,6 +28,7 @@ function LargeScreenPopup(props) {
           ) : null}
           {props.currentPage === "EditTaskPage" ? (
             <ViewEditCreateTaskPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               tasks={props.tasks}
@@ -44,6 +48,7 @@ function LargeScreenPopup(props) {
           ) : null}
           {props.currentPage === "CreateTaskPage" ? (
             <ViewEditCreateTaskPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
               tasks={props.tasks}
@@ -62,8 +67,10 @@ function LargeScreenPopup(props) {
           ) : null}
           {props.currentPage === "EditListPage" ? (
             <EditCreateListPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               prevPage={props.prevPage}
               currentListId={props.currentListId}
@@ -76,12 +83,15 @@ function LargeScreenPopup(props) {
               inCreateListMode={false}
               onToggleDeleteAlert={props.onToggleDeleteAlert}
               showDeleteAlert={props.showDeleteAlert}
+              onCreateErrorReport={props.onCreateErrorReport}
             />
           ) : null}
           {props.currentPage === "CreateListPage" ? (
             <EditCreateListPage
+              tasksQuery={props.tasksQuery}
               isLargeScreen={props.isLargeScreen}
               onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              user={props.user}
               data={props.data}
               prevPage={props.prevPage}
               currentListId={props.currentListId}
@@ -92,6 +102,32 @@ function LargeScreenPopup(props) {
               onDeleteList={props.onDeleteList}
               inEditListMode={false}
               inCreateListMode={true}
+              onCreateErrorReport={props.onCreateErrorReport}
+            />
+          ) : null}
+          {props.currentPage === "SharingPage" ? (
+            <SharingPage
+              tasksQuery={props.tasksQuery}
+              isLargeScreen={props.isLargeScreen}
+              user={props.user}
+              data={props.data}
+              prevPage={props.prevPage}
+              currentListId={props.currentListId}
+              onChangePage={props.onChangePage}
+              onEditList={props.onEditList}
+              onCreateErrorReport={props.onCreateErrorReport}
+            />
+          ) : null}
+          {props.currentPage === "UserAccountPage" ? (
+            <UserAccountPage
+              isLargeScreen={props.isLargeScreen}
+              onToggleLargeScreenPopup={props.onToggleLargeScreenPopup}
+              onChangePage={props.onChangePage}
+              user={props.user}
+              auth={props.auth}
+              onChangeList={props.onChangeList}
+              onChangeTask={props.onChangeTask}
+              prevPage={props.prevPage}
             />
           ) : null}
         </div>
